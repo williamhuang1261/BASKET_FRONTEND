@@ -1,0 +1,16 @@
+.infobox::before
+.infobox::after{
+  position: absolute;
+  top: -0.25rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+}
+
+.infobox::before {
+  content:attr(data-tooltip);
+  color: black;
+  padding: .5rem;
+  width: max-content;
+  max-width: 100%;
+  background: white;
+}

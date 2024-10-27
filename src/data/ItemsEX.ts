@@ -1,0 +1,898 @@
+import image from "../assets/AdExample(1_1).jpg";
+
+const items = [
+  {
+    id: '66f3853cbe017003c58fced5',
+    name: {
+      fr: "Pomme",
+      en: "Apple",
+      size: "S",
+    },
+    ref: {
+      standard: "PLU",
+      code: "45678",
+    },
+    amount: {
+      isApprox: true,
+      meas: "weight",
+      units: "g",
+      quantity: 250,
+    },
+    description: "An apple a day keeps the doctor away",
+    brand: "Sunkiss",
+    suppliers: [
+      {
+        supplier: "Provigo",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYforC",
+              X: 1,
+              Y: 10,
+              C: 0,
+              rebatePricing: "unit",
+              start: Date.now(),
+              end: Date.now() + 200000000,
+              onlyMembers: false,
+            },
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 1,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "Metro",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 5,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "IGA",
+        pricing: {
+          normal: 2.57,
+          method: "weight_kg",
+        },
+      },
+    ],
+    image: image,
+  },
+  {
+    id: '66f3853cbe017003c58fced6',
+
+    name: {
+      fr: "Pomme",
+      en: "Apple",
+      size: "S",
+    },
+    ref: {
+      standard: "PLU",
+      code: "12345",
+    },
+    amount: {
+      isApprox: true,
+      meas: "weight",
+      units: "g",
+      quantity: 250,
+    },
+    description: "An apple a day keeps the doctor away",
+    brand: "Sunkiss",
+    suppliers: [
+      {
+        supplier: "Provigo",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYforC",
+              X: 2,
+              Y: 1,
+              C: 0,
+              rebatePricing: "unit",
+              start: Date.now(),
+              end: Date.now() + 200000000,
+              onlyMembers: false,
+            },
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 5,
+              Y: 6,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "Metro",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 1,
+              Y: 10,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "IGA",
+        pricing: {
+          normal: 2.57,
+          method: "weight_kg",
+        },
+      },
+    ],
+    image: image,
+  },
+  {
+    id: '66f3853cbe017003c58fced7',
+
+    name: {
+      fr: "Pomme",
+      en: "Apple",
+      size: "S",
+    },
+    ref: {
+      standard: "PLU",
+      code: "23456",
+    },
+    amount: {
+      isApprox: true,
+      meas: "weight",
+      units: "g",
+      quantity: 250,
+    },
+    description: "An apple a day keeps the doctor away",
+    brand: "Sunkiss",
+    suppliers: [
+      {
+        supplier: "Provigo",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYforC",
+              X: 2,
+              Y: 1,
+              C: 0,
+              rebatePricing: "unit",
+              start: Date.now(),
+              end: Date.now() + 200000000,
+              onlyMembers: false,
+            },
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 36,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "Metro",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 1,
+              Y: 25,
+              C: 0,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "IGA",
+        pricing: {
+          normal: 1.0,
+          method: "weight_kg",
+        },
+      },
+    ],
+    image: image,
+  },
+  {
+    id: '66f3853cbe017003c58fced8',
+
+    name: {
+      fr: "Pomme",
+      en: "Apple",
+      size: "S",
+    },
+    ref: {
+      standard: "PLU",
+      code: "34567",
+    },
+    amount: {
+      isApprox: true,
+      meas: "weight",
+      units: "g",
+      quantity: 250,
+    },
+    description: "An apple a day keeps the doctor away",
+    brand: "The best price you'll ever see",
+    suppliers: [
+      {
+        supplier: "Provigo",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYforC",
+              X: 2,
+              Y: 1,
+              C: 0,
+              rebatePricing: "unit",
+              start: Date.now(),
+              end: Date.now() + 200000000,
+              onlyMembers: false,
+            },
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 1,
+              Y: 1000000000,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "Metro",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 1,
+              Y: 1,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "IGA",
+        pricing: {
+          normal: 2.57,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "C",
+              C: 0.01,
+              rebatePricing: "unit",
+              start: Date.now(),
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+    ],
+    image: image,
+  },
+  {
+    id: '66f3853cbe017003c58fced9',
+
+    name: {
+      fr: "Pomme avec beaucoup de miel sur le dessus pour l'Halloween",
+      en: "Apple with a lot of honey on top for Halloween",
+      size: "S",
+    },
+    ref: {
+      standard: "PLU",
+      code: "56789",
+    },
+    amount: {
+      isApprox: true,
+      meas: "weight",
+      units: "g",
+      quantity: 250,
+    },
+    description: "An apple a day keeps the doctor away",
+    brand: "Sunkiss",
+    suppliers: [
+      {
+        supplier: "Provigo",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYforC",
+              X: 2,
+              Y: 1,
+              C: 0,
+              rebatePricing: "unit",
+              start: Date.now(),
+              end: Date.now() + 200000000,
+              onlyMembers: false,
+            },
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 5,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "Metro",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 5,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "IGA",
+        pricing: {
+          normal: 2.57,
+          method: "weight_kg",
+        },
+      },
+    ],
+    image: image,
+  },
+  {
+    id: '66f3853cbe017003c58fceda',
+
+    name: {
+      fr: "Pomme",
+      en: "Apple",
+      size: "S",
+    },
+    ref: {
+      standard: "PLU",
+      code: "7891",
+    },
+    amount: {
+      isApprox: true,
+      meas: "weight",
+      units: "g",
+      quantity: 250,
+    },
+    description: "An apple a day keeps the doctor away",
+    brand: "The greatest brand of all time that also has a massive name",
+    suppliers: [
+      {
+        supplier: "Provigo",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYforC",
+              X: 2,
+              Y: 1,
+              C: 0,
+              rebatePricing: "unit",
+              start: Date.now(),
+              end: Date.now() + 200000000,
+              onlyMembers: false,
+            },
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 5,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "Metro",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 5,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "IGA",
+        pricing: {
+          normal: 2.57,
+          method: "weight_kg",
+        },
+      },
+    ],
+    image: image,
+  },
+  {
+    id: '66f3853cbe017003c58fcedb',
+
+    name: {
+      fr: "Pomme",
+      en: "Apple",
+      size: "S",
+    },
+    ref: {
+      standard: "PLU",
+      code: "89123",
+    },
+    amount: {
+      isApprox: true,
+      meas: "weight",
+      units: "g",
+      quantity: 250,
+    },
+    description: "An apple a day keeps the doctor away",
+    brand: "Sunkiss",
+    suppliers: [
+      {
+        supplier: "Provigo",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYforC",
+              X: 10000,
+              Y: 1000000,
+              C: 0,
+              rebatePricing: "unit",
+              start: Date.now(),
+              end: Date.now() + 200000000,
+              onlyMembers: false,
+            },
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 5,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "Metro",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 5,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "IGA",
+        pricing: {
+          normal: 2.57,
+          method: "weight_kg",
+        },
+      },
+    ],
+    image: image,
+  },
+  {
+    id: '66f3853cbe017003c58fcedc',
+
+    name: {
+      fr: "Pomme",
+      en: "An apple a day keeps the doctor away",
+      size: "S",
+    },
+    ref: {
+      standard: "PLU",
+      code: "91234",
+    },
+    amount: {
+      isApprox: true,
+      meas: "weight",
+      units: "g",
+      quantity: 250,
+    },
+    description: "An apple a day keeps the doctor away",
+    brand:
+      "An apple a day keeps the doctor away, sponsored by your insurance company",
+    suppliers: [
+      {
+        supplier: "Provigo",
+        pricing: {
+          normal: 999999,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYforC",
+              X: 10000,
+              Y: 100000,
+              C: 0,
+              rebatePricing: "unit",
+              start: Date.now(),
+              end: Date.now() + 200000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+    ],
+    image: image,
+  },
+  {
+    id: '66f3853cbe017003c58fcedd',
+
+    name: {
+      fr: "Pomme",
+      en: "Apple",
+      size: "S",
+    },
+    ref: {
+      standard: "PLU",
+      code: "54321",
+    },
+    amount: {
+      isApprox: true,
+      meas: "weight",
+      units: "g",
+      quantity: 250,
+    },
+    description: "An apple a day keeps the doctor away",
+    brand: "Sunkiss",
+    suppliers: [
+      {
+        supplier: "Provigo",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYforC",
+              X: 2,
+              Y: 1,
+              C: 0,
+              rebatePricing: "unit",
+              start: Date.now(),
+              end: Date.now() + 200000000,
+              onlyMembers: false,
+            },
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 5,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "Metro",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 5,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "IGA",
+        pricing: {
+          normal: 2.57,
+          method: "weight_kg",
+        },
+      },
+    ],
+    image: image,
+  },
+  {
+    id: '66f3853cbe017003c58fcede',
+
+    name: {
+      fr: "Pomme",
+      en: "Apple",
+      size: "S",
+    },
+    ref: {
+      standard: "PLU",
+      code: "4321",
+    },
+    amount: {
+      isApprox: true,
+      meas: "weight",
+      units: "g",
+      quantity: 250,
+    },
+    description: "An apple a day keeps the doctor away",
+    brand: "Sunkiss",
+    suppliers: [
+      {
+        supplier: "Provigo",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYforC",
+              X: 10000,
+              Y: 1000000,
+              C: 0,
+              rebatePricing: "unit",
+              start: Date.now(),
+              end: Date.now() + 200000000,
+              onlyMembers: false,
+            },
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 5,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "Metro",
+        pricing: {
+          normal: 2.56,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 5,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "IGA",
+        pricing: {
+          normal: 2.57,
+          method: "weight_kg",
+        },
+      },
+    ],
+    image: image,
+  },
+  {
+    id: '66f3853cbe017003c58fcedf',
+
+
+
+
+
+
+    name: {
+      fr: "Pomme",
+      en: "An apple a day keeps the doctor away",
+      size: "S",
+    },
+    ref: {
+      standard: "PLU",
+      code: "32101",
+    },
+    amount: {
+      isApprox: true,
+      meas: "weight",
+      units: "g",
+      quantity: 250,
+    },
+    description: "An apple a day keeps the doctor away",
+    brand:
+      "An apple a day keeps the doctor away, sponsored by your insurance company",
+    suppliers: [
+      {
+        supplier: "Provigo",
+        pricing: {
+          normal: 999999,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYforC",
+              X: 10000,
+              Y: 100000,
+              C: 0,
+              rebatePricing: "unit",
+              start: Date.now(),
+              end: Date.now() + 200000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+    ],
+    image: image,
+  },
+  {
+    id: '66f3853cbe017003c58fcee0',
+
+    name: {
+      fr: "Pomme",
+      en: "Apple",
+      size: "S",
+    },
+    ref: {
+      standard: "PLU",
+      code: "21012",
+    },
+    amount: {
+      isApprox: true,
+      meas: "weight",
+      units: "g",
+      quantity: 250,
+    },
+    description: "An apple a day keeps the doctor away",
+    brand: "Sunkiss",
+    suppliers: [
+      {
+        supplier: "Provigo",
+        pricing: {
+          normal: 10,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYforC",
+              X: 2,
+              Y: 1,
+              C: 0,
+              rebatePricing: "unit",
+              start: Date.now(),
+              end: Date.now() + 200000000,
+              onlyMembers: false,
+            },
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 5,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "Metro",
+        pricing: {
+          normal: 10,
+          method: "weight_kg",
+          limited: [
+            {
+              typeOfRebate: "buyXgetYatC",
+              X: 5,
+              Y: 2,
+              C: 1,
+              rebatePricing: "unit",
+              start: Date.now() + 200000000,
+              end: Date.now() + 500000000,
+              onlyMembers: false,
+            },
+          ],
+        },
+      },
+      {
+        supplier: "IGA",
+        pricing: {
+          normal: 10,
+          method: "weight_kg",
+        },
+      },
+    ],
+    image: image,
+  },
+];
+
+export default items;

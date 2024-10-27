@@ -1,0 +1,17 @@
+.cust-anim {
+  animation: swipe 60000ms linear infinite;
+}
+
+.slideshow:hover .cust-anim{
+  animation-play-state: paused;
+}
+
+@keyframes swipe {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
