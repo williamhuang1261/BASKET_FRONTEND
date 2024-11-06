@@ -1,37 +1,25 @@
-// interface FacebookResponseConnectedProp {
-//   status: "connected" | "not_authorized" | "unknown";
-//   authResponse?: {
-//     accessToken: string;
-//     expiresIn: any;
-//     signedRequest: any;
-//     userID: any;
-//   };
-// }
+import checkFacebookLoginStatus from "./Facebook/checkFacebookLoginStatus";
+import checkGoogleLoginStatus from "./Google/checkGoogleLoginStatus";
+import checkMicrosoftLoginStatus from "./Microsoft/checkMicrosoftLoginStatus";
 
-// interface FacebookResponseNotConnectedProp {
-//   status: "not_authorized" | "unknown";
-// }
-
-// type FacebookLoginCheckResponseType =
-//   | FacebookResponseConnectedProp
-//   | FacebookResponseNotConnectedProp;
-
-
-// TODO HIDE Keys and implement facebook login
-const checkFacebookLoginStatus = () => {
-  // FB.getLoginStatus((response: FacebookLoginCheckResponseType) => {
-  //   statusChangeCallback(response);
-  // });
-  console.warn('Checking if connected to Facebook, NOT IMPLEMENTED')
-};
-
-const checkGoogleLoginStatus = () => {
-  console.warn('Checking if connected to Google, NOT IMPLEMENTED')
-}
-
-const checkLoginStatus = () => {
-  checkFacebookLoginStatus();
-  checkGoogleLoginStatus();
+const checkLoginStatus = async () => {
+  let userInfo: any;
+  try {
+    const facebookResponse = await checkFacebookLoginStatus();
+    if (facebookResponse) {
+      console.log("CALLING DB WITH FACEBOOK INFO");
+    }
+    const googleResponse = await checkGoogleLoginStatus();
+    if (googleResponse) {
+      console.log("CALLING DB WITH GOOGLE INFO");
+    }
+    const microsoftResponse = await checkMicrosoftLoginStatus();
+    if (microsoftResponse) {
+      console.log("CALLING DB WITH MICROSOFT INFO");
+    }
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 export default checkLoginStatus;
