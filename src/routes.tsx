@@ -8,7 +8,8 @@ const BasketPage = lazy(() => import("./routes/BasketPage"));
 const AboutPage = lazy(() => import("./routes/AboutPage"));
 const UsersPage = lazy(() => import("./routes/UsersPage"));
 const ErrorPage = lazy(() => import("./routes/ErrorPage"));
-const TestPage = lazy(() => import('./routes/TestPage'));
+const UserLoginPage = lazy(() => import("./routes/UserLoginPage"));
+const TestPage = lazy(() => import("./routes/TestPage"));
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage />, errorElement: <ErrorPage /> },
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
   { path: "/flyers", element: <FlyersPage />, errorElement: <ErrorPage /> },
   { path: "/basket", element: <BasketPage />, errorElement: <ErrorPage /> },
   { path: "/about", element: <AboutPage />, errorElement: <ErrorPage /> },
+  {
+    path: "/user-login",
+    element: <UserLoginPage />,
+    errorElement: <ErrorPage />,
+  },
   { path: "/test", element: <TestPage />, errorElement: <ErrorPage /> },
 ]);
 

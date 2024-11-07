@@ -51,9 +51,13 @@ module.exports = {
         "2/3": "2/3",
         "1/2": "1/2",
       },
-      gridTemplateRows:{
-        "10-free": 'repeat(10, minmax(0, auto))'
-      }
+      gridTemplateRows: {
+        "10-free": "repeat(10, minmax(0, auto))",
+      },
+      fontFamily: {
+        sans: ["Nunito", "sans"],
+        "mona": ["Mona", "sans-serif"],
+      },
     },
   },
   plugins: [],

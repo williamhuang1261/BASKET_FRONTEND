@@ -3,11 +3,19 @@ import { RouterProvider } from "react-router-dom";
 import Fallback from "./routes/Fallback";
 import router from "./routes";
 import UserProvider from "./state/providers/UserProvider";
-import checkLoginStatus from "./utils/auth/checkLoginStatus";
+
+// TODO Add login check, if positive, get user info
+const loadCheckLoginStatus = async () => {
+  try {
+    const {checkLoginStatus} = await import("./utils/auth/checkLoginStatus");
+    checkLoginStatus();
+  } catch (e) {
+    console.error(e);
+  }
+};
 
 const App = () => {
-  // TODO Add login check, if positive, get user info
-  checkLoginStatus();
+  loadCheckLoginStatus();
   return (
     <Suspense fallback={<Fallback />}>
       <UserProvider>

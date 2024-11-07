@@ -14,7 +14,7 @@ const PriceBar = ({ filtered, normal }: Props) => {
           // @ts-ignore
           className={`${filtered.opts[0].process.isRebate ? "bg-green/75" : ""} rounded px-1`}
         >
-          <h3 className="text-xl font-semibold">
+          <h3 className="text-xl font-mona font-semibold">
             {
               // @ts-ignore
               filtered.opts[0].process.priceToShow

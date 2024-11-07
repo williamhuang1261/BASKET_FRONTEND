@@ -2,8 +2,8 @@ import checkFacebookLoginStatus from "./Facebook/checkFacebookLoginStatus";
 import checkGoogleLoginStatus from "./Google/checkGoogleLoginStatus";
 import checkMicrosoftLoginStatus from "./Microsoft/checkMicrosoftLoginStatus";
 
-const checkLoginStatus = async () => {
-  let userInfo: any;
+export const checkLoginStatus = async () => {
+  // let userInfo: any;
   try {
     const facebookResponse = await checkFacebookLoginStatus();
     if (facebookResponse) {
@@ -21,5 +21,3 @@ const checkLoginStatus = async () => {
     console.error(e);
   }
 };
-
-export default checkLoginStatus;
