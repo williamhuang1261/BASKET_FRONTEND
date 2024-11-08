@@ -1,4 +1,4 @@
-import MicrosoftLogo from "../../assets/Microsoft_logo.svg";
+import MicrosoftLogo from "../../../assets/Microsoft_logo.svg";
 
 const MicrosoftLogIn = () => {
   return (

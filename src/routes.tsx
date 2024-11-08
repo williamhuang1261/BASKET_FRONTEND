@@ -9,6 +9,7 @@ const AboutPage = lazy(() => import("./routes/AboutPage"));
 const UsersPage = lazy(() => import("./routes/UsersPage"));
 const ErrorPage = lazy(() => import("./routes/ErrorPage"));
 const UserLoginPage = lazy(() => import("./routes/UserLoginPage"));
+const UserSignUpPage = lazy(() => import("./routes/UserSignUpPage"));
 const TestPage = lazy(() => import("./routes/TestPage"));
 
 const router = createBrowserRouter([
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
   {
     path: "/user-login",
     element: <UserLoginPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/user-signup",
+    element: <UserSignUpPage />,
     errorElement: <ErrorPage />,
   },
   { path: "/test", element: <TestPage />, errorElement: <ErrorPage /> },

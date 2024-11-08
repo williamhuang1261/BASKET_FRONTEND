@@ -1,10 +1,6 @@
 
 const TestPage = () => {
-  return (
-    <>
-      Test
-    </>
-  );
+  return <>Test</>;
 };
 
 export default TestPage;

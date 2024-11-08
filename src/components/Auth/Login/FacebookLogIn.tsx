@@ -1,4 +1,4 @@
-import FBLogo from "../../assets/Facebook_Logo_Primary.png";
+import FBLogo from "../../../assets/Facebook_Logo_Primary.png";
 
 const FacebookLogIn = () => {
   return (

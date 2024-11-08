@@ -11,7 +11,7 @@ const StandardLogin: React.FC = () => {
   };
 
   return (
-    <div className="flex w-72 flex-col items-center md:w-96 ">
+    <div className="flex flex-col items-center sm:w-96 ">
       <form onSubmit={handleSubmit} className="flex w-full flex-col">
         <div className="">
           <label htmlFor="email" className="py-1">
@@ -58,7 +58,8 @@ const StandardLogin: React.FC = () => {
         </div>
         <button
           type="submit"
-          className={`${email && password ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1" : "text-green outline outline-green"} mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out`}
+          className={`${email && password ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1" : "text-green/50 outline outline-green/50"} mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out`}
+          disabled={!email || !password}
         >
           LOGIN
         </button>
