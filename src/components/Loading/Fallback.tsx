@@ -1,5 +1,5 @@
 import { IoLogoJavascript } from "react-icons/io";
-import Spinner from "../components/General/Miscellaneous/Spinner";
+import Spinner from "../General/Miscellaneous/Spinner";
 
 const Fallback = () => {
   return (

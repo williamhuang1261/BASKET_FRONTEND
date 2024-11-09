@@ -19,8 +19,8 @@ const UserLoginPage = () => {
         ]}
         page="General"
       />
-      <div className="my-4 flex w-full justify-center overflow-hidden">
-        <div className="w-full overflow-hidden rounded p-6 sm:w-min sm:border">
+      <div className="my-4 flex w-full justify-center">
+        <div className="w-full overflow-hidden rounded p-6 sm:w-min sm:border sm:shadow-lg">
           <div className="pb-4">
             <h2 className="w-full text-2xl font-bold">Login to The Basket</h2>
             <div className="flex w-full gap-2 py-2">

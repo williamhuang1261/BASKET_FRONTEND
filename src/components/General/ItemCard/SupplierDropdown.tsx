@@ -15,10 +15,10 @@ const SupplierDropdown = ({ filtered }: Props) => {
   // @ts-ignore
   if (!filtered || filtered.opts.length === 0) return undefined;
   return (
-    <div className="flex flex-col py-2 ">
+    <div className="flex flex-col py-2">
       <button
         // @ts-ignore
-        className={`${filtered.opts.length === 1 ? "justify-center hover:cursor-default" : "justify-between"} flex h-10 items-center rounded bg-light_gray p-1`}
+        className={`${filtered.opts.length === 1 ? "justify-center hover:cursor-default" : "justify-between"} flex h-10 items-center rounded bg-light_gray p-1 shadow-md transition-all duration-100 ease-in-out`}
         onClick={() => setOpen(!open)}
         onMouseOver={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
@@ -37,6 +37,8 @@ const SupplierDropdown = ({ filtered }: Props) => {
                 i.name.toLowerCase() === filtered.opts[0].supplier.toLowerCase(),
             )?.src
           }
+          // @ts-ignore
+          alt={filtered.opts[0].supplier}
         />
         <RiArrowDropDownLine
           size={40}
@@ -59,6 +61,7 @@ const SupplierDropdown = ({ filtered }: Props) => {
                     (i) => i.name.toLowerCase() === s.supplier.toLowerCase(),
                   )?.src
                 }
+                alt={s.supplier}
               />
             </div>
             <div>

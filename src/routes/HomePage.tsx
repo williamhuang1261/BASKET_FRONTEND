@@ -2,8 +2,8 @@ import MainPageAds from "../components/General/Ads/MainPageAds";
 import FooterDiv from "../components/General/Footer/FooterDiv";
 import MainHeaderDiv from "../components/MainPage/UpperHeader/MainHeaderDiv";
 import LogoSlideDiv from "../components/MainPage/LogoSlider/LogoSlideDiv";
-import PopItemsDiv from "../components/MainPage/PopItems/PopItemsDiv";
 import Description from "../components/MainPage/Description/Description";
+import PopItemsDiv from "../components/MainPage/PopItems/PopItemsDiv";
 
 // Home Page
 const HomePage = () => {

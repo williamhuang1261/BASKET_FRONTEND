@@ -102,7 +102,7 @@ const GenNavBar = ({ hidden, page, size }: Props) => {
             </div>
           </div>
         </div>
-        <div className={page === "General" ? "hidden" : "" + "pb-2"}>
+        <div className={page === "General" ? "hidden" : "" + ""}>
           {/* Navigation links */}
           <Navigation />
         </div>

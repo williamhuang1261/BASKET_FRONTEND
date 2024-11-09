@@ -9,6 +9,7 @@ const LanguageHeader = () => {
       id={"Language_Selection"}
       className="cursor-pointer rounded-none border-none bg-green/5 outline-none hover:text-black/50"
       onChange={changeLanguage}
+      aria-label="LanguageSelection"
     >
       <option value="en" className="bg-white text-black">
         English

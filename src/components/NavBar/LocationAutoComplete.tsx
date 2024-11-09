@@ -49,7 +49,7 @@ const LocationAutoComplete = () => {
               <input
                 {...getInputProps({
                   placeholder: "Set Location",
-                  className: `${locSearchActive ? "text-black" : "text-black/50"} rounded w-full h-full border-none p-4 text-lg md:max-lg:text-sm outline-none`,
+                  className: `${locSearchActive ? "text-black" : "text-black/60"} rounded w-full h-full border-none p-4 text-lg md:max-lg:text-sm outline-none`,
                 })}
                 id={"Location_input"}
                 onSelect={() => setLocSearchActive(true)}

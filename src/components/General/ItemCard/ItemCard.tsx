@@ -1,7 +1,7 @@
 import PriceBar from "./PriceBar";
 import SortByPrice from "../../../utils/SortingPrice/SortByPrice";
 import BestPerSupplier from "../../../utils/SortingPrice/BestPerSupplier";
-import { ShowNormal } from "./ShowNormal";
+import ShowNormal from "./ShowNormal";
 import AddToBasketBut from "./AddToBasketBut";
 import SupplierDropdown from "./SupplierDropdown";
 import {
@@ -30,13 +30,12 @@ const ItemCard = ({ id, image, name, reference, amount, brand, suppliers }: Prop
   const normals = ShowNormal({ id: id, suppliers: suppliers });
 
   return (
-    <div className="flex max-h-full min-h-max w-72 flex-col rounded border-1 border-dark_gray bg-white md:w-full ">
+    <div className="flex max-h-full min-h-max w-72 flex-col border rounded shadow-lg bg-white md:w-full ">
       <div className="w-full flex-none">
-        <div className="items-align flex w-full justify-center">
+        <div className="items-align flex w-full justify-center mt-2">
           <img alt={name?.en} src={image} className="h-52 w-52 object-cover" />
         </div>
         <div className="p-2">
-          <div>
             <div className="flex flex-wrap justify-between">
               <h5 className="text-black/50">{brand}</h5>
               <h5 className="text-black/50">
@@ -45,7 +44,6 @@ const ItemCard = ({ id, image, name, reference, amount, brand, suppliers }: Prop
                   " " +
                   amount?.units}
               </h5>
-            </div>
           </div>
           <h4 className="text-xl">{name?.en}</h4>
         </div>

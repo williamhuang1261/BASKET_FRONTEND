@@ -1,11 +1,24 @@
 import HorizontalAd from "../../General/Ads/HorizontalAd";
+import LoadingCard from "../../Loading/LoadingCard";
 import cards from "./CardEX";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Contains all results, show more button
 const ResultsDiv = () => {
   const [more, setMore] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+  });
+  if (isLoading) {
+    return (
+      <div className="mt-2 grid flex-none grid-cols-1 justify-items-center gap-4 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-6">
+        {Array(12).fill(<LoadingCard />)}
+      </div>
+    );
+  }
   return (
     <div className="mt-2 grid flex-none grid-cols-1 justify-items-center gap-4 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-6">
       {cards.slice(0, 12).map((c, i) => (

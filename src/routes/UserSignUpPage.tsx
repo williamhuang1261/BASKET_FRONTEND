@@ -20,7 +20,7 @@ const UserSignUpPage = () => {
         page="General"
       />
       <div className="flex justify-center">
-        <div className="items-center justify-center border p-6 sm:w-min sm:rounded">
+        <div className="items-center justify-center border p-6 sm:w-min sm:rounded sm:shadow-lg">
           <div className="w-full">
             <h1 className="text-2xl font-bold">Sign Up to The Basket</h1>
             <div className="mb-3 py-2">

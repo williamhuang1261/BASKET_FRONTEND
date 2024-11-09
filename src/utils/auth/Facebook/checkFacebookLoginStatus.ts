@@ -1,6 +1,6 @@
 // TODO HIDE Keys and implement facebook login
 const checkFacebookLoginStatus = async () => {
-  console.warn('Checking if connected to Facebook, NOT IMPLEMENTED')
+  console.warn('FACEBOOK LOGIN STATUS NOT IMPLEMENTED')
   return null;
 };
 

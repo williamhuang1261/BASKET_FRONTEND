@@ -1,6 +1,6 @@
 import CardProps from '../../../interface/CardProps';
 
-export const ShowNormal = ({suppliers}: CardProps) => {
+const ShowNormal = ({suppliers}: CardProps) => {
   let output : {
     supplier: string,
     normalPrice: string
@@ -36,3 +36,5 @@ export const ShowNormal = ({suppliers}: CardProps) => {
 
   return output;
 }
+
+export default ShowNormal
