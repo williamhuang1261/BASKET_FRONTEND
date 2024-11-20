@@ -40,6 +40,7 @@ const FilterStoresDrop = () => {
         }
         className="rounded bg-light_gray/20 text-green"
         type="Click"
+        ariaLabel="Filter Stores"
       />
     </div>
   );

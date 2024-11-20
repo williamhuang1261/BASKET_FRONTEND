@@ -1,13 +1,14 @@
 import { ReactNode, useState } from "react";
 
 interface DropdownProps {
+  ariaLabel: string
   title: ReactNode;
   className?: string;
   body: ReactNode;
   type: "Hover" | "Click";
 }
 
-const Dropdown = ({ title, body, className, type }: DropdownProps) => {
+const Dropdown = ({ title, body, className, type, ariaLabel}: DropdownProps) => {
   const [active, setActive] = useState(false);
   const [mouseOver, setMouseOver] = useState(false);
 
@@ -22,6 +23,7 @@ const Dropdown = ({ title, body, className, type }: DropdownProps) => {
         className={
           "flex items-center h-full" + (active || mouseOver ? className || "" : "")
         }
+        aria-label={ariaLabel}
       >
         {title}
       </button>

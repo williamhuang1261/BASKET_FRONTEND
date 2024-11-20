@@ -1,13 +1,17 @@
 import { IoLogoJavascript } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-
 // Logo icon with link to Home Page
 const Logo = () => {
   return (
-    <Link to="/" aria-label="Go back to Home Page">
-      <IoLogoJavascript size="50" className="hover:text-green transition-all duration-150"/>
-    </Link>
+    <button aria-label="Go to Home Page">
+      <Link to="/" aria-label="Go back to Home Page">
+        <IoLogoJavascript
+          size="50"
+          className="transition-all duration-150 hover:text-green"
+        />
+      </Link>
+    </button>
   );
 };
 

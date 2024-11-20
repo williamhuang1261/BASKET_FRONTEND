@@ -31,6 +31,7 @@ const Navigation = () => {
           }
           className="rounded bg-light_gray/20 text-green"
           type="Hover"
+          ariaLabel="Categories"
         />
       </div>
 

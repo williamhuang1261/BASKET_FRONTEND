@@ -52,6 +52,7 @@ const CarouselAdDiv = () => {
           }
           type="button"
           onClick={() => setIndex(index !== 0 ? index - 1 : indexMax)}
+          aria-label="Previous Ad"
         >
           <IoIosArrowBack size={"30"} />
         </button>
@@ -60,6 +61,7 @@ const CarouselAdDiv = () => {
             type="button"
             className="w-full flex-grow"
             onClick={() => console.log("Redirecting")}
+            aria-label="Go to Ad Page"
           ></button>
           <div className="flex w-full">
             {images.map((c) => (
@@ -74,6 +76,7 @@ const CarouselAdDiv = () => {
                   " " +
                   "mx-2 my-2 h-1 flex-auto rounded border-black transition-all duration-500 ease-in-out md:h-1.5"
                 }
+                aria-label={`Go to Ad ${images.indexOf(c) + 1}`}
               ></button>
             ))}
           </div>
@@ -86,6 +89,7 @@ const CarouselAdDiv = () => {
           }
           type="button"
           onClick={() => setIndex(index < indexMax ? index + 1 : 0)}
+          aria-label="Next Ad"
         >
           <IoIosArrowForward size={"30"} />
         </button>
