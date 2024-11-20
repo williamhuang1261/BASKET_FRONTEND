@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import PasswordCriteriaBox from "./PasswordCriteriaBox";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../utils/auth/initFirebase";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showCriteria, setShowCriteria] = useState(false);
   const [confirm_password, setConfirmPassword] = useState("");
+  const [alreadyExists, setAlreadyExists] = useState(false);
 
   const criteria = [
     {
@@ -16,7 +20,8 @@ const SignUp = () => {
     { label: "Contains a lowercase letter", isValid: /[a-z]/.test(password) },
     { label: "Contains a number", isValid: /\d/.test(password) },
     {
-      label: "Contains any of the following special characters: !@#$%^&*(),.?\":{}|<>-",
+      label:
+        'Contains any of the following special characters: !@#$%^&*(),.?":{}|<>-',
       isValid: /[!@#$%^&*(),.?":{}|<>-]/.test(password),
     },
   ];
@@ -30,8 +35,23 @@ const SignUp = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        user.getIdToken().then((idToken) => {
+          console.log("ID Token (JWT):", idToken);
+        });
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        // const errorMessage = error.message;
+        console.warn(errorCode);
+        if (errorCode === "auth/email-already-in-use") {
+          setAlreadyExists(true);
+        }
+      });
   };
 
   return (
@@ -43,7 +63,7 @@ const SignUp = () => {
           </label>
           <input
             type="email"
-            id="email"
+            id="signup_email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -59,7 +79,7 @@ const SignUp = () => {
           </div>
           <input
             type="password"
-            id="password"
+            id="signup_password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             onSelect={() => setShowCriteria(true)}
@@ -92,11 +112,19 @@ const SignUp = () => {
         </div>
         <button
           type="submit"
-          className={`${email && isSamePassword[0].isValid ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1" : "text-green/50 outline outline-green/50"} mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out`}
+          className={`${email && isSamePassword[0].isValid ? "bg-green/75 text-white outline-none ring-green hover:bg-green hover:ring-1" : "text-green/50 outline outline-green/50"} mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out`}
           disabled={!isSamePassword[0].isValid || email.length === 0}
         >
           SIGN UP
         </button>
+        {alreadyExists && (
+          <h2 className="text-red-500">
+            {"This email is already in use. Try "}
+            <Link to="/user-login" className="text-blue-500 underline">
+              {"Login"}
+            </Link>
+          </h2>
+        )}
       </form>
     </div>
   );

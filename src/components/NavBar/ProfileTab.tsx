@@ -1,6 +1,7 @@
 import { LuUser2 } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import Dropdown from "../General/Miscellaneous/Dropdown";
+import LogOut from "../Auth/LogOut";
 
 // Allows access to profile, profile settings, and sign out button
 const ProfileTab = () => {
@@ -24,13 +25,7 @@ const ProfileTab = () => {
                 Settings
               </Link>
             </button>
-            <button
-              type="button"
-              aria-label="Sign out"
-              className="p-1 text-red-500 hover:bg-light_gray"
-            >
-              Sign out
-            </button>
+            <LogOut />
           </div>
         }
         type="Click"

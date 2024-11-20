@@ -39,7 +39,7 @@ const SearchBar = ({ hidden, id }: Props) => {
         className={`${hidden?.includes("Location") ? "hidden" : ""} relative flex items-center outline outline-dark_gray outline-1 rounded-b bg-white md:w-1/2 md:rounded-l-none md:rounded-r lg:w-2/6`}
       >
         <div className="flex h-12 w-full items-center relative rounded">
-          <LocationAutoComplete />
+          <LocationAutoComplete id={id}/>
         </div>
         <div
           className="flex-none bg-white pe-2"

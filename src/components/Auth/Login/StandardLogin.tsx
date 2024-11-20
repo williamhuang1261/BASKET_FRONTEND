@@ -1,13 +1,31 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
+import { auth } from "../../../utils/auth/initFirebase";
 
-const StandardLogin: React.FC = () => {
+const StandardLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginFailed, setLoginFailed] = useState(false);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        user.getIdToken().then((idToken) => {
+          console.log("ID Token (JWT):", idToken);
+        });
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        // const errorMessage = error.message;
+        console.warn(errorCode);
+        if (errorCode === "auth/invalid-credential") {
+          setLoginFailed(true);
+        }
+      });
   };
 
   return (
@@ -19,7 +37,7 @@ const StandardLogin: React.FC = () => {
           </label>
           <input
             type="email"
-            id="email"
+            id="login_email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -38,7 +56,7 @@ const StandardLogin: React.FC = () => {
           </div>
           <input
             type="password"
-            id="password"
+            id="login_password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -63,6 +81,11 @@ const StandardLogin: React.FC = () => {
         >
           LOGIN
         </button>
+        {loginFailed && (
+          <div className="text-red-500">
+            <h3>Invalid email or password</h3>
+          </div>
+        )}
       </form>
     </div>
   );
