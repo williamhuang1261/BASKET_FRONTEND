@@ -18,6 +18,7 @@ const ProfileTab = () => {
         body={
           <div className="absolute -left-14 z-10 grid grid-rows-2 w-28 rounded border-0.5 border-dark_gray bg-white">
             <button
+              aria-label="Go to settings"
               type="button"
               className="border-b-0.5 p-1 hover:bg-light_gray"
             >
@@ -29,6 +30,7 @@ const ProfileTab = () => {
           </div>
         }
         type="Click"
+        ariaLabel="Profile"
       />
     </div>
   );

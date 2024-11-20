@@ -29,6 +29,7 @@ const Drawer = ({ size }: Props) => {
     <>
       <button
         type="button"
+        aria-label="Open Side Bar"
         className="flex items-center justify-center"
         onClick={openDrawer}
       >
@@ -36,7 +37,7 @@ const Drawer = ({ size }: Props) => {
         <IoMenu size={size} className="hover:text-green" />
       </button>
       <div
-        className={`fixed left-0 top-0 z-50 flex h-screen w-full transition-all duration-300 ease-in-out ${open ? "pointer-events-auto opacity-100 no-doc-scroll" : "pointer-events-none opacity-0"}`}
+        className={`fixed left-0 top-0 z-50 flex h-screen w-full transition-all duration-300 ease-in-out ${open ? "no-doc-scroll pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
       >
         <div
           className={`flex h-full  flex-col bg-white pb-32 transition-all duration-300 ease-in-out md:pb-20 ${open ? "w-96 max-w-full" : "w-0 "}`}
@@ -49,6 +50,7 @@ const Drawer = ({ size }: Props) => {
               <button
                 type="button"
                 onClick={closeDrawer}
+                aria-label="Close Side Bar"
                 className="transition ease-in hover:text-black/50"
               >
                 <IoClose size="36px" />

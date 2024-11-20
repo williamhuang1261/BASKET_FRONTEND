@@ -6,7 +6,6 @@ import Dropdown from "../General/Miscellaneous/Dropdown";
 const LanguageTab = () => {
   return (
     <div>
-      <label htmlFor="languageSelection"></label>
       <Dropdown
         title={
           <GrLanguage size="35" className={"cursor-pointer hover:text-green duration-150 transition-all"} />
@@ -31,6 +30,7 @@ const LanguageTab = () => {
           </div>
         }
         type="Click"
+        ariaLabel="Language"
       />
     </div>
   );
