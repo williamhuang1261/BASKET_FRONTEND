@@ -6,6 +6,17 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Basket</title>
+    <script src="https://www.gstatic.com/firebasejs/8.0/firebase-app.js" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0/firebase-auth.js" async defer></script>
+    <script>
+      window.onload = function() {
+        var config = {
+          apiKey: "AIzaSyAgjvpquqnp9UIRq3t66vKOaaUv7uvD5ww",
+          authDomain: "projectorangetestphase.firebaseapp.com",
+        };
+        firebase.initializeApp(config);
+      };
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,27 +34,6 @@
       async
       defer
     ></script>
-    <!-- <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : 'a4635659097a0addef43da22107decef',
-          cookie     : true,
-          xfbml      : true,
-          version    : 'v21.0'
-        });
-          
-        FB.AppEvents.logPageView();   
-          
-      };
-    
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "https://connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script> -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

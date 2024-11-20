@@ -5,7 +5,11 @@ import PlacesAutocomplete, {
   getLatLng,
 } from "react-places-autocomplete";
 
-const LocationAutoComplete = () => {
+interface Props {
+  id: string;
+}
+
+const LocationAutoComplete = ({id}: Props) => {
   const { user, dispatch } = useUserState();
   const [tempAddress, setTempAddress] = useState(
     user.meta.location.formattedAddress,
@@ -51,7 +55,7 @@ const LocationAutoComplete = () => {
                   placeholder: "Set Location",
                   className: `${locSearchActive ? "text-black" : "text-black/60"} rounded w-full h-full border-none p-4 text-lg md:max-lg:text-sm outline-none`,
                 })}
-                id={"Location_input"}
+                id={"Location_input" + id}
                 onSelect={() => setLocSearchActive(true)}
                 onBlur={() => setLocSearchActive(false)}
               />

@@ -1,8 +1,12 @@
+import SocialLogin from "../components/Auth/Login/SocialLogin";
 import StandardLogin from "../components/Auth/Login/StandardLogin";
-import GoogleLogIn from "../components/Auth/Login/GoogleLogIn";
-import FacebookLogIn from "../components/Auth/Login/FacebookLogIn";
-import MicrosoftLogIn from "../components/Auth/Login/MicrosoftLogIn";
 import GenNavBar from "../components/NavBar/GenNavBar";
+import loginFacebook from "../utils/auth/loginFacebook";
+import loginGoogle from "../utils/auth/loginGoogle";
+import loginMicrosoft from "../utils/auth/loginMicrosoft";
+import microsoftLogo from "../assets/Microsoft_logo.svg";
+import googleLogo from "../assets/Google__G__logo.svg";
+import facebookLogo from "../assets/Facebook_Logo_Primary.png";
 
 const UserLoginPage = () => {
   return (
@@ -40,13 +44,31 @@ const UserLoginPage = () => {
           </div>
           <div className="">
             <div className="pb-2">
-              <GoogleLogIn />
+              <SocialLogin
+                type="Sign in"
+                color="#FBBC04"
+                onClick={loginGoogle}
+                provider="Google"
+                logo={googleLogo}
+              />
             </div>
             <div className="py-2">
-              <FacebookLogIn />
+              <SocialLogin
+                type="Sign in"
+                color="#0866FF"
+                onClick={loginFacebook}
+                provider="Facebook"
+                logo={facebookLogo}
+              />
             </div>
             <div className="py-2">
-              <MicrosoftLogIn />
+              <SocialLogin
+                type="Sign in"
+                color="#00A3EE"
+                onClick={loginMicrosoft}
+                provider="Microsoft"
+                logo={microsoftLogo}
+              />
             </div>
           </div>
         </div>

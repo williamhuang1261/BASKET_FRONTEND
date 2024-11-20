@@ -7,20 +7,18 @@ import UserProvider from "./state/providers/UserProvider";
 
 const App = () => {
   useEffect(() => {
-    const loadCheckLoginStatus = async () => {
+    const loadStartup = async () => {
       try {
-        const { checkLoginStatus } = await import(
-          "./utils/auth/checkLoginStatus"
-        );
-        checkLoginStatus();
+        const {startup} = await import("./startup");
         setTimeout(() => {
-          console.log("This is done");
+          console.log("Startup check complete");
         }, 5000);
+        startup();
       } catch (e) {
         console.error(e);
       }
     };
-    loadCheckLoginStatus();
+    loadStartup();
   }, []);
 
   return (
