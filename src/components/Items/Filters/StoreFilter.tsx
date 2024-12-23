@@ -1,6 +1,6 @@
 import suppliers from "../../../data/Suppliers";
 import useSearchFilterState from "../../../hooks/state/useSearchFilterState";
-import CheckboxList from "./CheckboxList";
+import ExpandableCheckboxList from "./ExpandableCheckboxList";
 
 // Store selection filters
 const StoreFilter = () => {
@@ -9,7 +9,7 @@ const StoreFilter = () => {
   return (
     <div className=" py-5">
       <h2 className="pb-2 text-xl font-semibold">Stores</h2>
-      <CheckboxList
+      <ExpandableCheckboxList
         items={suppliers}
         show={8}
         onCheck={(i) => {

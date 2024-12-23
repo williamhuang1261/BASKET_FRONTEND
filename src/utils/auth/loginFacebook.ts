@@ -4,14 +4,9 @@ import {
 } from "firebase/auth";
 import { auth } from "./initFirebase";
 
-// FIXME: Error 400 (Bad Request) when trying to login with Facebook
-// message ClientVariations {
-// Active Google-visible variation IDs on this client. These are reported for analysis, but do not directly affect any server-side behavior.
-// repeated int32 variation_id = [3300016, 3300106, 3300133, 3313321, 3324732, 3330195, 3362821, 3367992, 3384274, 3385332];
-// Active Google-visible variation IDs on this client that trigger server-side behavior. These are reported for analysis *and* directly affect server-side behavior.
-// repeated int32 trigger_variation_id = [3368180];
-// }
 const loginFacebook = () => {
+  // const {dispatch} = useContext(UserContext);
+
   const provider = new FacebookAuthProvider();
   signInWithPopup(auth, provider)
     .then((result) => {
@@ -23,6 +18,12 @@ const loginFacebook = () => {
       user.getIdToken().then((idToken) => {
         console.log("ID Token (JWT):", idToken);
       });
+      // dispatch({
+      //   group: 'CHANGE',
+      //   type: 'LOGIN_STATUS',
+      //   target: 'LOGGED_IN',
+      //   new: true
+      // })
     })
     .catch((error) => {
       // Handle Errors here.
@@ -39,6 +40,8 @@ const loginFacebook = () => {
       console.error(error);
       // ...
     });
+  
+  return null;
 };
 
 export default loginFacebook;

@@ -9,7 +9,7 @@ const HeaderDiv = () => {
       <ResultsBanner />
       <div className="flex items-center justify-between py-2">
         <h4 className=" hidden flex-none md:block">48 items found</h4>
-        <div className="md:hidden">
+        <div className="md:hidden z-[100]">
           <FilterPopUp />
         </div>
         <div className="flex flex-wrap items-center justify-end gap-2 ">

@@ -44,6 +44,7 @@ interface UserProp {
 
 interface UserTransportProp {
   meta: UserProp;
+  isLoggedIn: boolean
 }
 
 export default UserTransportProp;

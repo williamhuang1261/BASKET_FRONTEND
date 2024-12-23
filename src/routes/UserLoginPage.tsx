@@ -7,6 +7,7 @@ import loginMicrosoft from "../utils/auth/loginMicrosoft";
 import microsoftLogo from "../assets/Microsoft_logo.svg";
 import googleLogo from "../assets/Google__G__logo.svg";
 import facebookLogo from "../assets/Facebook_Logo_Primary.png";
+import { Link } from "react-router-dom";
 
 const UserLoginPage = () => {
   return (
@@ -30,7 +31,9 @@ const UserLoginPage = () => {
             <div className="flex w-full gap-2 py-2">
               <h3>Don't have an account yet? </h3>
               <button className="font-bold underline">
-                <h2>Sign Up</h2>
+                <Link to="/user-signup">
+                  <h2>Sign Up</h2>
+                </Link>
               </button>
             </div>
           </div>
@@ -39,7 +42,7 @@ const UserLoginPage = () => {
           </div>
           <div className="flex items-center py-4">
             <div className="flex-grow border-t "></div>
-            <span className="mx-4 text-black/50">or login with</span>
+            <span className="mx-4 text-black/50">OR</span>
             <div className="flex-grow border-t"></div>
           </div>
           <div className="">

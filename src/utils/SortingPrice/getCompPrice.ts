@@ -50,14 +50,10 @@ const getCompPrice = (
 
   // Calculating cost if quantity selection was asked for
   if (qSelection) {
-    const cost = selectCost(
-      amount,
-      limited,
-      // @ts-ignore
-      toUnit(amount, qSelection),
-      normal,
-      method,
-    );
+    const units = toUnit(amount, qSelection);
+    if (!units) return undefined;
+
+    const cost = selectCost(amount, limited, units, normal, method);
     if (cost === undefined) return undefined;
     return {
       supplier: supplier,
@@ -77,7 +73,6 @@ const getCompPrice = (
       },
     };
   }
-
 
   // Different method of calculations depending on method of rebate
   let calcPrice: number | undefined;
@@ -104,7 +99,7 @@ const getCompPrice = (
         },
       };
     case "buyXgetYforC":
-    case "buyXgetYatC":
+    case "buyXgetYatC": {
       let X2: number;
       if (!X) X2 = 0;
       else X2 = X;
@@ -126,7 +121,8 @@ const getCompPrice = (
         rebatePart = C;
       } else {
         convPrice = calcCost({ amount }, C, rebatePricing, undefined, "unit");
-        // @ts-ignore
+        if (convPrice === undefined) return undefined;
+
         rebatePart = Y * convPrice;
       }
       if (normalPart === undefined || rebatePart === undefined)
@@ -158,6 +154,7 @@ const getCompPrice = (
           isRebate: true,
         },
       };
+    }
     default:
       return undefined;
   }

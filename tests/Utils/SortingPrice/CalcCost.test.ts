@@ -77,7 +77,7 @@ describe("calcCost", () => {
     expect(res).toBe(1);
   });
   it("Should return undefined if one of the parameters is missing", () => {
-    // @ts-expect-error
+    // @ts-expect-error Testing error handling
     amount = undefined;
     let res = exec();
     expect(res).toBeUndefined();
@@ -88,19 +88,19 @@ describe("calcCost", () => {
       quantity: 1,
     };
 
-    // @ts-expect-error
+    // @ts-expect-error Testing error handling
     price = undefined;
     res = exec();
     expect(res).toBeUndefined();
     price = 1;
 
-    // @ts-expect-error
+    // @ts-expect-error Testing error handling
     method = undefined;
     res = exec();
     expect(res).toBeUndefined();
     method = "weight_kg";
 
-    // @ts-expect-error
+    // @ts-expect-error Testing error handling
     req = undefined;
     res = exec();
     expect(res).toBeUndefined();

@@ -23,7 +23,7 @@ const CarouselAdDiv = () => {
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, [index]);
+  }, [index, indexMax]);
 
   return (
     <div

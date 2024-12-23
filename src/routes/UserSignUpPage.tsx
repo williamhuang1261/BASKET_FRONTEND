@@ -11,20 +11,18 @@ import microsoftLogo from "../assets/Microsoft_logo.svg";
 const UserSignUpPage = () => {
   return (
     <div className=" ">
-      <div className="outline">
-        <GenNavBar
-          size={"Container"}
-          hidden={[
-            "Side",
-            "SearchBar",
-            "Location",
-            "Profile",
-            "Calc",
-            "SideForSmall",
-          ]}
-          page="General"
-        />
-      </div>
+      <GenNavBar
+        size={"Container"}
+        hidden={[
+          "Side",
+          "SearchBar",
+          "Location",
+          "Profile",
+          "Calc",
+          "SideForSmall",
+        ]}
+        page="General"
+      />
       <div className="flex justify-center">
         <div className="items-center justify-center border p-6 sm:w-min sm:rounded sm:shadow-lg">
           <div className="w-full">

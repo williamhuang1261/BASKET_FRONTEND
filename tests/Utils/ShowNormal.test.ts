@@ -1,4 +1,4 @@
-import { ShowNormal } from "../../src/components/General/ItemCard/ShowNormal";
+import  ShowNormal from "../../src/components/General/ItemCard/ShowNormal";
 import { beforeEach, describe, it, expect } from "vitest";
 import { AmountProp, NameProp, RefProp, SuppliersProp } from "../../src/interface/Destructed";
 
@@ -11,12 +11,14 @@ interface ItemProp {
 
 describe("ShowNormal function", () => {
   let item: ItemProp;
+  // eslint-disable-next-line
   let maxQuantity:
     | {
         units: string;
         amount: number;
       }
     | undefined;
+  // eslint-disable-next-line
   let maxCount: number | undefined;
   beforeEach(() => {
     item = {
@@ -101,9 +103,9 @@ describe("ShowNormal function", () => {
   it("Should return the normal prices of every supplier", () => {
     const res = exec();
     expect(res).toBeInstanceOf(Array);
-    // @ts-ignore
+    // @ts-expect-error Testing purposes
     expect(res.length).toBe(3);
-    // @ts-ignore
+    // @ts-expect-error Testing purposes
     expect(res[0].normalPrice).toBe("2.56 $/kg");
   });
   it("Should return undefined if no prices are available", () => {

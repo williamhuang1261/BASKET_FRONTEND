@@ -9,12 +9,14 @@ interface ItemProp extends itemType {}
 
 describe("SortByPrice", () => {
   let item: ItemProp;
+  // eslint-disable-next-line
   let maxQuantity:
     | {
         units: string;
         amount: number;
       }
     | undefined;
+  // eslint-disable-next-line
   let maxCount: number | undefined;
 
   beforeEach(() => {
@@ -95,6 +97,8 @@ describe("SortByPrice", () => {
   });
 
   const exec = () => {
+
+
     const sorted: PriceProps | string = SortByPrice(
       {
         name: item.name,
@@ -112,19 +116,15 @@ describe("SortByPrice", () => {
     const res = exec();
     if (typeof res !== "string") {
       expect(res.opts).toBeInstanceOf(Array);
-      // @ts-ignore
-      expect(res.opts.length).toBe(3);
-      // @ts-ignore
-      expect(res.opts[0].supplier === "Provigo");
-      // @ts-ignore
-      expect(res.opts[1].supplier === "Metro");
-      // @ts-ignore
-      expect(res.opts[2].supplier === "IGA");
+      expect(res.opts?.length).toBe(3);
+      expect(res.opts?.[0].supplier === "Provigo");
+      expect(res.opts?.[1].supplier === "Metro");
+      expect(res.opts?.[2].supplier === "IGA");
     }
   });
   it("Should return the error string if there was an error during the SortByPrice", () => {
     item.suppliers = [];
-    let res = exec();
+    const res = exec();
     expect(typeof res).toBe("string");
   });
 });

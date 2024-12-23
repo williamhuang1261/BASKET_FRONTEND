@@ -76,10 +76,10 @@ const StandardLogin = () => {
         </div>
         <button
           type="submit"
-          className={`${email && password ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1" : "text-green/50 outline outline-green/50"} mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out`}
+          className={`${email && password ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1" : "text-green/50 outline outline-green/50"} mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out hover:shadow-sm`}
           disabled={!email || !password}
         >
-          LOGIN
+          SIGN IN
         </button>
         {loginFailed && (
           <div className="text-red-500">

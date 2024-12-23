@@ -28,11 +28,12 @@ const SocialLogin = ({
       onMouseLeave={() => setMouseOver(false)}
       onClick={onClick}
       className={`flex h-10 w-full items-center justify-center gap-3 rounded
-        border p-2 font-medium transition-all duration-150 
-        ease-in-out`}
+        border-none p-2 font-medium transition-all duration-150 
+        ease-in-out shadow-sm`}
       style={{
-        borderColor: color,
+        // borderColor: color,
         backgroundColor: mouseOver ? `${color}50` : '',
+        boxShadow: `1px 1px 2px 0.5px ${color}75, 0 1px 2px 0px ${color}50`,
       }}
     >
       <img

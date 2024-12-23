@@ -27,7 +27,7 @@ const selectCost = (
       );
       break;
     case "buyXgetYforC":
-    case "buyXgetYatC":
+    case "buyXgetYatC": {
       if (typeOfRebate === "buyXgetYatC" && rebatePricing !== "unit")
         return undefined;
       if (!Y) {
@@ -79,12 +79,11 @@ const selectCost = (
       cost = rebatePart + conditionPart + normalPart;
 
       break;
+    }
     default:
       break;
   }
-
-  // @ts-ignore
-  if (isNaN(cost)) return undefined;
+  if (!cost) return undefined;
   return cost;
 };
 

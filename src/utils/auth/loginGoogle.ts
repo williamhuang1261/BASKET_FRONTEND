@@ -2,6 +2,8 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "./initFirebase";
 
 const loginGoogle = () => {
+  // const { dispatch } = useContext(UserContext);
+
   console.log("Logging in with Google");
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
@@ -14,6 +16,13 @@ const loginGoogle = () => {
       user.getIdToken().then((idToken) => {
         console.log("ID Token (JWT):", idToken);
       });
+
+      // dispatch({
+      //   group: "CHANGE",
+      //   type: "LOGIN_STATUS",
+      //   target: "LOGGED_IN",
+      //   new: true,
+      // });
     })
     .catch((error) => {
       // Handle Errors here.

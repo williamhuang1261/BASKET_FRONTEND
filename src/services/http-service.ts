@@ -1,42 +1,44 @@
-import axios, {CanceledError} from 'axios';
+import axios, { CanceledError } from "axios";
+import { url } from "../../config/default.json";
 
-const apiClient = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
+const instance = axios.create({
+  baseURL: url,
 });
 
-interface Entity {
-  id: number;
-}
-
-class HttpService{
-  
+class HttpService {
   endpoint: string;
-  constructor(endpoint: string) {
+  headers: object;
+  constructor(endpoint: string = "", headers: object = {}) {
     this.endpoint = endpoint;
+    this.headers = headers;
   }
-  
-  get<T>() {
-    const controller = new AbortController();
-    const request = apiClient.get<T[]>(this.endpoint, {
-      signal: controller.signal,
-    });
-    return { request, cancel: () => controller.abort()}
-  }
-  
-  delete(id: number) {
-    return apiClient.delete(this.endpoint + '/' + id)
-  } 
-  
-  create<T>(entity: T) {
-    return apiClient.post(this.endpoint, entity)
-  }
-  
-  put<T extends Entity>(entity: T) {
-    return apiClient.put(this.endpoint + '/' + entity.id, entity)
-  }
-  
-}
 
-export default apiClient
-export {CanceledError};
-export const create = (endpoint: string) => new HttpService(endpoint);
+  get(endpoint: string = "", params?: object, headers: object = {}) {
+    return instance.get(this.endpoint + endpoint, {
+      headers: { ...this.headers, ...headers },
+      params: params
+    });
+  }
+
+  post(endpoint: string = "", headers: object = {}, body: object = {}) {
+    return instance.post(this.endpoint + endpoint, body, {
+      headers: { ...this.headers, ...headers },
+    });
+  }
+
+  put(endpoint: string = "", headers: object = {}, body: object = {}) {
+    return instance.put(this.endpoint + endpoint, body, {
+      headers: { ...this.headers, ...headers },
+    });
+  }
+
+  delete(endpoint: string = "", params?: object, headers: object = {}) {
+    return instance.delete(this.endpoint + endpoint, {
+      headers: { ...this.headers, ...headers },
+      params: params
+    });
+  }
+}
+export { CanceledError };
+export const createHttpService = (endpoint: string, headers: object) =>
+  new HttpService(endpoint, headers);

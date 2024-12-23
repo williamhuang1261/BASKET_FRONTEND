@@ -5,3 +5,11 @@
 :root:has(.no-doc-scroll) {
   overflow:hidden;
 }
+
+* {
+  outline: none
+}
+
+select {
+  cursor: pointer
+}

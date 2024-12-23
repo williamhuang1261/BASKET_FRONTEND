@@ -9,18 +9,18 @@ interface Props {
 }
 
 const SupplierSelection = ({ opts }: Props): string | ReactNode => {
-  if (!opts || opts.length === 0) return "No suppliers available";
-
   const { dispatch } = useBasketItemState();
-
+  
   const [open, setOpen] = useState(false);
   const [mouseOver, setMouseOver] = useState(false);
   const [displayed, setDisplayed] = useState<string>(opts[0].supplier);
 
+  if (!opts || opts.length === 0) return "No suppliers available";
+
   return (
     <div className="flex w-full max-w-96 flex-col p-2">
       <button
-        className={`${opts.length === 1 ? "justify-center hover:cursor-default" : "justify-between"} flex h-10 items-center rounded bg-light_gray p-1`}
+        className={`${opts.length === 1 ? "justify-center hover:cursor-default" : "justify-between"} flex h-10 items-center rounded bg-light_gray p-1 shadow-sm`}
         onClick={() => setOpen(!open)}
         onMouseOver={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
@@ -41,7 +41,6 @@ const SupplierSelection = ({ opts }: Props): string | ReactNode => {
         </div>
         <RiArrowDropDownLine
           size={40}
-          // @ts-ignore
           className={`${opts.length === 1 ? "hidden" : ""} ${mouseOver ? "text-green" : ""} h-full flex-none transition-all duration-100 ease-in-out`}
         />
       </button>

@@ -24,7 +24,7 @@ const optimize = (
   let combCost: number = Infinity;
   // Calculate the price of each combination
   for (const comb of combinations) {
-    let setup: SetupProp[] = [];
+    const setup: SetupProp[] = [];
     let setupCost: number = 0;
 
     // Getting the best price for each item

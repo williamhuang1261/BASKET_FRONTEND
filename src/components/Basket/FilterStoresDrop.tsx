@@ -12,7 +12,7 @@ const FilterStoresDrop = () => {
     <div>
       <Dropdown
         title={
-          <div className="flex h-max items-center justify-center overflow-hidden rounded-full border-0.5 bg-light_gray px-3 hover:text-green">
+          <div className="flex h-max items-center justify-center overflow-hidden rounded-full border-0.5 bg-light_gray px-3">
             <h3 className="pb-0.5 font-semibold">Filter Stores</h3>
             <RiArrowDropDownLine size={20} className="h-full" />
           </div>
@@ -35,6 +35,7 @@ const FilterStoresDrop = () => {
                   store: s,
                 })
               }
+              size={16}
             />
           </div>
         }

@@ -8,12 +8,11 @@ import {
 import getPotSuppliers from '../../../src/utils/Optimization/getPotSuppliers';
 
 describe("getPotSuppliers function", () => {
-  let itemArray: PriceProps[] = [];
+  const itemArray: PriceProps[] = [];
   let nameArray: NameProp[];
   let refArray: RefProp[];
   let amountArray: AmountProp[];
   let opts: OptsProps[][];
-  let hiddenSuppliers: string[];
 
   beforeEach(() => {
     nameArray = [

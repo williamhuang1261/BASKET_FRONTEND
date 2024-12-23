@@ -34,14 +34,12 @@ const SupplierDropdown = ({ filtered }: Props) => {
             logos.find(
               (i) =>
                 i.name.toLowerCase() ===
-                // @ts-ignore
-                filtered.opts[0].supplier.toLowerCase(),
+                filtered.opts?.[0].supplier.toLowerCase(),
             )?.src
           }
         />
         <RiArrowDropDownLine
           size={40}
-          // @ts-ignore
           className={`${filtered.opts.length === 1 ? "hidden" : ""} ${mouseOver ? "text-green" : ""} h-full transition-all duration-100 ease-in-out`}
         />
       </button>

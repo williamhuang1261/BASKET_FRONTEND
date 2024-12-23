@@ -39,7 +39,7 @@ const FilterDiv = () => {
           <input
             type="button"
             value={"Apply"}
-            className="rounded border-0.5 border-dark_gray bg-green/80 px-3 font-semibold ring-green transition-all duration-75 ease-in-out hover:scale-105 hover:ring-2"
+            className="rounded border-0.5 hover:shadow-md hover:bg-green/80 hover:border-transparent bg-green/50 px-3 font-semibold transition-all duration-150 ease-in-out cursor-pointer"
             onClick={handleClick}
           />
         </div>

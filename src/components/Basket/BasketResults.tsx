@@ -6,14 +6,14 @@ import BasketItemProvider from "../../state/providers/BasketItemProvider";
 // TODO: Add first API
 const BasketResults = () => {
   return (
-    <div className="mt-5 flex flex-col overflow-hidden rounded border-0.5 border-dark_gray">
+    <div className="mt-5 flex flex-col overflow-hidden border-0.5 rounded shadow-sm">
       {items.map((i) => (
         <div
           key={i.ref.code}
           className={
             items.indexOf(i) === items.length - 1
               ? ""
-              : "border-b-0.5 border-dark_gray"
+              : "border-b-0.5"
           }
         >
           <BasketItemProvider reference={i.ref}>

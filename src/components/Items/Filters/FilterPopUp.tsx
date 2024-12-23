@@ -9,10 +9,10 @@ const FilterPopUp = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
+    <div className={`${open ? 'no-doc-scroll' : ''} `}>
       <button
         type="button"
-        className="flex gap-1 rounded border-0.5 border-dark_gray bg-green/80 px-2 py-1 transition-all ease-in-out hover:bg-green/50"
+        className="flex gap-1 rounded border-0.5 bg-green/50 px-2 py-1 transition-all ease-in-out hover:bg-green/80 duration-150 hover:shadow-md hover:border-transparent"
         onClick={() => setOpen(true)}
       >
         <h2>Filters</h2>
@@ -33,7 +33,7 @@ const FilterPopUp = () => {
                 <input
                   type="submit"
                   value={"Apply"}
-                  className=" ounded rounded border-0.5 border-dark_gray bg-light_gray/80 px-3 py-1 font-semibold ring-green transition-all duration-75 ease-in-out hover:bg-green/80"
+                  className="border-light_gray shadow-md hover:cursor-pointer hover:border-transparent rounded border-0.5 bg-light_gray px-3 py-1 font-semibold transition-all duration-150 ease-in-out hover:bg-light_green"
                 />
                 <button
                   type="button"
@@ -58,7 +58,7 @@ const FilterPopUp = () => {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

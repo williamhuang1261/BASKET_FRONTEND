@@ -19,7 +19,7 @@ const Slider = ({
   onChange,
 }: SliderProps) => {
   return (
-    <div>
+    <div className="z-50">
       <div className={`w-${width} flex justify-between`}>
         <h3>{min}</h3>
         <h3>{max}</h3>

@@ -1,7 +1,7 @@
 import PriceProps from "../../interface/PriceProps";
 
 const getPotSuppliers = (basket: PriceProps[]): string[] => {
-  let suppliers: string[] = [];
+  const suppliers: string[] = [];
   for (const item of basket) {
     if (!item.opts) continue;
 

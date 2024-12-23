@@ -2,6 +2,7 @@ import CarouselAdDiv from "./CarouselAdDiv";
 import VerticalAd from "./VerticalAd";
 
 // Home Page ad grid
+// TODO: Load ads conditionally according to window size
 const MainPageAds = () => {
   return (
     <section className="mx-3 flex items-center gap-4 py-4 md:container md:mx-auto md:px-20">
