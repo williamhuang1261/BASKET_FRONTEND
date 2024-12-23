@@ -8,7 +8,7 @@ interface Props {
 
 const convertUnits = ({ from, to }: Props) => {
   if (!isSameUnitType(from, to)) return undefined;
-  if (convFactor.hasOwnProperty(from) && convFactor.hasOwnProperty(to))
+  if (convFactor[from] && convFactor[to])
     return convFactor[from] / convFactor[to];
   else return undefined;
 };

@@ -8,7 +8,7 @@ import {
 import genMatrix from "../../../src/utils/Optimization/genMatrix";
 
 describe("genMatrix function", () => {
-  let itemArray: PriceProps[] = [];
+  const itemArray: PriceProps[] = [];
   let nameArray: NameProp[];
   let refArray: RefProp[];
   let amountArray: AmountProp[];

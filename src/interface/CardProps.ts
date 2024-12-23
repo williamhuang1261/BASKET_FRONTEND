@@ -1,7 +1,7 @@
 import { AmountProp, NameProp, RefProp, SuppliersProp } from "./Destructed";
 
 interface CardProps {
-  id: string
+  id?: string
   name?: NameProp;
   ref?:RefProp;
   amount?: AmountProp;

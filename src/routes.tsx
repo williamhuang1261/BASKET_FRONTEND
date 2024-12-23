@@ -1,16 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 
-const HomePage = lazy(() => import("./routes/HomePage"));
-const ItemsPage = lazy(() => import("./routes/ItemsPage"));
-const FlyersPage = lazy(() => import("./routes/FlyersPage"));
-const BasketPage = lazy(() => import("./routes/BasketPage"));
-const AboutPage = lazy(() => import("./routes/AboutPage"));
-const UsersPage = lazy(() => import("./routes/UsersPage"));
-const ErrorPage = lazy(() => import("./routes/ErrorPage"));
-const UserLoginPage = lazy(() => import("./routes/UserLoginPage"));
-const UserSignUpPage = lazy(() => import("./routes/UserSignUpPage"));
-const TestPage = lazy(() => import("./routes/TestPage"));
+export const HomePage = lazy(() => import("./routes/HomePage"));
+export const ItemsPage = lazy(() => import("./routes/ItemsPage"));
+export const FlyersPage = lazy(() => import("./routes/FlyersPage"));
+export const BasketPage = lazy(() => import("./routes/BasketPage"));
+export const AboutPage = lazy(() => import("./routes/AboutPage"));
+export const UsersPage = lazy(() => import("./routes/UsersPage"));
+export const ErrorPage = lazy(() => import("./routes/ErrorPage"));
+export const UserLoginPage = lazy(() => import("./routes/UserLoginPage"));
+export const UserSignUpPage = lazy(() => import("./routes/UserSignUpPage"));
+export const TestPage = lazy(() => import("./routes/TestPage"));
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage />, errorElement: <ErrorPage />},

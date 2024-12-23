@@ -1,5 +1,5 @@
 // Conversion factors
-export const convFactor :{ [key: string]: number } = {
+export const convFactor:{ [key: string]: number } = {
   // Conversion factors for weight units
   mg: 1,
   g: 1000,

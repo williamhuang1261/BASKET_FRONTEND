@@ -78,7 +78,7 @@ describe("selectCost function", () => {
     expect(res).toBeUndefined();
   });
   it('Should return undefined if value are not accepted fail', () => {
-    // @ts-expect-error
+    // @ts-expect-error Testing error handling
     reqNum = 'string';
     const res = exec();
     expect(res).toBeUndefined()

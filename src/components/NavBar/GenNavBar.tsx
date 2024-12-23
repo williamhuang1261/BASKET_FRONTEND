@@ -27,7 +27,7 @@ interface Props {
 }
 
 const GenNavBar = ({ hidden, page, size }: Props) => {
-  let searchBarHidden: ("Search" | "Location")[] = [];
+  const searchBarHidden: ("Search" | "Location")[] = [];
   if (hidden?.includes("Search")) searchBarHidden.push("Search");
   if (hidden?.includes("Location")) searchBarHidden.push("Location");
 

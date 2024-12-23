@@ -1,0 +1,28 @@
+import { Link } from "react-router-dom";
+
+const SignedInOptions = () => {
+  return (
+    <div className="absolute -left-14 z-10 grid w-28 grid-rows-2 rounded border-0.5 border-dark_gray bg-white">
+      <Link
+        to={"/user-login"}
+        aria-label="Go to Profile Page"
+        className="m-1 flex items-center justify-center rounded border-b-0.5 bg-light_green p-0.5 shadow-sm transition-all duration-150 hover:bg-green"
+      >
+        <button aria-label="Sign In" type="button">
+          Sign In
+        </button>
+      </Link>
+      <Link
+        to={"/user-signup"}
+        aria-label="Go to Sign Up Page"
+        className="m-1 mt-0 flex items-center justify-center rounded p-0.5 transition-all duration-150 hover:bg-light_gray hover:shadow-sm"
+      >
+        <button aria-label="Sign Up" type="button">
+          Sign Up
+        </button>
+      </Link>
+    </div>
+  );
+};
+
+export default SignedInOptions;

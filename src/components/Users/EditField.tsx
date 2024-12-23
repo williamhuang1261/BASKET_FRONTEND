@@ -49,7 +49,7 @@ const EditField = ({ text, placeholder, id, onConfirm }: Props) => {
       <button
         type="button"
         onClick={() => setActive(false)}
-        className={`rounded bg-red-500 px-1 text-black hover:text-white ${!active ? "hidden" : ""}`}
+        className={`rounded bg-red-500 px-1 text-black hover:text-white hover:shadow-md ${!active ? "hidden" : ""} transition-all duration-150 ease-in-out`}
       >
         <IoClose size="20px" />
       </button>

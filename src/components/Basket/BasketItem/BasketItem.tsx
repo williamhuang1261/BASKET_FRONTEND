@@ -42,17 +42,16 @@ const BasketItem = ({ amount, name, image, reference, suppliers, id}: Props) => 
   const showPrice = useCallback(() => {
     if (typeof filtered === "string" || !filtered.opts)
       return "No prices available";
-    if (basketItem.supplierSelection === undefined)
+    if (!basketItem.supplierSelection)
       return filtered.opts[0].process.priceToShow;
 
     const activeSupplier = filtered.opts.find(
       (f) =>
-        // @ts-ignore
-        basketItem.supplierSelection.toLowerCase() === f.supplier.toLowerCase(),
+        basketItem.supplierSelection?.toLowerCase() === f.supplier.toLowerCase(),
     );
     if (activeSupplier) return activeSupplier.process.priceToShow;
     return;
-  }, [filtered]);
+  }, [filtered, basketItem.supplierSelection]);
 
   const getSuppliers = () => {
     if (typeof filtered !== "string" && filtered.opts) {

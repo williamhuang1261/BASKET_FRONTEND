@@ -5,7 +5,7 @@ const ResultsBanner = () => {
   const [section, setSection] = useState<string>("Products");
 
   return (
-    <div className="flex flex-col gap-2 justify-center items-center bg-green/80 rounded h-28 lg:h-44">
+    <div className="flex flex-col gap-2 justify-center items-center bg-green/80 rounded h-28 lg:h-44 shadow-md">
       <h1 className="text-3xl lg:text-4xl font-bold ">Pineapples</h1>
       <div className="flex w-full justify-center lg:text-xl">
         <button

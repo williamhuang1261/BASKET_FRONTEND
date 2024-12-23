@@ -1,6 +1,6 @@
 import categories from "../../../data/Categories";
 import useSearchFilterState from "../../../hooks/state/useSearchFilterState";
-import CheckboxList from "./CheckboxList";
+import ExpandableCheckboxList from "./ExpandableCheckboxList";
 
 // Categories filter
 const CategoryFilter = () => {
@@ -9,7 +9,7 @@ const CategoryFilter = () => {
   return (
     <div className="py-5">
       <h2 className="pb-2 text-xl font-semibold">Categories</h2>
-      <CheckboxList
+      <ExpandableCheckboxList
         items={categories}
         show={10}
         onCheck={(i) => {

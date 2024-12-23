@@ -36,7 +36,7 @@ const SortByPrice = (
   if (!amount) return "No metadata provided on this item";
 
   // Formatting into an array of form UnsortedProps
-  let priceTransport: PriceProps = { name: name, ref: ref, amount: amount };
+  const priceTransport: PriceProps = { name: name, ref: ref, amount: amount };
   priceTransport.opts = [];
 
   // Getting max number of items
@@ -74,12 +74,12 @@ const SortByPrice = (
         },
       });
     } else {
+      const num = toUnit(amount, qSelection);
       const normalCost = calcCost(
         { amount },
         normal,
         method,
-        // @ts-ignore
-        { quantity: toUnit(amount, qSelection), units: 'unit'},
+        { quantity: num, units: 'unit'},
         undefined,
       );
       if (normalCost !== undefined) {

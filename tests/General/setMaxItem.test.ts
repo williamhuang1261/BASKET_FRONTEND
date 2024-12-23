@@ -65,7 +65,7 @@ describe("setMaxItem", () => {
   });
   it("Should return infinity if data type is wrong", () => {
     maxAmountFilter = {
-      // @ts-expect-error
+      // @ts-expect-error Testing error handling
       quantity: "string",
       units: "unit",
     };
@@ -77,7 +77,7 @@ describe("setMaxItem", () => {
     expect(res).toBe(Infinity);
     maxAmountFilter = {
       quantity: 10,
-      // @ts-expect-error
+      // @ts-expect-error Testing error handling
       units: 10,
     };
     itemAmount = {
@@ -91,7 +91,7 @@ describe("setMaxItem", () => {
       units: "unit",
     };
     itemAmount = {
-      // @ts-expect-error
+      // @ts-expect-error Testing error handling
       quantity: "string",
       units: "unit",
     };
@@ -103,7 +103,7 @@ describe("setMaxItem", () => {
     };
     itemAmount = {
       quantity: 2,
-      // @ts-expect-error
+      // @ts-expect-error Testing error handling
       units: 10,
     };
     res = exec();
@@ -140,7 +140,7 @@ describe("setMaxItem", () => {
       quantity: 2,
       units: "mL",
     };
-    let res = exec();
+    const res = exec();
     expect(res).toBe(Infinity);
   });
 });

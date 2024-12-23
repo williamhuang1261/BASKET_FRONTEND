@@ -11,7 +11,7 @@ const BasketHeader = () => {
   return (
     <div className="">
       <div
-        className="flex h-16 items-center justify-center gap-3 rounded border-0.5 bg-green/80 md:h-24 lg:h-32"
+        className="flex h-16 items-center justify-center gap-3 rounded border-0.5 bg-green/80 md:h-24 lg:h-32 shadow-md"
         onClick={() => console.log(basket)}
       >
         <h1 className="3xl:text-gray-4xl text-xl font-bold lg:text-3xl">

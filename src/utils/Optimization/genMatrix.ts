@@ -17,10 +17,10 @@ const genMatrix = (
   hiddenSuppliers: string[],
   suppliers: string[],
 ): Matrix => {
-  let matrix: Matrix = [];
+  const matrix: Matrix = [];
   for (const item of basket) {
     // Create initial elements of matrix column
-    let matrixItem: MatrixItem = {
+    const matrixItem: MatrixItem = {
       ref: item.ref,
       inStock: false,
       opts: [],

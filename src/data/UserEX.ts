@@ -44,6 +44,7 @@ const UserEx: UserTransportProp = {
     },
     membership: ["Provigo"],
   },
+  isLoggedIn: true
 };
 
 export default UserEx;

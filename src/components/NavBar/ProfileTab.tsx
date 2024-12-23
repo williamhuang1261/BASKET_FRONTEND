@@ -1,10 +1,14 @@
 import { LuUser2 } from "react-icons/lu";
-import { Link } from "react-router-dom";
 import Dropdown from "../General/Miscellaneous/Dropdown";
-import LogOut from "../Auth/LogOut";
+import { useContext } from "react";
+import UserContext from "../../state/contexts/UserContext";
+import NotSignedInOptions from "../Auth/NotSignedInOptions";
+import SignedInOptions from "../Auth/SignedInOptions";
 
 // Allows access to profile, profile settings, and sign out button
 const ProfileTab = () => {
+  const {user} = useContext(UserContext)
+
   return (
     <div>
       <Dropdown
@@ -16,18 +20,7 @@ const ProfileTab = () => {
         }
         className="text-green"
         body={
-          <div className="absolute -left-14 z-10 grid grid-rows-2 w-28 rounded border-0.5 border-dark_gray bg-white">
-            <button
-              aria-label="Go to settings"
-              type="button"
-              className="border-b-0.5 p-1 hover:bg-light_gray"
-            >
-              <Link to={"/users"} aria-label="Go to Profile Page">
-                Settings
-              </Link>
-            </button>
-            <LogOut />
-          </div>
+          user.isLoggedIn ? <SignedInOptions /> : <NotSignedInOptions />
         }
         type="Click"
         ariaLabel="Profile"

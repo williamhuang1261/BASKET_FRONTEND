@@ -76,6 +76,14 @@ interface BasketMassChange {
   new: string[];
 }
 
+
+interface loginChange {
+  group: 'CHANGE';
+  type: 'LOGIN_STATUS';
+  target: 'LOGGED_IN';
+  new: boolean
+}
+
 type ChangeAction =
   | GeneralChange
   | LocationChange
@@ -84,7 +92,8 @@ type ChangeAction =
   | MaxStoresChange
   | BasketItemChange
   | FilterMassChange
-  | BasketMassChange;
+  | BasketMassChange
+  | loginChange;
 
 interface GeneralAdd {
   group: "ADD";
@@ -269,6 +278,11 @@ const userReducer = (
               },
             },
           };
+        case 'LOGIN_STATUS':
+          return {
+            ...state,
+            isLoggedIn: action.new
+          }
         default:
           return state;
       }

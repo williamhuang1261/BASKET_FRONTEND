@@ -1,8 +1,4 @@
-import {
-  AmountProp,
-  LimitedProp,
-  SuppliersProp,
-} from "../../../src/interface/Destructed";
+import { AmountProp, SuppliersProp } from "../../../src/interface/Destructed";
 import getCompPrice from "../../../src/utils/SortingPrice/getCompPrice";
 import { beforeEach, describe, expect, it } from "vitest";
 
@@ -50,9 +46,9 @@ describe("getCompPrice function", () => {
     return getCompPrice(
       amount,
       supplierData,
-      // @ts-ignore
+      // @ts-expect-error testing purposes
       supplierData.pricing.limited[0],
-      // @ts-ignore
+      // @ts-expect-error testing purposes
       maxItem,
       { qSelection },
     );
@@ -92,7 +88,7 @@ describe("getCompPrice function", () => {
     });
   });
   it("Should return and Opts object and the right values if all is ok, buyXgetYatC case", () => {
-    // @ts-ignore
+    // @ts-expect-error In our case, limited is never undefined
     supplierData.pricing.limited[0].typeOfRebate = "buyXgetYatC";
     const res = exec();
     expect(res).toBeDefined();
@@ -116,16 +112,11 @@ describe("getCompPrice function", () => {
     expect(res).toMatchObject({
       supplier: expect.any(String),
       meta: {
-        // @ts-ignore
-        typeOfRebate: supplierData.pricing.limited[0].typeOfRebate,
-        // @ts-ignore
-        X: supplierData.pricing.limited[0].X,
-        // @ts-ignore
-        Y: supplierData.pricing.limited[0].Y,
-        // @ts-ignore
-        C: supplierData.pricing.limited[0].C,
-        // @ts-ignore
-        rebatePricing: supplierData.pricing.limited[0].rebatePricing,
+        typeOfRebate: supplierData.pricing.limited?.[0].typeOfRebate,
+        X: supplierData.pricing.limited?.[0].X,
+        Y: supplierData.pricing.limited?.[0].Y,
+        C: supplierData.pricing.limited?.[0].C,
+        rebatePricing: supplierData.pricing.limited?.[0].rebatePricing,
         start: expect.any(Number),
         end: expect.any(Number),
       },
@@ -137,7 +128,7 @@ describe("getCompPrice function", () => {
     });
   });
   it("Should return and Opts object and the right values if all is ok, buyXgetYforC case", () => {
-    // @ts-ignore
+    // @ts-expect-error In our case, limited is never undefined
     supplierData.pricing.limited[0].typeOfRebate = "buyXgetYforC";
     const res = exec();
     expect(res).toBeDefined();
@@ -161,16 +152,11 @@ describe("getCompPrice function", () => {
     expect(res).toMatchObject({
       supplier: expect.any(String),
       meta: {
-        // @ts-ignore
-        typeOfRebate: supplierData.pricing.limited[0].typeOfRebate,
-        // @ts-ignore
-        X: supplierData.pricing.limited[0].X,
-        // @ts-ignore
-        Y: supplierData.pricing.limited[0].Y,
-        // @ts-ignore
-        C: supplierData.pricing.limited[0].C,
-        // @ts-ignore
-        rebatePricing: supplierData.pricing.limited[0].rebatePricing,
+        typeOfRebate: supplierData.pricing.limited?.[0].typeOfRebate,
+        X: supplierData.pricing.limited?.[0].X,
+        Y: supplierData.pricing.limited?.[0].Y,
+        C: supplierData.pricing.limited?.[0].C,
+        rebatePricing: supplierData.pricing.limited?.[0].rebatePricing,
         start: expect.any(Number),
         end: expect.any(Number),
       },
@@ -181,39 +167,35 @@ describe("getCompPrice function", () => {
       },
     });
   });
-  it('Should have the proper price to compare', () => {
+  it("Should have the proper price to compare", () => {
     let res = exec();
     expect(res?.process.priceToCompare).toBe(1);
-
-    // @ts-ignore
+    // @ts-expect-error In our case, limited is never undefined
     supplierData.pricing.limited[0].Y = 2;
-
-    // @ts-ignore
+    // @ts-expect-error In our case, limited is never undefined
     supplierData.pricing.limited[0].typeOfRebate = "buyXgetYforC";
     res = exec();
-    expect(res?.process.priceToCompare).toBe(2/3);
-
-    // @ts-ignore
+    expect(res?.process.priceToCompare).toBe(2 / 3);
+    // @ts-expect-error In our case, limited is never undefined
     supplierData.pricing.limited[0].typeOfRebate = "buyXgetYatC";
     res = exec();
     expect(res?.process.priceToCompare).toBe(1);
   });
-  it('Should return the proper value in presence of qSelection', () => {
+  it("Should return the proper value in presence of qSelection", () => {
     maxItem = undefined;
     qSelection = {
       quantity: 5,
-      units: 'kg'
-    }
-    supplierData.pricing.normal = 10
-    const rebateOpts = ['C', 'buyXgetYforC', 'buyXgetYatC']
-    const outputs = [5, 32, 32]
+      units: "kg",
+    };
+    supplierData.pricing.normal = 10;
+    const rebateOpts = ["C", "buyXgetYforC", "buyXgetYatC"];
+    const outputs = [5, 32, 32];
 
-    for (let i = 0 ; i < rebateOpts.length; i++) {
-      // @ts-ignore
+    for (let i = 0; i < rebateOpts.length; i++) {
+      // @ts-expect-error In our case, limited is never undefined
       supplierData.pricing.limited[0].typeOfRebate = rebateOpts[i];
       const res = exec();
-      expect(res?.process.priceToCompare).toBe(outputs[i])
+      expect(res?.process.priceToCompare).toBe(outputs[i]);
     }
-
   });
 });

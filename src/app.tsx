@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes";
-import UserProvider from "./state/providers/UserProvider";
 
 // TODO Add login check, if positive, get user info
 
@@ -22,9 +21,7 @@ const App = () => {
   }, []);
 
   return (
-      <UserProvider>
-        <RouterProvider router={router}></RouterProvider>
-      </UserProvider>
+    <RouterProvider router={router}></RouterProvider>
   );
 };
 

@@ -11,7 +11,7 @@ const calcCost = (
   price: number,
   method: string,
   req?: {
-    quantity: number;
+    quantity: number | undefined;
     units: string;
   },
   conv?: string,
@@ -20,7 +20,7 @@ const calcCost = (
   if (!amount || isNaN(price) || method === undefined) return undefined;
 
   // Obtaining the desired units
-  let desUnit: string | undefined = methToUnit(method);
+  const desUnit: string | undefined = methToUnit(method);
   if (!desUnit) return undefined;
 
   // Converting price/units to price/desUnits
@@ -30,8 +30,10 @@ const calcCost = (
   if (desUnit === "unit") {
     unitPrice = price;
   } else {
-    // @ts-ignore
-    let convPrice = price * convertUnits({ from: amount.units, to: desUnit });
+    const convFac = convertUnits({ from: amount.units, to: desUnit });
+    if (!convFac) return undefined;
+
+    let convPrice = price * convFac
     if (isNaN(convPrice)) return undefined;
     if (method === "weight_100g") convPrice = convPrice / 100;
     // Getting the price per unit
@@ -40,19 +42,21 @@ const calcCost = (
 
   // Converting req to units
   if (req) {
-    let reqNum: number;
+    let reqNum: number | undefined;
     if (req.units === "unit") {
       reqNum = req.quantity;
     }
     else if (weightUnits.indexOf(req.units) !== -1) {
-      reqNum =
-        // @ts-ignore
-        (req.quantity * convertUnits({ from: req.units, to: amount.units })) /
-        amount.quantity;
+      const convFac = convertUnits({ from: req.units, to: amount.units });
+      if (!convFac) return undefined;
+
+      // @ts-expect-error Handled by second if
+      reqNum = req.quantity * convFac / amount.quantity;
       if (isNaN(reqNum)) return undefined;
     } else return undefined;
 
     // Obtaining cost for required amount
+    // @ts-expect-error Handled by second if
     const cost = reqNum * unitPrice;
     if (isNaN(cost)) return undefined;
     if (!conv) return cost;
@@ -65,17 +69,18 @@ const calcCost = (
       return unitPrice;
     case "weight_100g":
     case "weight_kg":
-    case "weight_lb":
+    case "weight_lb": {
       const outputUnits = methToUnit(conv);
       if (!outputUnits) return undefined;
       // Price for the conv unit
-      let output =
-        // @ts-ignore
-        (price * convertUnits({ from: outputUnits, to: amount.units })) /
-        amount.quantity;
+      const convFac = convertUnits({ from: outputUnits, to: amount.units });
+      if (!convFac) return undefined;
+
+      let output = price * convFac / amount.quantity;
       if (!output) return undefined;
       if (conv === "weight_100g") output = output * 100;
       return output;
+    }
     default:
       return undefined;
   }
