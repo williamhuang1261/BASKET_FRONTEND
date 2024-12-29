@@ -19,7 +19,8 @@ const UsersPages = () => {
           hidden={["SearchBar", "Language", "Profile"]}
         />
       </div>
-      <main className="px-3 py-5 md:container md:mx-auto md:px-20">
+      <main className="px-3 py-5 flex justify-center">
+        <div className="max-w-[1024px] w-full">
         <div className="" onClick={() => console.log(user.meta)}>
           <ProfileBox />
         </div>
@@ -29,6 +30,7 @@ const UsersPages = () => {
         </div>
         <div className="">
           <AccountBox />
+        </div>
         </div>
       </main>
       <div className="flex-auto"></div>

@@ -4,6 +4,7 @@ import Checkbox from "../../General/Miscellaneous/Checkbox";
 
 interface ListProps {
   items: string[];
+  checkedSet: Set<string>
   show: number;
   onCheck: (i: string) => void;
   onUncheck: (i: string) => void;
@@ -15,6 +16,7 @@ const ExpandableCheckboxList = ({
   show,
   onCheck,
   onUncheck,
+  checkedSet,
 }: ListProps) => {
   const [more, setMore] = useState(false);
 
@@ -30,6 +32,7 @@ const ExpandableCheckboxList = ({
     <div className="">
       <div className="">
         <Checkbox
+          checkSet={checkedSet}
           items={items.slice(0, calcShow())}
           onCheck={onCheck}
           onUncheck={onUncheck}

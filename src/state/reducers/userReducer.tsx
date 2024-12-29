@@ -1,5 +1,6 @@
-import { RefProp } from "../../interface/Destructed";
+import DummyUser from "../../data/DummyUser";
 import { allUnitsType } from "../../interface/UnitsProp";
+import UserLogin from "../../interface/UserLogin";
 import UserTransportProp from "../../interface/UserTransportProp";
 
 interface GeneralChange {
@@ -12,7 +13,8 @@ interface LocationChange {
   group: "CHANGE";
   type: "LOCATION";
   newLocation: {
-    type: string;
+    country: "Canada" | "USA";
+    type: "Point";
     coordinates: number[];
     formattedAddress: string;
   };
@@ -39,49 +41,21 @@ interface MaxStoresChange {
   max: number;
 }
 
-interface BasketItemChangeBase {
+type BasketItemChangeSelection = {
   group: "CHANGE";
   type: "BASKET_ITEM_SELECTION";
-  itemRef: RefProp;
-}
-
-interface MethodChange extends BasketItemChangeBase {
-  target: "METHOD";
-  newMethod: 'weight' | 'unit';
-}
-
-interface UnitsChange extends BasketItemChangeBase {
-  target: "UNITS";
-  newUnits: allUnitsType;
-}
-
-interface QuantityChange extends BasketItemChangeBase {
-  target: "QUANTITY";
-  newQuantity: number;
-}
-
-type BasketItemChange = MethodChange | UnitsChange | QuantityChange;
-
-interface FilterMassChange {
-  group: "CHANGE";
-  type: "SEARCH_FILTERS_ARRAY";
-  target: "STORES" | "CAT";
-  new: string[];
-}
-
-interface BasketMassChange {
-  group: "CHANGE";
-  type: "BASKET_FILTERS_ARRAY";
-  target: "STORES";
-  new: string[];
-}
-
+  itemId: string;
+  new: {
+    method: "weight" | "unit";
+    units: allUnitsType;
+    quantity: number;
+  };
+};
 
 interface loginChange {
-  group: 'CHANGE';
-  type: 'LOGIN_STATUS';
-  target: 'LOGGED_IN';
-  new: boolean
+  group: "CHANGE";
+  type: "LOGIN_STATUS";
+  status: boolean;
 }
 
 type ChangeAction =
@@ -90,9 +64,7 @@ type ChangeAction =
   | LanguageChange
   | DistanceChange
   | MaxStoresChange
-  | BasketItemChange
-  | FilterMassChange
-  | BasketMassChange
+  | BasketItemChangeSelection
   | loginChange;
 
 interface GeneralAdd {
@@ -104,14 +76,11 @@ interface GeneralAdd {
 interface ItemAdd {
   group: "ADD";
   type: "ITEM";
-  item: {
-    id: string
-    ref: RefProp;
-    select: {
-      method: string;
-      units: allUnitsType;
-      quantity: number;
-    };
+  itemId: string;
+  select: {
+    method: "weight" | "unit";
+    units: allUnitsType;
+    quantity: number;
   };
 }
 
@@ -126,19 +95,19 @@ interface GeneralDelete {
 interface ItemDelete {
   group: "DELETE";
   type: "ITEM";
-  item: {
-    ref: RefProp;
-    select: {
-      method: string;
-      units: allUnitsType;
-      quantity: number;
-    };
-  };
+  itemId: string;
 }
 
 type DeleteAction = GeneralDelete | ItemDelete;
 
-export type UserAction = ChangeAction | AddAction | DeleteAction;
+interface InitAction {
+  group: "INIT";
+  type: "USER";
+  user: UserLogin;
+}
+
+
+export type UserAction = ChangeAction | AddAction | DeleteAction | InitAction;
 
 // Another function should handle the update in the server
 
@@ -193,8 +162,8 @@ const userReducer = (
               ...state.meta,
               filters: {
                 ...state.meta.filters,
-                searchFilters: {
-                  ...state.meta.filters.searchFilters,
+                searchPreferences: {
+                  ...state.meta.filters.searchPreferences,
                   distance: action.newDist,
                 },
               },
@@ -214,136 +183,103 @@ const userReducer = (
               },
             },
           };
-        case "BASKET_ITEM_SELECTION":
+        case "BASKET_ITEM_SELECTION": {
+          const updated = state.meta.items;
+          updated.set(action.itemId, action.new);
           return {
             ...state,
             meta: {
               ...state.meta,
-              items: state.meta.items.map((item) =>
-                item.ref === action.itemRef
-                  ? {
-                      ...item,
-                      select: {
-                        ...item.select,
-                        method:
-                          action.target === "METHOD"
-                            ? action.newMethod
-                            : item.select.method,
-                        units:
-                          action.target === "UNITS"
-                            ? action.newUnits
-                            : item.select.units,
-                        quantity:
-                          action.target === "QUANTITY"
-                            ? action.newQuantity
-                            : item.select.quantity,
-                      },
-                    }
-                  : item,
-              ),
+              items: updated,
             },
           };
-        case "SEARCH_FILTERS_ARRAY":
-          return {
-            ...state,
-            meta: {
-              ...state.meta,
-              filters: {
-                ...state.meta.filters,
-                searchFilters: {
-                  ...state.meta.filters.searchFilters,
-                  categories:
-                    action.target === "CAT"
-                      ? action.new
-                      : state.meta.filters.searchFilters.categories,
-                  stores:
-                    action.target === "STORES"
-                      ? action.new
-                      : state.meta.filters.searchFilters.stores,
-                },
-              },
-            },
-          };
-        case "BASKET_FILTERS_ARRAY":
-          return {
-            ...state,
-            meta: {
-              ...state.meta,
-              filters: {
-                ...state.meta.filters,
-                basketFilters: {
-                  ...state.meta.filters.basketFilters,
-                  filteredStores: action.new,
-                },
-              },
-            },
-          };
-        case 'LOGIN_STATUS':
-          return {
-            ...state,
-            isLoggedIn: action.new
+        }
+        case "LOGIN_STATUS":{
+          if (action.status === false) {
+            return DummyUser
           }
+          return {
+            ...state,
+            isLoggedIn: action.status,
+          };
+        }
         default:
           return state;
       }
 
     case "ADD":
       switch (type) {
-        case "ITEM":
+        case "ITEM": {
+          const updated = state.meta.items.has(action.itemId)
+            ? state.meta.items
+            : state.meta.items.set(action.itemId, action.select);
           return {
             ...state,
             meta: {
               ...state.meta,
-              items: state.meta.items.includes(action.item)
-                ? state.meta.items
-                : [...state.meta.items, action.item],
+              items: updated,
             },
           };
-        case "MEMBERSHIP":
+        }
+        case "MEMBERSHIP": {
+          const updated = state.meta.membership.has(action.new)
+            ? state.meta.membership
+            : state.meta.membership.add(action.new);
           return {
             ...state,
             meta: {
               ...state.meta,
-              membership: state.meta.membership.includes(action.new)
-                ? state.meta.membership
-                : [...state.meta.membership, action.new],
+              membership: updated,
             },
           };
-        case "CAT_SEARCH":
-          return {
-            ...state,
-            meta: {
-              ...state.meta,
-              filters: {
-                ...state.meta.filters,
-                searchFilters: {
-                  ...state.meta.filters.searchFilters,
-                  categories: state.meta.filters.searchFilters.categories.includes(
-                    action.new,
-                  )
-                    ? state.meta.filters.searchFilters.categories
-                    : [...state.meta.filters.searchFilters.categories, action.new],
-                },
-              },
-            },
-          };
-        case "STORE_SEARCH":
+        }
+        case "CAT_SEARCH": {
+          const updated = state.meta.filters.searchPreferences.categories.has(
+            action.new,
+          )
+            ? state.meta.filters.searchPreferences.categories
+            : state.meta.filters.searchPreferences.categories.add(action.new);
           return {
             ...state,
             meta: {
               ...state.meta,
               filters: {
                 ...state.meta.filters,
-                searchFilters: {
-                  ...state.meta.filters.searchFilters,
-                  stores: state.meta.filters.searchFilters.stores.includes(action.new)
-                    ? state.meta.filters.searchFilters.stores
-                    : [...state.meta.filters.searchFilters.stores, action.new],
+                searchPreferences: {
+                  ...state.meta.filters.searchPreferences,
+                  categories: updated,
                 },
               },
             },
           };
-        case "STORE_BASKET":
+        }
+
+        case "STORE_SEARCH": {
+          const updated = state.meta.filters.searchPreferences.stores.has(
+            action.new,
+          )
+            ? state.meta.filters.searchPreferences.stores
+            : state.meta.filters.searchPreferences.stores.add(action.new);
+          return {
+            ...state,
+            meta: {
+              ...state.meta,
+              filters: {
+                ...state.meta.filters,
+                searchPreferences: {
+                  ...state.meta.filters.searchPreferences,
+                  stores: updated,
+                },
+              },
+            },
+          };
+        }
+        case "STORE_BASKET": {
+          const updated = state.meta.filters.basketFilters.filteredStores.has(
+            action.new,
+          )
+            ? state.meta.filters.basketFilters.filteredStores
+            : state.meta.filters.basketFilters.filteredStores.add(action.new);
           return {
             ...state,
             meta: {
@@ -352,71 +288,87 @@ const userReducer = (
                 ...state.meta.filters,
                 basketFilters: {
                   ...state.meta.filters.basketFilters,
-                  filteredStores:
-                    state.meta.filters.basketFilters.filteredStores.includes(action.new)
-                      ? state.meta.filters.basketFilters.filteredStores
-                      : [...state.meta.filters.basketFilters.filteredStores, action.new],
+                  filteredStores: updated,
                 },
               },
             },
           };
+        }
         default:
           return state;
       }
 
     case "DELETE":
       switch (type) {
-        case "ITEM":
+        case "ITEM": {
+          const updated = state.meta.items;
+          if (updated.has(action.itemId)) {
+            updated.delete(action.itemId);
+          }
           return {
             ...state,
             meta: {
               ...state.meta,
-              items: state.meta.items.filter((i) => i !== action.item),
+              items: updated,
             },
           };
-        case "MEMBERSHIP":
+        }
+        case "MEMBERSHIP": {
+          const updated = state.meta.membership;
+          if (updated.has(action.toDelete)) {
+            updated.delete(action.toDelete);
+          }
           return {
             ...state,
             meta: {
               ...state.meta,
-              membership: state.meta.membership.filter(
-                (member) => member !== action.toDelete,
-              ),
+              membership: updated,
             },
           };
-        case "CAT_SEARCH":
+        }
+        case "CAT_SEARCH": {
+          const updated = state.meta.filters.searchPreferences.categories;
+          if (updated.has(action.toDelete)) {
+            updated.delete(action.toDelete);
+          }
           return {
             ...state,
             meta: {
               ...state.meta,
               filters: {
                 ...state.meta.filters,
-                searchFilters: {
-                  ...state.meta.filters.searchFilters,
-                  categories: state.meta.filters.searchFilters.categories.filter(
-                    (cat) => cat !== action.toDelete,
-                  ),
+                searchPreferences: {
+                  ...state.meta.filters.searchPreferences,
+                  categories: updated,
                 },
               },
             },
           };
-        case "STORE_SEARCH":
+        }
+        case "STORE_SEARCH": {
+          const updated = state.meta.filters.searchPreferences.stores;
+          if (updated.has(action.toDelete)) {
+            updated.delete(action.toDelete);
+          }
           return {
             ...state,
             meta: {
               ...state.meta,
               filters: {
                 ...state.meta.filters,
-                searchFilters: {
-                  ...state.meta.filters.searchFilters,
-                  stores: state.meta.filters.searchFilters.stores.filter(
-                    (store) => store !== action.toDelete,
-                  ),
+                searchPreferences: {
+                  ...state.meta.filters.searchPreferences,
+                  stores: updated,
                 },
               },
             },
           };
-        case "STORE_BASKET":
+        }
+        case "STORE_BASKET": {
+          const updated = state.meta.filters.basketFilters.filteredStores;
+          if (updated.has(action.toDelete)) {
+            updated.delete(action.toDelete);
+          }
           return {
             ...state,
             meta: {
@@ -425,21 +377,41 @@ const userReducer = (
                 ...state.meta.filters,
                 basketFilters: {
                   ...state.meta.filters.basketFilters,
-                  filteredStores: state.meta.filters.basketFilters.filteredStores.filter(
-                    (store) => store !== action.toDelete,
-                  ),
+                  filteredStores: updated,
                 },
               },
             },
           };
+        }
         default:
           return state;
       }
-
+    case "INIT":
+      return {
+        ...state,
+        meta: {
+          name: action.user.name || "",
+          email: action.user.email || "",
+          location: action.user.location,
+          preferences: action.user.preferences,
+          membership: new Set(action.user.membership),
+          items: new Map(action.user.items),
+          filters: {
+            searchPreferences: {
+              distance: action.user.filters.searchPreferences.distance,
+              categories: new Set(action.user.filters.searchPreferences.categories),
+              stores: new Set(action.user.filters.searchPreferences.stores),
+            },
+            basketFilters: {
+              filteredStores: new Set(action.user.filters.basketFilters.filteredStores),
+              maxStores: action.user.filters.basketFilters.maxStores,
+            }
+          }
+        },
+      };
     default:
       return state;
   }
 };
-
 
 export default userReducer;

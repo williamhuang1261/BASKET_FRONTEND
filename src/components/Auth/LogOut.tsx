@@ -1,6 +1,8 @@
-import logOut from "../../utils/auth/logOut";
+import useLogOut from "../../hooks/useLogOut";
 
 const LogOut = () => {
+  const logOut = useLogOut();
+
   return (
     <button
       type="button"

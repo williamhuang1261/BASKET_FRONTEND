@@ -6,22 +6,22 @@ interface Props {
 }
 
 const PriceBar = ({ filtered, normal }: Props) => {
-  if (typeof filtered === "string" || !filtered.opts) return filtered;
+  if (typeof filtered === "string") return <p>{filtered}</p>;
   return (
     <div className="">
       <div className="flex flex-wrap justify-between gap-2">
         <div
-          className={`${filtered.opts[0].process.isRebate ? "bg-green/75" : ""} rounded px-1`}
+          className={`${filtered.opts?.[0].process.isRebate ? "bg-green/75" : ""} rounded px-1`}
         >
           <h3 className="text-xl font-mona font-semibold">
             {
-              filtered.opts[0].process.priceToShow
+              filtered.opts?.[0].process.priceToShow
             }
           </h3>
         </div>
         <h4
           className={`${
-            filtered.opts[0].process.isRebate ? "" : "hidden"
+            filtered.opts?.[0].process.isRebate ? "" : "hidden"
           } text-black/50 line-through`}
         >
           {

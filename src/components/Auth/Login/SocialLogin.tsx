@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useError from "../../../hooks/useError";
 
 interface SocialLoginProps {
   type: "Sign in" | "Sign up";
   provider: "Facebook" | "X" | "Google" | "Microsoft";
   logo: string;
   color: string;
-  onClick: () => void;
+  onClick: () => Promise<void>;
 }
 
 // Microsoft: #00A3EE
@@ -21,12 +23,25 @@ const SocialLogin = ({
 }: SocialLoginProps) => {
 
   const [mouseOver, setMouseOver] = useState(false);
+  const navigate = useNavigate();
+  const errorHandler = useError();
+
+  const clickHandler = () => {
+    onClick().then(() => {
+      navigate('/')
+    }).catch(() => {
+      errorHandler({
+        code: 500,
+        message: `Failed to ${type.toLowerCase()} with ${provider}`
+      })
+    })
+  }
 
   return (
     <button
       onMouseOver={() => setMouseOver(true)}
       onMouseLeave={() => setMouseOver(false)}
-      onClick={onClick}
+      onClick={clickHandler}
       className={`flex h-10 w-full items-center justify-center gap-3 rounded
         border-none p-2 font-medium transition-all duration-150 
         ease-in-out shadow-sm`}

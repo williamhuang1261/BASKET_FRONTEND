@@ -30,7 +30,7 @@ const UserLoginPage = () => {
             <h2 className="w-full text-2xl font-bold">Login to The Basket</h2>
             <div className="flex w-full gap-2 py-2">
               <h3>Don't have an account yet? </h3>
-              <button className="font-bold underline">
+              <button className="font-bold underline hover:text-green transition-all duration-150 ease-in-out">
                 <Link to="/user-signup">
                   <h2>Sign Up</h2>
                 </Link>

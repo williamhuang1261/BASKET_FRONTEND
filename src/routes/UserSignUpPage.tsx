@@ -7,6 +7,7 @@ import loginFacebook from "../utils/auth/loginFacebook";
 import facebookLogo from "../assets/Facebook_Logo_Primary.png";
 import loginMicrosoft from "../utils/auth/loginMicrosoft";
 import microsoftLogo from "../assets/Microsoft_logo.svg";
+import { Link } from "react-router-dom";
 
 const UserSignUpPage = () => {
   return (
@@ -24,15 +25,19 @@ const UserSignUpPage = () => {
         page="General"
       />
       <div className="flex justify-center">
-        <div className="items-center justify-center border p-6 sm:w-min sm:rounded sm:shadow-lg">
+        <div className="items-center justify-center p-6 sm:w-min rounded sm:border sm:shadow-lg">
           <div className="w-full">
             <h1 className="text-2xl font-bold">Sign Up to The Basket</h1>
             <div className="mb-3 py-2">
               <h3 className="sm:w-96">
-                {
-                  "Use our built-in calculator and stay \
-                  tuned for upcoming features"
-                }
+                Use our built-in calculator and stay tuned for upcoming
+                features. Already have an account?{" "}
+                <Link
+                  className="font-bold underline transition-all duration-150 ease-in-out hover:text-green"
+                  to="/user-login"
+                >
+                  Sign In
+                </Link>
               </h3>
             </div>
           </div>
@@ -41,7 +46,7 @@ const UserSignUpPage = () => {
           </div>
           <div className="flex items-center py-4">
             <div className="flex-grow border-t"></div>
-            <span className="mx-4 text-black/50">or sign up with</span>
+            <span className="mx-4 text-black/50">{"OR"}</span>
             <div className="flex-grow border-t"></div>
           </div>
           <div className="">

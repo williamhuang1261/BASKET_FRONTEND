@@ -1,7 +1,6 @@
 import CarouselAdDiv from "./CarouselAdDiv";
 import VerticalAd from "./VerticalAd";
 
-// Home Page ad grid
 // TODO: Load ads conditionally according to window size
 const MainPageAds = () => {
   return (
