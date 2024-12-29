@@ -20,7 +20,7 @@ const TestPage = () => {
       });
   };
 
-  useQuery({ queryKey: ["test"], queryFn: fn, staleTime: Infinity });
+  useQuery({ queryKey: ["test"], queryFn: fn});
 
   return (
     <div className="p-3">
