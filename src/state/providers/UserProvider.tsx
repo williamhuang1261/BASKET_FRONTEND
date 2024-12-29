@@ -1,15 +1,14 @@
 import { ReactNode, useReducer } from "react";
 import UserContext from "../contexts/UserContext";
 import userReducer from "../reducers/userReducer";
-import UserEx from "../../data/UserEX";
+import DummyUser from "../../data/DummyUser";
 
 interface Props {
   children: ReactNode
 }
 
 const UserProvider = ({children} : Props) => {
-  const [user, dispatch] = useReducer(userReducer, UserEx);
-
+  const [user, dispatch] = useReducer(userReducer, DummyUser);
 
   return (
     <UserContext.Provider value={{user, dispatch}}>

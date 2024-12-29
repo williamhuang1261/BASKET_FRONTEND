@@ -1,40 +1,71 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useUserState from "../../hooks/state/useUserState";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
+import { UserServices } from "../../services/restricted-service";
 
 interface Props {
   id: string;
 }
 
-const LocationAutoComplete = ({id}: Props) => {
+const LocationAutoComplete = ({ id }: Props) => {
   const { user, dispatch } = useUserState();
   const [tempAddress, setTempAddress] = useState(
-    user.meta.location.formattedAddress,
+    user.meta.location.formattedAddress || "Toronto, ON",
   );
   const [locSearchActive, setLocSearchActive] = useState(false);
+
+  const findCountry = (info: google.maps.GeocoderResult[]) => {
+    const countryComponent = info[0].address_components.find((c) =>
+      c.types.includes("country"),
+    );
+    let country: "USA" | "Canada";
+    if (countryComponent?.short_name == "US") {
+      country = "USA";
+    } else if (countryComponent?.short_name == "CA") {
+      country = "Canada";
+    } else {
+      // Default to Canada
+      country = "Canada";
+    }
+    return country
+  }
 
   const handleSelect = async (address: string) => {
     try {
       const res = await geocodeByAddress(address);
+      const country = findCountry(res);
       const ll = await getLatLng(res[0]);
       dispatch({
         group: "CHANGE",
         type: "LOCATION",
         newLocation: {
+          country: country,
           type: "Point",
           coordinates: [ll.lng, ll.lat],
           formattedAddress: address,
         },
       });
+      UserServices.put("/info/me")
+        .then(() => {
+          console.log("Location updated");
+          console.log(user);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
       setTempAddress(address);
       setLocSearchActive(false);
     } catch {
       console.warn("Could not confirm location selection");
     }
   };
+
+  useEffect(() => {
+    setTempAddress(user.meta.location.formattedAddress);
+  }, [user.meta.location.formattedAddress]);
 
   return (
     <>

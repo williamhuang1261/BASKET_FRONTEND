@@ -2,7 +2,6 @@ import BasketItem from "./BasketItem/BasketItem";
 import items from "../../data/ItemsEX";
 import BasketItemProvider from "../../state/providers/BasketItemProvider";
 
-// Groups every item in the Basket Page
 // TODO: Add first API
 const BasketResults = () => {
   return (

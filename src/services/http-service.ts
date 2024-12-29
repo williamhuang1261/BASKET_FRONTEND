@@ -13,10 +13,10 @@ class HttpService {
     this.headers = headers;
   }
 
-  get(endpoint: string = "", params?: object, headers: object = {}) {
+
+  get(endpoint: string = "", headers: object = {}) {
     return instance.get(this.endpoint + endpoint, {
       headers: { ...this.headers, ...headers },
-      params: params
     });
   }
 
@@ -39,6 +39,6 @@ class HttpService {
     });
   }
 }
-export { CanceledError };
+export {CanceledError, HttpService};
 export const createHttpService = (endpoint: string, headers: object) =>
   new HttpService(endpoint, headers);

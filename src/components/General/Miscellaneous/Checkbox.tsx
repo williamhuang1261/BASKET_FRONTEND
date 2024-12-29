@@ -6,6 +6,7 @@ interface Props {
   textSize?: string;
   onCheck?: (i: string) => void;
   onUncheck?: (i: string) => void;
+  checkSet?: Set<string>;
 }
 
 const Checkbox = ({
@@ -15,6 +16,7 @@ const Checkbox = ({
   size,
   onCheck,
   onUncheck,
+  checkSet,
 }: Props) => {
   return (
     <div>
@@ -31,6 +33,7 @@ const Checkbox = ({
               type="checkbox"
               key={i + " checkbox"}
               id={i}
+              defaultChecked={checkSet?.has(i)}
               className={`peer relative mt-1.5 flex-none appearance-none rounded-sm border border-black ring-green/50 checked:bg-green/80 hover:cursor-pointer hover:bg-green/20 hover:ring-1 checked:hover:bg-green`}
               onChange={(e) => {
                 if (e.target.checked && onCheck) onCheck(i);

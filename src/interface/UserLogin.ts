@@ -1,44 +1,38 @@
 import { allUnitsType, distanceUnitsType, weightUnitsType } from "./UnitsProp";
 
-interface UserProp {
-  name: string;
-  email: string;
+interface UserLogin {
+  name: string | null;
+  email: string | null;
   location: {
     country: "Canada" | "USA";
     type: "Point";
     coordinates: number[];
     formattedAddress: string;
   };
-  membership: Set<string>;
+  membership: string[];
   preferences: {
     weightUnits: weightUnitsType;
     distUnits: distanceUnitsType;
     language: "en" | "fr";
   };
-  items: Map<
+  items: [
     string,
-    { method: "weight" | "unit"; units: allUnitsType; quantity: number }
-  >;
+    { method: "weight" | "unit"; units: allUnitsType; quantity: number },
+  ][];
   filters: {
     searchPreferences: {
       distance: {
         amount: number;
-        units: string;
+        units: distanceUnitsType;
       };
-      categories: Set<string>;
-      stores: Set<string>;
+      categories: string[];
+      stores: string[];
     };
     basketFilters: {
-      filteredStores: Set<string>;
+      filteredStores: string[];
       maxStores: number;
     };
-  };
+  }
 }
 
-interface UserTransportProp {
-  meta: UserProp;
-  isLoggedIn: boolean;
-}
-
-export default UserTransportProp;
-export type { UserProp };
+export default UserLogin;

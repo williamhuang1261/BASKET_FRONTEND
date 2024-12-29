@@ -14,18 +14,6 @@ const FilterDiv = () => {
     console.log(searchFilter);
     dispatch({
       group: "CHANGE",
-      type: "SEARCH_FILTERS_ARRAY",
-      target: "CAT",
-      new: searchFilter.categories,
-    });
-    dispatch({
-      group: "CHANGE",
-      type: "SEARCH_FILTERS_ARRAY",
-      target: "STORES",
-      new: searchFilter.store,
-    });
-    dispatch({
-      group: "CHANGE",
       type: "DISTANCE",
       newDist: searchFilter.distance,
     });

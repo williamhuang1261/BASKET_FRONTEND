@@ -5,6 +5,7 @@ import Navigation from "./Navigation";
 import ProfileTab from "./ProfileTab";
 import SearchBar from "./SearchBar";
 import SideBarTab from "./Drawer";
+import ErrorBar from "../General/Miscellaneous/ErrorBar";
 
 // NavBar
 
@@ -33,6 +34,7 @@ const GenNavBar = ({ hidden, page, size }: Props) => {
 
   return (
     <>
+      <ErrorBar size={size}/>
       {/* Standard displays */}
       <nav
         // Size determination
