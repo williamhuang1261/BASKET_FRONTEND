@@ -10,7 +10,8 @@ const initStatus: StatusProp = {
   show: false,
   error: false,
   errorCode: 200,
-  message: ""
+  message: "",
+  hideHome: false,
 }
 
 const StatusProvider = ({ children }: Props) => {

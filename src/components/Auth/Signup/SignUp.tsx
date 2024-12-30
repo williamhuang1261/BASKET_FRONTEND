@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import PasswordCriteriaBox from "./PasswordCriteriaBox";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../utils/auth/initFirebase";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FirebaseError } from "firebase/app";
+import useStatusState from "../../../hooks/state/useStatusState";
 
 const SignUp = () => {
+  const {dispatch} = useStatusState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showCriteria, setShowCriteria] = useState(false);
   const [confirm_password, setConfirmPassword] = useState("");
   const [alreadyExists, setAlreadyExists] = useState(false);
+  const navigate = useNavigate();
 
   const criteria = [
     {
@@ -36,20 +40,26 @@ const SignUp = () => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        user.getIdToken().then((idToken) => {
-          console.log("ID Token (JWT):", idToken);
-        });
-        console.log(user);
+      .then(() => {
+        navigate('/')
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        // const errorMessage = error.message;
-        console.warn(errorCode);
-        if (errorCode === "auth/email-already-in-use") {
+      .catch((err: FirebaseError) => {
+        if (err.code === "auth/email-already-in-use") {
           setAlreadyExists(true);
+        }
+        else {
+          dispatch({
+            group: 'CHANGE',
+            type: 'STATUS',
+            newError: true,
+            newErrorCode: err.message,
+            newMessage: err.code
+          })
+          dispatch({
+            group: 'CHANGE',
+            type: 'DISPLAY',
+            show: true
+          })
         }
       });
   };

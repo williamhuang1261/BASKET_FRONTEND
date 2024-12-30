@@ -19,6 +19,7 @@ const useLogOut = () => {
           status: false,
         });
         navigate("/");
+        window.location.reload();
       })
       .catch((err: FirebaseError) => errorHandler(err));
   }

@@ -1,5 +1,4 @@
-
-import useAccountDelete from "../../hooks/useAccountDelete";
+import useAccountDelete from "../../hooks/user_account/useAccountDelete";
 import useLogOut from "../../hooks/useLogOut";
 
 const AccountBox = () => {

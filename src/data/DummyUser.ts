@@ -2,8 +2,8 @@ import UserTransportProp from "../interface/UserTransportProp";
 
 const DummyUser: UserTransportProp = {
   meta: {
-    name: "Bob12345",
-    email: "myEmail@gmail.com",
+    name: "",
+    email: "",
     location: {
       country: "Canada",
       type: "Point",

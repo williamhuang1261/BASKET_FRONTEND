@@ -12,21 +12,25 @@ type GenericResponse = {
   [key: string]: any;
 };
 
-
 const useError = () => {
   const { dispatch } = useStatusState();
 
-  const errorHandler = (err: AxiosError | GenericError | FirebaseError) => {
+  const errorHandler = (err: AxiosError | GenericError | FirebaseError, hideHome?: boolean) => {
     console.error(err);
 
     let code: number | string;
     let message: string;
     if (err instanceof AxiosError) {
-      code = err.response?.status || err.code || "UKNOWN_ERR";
-      message =
-        (err.response?.data as GenericResponse).message ||
-        err.message ||
-        "An unknown error occured";
+      if (err.response) {
+        code = err.response.status || err.code || "UKNOWN_ERR";
+        message =
+          (err.response.data as GenericResponse).message ||
+          err.message ||
+          "An unknown error occured";
+      } else {
+        code = err.code || "UNKNOWN_ERR";
+        message = err.message || "An unknown error occured";
+      }
     } else {
       code = err.code;
       message = err.message;
@@ -36,6 +40,7 @@ const useError = () => {
       group: "CHANGE",
       type: "DISPLAY",
       show: true,
+      hideHome: hideHome ? true : false,
     });
     dispatch({
       group: "CHANGE",

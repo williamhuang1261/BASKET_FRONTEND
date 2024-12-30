@@ -5,13 +5,15 @@ const PreferencesBox = () => {
   const { user, dispatch } = useUserState();
 
   const handleLanguageSelect = () => {
-    const target = document.getElementById("language_select_UserSettings") as HTMLSelectElement
+    const target = document.getElementById(
+      "language_select_UserSettings",
+    ) as HTMLSelectElement;
     dispatch({
-      group:'CHANGE',
-      type: 'LANGUAGE',
-      new: target.value as 'fr' | 'en'
-    })
-  }
+      group: "CHANGE",
+      type: "LANGUAGE",
+      new: target.value as "fr" | "en",
+    });
+  };
 
   return (
     <div className="rounded border">
@@ -50,7 +52,9 @@ const PreferencesBox = () => {
         <select
           className="rounded-full bg-light_gray/50 px-2 outline-none"
           id="language_select_UserSettings"
-          defaultValue={user.meta.preferences.language === "fr" ? "French" : "English"}
+          defaultValue={
+            user.meta.preferences.language === "fr" ? "French" : "English"
+          }
           onSelect={handleLanguageSelect}
         >
           <option value="fr" className="bg-white">
@@ -68,7 +72,7 @@ const PreferencesBox = () => {
           placeholder="New Location"
           id={"location"}
           onConfirm={(v) => {
-            console.log(v)
+            console.log(v);
             // dispatch({
             //   group: "CHANGE",
             //   type: "LOCATION",
