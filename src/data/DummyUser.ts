@@ -32,7 +32,7 @@ const DummyUser: UserTransportProp = {
     },
     membership: new Set(),
   },
-  isLoggedIn: false
+  isLoggedIn: false,
 };
 
 export default DummyUser;

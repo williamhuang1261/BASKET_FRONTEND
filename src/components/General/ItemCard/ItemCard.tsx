@@ -12,7 +12,7 @@ import {
 } from "../../../interface/Destructed";
 
 interface Props {
-  id: string
+  id: string;
   image: string;
   name: NameProp;
   reference: RefProp;
@@ -21,29 +21,43 @@ interface Props {
   suppliers: SuppliersProp[];
 }
 
-const ItemCard = ({ id, image, name, reference, amount, brand, suppliers }: Props) => {
+const ItemCard = ({
+  id,
+  image,
+  name,
+  reference,
+  amount,
+  brand,
+  suppliers,
+}: Props) => {
   const sorted = SortByPrice(
-    { id: id, name: name, ref: reference, amount: amount, suppliers: suppliers },
+    {
+      id: id,
+      name: name,
+      ref: reference,
+      amount: amount,
+      suppliers: suppliers,
+    },
     { maxQuantity: undefined },
   );
   const filtered = BestPerSupplier(sorted);
   const normals = ShowNormal({ id: id, suppliers: suppliers });
 
   return (
-    <div className="flex max-h-full min-h-max w-72 flex-col border rounded shadow-lg bg-white md:w-full ">
+    <div className="flex max-h-full min-h-max w-72 flex-col rounded border bg-white shadow-lg md:w-full ">
       <div className="w-full flex-none">
-        <div className="items-align flex w-full justify-center mt-2">
+        <div className="items-align mt-2 flex w-full justify-center">
           <img alt={name?.en} src={image} className="h-52 w-52 object-cover" />
         </div>
         <div className="p-2">
-            <div className="flex flex-wrap justify-between">
-              <h5 className="text-black/50">{brand}</h5>
-              <h5 className="text-black/50">
-                {(amount?.isApprox ? "\x7E " : "") +
-                  amount?.quantity.toString() +
-                  " " +
-                  amount?.units}
-              </h5>
+          <div className="flex flex-wrap justify-between">
+            <h5 className="text-black/50">{brand}</h5>
+            <h5 className="text-black/50">
+              {(amount?.isApprox ? "\x7E " : "") +
+                amount?.quantity.toString() +
+                " " +
+                amount?.units}
+            </h5>
           </div>
           <h4 className="text-xl">{name?.en}</h4>
         </div>

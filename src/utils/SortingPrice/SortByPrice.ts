@@ -79,7 +79,7 @@ const SortByPrice = (
         { amount },
         normal,
         method,
-        { quantity: num, units: 'unit'},
+        { quantity: num, units: "unit" },
         undefined,
       );
       if (normalCost !== undefined) {
@@ -100,7 +100,7 @@ const SortByPrice = (
       const rebate = getCompPrice(amount, s, l, maxItem, { qSelection });
 
       if (!rebate) continue;
-      priceTransport.opts.push(rebate); 
+      priceTransport.opts.push(rebate);
     }
   }
 

@@ -1,7 +1,7 @@
 import { getAuth, signOut } from "firebase/auth";
-import useUserState from "./state/useUserState";
+import useUserState from "../state/useUserState";
 import { useNavigate } from "react-router-dom";
-import useError from "./useError";
+import useError from "../useError";
 import { FirebaseError } from "firebase/app";
 
 const useLogOut = () => {

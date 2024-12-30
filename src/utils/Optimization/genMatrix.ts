@@ -3,7 +3,7 @@ import PriceProps from "../../interface/PriceProps";
 
 interface MatrixItem {
   ref: RefProp;
-  inStock: boolean
+  inStock: boolean;
   opts: {
     supplier: string;
     cost: number;
@@ -49,10 +49,10 @@ const genMatrix = (
         hiddenSuppliers.some((h) => h.toLowerCase() === supplier.toLowerCase())
       )
         cost = Infinity;
-      else{
-        matrixItem.inStock = true
+      else {
+        matrixItem.inStock = true;
         cost = opt.process.priceToCompare;
-      } 
+      }
 
       matrixItem.opts.push({
         supplier: supplier,

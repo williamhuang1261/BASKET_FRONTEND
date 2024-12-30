@@ -1,18 +1,16 @@
 import useBasketItemState from "../../../hooks/state/useBasketItemState";
 import { allUnitsType } from "../../../interface/UnitsProp";
 
-
 const UnitsSelection = () => {
-
-  const {basketItem, dispatch} = useBasketItemState();
+  const { basketItem, dispatch } = useBasketItemState();
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch({
-      group: 'CHANGE',
-      type: 'UNITS',
-      units: e.target.value as allUnitsType
-    })
-  }
+      group: "CHANGE",
+      type: "UNITS",
+      units: e.target.value as allUnitsType,
+    });
+  };
 
   return (
     <select

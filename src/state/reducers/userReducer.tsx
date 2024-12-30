@@ -106,7 +106,6 @@ interface InitAction {
   user: UserLogin;
 }
 
-
 export type UserAction = ChangeAction | AddAction | DeleteAction | InitAction;
 
 // Another function should handle the update in the server
@@ -194,9 +193,9 @@ const userReducer = (
             },
           };
         }
-        case "LOGIN_STATUS":{
+        case "LOGIN_STATUS": {
           if (action.status === false) {
-            return DummyUser
+            return DummyUser;
           }
           return {
             ...state,
@@ -399,14 +398,18 @@ const userReducer = (
           filters: {
             searchPreferences: {
               distance: action.user.filters.searchPreferences.distance,
-              categories: new Set(action.user.filters.searchPreferences.categories),
+              categories: new Set(
+                action.user.filters.searchPreferences.categories,
+              ),
               stores: new Set(action.user.filters.searchPreferences.stores),
             },
             basketFilters: {
-              filteredStores: new Set(action.user.filters.basketFilters.filteredStores),
+              filteredStores: new Set(
+                action.user.filters.basketFilters.filteredStores,
+              ),
               maxStores: action.user.filters.basketFilters.maxStores,
-            }
-          }
+            },
+          },
         },
       };
     default:

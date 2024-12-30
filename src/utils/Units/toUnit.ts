@@ -10,10 +10,10 @@ const toUnit = (
 ): number | undefined => {
   if (!amount || !required) return undefined;
 
-  if (amount.units === "unit" && required.units === 'unit') {
+  if (amount.units === "unit" && required.units === "unit") {
     return required.quantity / amount.quantity;
   } else if (required.units === "unit") {
-    return required.quantity
+    return required.quantity;
   } else {
     const convFactor = convertUnits({ from: required.units, to: amount.units });
     if (!convFactor) return undefined;
