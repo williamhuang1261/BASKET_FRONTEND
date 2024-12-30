@@ -26,14 +26,13 @@ const calcCost = (
   // Converting price/units to price/desUnits
   let unitPrice: number;
 
-
   if (desUnit === "unit") {
     unitPrice = price;
   } else {
     const convFac = convertUnits({ from: amount.units, to: desUnit });
     if (!convFac) return undefined;
 
-    let convPrice = price * convFac
+    let convPrice = price * convFac;
     if (isNaN(convPrice)) return undefined;
     if (method === "weight_100g") convPrice = convPrice / 100;
     // Getting the price per unit
@@ -45,13 +44,12 @@ const calcCost = (
     let reqNum: number | undefined;
     if (req.units === "unit") {
       reqNum = req.quantity;
-    }
-    else if (weightUnits.indexOf(req.units) !== -1) {
+    } else if (weightUnits.indexOf(req.units) !== -1) {
       const convFac = convertUnits({ from: req.units, to: amount.units });
       if (!convFac) return undefined;
 
       // @ts-expect-error Handled by second if
-      reqNum = req.quantity * convFac / amount.quantity;
+      reqNum = (req.quantity * convFac) / amount.quantity;
       if (isNaN(reqNum)) return undefined;
     } else return undefined;
 
@@ -76,7 +74,7 @@ const calcCost = (
       const convFac = convertUnits({ from: outputUnits, to: amount.units });
       if (!convFac) return undefined;
 
-      let output = price * convFac / amount.quantity;
+      let output = (price * convFac) / amount.quantity;
       if (!output) return undefined;
       if (conv === "weight_100g") output = output * 100;
       return output;

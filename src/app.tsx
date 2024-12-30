@@ -1,14 +1,14 @@
 import { RouterProvider } from "react-router-dom";
 import router from "./routes";
-import useStartup from "./hooks/user_account/useStartup";
+import useGetUser from "./hooks/user_account/useGetUser";
 import { useEffect } from "react";
 
 const App = () => {
-  const startupFn = useStartup()
+  const getUser = useGetUser();
 
   useEffect(() => {
-    startupFn().then(() => console.log('Startup complete'))
-  }, [])
+    getUser().then(() => console.log("Startup complete"));
+  }, []);
 
   return <RouterProvider router={router} />;
 };

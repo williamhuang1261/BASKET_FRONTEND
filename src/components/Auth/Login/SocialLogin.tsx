@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useError from "../../../hooks/useError";
-import useStartup from "../../../hooks/user_account/useStartup";
+import useGetUser from "../../../hooks/user_account/useGetUser";
 
 interface SocialLoginProps {
   type: "Sign in" | "Sign up";
@@ -26,21 +26,24 @@ const SocialLogin = ({
   const navigate = useNavigate();
   const errorHandler = useError();
   const location = useLocation();
-  const startupFn = useStartup();
+  const getUser = useGetUser();
 
   const clickHandler = () => {
     onClick()
       .then(() => {
-        startupFn().then(() => {
-          const from = location.state?.from?.pathname || "/";
-          navigate(from);
-          window.location.reload()
-        }).catch(() => {
-          errorHandler({
-            code: 500,
-            message: "Failed reinitializing the app - Try reloading the Home Page",
+        getUser()
+          .then(() => {
+            const from = location.state?.from?.pathname || "/";
+            navigate(from);
+            window.location.reload();
+          })
+          .catch(() => {
+            errorHandler({
+              code: 500,
+              message:
+                "Failed reinitializing the app - Try reloading the Home Page",
+            });
           });
-        })
       })
       .catch(() => {
         errorHandler({

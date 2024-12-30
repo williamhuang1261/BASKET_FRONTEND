@@ -35,15 +35,13 @@ const fn = (req: UserModifProp) => {
     preferences,
   };
 
-  return UserServices.put("/info", {}, load).then()
-}
+  return UserServices.put("/info", {}, load).then();
+};
 
 const useUserSettingsModif = () => {
   const queryClient = useQueryClient();
 
   const putUserInfo = (req: UserModifProp) => {
-    
-
     queryClient.fetchQuery({
       queryKey: ["user", "settings", "update"],
       queryFn: () => fn(req),

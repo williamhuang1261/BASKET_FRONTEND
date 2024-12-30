@@ -13,7 +13,7 @@ import useBasketState from "../../../hooks/state/useBasketState";
 import { useCallback } from "react";
 
 interface Props {
-  id: string
+  id: string;
   name: NameProp;
   amount: AmountProp;
   reference: RefProp;
@@ -22,12 +22,25 @@ interface Props {
 }
 
 // Arrangement for every item in the Basket Page
-const BasketItem = ({ amount, name, image, reference, suppliers, id}: Props) => {
+const BasketItem = ({
+  amount,
+  name,
+  image,
+  reference,
+  suppliers,
+  id,
+}: Props) => {
   const { basket } = useBasketState();
   const { basketItem } = useBasketItemState();
 
   const sorted = SortByPrice(
-    { id: id, name: name, ref: reference, amount: amount, suppliers: suppliers },
+    {
+      id: id,
+      name: name,
+      ref: reference,
+      amount: amount,
+      suppliers: suppliers,
+    },
     {
       hiddenSuppliers: basket.filteredStores,
       qSelection: {
@@ -47,7 +60,8 @@ const BasketItem = ({ amount, name, image, reference, suppliers, id}: Props) => 
 
     const activeSupplier = filtered.opts.find(
       (f) =>
-        basketItem.supplierSelection?.toLowerCase() === f.supplier.toLowerCase(),
+        basketItem.supplierSelection?.toLowerCase() ===
+        f.supplier.toLowerCase(),
     );
     if (activeSupplier) return activeSupplier.process.priceToShow;
     return;

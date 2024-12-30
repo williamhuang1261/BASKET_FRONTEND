@@ -10,7 +10,7 @@ interface Props {
 
 const SupplierSelection = ({ opts }: Props): string | ReactNode => {
   const { dispatch } = useBasketItemState();
-  
+
   const [open, setOpen] = useState(false);
   const [mouseOver, setMouseOver] = useState(false);
   const [displayed, setDisplayed] = useState<string>(opts[0].supplier);
@@ -29,9 +29,9 @@ const SupplierSelection = ({ opts }: Props): string | ReactNode => {
           size={40}
           className={`${opts.length === 1 ? "hidden" : ""} ${mouseOver ? "text-green" : ""} h-full flex-none transition-all duration-100 ease-in-out`}
         />
-        <div className="h-full flex-auto flex items-center justify-center">
+        <div className="flex h-full flex-auto items-center justify-center">
           <img
-            className=" object-contain h-full"
+            className=" h-full object-contain"
             src={
               logos.find(
                 (l) => l.name.toLowerCase() === displayed.toLowerCase(),

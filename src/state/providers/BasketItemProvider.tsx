@@ -3,15 +3,12 @@ import basketItemReducer from "../reducers/basketItemReducer";
 import BasketItemContext from "../contexts/BasketItemContext";
 import { RefProp } from "../../interface/Destructed";
 
-
-
 interface Props {
   reference: RefProp;
   children: ReactNode;
 }
 
 const BasketItemProvider = ({ reference, children }: Props) => {
-
   const [basketItem, dispatch] = useReducer(basketItemReducer, {
     supplierSelection: undefined,
     ref: reference,

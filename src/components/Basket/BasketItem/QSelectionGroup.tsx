@@ -24,7 +24,7 @@ const QSelectionGroup = ({ id }: Props) => {
       type: "BASKET_ITEM_SELECTION",
       itemRef: basketItem.ref,
       target: "METHOD",
-      newMethod: e.target.value as 'weight' | 'unit',
+      newMethod: e.target.value as "weight" | "unit",
     });
     if (e.target.value !== "" && basketItem.units === "unit") {
       basketItemDispatch({
@@ -56,18 +56,18 @@ const QSelectionGroup = ({ id }: Props) => {
       target: "UNITS",
       newUnits: e.target.value as allUnitsType,
     });
-    if(e.target.value !== 'unit' && basketItem.method === 'unit') {
+    if (e.target.value !== "unit" && basketItem.method === "unit") {
       basketItemDispatch({
         group: "CHANGE",
         type: "METHOD",
-        method: 'weight',
+        method: "weight",
       });
       userDispatch({
         group: "CHANGE",
         type: "BASKET_ITEM_SELECTION",
         itemRef: basketItem.ref,
         target: "METHOD",
-        newMethod: 'weight',
+        newMethod: "weight",
       });
     }
   };
@@ -129,7 +129,7 @@ const QSelectionGroup = ({ id }: Props) => {
         min="0"
         aria-label="Change quantity"
         defaultValue={basketItem.quantity}
-        className="w-14 sm:w-20 rounded border-0.5 border-dark_gray px-2 py-1"
+        className="w-14 rounded border-0.5 border-dark_gray px-2 py-1 sm:w-20"
         onChange={handleQuantityChange}
       />
     </>

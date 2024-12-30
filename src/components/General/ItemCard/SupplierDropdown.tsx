@@ -30,7 +30,8 @@ const SupplierDropdown = ({ filtered }: Props) => {
           src={
             logos.find(
               (i) =>
-                i.name.toLowerCase() === filtered.opts?.[0].supplier.toLowerCase(),
+                i.name.toLowerCase() ===
+                filtered.opts?.[0].supplier.toLowerCase(),
             )?.src
           }
           alt={filtered.opts?.[0].supplier}

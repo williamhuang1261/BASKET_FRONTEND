@@ -7,15 +7,13 @@ const getPotSuppliers = (basket: PriceProps[]): string[] => {
 
     for (const opt of item.opts) {
       if (
-        !suppliers.some(
-          (s) => s.toLowerCase() === opt.supplier.toLowerCase(),
-        )
+        !suppliers.some((s) => s.toLowerCase() === opt.supplier.toLowerCase())
       )
-      suppliers.push(opt.supplier)
+        suppliers.push(opt.supplier);
     }
   }
 
   return suppliers;
 };
 
-export default getPotSuppliers
+export default getPotSuppliers;

@@ -6,7 +6,7 @@ import { AxiosError, AxiosResponse } from "axios";
 import useError from "../useError";
 import { useQueryClient } from "@tanstack/react-query";
 
-const useStartup = () => {
+const useGetUser = () => {
   const { dispatch: userDispatch } = useUserState();
   const queryClient = useQueryClient();
   const auth = getAuth();
@@ -59,4 +59,4 @@ const useStartup = () => {
   };
 };
 
-export default useStartup;
+export default useGetUser;
