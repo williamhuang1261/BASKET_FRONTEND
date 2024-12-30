@@ -72,22 +72,24 @@ const Drawer = ({ size }: Props) => {
               >
                 Categories
               </div>
-              <div
-                onMouseOver={() => setMouseOver(true)}
-                onMouseLeave={() => setMouseOver(false)}
-                className={active || mouseOver ? "flex flex-col" : "hidden"}
-              >
-                {categories.map((c) => (
-                  <Link
-                    to={"/items"}
-                    key={c}
-                    aria-label="Go to Item Results Page"
-                    className=" mx-4 cursor-pointer rounded border-b-0.5 border-light_gray p-2 text-lg hover:bg-light_gray hover:text-green"
-                  >
-                    {c}
-                  </Link>
-                ))}
-              </div>
+              {(active || mouseOver) && (
+                <div
+                  onMouseOver={() => setMouseOver(true)}
+                  onMouseLeave={() => setMouseOver(false)}
+                  className="flex flex-col"
+                >
+                  {categories.map((c) => (
+                    <Link
+                      to={"/items"}
+                      key={c}
+                      aria-label="Go to Item Results Page"
+                      className=" mx-4 cursor-pointer rounded border-b-0.5 border-light_gray p-2 text-lg hover:bg-light_gray hover:text-green"
+                    >
+                      {c}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
             {/* Continue normal links */}
             <div className="cursor-pointer rounded p-1 px-2 text-xl font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green">

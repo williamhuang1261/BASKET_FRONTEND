@@ -8,12 +8,12 @@ const MainPageAds = () => {
   return (
     <section className="mx-3 flex items-center gap-4 py-4 md:container md:mx-auto md:px-20">
       {winSize >= 0 && (
-        <div className="hidden basis-full overflow-hidden rounded border-dark_gray shadow-lg sm:block lg:basis-9/13">
+        <div className="basis-full overflow-hidden rounded border-dark_gray shadow-lg lg:basis-9/13">
           <CarouselAdDiv />
         </div>
       )}
       {(winSize < 0 || winSize >= 2) && (
-        <div className="h-full overflow-hidden rounded border-dark_gray shadow sm:hidden sm:basis-4/13 lg:block ">
+        <div className="h-full overflow-hidden rounded border-dark_gray shadow sm:basis-4/13">
           <VerticalAd />
         </div>
       )}

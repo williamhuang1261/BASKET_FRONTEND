@@ -17,19 +17,17 @@ const PriceBar = ({ filtered, normal }: Props) => {
             {filtered.opts?.[0].process.priceToShow}
           </h3>
         </div>
-        <h4
-          className={`${
-            filtered.opts?.[0].process.isRebate ? "" : "hidden"
-          } text-black/50 line-through`}
-        >
-          {
-            normal?.find(
-              (item) =>
-                item.supplier.toLowerCase() ===
-                filtered.opts?.[0].supplier.toLowerCase(),
-            )?.normalPrice
-          }
-        </h4>
+        {filtered.opts?.[0].process.isRebate && (
+          <h4 className="text-black/50 line-through">
+            {
+              normal?.find(
+                (item) =>
+                  item.supplier.toLowerCase() ===
+                  filtered.opts?.[0].supplier.toLowerCase(),
+              )?.normalPrice
+            }
+          </h4>
+        )}
       </div>
     </div>
   );

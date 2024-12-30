@@ -103,26 +103,29 @@ const QSelectionGroup = ({ id }: Props) => {
           Unit
         </option>
       </select>
-      <select
-        aria-label="Select the unit of measurement"
-        className={`${method === "unit" ? "hidden " : ""} cursor-pointer rounded-full bg-light_gray/50 px-1 py-0.5 font-semibold hover:text-green`}
-        onChange={handleUnitsChange}
-        defaultValue={basketItem.units}
-        id={basketItem.ref.code + "_unit_select_" + id}
-      >
-        <option value={"kg"} className="bg-white text-black">
-          kg
-        </option>
-        <option value={"g"} className="bg-white text-black">
-          g
-        </option>
-        <option value={"lb"} className="bg-white text-black">
-          lb
-        </option>
-        <option value={"oz"} className="bg-white text-black">
-          oz
-        </option>
-      </select>
+      {method === "weight" ? null : (
+        <select
+          aria-label="Select the unit of measurement"
+          className="cursor-pointer rounded-full bg-light_gray/50 px-1 py-0.5 font-semibold hover:text-green"
+          onChange={handleUnitsChange}
+          defaultValue={basketItem.units}
+          id={basketItem.ref.code + "_unit_select_" + id}
+        >
+          <option value={"kg"} className="bg-white text-black">
+            kg
+          </option>
+          <option value={"g"} className="bg-white text-black">
+            g
+          </option>
+          <option value={"lb"} className="bg-white text-black">
+            lb
+          </option>
+          <option value={"oz"} className="bg-white text-black">
+            oz
+          </option>
+        </select>
+      )}
+
       <input
         id={basketItem.ref.code + "_quantity_select_" + id}
         type="number"

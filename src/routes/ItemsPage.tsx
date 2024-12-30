@@ -3,9 +3,11 @@ import FilterDiv from "../components/Items/Filters/FilterDiv";
 import HeaderDiv from "../components/Items/HeaderDiv/HeaderDiv";
 import ResultsDiv from "../components/Items/ResultsDiv/ResultsDiv";
 import GenNavBar from "../components/NavBar/GenNavBar";
+import useWindowSize from "../hooks/useWindowSize";
 import SearchFilterProvider from "../state/providers/SearchFilterProvider";
 
 const ItemsPage = () => {
+  const winSize = useWindowSize();
   return (
     <SearchFilterProvider>
       <div className="flex min-h-screen flex-col overflow-hidden">
@@ -14,10 +16,12 @@ const ItemsPage = () => {
           <GenNavBar page="General" size="Full" />
         </div>
         <div className="flex flex-grow">
-          <section className="hidden w-96 border-dark_gray/50 md:block md:border-e-0.5">
-            {/* Filters : Not shown in small screens. In small screens, the filters will be in HeaderDiv */}
-            <FilterDiv />
-          </section>
+          {winSize >= 1 && (
+            <section className="w-96 border-dark_gray/50 md:border-e-0.5">
+              {/* Filters : Not shown in small screens. In small screens, the filters will be in HeaderDiv */}
+              <FilterDiv />
+            </section>
+          )}
           <main className="flex w-full flex-col p-5">
             {/* Presentation of the query, the #results, order of results + small screens : filters */}
             <HeaderDiv />

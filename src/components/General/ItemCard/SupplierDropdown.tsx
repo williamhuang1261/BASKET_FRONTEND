@@ -21,10 +21,13 @@ const SupplierDropdown = ({ filtered }: Props) => {
         onMouseOver={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
       >
-        <RiArrowDropDownLine
-          size={40}
-          className={`${filtered.opts?.length === 1 ? "hidden" : ""} ${mouseOver ? "text-green" : ""} h-full transition-all duration-100 ease-in-out`}
-        />
+        {filtered.opts?.length === 1 ? null : (
+          <RiArrowDropDownLine
+            size={40}
+            className={`${mouseOver ? "text-green" : ""} h-full transition-all duration-100 ease-in-out`}
+          />
+        )}
+
         <img
           className="h-full object-contain"
           src={
@@ -36,10 +39,12 @@ const SupplierDropdown = ({ filtered }: Props) => {
           }
           alt={filtered.opts?.[0].supplier}
         />
-        <RiArrowDropDownLine
-          size={40}
-          className={`${filtered.opts?.length === 1 ? "hidden" : ""} ${mouseOver ? "text-green" : ""} h-full transition-all duration-100 ease-in-out`}
-        />
+        {filtered.opts?.length === 1 ? null : (
+          <RiArrowDropDownLine
+            size={40}
+            className={`${mouseOver ? "text-green" : ""} h-full transition-all duration-100 ease-in-out`}
+          />
+        )}
       </button>
       <div className={"overflow-hidden rounded "}>
         {filtered.opts?.slice(1).map((s) => (

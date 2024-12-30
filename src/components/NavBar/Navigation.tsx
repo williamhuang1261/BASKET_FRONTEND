@@ -6,7 +6,7 @@ import Dropdown from "../General/Miscellaneous/Dropdown";
 // Navigation links, found in Home Page
 const Navigation = () => {
   return (
-    <div className="flex items-center justify-start  text-xl">
+    <div className="flex items-center justify-start text-xl">
       <div className="flex h-full items-end justify-between">
         {/* Categories dropdown */}
         <Dropdown

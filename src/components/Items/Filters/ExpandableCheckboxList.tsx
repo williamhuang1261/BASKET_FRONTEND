@@ -4,7 +4,7 @@ import Checkbox from "../../General/Miscellaneous/Checkbox";
 
 interface ListProps {
   items: string[];
-  checkedSet: Set<string>
+  checkedSet: Set<string>;
   show: number;
   onCheck: (i: string) => void;
   onUncheck: (i: string) => void;
@@ -45,8 +45,7 @@ const ExpandableCheckboxList = ({
         onClick={() => setMore(!more)}
       >
         {/* Button show more/less */}
-        <IoIosArrowUp className={more ? "" : "hidden"} />
-        <IoIosArrowDown className={!more ? "" : "hidden"} />
+        {more ? <IoIosArrowUp /> : <IoIosArrowDown />}
         {!more ? "Show more " : "Show Less"}
       </h3>
     </div>

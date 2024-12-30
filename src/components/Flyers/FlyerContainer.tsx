@@ -1,52 +1,61 @@
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
+import { useState } from "react";
 import ItemCard from "../General/ItemCard/ItemCard";
 import items from "../../data/ItemsEX";
-import { IoClose } from "react-icons/io5";
-// import Flyer from "./FlyerEX";
+import useWindowSize from "../../hooks/useWindowSize";
 
 // Div containing flyers
 const FlyerContainer = () => {
+  const [open, setOpen] = useState(true);
+  const winSize = useWindowSize();
+
+  const handleClick = () => {
+    setOpen(false);
+  };
 
   return (
-    <div className="relative flex h-full max-w-full">
-      <div className="pointer-events-auto h-full w-full flex-auto">
-        {/* <Flyer /> */}
-      </div>
-      <div className="pointer-events-none absolute z-20 flex h-full w-full flex-none">
-        <button
-          type="button"
-          className="pointer-events-auto flex w-10 flex-none items-center justify-center bg-light_gray/50 transition-all duration-100 ease-in-out hover:bg-light_gray/75 hover:text-green"
-        >
-          <IoIosArrowBack size={30} />
-        </button>
-        <div className="flex flex-auto items-start justify-center">
-          <div className="pointer-events-auto flex items-center justify-center gap-2 p-2">
-            <button
-              type="button"
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-light_gray transition-all duration-100 ease-in-out hover:bg-green/80"
-            >
-              <FaMinus />
-            </button>
-            <p className="flex h-8 items-center justify-center rounded-full border-0.5 border-dark_gray bg-white px-4 text-black/50">
-              100%
-            </p>
-            <button
-              type="button"
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-light_gray transition-all duration-100 ease-in-out hover:bg-green/80"
-            >
-              <FaPlus />
-            </button>
+    <>
+      <div className="relative flex h-full max-w-full">
+        <div className="pointer-events-auto h-full w-full flex-auto"></div>
+        <div className="pointer-events-none absolute z-20 flex h-full w-full flex-none ">
+          <button
+            type="button"
+            className=" pointer-events-auto flex w-10 flex-none items-center justify-center bg-light_gray/50 transition-all duration-150 ease-in-out hover:bg-light_gray/75 hover:text-green"
+          >
+            <IoIosArrowBack size={30} />
+          </button>
+          <div className="flex flex-auto items-start justify-center ">
+            <div className="pointer-events-auto flex items-center justify-center gap-2 p-2">
+              <button
+                type="button"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-light_gray transition-all duration-150 ease-in-out hover:bg-green/80"
+              >
+                <FaMinus />
+              </button>
+              <p className="flex h-8 items-center justify-center rounded-full border-0.5 border-dark_gray bg-white px-4 text-black/50">
+                100%
+              </p>
+              <button
+                type="button"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-light_gray transition-all duration-150 ease-in-out hover:bg-green/80"
+              >
+                <FaPlus />
+              </button>
+            </div>
           </div>
+          <button
+            type="button"
+            className="pointer-events-auto flex w-10 flex-none items-center justify-center bg-light_gray/50 transition-all duration-150 ease-in-out hover:bg-light_gray/75 hover:text-green"
+          >
+            <IoIosArrowForward size={30} />
+          </button>
         </div>
-        <button
-          type="button"
-          className="pointer-events-auto flex w-10 flex-none items-center justify-center bg-light_gray/50 transition-all duration-100 ease-in-out hover:bg-light_gray/75 hover:text-green"
-        >
-          <IoIosArrowForward size={30} />
-        </button>
-        <div className="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-black/50 md:hidden">
+      </div>
+      {open && winSize < 1 && (
+        <div className="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/50">
           <div className="overflow-hidden rounded bg-white">
             <div className=" bg-green/80 ">
               <div className=" flex justify-between">
@@ -54,12 +63,13 @@ const FlyerContainer = () => {
                 <button
                   type="button"
                   className="transition-all ease-in-out hover:text-black/50"
+                  onClick={handleClick}
                 >
                   <IoClose size="36px" />
                 </button>
               </div>
               <ItemCard
-                id = {items[0].id}
+                id={items[0].id}
                 key={items[0].ref.code}
                 image={items[0].image}
                 name={{
@@ -83,8 +93,8 @@ const FlyerContainer = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

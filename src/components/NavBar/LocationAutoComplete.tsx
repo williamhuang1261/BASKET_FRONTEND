@@ -30,8 +30,8 @@ const LocationAutoComplete = ({ id }: Props) => {
       // Default to Canada
       country = "Canada";
     }
-    return country
-  }
+    return country;
+  };
 
   const handleSelect = async (address: string) => {
     try {
@@ -91,31 +91,29 @@ const LocationAutoComplete = ({ id }: Props) => {
                 onBlur={() => setLocSearchActive(false)}
               />
             </div>
-            <div
-              className={`
-                ${suggestions.length !== 0 ? " " : "hidden "}
-                autocomplete-dropdown-container absolute top-12 z-50 max-w-96 overflow-hidden rounded border bg-white`}
-            >
-              {loading && (
-                <div className="h-12">Searching for locations...</div>
-              )}
-              {suggestions.map((suggestion, index) => {
-                const className = `
+            {suggestions.length !== 0 && (
+              <div className="autocomplete-dropdown-container absolute top-12 z-50 max-w-96 overflow-hidden rounded border bg-white">
+                {loading && (
+                  <div className="h-12">Searching for locations...</div>
+                )}
+                {suggestions.map((suggestion, index) => {
+                  const className = `
                     ${suggestion.active ? "suggestion-item--active" : "suggestion-item"} 
                     ${index !== suggestions.length - 1 ? "border-b" : ""}
                     hover:bg-light_gray/50 cursor-pointer min-h-12 w-full px-4 py-1`;
-                return (
-                  <div
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                    })}
-                    key={suggestion.id || index}
-                  >
-                    <span>{suggestion.description}</span>
-                  </div>
-                );
-              })}
-            </div>
+                  return (
+                    <div
+                      {...getSuggestionItemProps(suggestion, {
+                        className,
+                      })}
+                      key={suggestion.id || index}
+                    >
+                      <span>{suggestion.description}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </>
         )}
       </PlacesAutocomplete>
