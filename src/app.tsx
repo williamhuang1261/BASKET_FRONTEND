@@ -1,9 +1,15 @@
 import { RouterProvider } from "react-router-dom";
 import router from "./routes";
-import useStartup from "./hooks/useStartup";
+import useStartup from "./hooks/user_account/useStartup";
+import { useEffect } from "react";
 
 const App = () => {
-  useStartup();
+  const startupFn = useStartup()
+
+  useEffect(() => {
+    startupFn().then(() => console.log('Startup complete'))
+  }, [])
+
   return <RouterProvider router={router} />;
 };
 

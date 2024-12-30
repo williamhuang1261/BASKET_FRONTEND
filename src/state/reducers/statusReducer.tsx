@@ -3,6 +3,7 @@ export interface StatusProp {
   error: boolean;
   errorCode: number | string;
   message: string;
+  hideHome: boolean
 }
 
 interface SetStatus {
@@ -16,7 +17,8 @@ interface SetStatus {
 interface showStatus {
   group: 'CHANGE',
   type: 'DISPLAY',
-  show: boolean
+  show: boolean,
+  hideHome?: boolean
 }
 
 export type StatusAction = SetStatus | showStatus;
@@ -35,7 +37,8 @@ const statusReducer = (state: StatusProp, action: StatusAction): StatusProp => {
         case 'DISPLAY':
           return {
             ...state,
-            show: action.show
+            show: action.show,
+            hideHome: action.hideHome ?? state.hideHome
           }
         default:
           return state

@@ -13,7 +13,7 @@ const Dropdown = ({ title, body, className, type, ariaLabel}: DropdownProps) => 
   const [mouseOver, setMouseOver] = useState(false);
 
   return (
-    <div className={`relative h-full z-50`}>
+    <div className={`relative h-full z-40`}>
       <button
         type="button"
         onClick={() => setActive(!active)}

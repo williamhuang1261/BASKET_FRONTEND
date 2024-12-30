@@ -1,5 +1,7 @@
 import { IoClose } from "react-icons/io5";
 import useStatusState from "../../../hooks/state/useStatusState";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 interface Props {
   size: "Full" | "Container";
@@ -7,6 +9,7 @@ interface Props {
 
 const ErrorBar = ({ size }: Props) => {
   const { status, dispatch } = useStatusState();
+  const location = useLocation();
 
   const handleClick = () => {
     dispatch({
@@ -16,12 +19,27 @@ const ErrorBar = ({ size }: Props) => {
     });
   };
 
+  useEffect(() => {
+    dispatch({
+      group: "CHANGE",
+      type: "DISPLAY",
+      show: false,
+    });
+  }, [location, dispatch]);
+
   return (
-    <div className="w-full bg-red-500">
+    <div className="sticky top-0 z-50 w-full bg-red-500">
       <div
         className={`${size === "Container" ? "px-3 md:container md:mx-auto md:px-20" : "px-3 "} ${status.show ? "" : "hidden"} flex items-center justify-between`}
       >
-        <h3 className="">{`Error: ${status.message} (${status.errorCode})`}</h3>
+        <h3 className="">
+          Error: {status.message} ({status.errorCode}){" "}
+          {status.hideHome ? null : (
+            <Link className="font-bold underline" to="/">
+              Return to Home Page
+            </Link>
+          )}
+        </h3>
         <button
           className="flex h-min w-min items-center justify-center transition-all duration-150 ease-in-out hover:text-dark_gray"
           onClick={handleClick}

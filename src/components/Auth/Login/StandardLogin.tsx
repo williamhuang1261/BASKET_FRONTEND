@@ -1,30 +1,40 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../../../utils/auth/initFirebase";
+import { useLocation, useNavigate } from "react-router-dom";
+import { FirebaseError } from "firebase/app";
+import useError from "../../../hooks/useError";
+import useStatusState from "../../../hooks/state/useStatusState";
 
 const StandardLogin = () => {
+  const {dispatch} = useStatusState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginFailed, setLoginFailed] = useState(false);
+  const navigate = useNavigate();
+  const errorHandler = useError();
+  const location = useLocation();
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        user.getIdToken().then((idToken) => {
-          console.log("ID Token (JWT):", idToken);
-        });
-        console.log(user);
+      .then(() => {
+        const from = location.state?.from?.pahtname || '/'
+        navigate(from)
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        // const errorMessage = error.message;
-        console.warn(errorCode);
-        if (errorCode === "auth/invalid-credential") {
-          setLoginFailed(true);
-        }
+      .catch((err: FirebaseError) => {
+        errorHandler(err);
+        dispatch({
+          group: 'CHANGE',
+          type: 'STATUS',
+          newError: true,
+          newErrorCode: 400,
+          newMessage: "Invalid email or password"
+        })
+        dispatch({
+          group: 'CHANGE',
+          type:'DISPLAY',
+          show: true
+        });
       });
   };
 
@@ -81,11 +91,6 @@ const StandardLogin = () => {
         >
           SIGN IN
         </button>
-        {loginFailed && (
-          <div className="text-red-500">
-            <h3>Invalid email or password</h3>
-          </div>
-        )}
       </form>
     </div>
   );
