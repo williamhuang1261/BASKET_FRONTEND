@@ -18,30 +18,34 @@ const InfoBox = ({ children, iconSize, title }: Props) => {
         className=""
         key={title + "_info_button"}
       >
-        <ImInfo size={iconSize} className={` text-black hover: transition-all duration-150`}/>
+        <ImInfo
+          size={iconSize}
+          className={`text-black transition-all duration-150 hover:text-green`}
+        />
       </button>
-      <div
-        key={title + "_info_box"}
-        className={`${
-          active
-            ? "no-doc-scroll z-50 h-screen w-screen  bg-dark_gray/50"
-            : "hidden"
-        } fixed left-0 top-0 flex items-center justify-center`}
-      >
-        <div className="h-min w-60 overflow-hidden rounded bg-white md:w-96">
-          <div className="grid grid-cols-3 bg-green/80 p-2">
-            <h2 className=" col-start-2 flex items-center justify-center text-lg font-semibold lg:text-xl">
-              {title}
-            </h2>
-            <div className="flex w-full items-center justify-end">
-              <button onClick={() => setActive(false)}>
-                <IoClose size={30} className="text-black/50 hover:text-black" />
-              </button>
+      {active && (
+        <div
+          key={title + "_info_box"}
+          className="no-doc-scroll fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-dark_gray/50"
+        >
+          <div className="h-min w-60 overflow-hidden rounded bg-white md:w-96">
+            <div className="grid grid-cols-3 bg-green/80 p-2">
+              <h2 className="col-start-2 flex items-center justify-center text-lg font-semibold lg:text-xl">
+                {title}
+              </h2>
+              <div className="flex w-full items-center justify-end">
+                <button onClick={() => setActive(false)}>
+                  <IoClose
+                    size={30}
+                    className="text-black/50 hover:text-black"
+                  />
+                </button>
+              </div>
             </div>
+            <p className="p-2">{children}</p>
           </div>
-          <p className="p-2">{children}</p>
         </div>
-      </div>
+      )}
     </>
   );
 };

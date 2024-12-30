@@ -7,7 +7,7 @@ import { FirebaseError } from "firebase/app";
 import useStatusState from "../../../hooks/state/useStatusState";
 
 const SignUp = () => {
-  const {dispatch} = useStatusState();
+  const { dispatch } = useStatusState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showCriteria, setShowCriteria] = useState(false);
@@ -41,25 +41,24 @@ const SignUp = () => {
     event.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
-        navigate('/')
+        navigate("/");
       })
       .catch((err: FirebaseError) => {
         if (err.code === "auth/email-already-in-use") {
           setAlreadyExists(true);
-        }
-        else {
+        } else {
           dispatch({
-            group: 'CHANGE',
-            type: 'STATUS',
+            group: "CHANGE",
+            type: "STATUS",
             newError: true,
             newErrorCode: err.message,
-            newMessage: err.code
-          })
+            newMessage: err.code,
+          });
           dispatch({
-            group: 'CHANGE',
-            type: 'DISPLAY',
-            show: true
-          })
+            group: "CHANGE",
+            type: "DISPLAY",
+            show: true,
+          });
         }
       });
   };
@@ -98,9 +97,12 @@ const SignUp = () => {
             className="w-full rounded border p-2"
           />
         </div>
-        <div className={`${showCriteria ? "" : "hidden"}`}>
-          <PasswordCriteriaBox criteria={criteria} />
-        </div>
+        {showCriteria && (
+          <div>
+            <PasswordCriteriaBox criteria={criteria} />
+          </div>
+        )}
+
         <div className="py-1">
           <div className="flex justify-between py-1">
             <label htmlFor="confirm_password">
@@ -117,9 +119,12 @@ const SignUp = () => {
             className="w-full rounded border p-2"
           />
         </div>
-        <div className={`${confirm_password.length > 0 ? "" : "hidden"}`}>
-          <PasswordCriteriaBox criteria={isSamePassword} />
-        </div>
+        {confirm_password.length > 0 && (
+          <div>
+            <PasswordCriteriaBox criteria={isSamePassword} />
+          </div>
+        )}
+
         <button
           type="submit"
           className={`${email && isSamePassword[0].isValid ? "bg-green/75 text-white outline-none ring-green hover:bg-green hover:ring-1" : "text-green/50 outline outline-green/50"} mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out`}

@@ -12,10 +12,10 @@ const UnitsSelection = () => {
     });
   };
 
-  return (
+  return basketItem.method === "unit" ? null : (
     <select
       aria-label="Select the unit of measurement"
-      className={`${basketItem.method === "unit" ? "hidden " : ""} cursor-pointer rounded-full bg-light_gray/50 px-1 py-0.5 font-semibold hover:text-green`}
+      className={`cursor-pointer rounded-full bg-light_gray/50 px-1 py-0.5 font-semibold hover:text-green`}
       onChange={handleChange}
       defaultValue={basketItem.units}
     >

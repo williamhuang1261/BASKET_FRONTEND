@@ -23,47 +23,51 @@ const EditField = ({ text, placeholder, id, onConfirm }: Props) => {
 
   return (
     <div className="flex flex-none gap-1 rounded">
-      <div className={`${active ? "hidden" : ""}`}>{text}</div>
-      <div
-        className={`${!active ? "hidden" : "rounded bg-light_green"}`}
-        id={"ChangeDiv" + id}
-      >
-        <input
-          id={"ChangeField" + id}
-          type="text"
-          placeholder={placeholder}
-          className="rounded border px-1 py-1 outline-none"
-        />
-        <button
-          type="button"
-          id={"ApplyButton" + id}
-          className="rounded px-2 py-1 hover:bg-green"
-          onClick={() => {
-            onConfirm(getValue());
-            setActive(false);
-          }}
-        >
-          Apply
-        </button>
-      </div>
-      <button
-        type="button"
-        onClick={() => setActive(false)}
-        className={`rounded bg-red-500 px-1 text-black hover:text-white hover:shadow-md ${!active ? "hidden" : ""} transition-all duration-150 ease-in-out`}
-      >
-        <IoClose size="20px" />
-      </button>
-      <button
-        id={"ChangeButton" + id}
-        className={`${!active ? "text-black/50 hover:text-green" : "hidden"}`}
-        onClick={() => {
-          setActive(true);
-          console.log(document.getElementById("ChangeField" + id))
-          document.getElementById("ChangeField" + id)?.focus();
-        }}
-      >
-        <MdModeEdit />
-      </button>
+      {active ? (
+        <>
+          <div className="rounded bg-light_green" id={"ChangeDiv" + id}>
+            <input
+              id={"ChangeField" + id}
+              type="text"
+              placeholder={placeholder}
+              className="rounded border px-1 py-1 outline-none"
+            />
+            <button
+              type="button"
+              id={"ApplyButton" + id}
+              className="rounded px-2 py-1 hover:bg-green"
+              onClick={() => {
+                onConfirm(getValue());
+                setActive(false);
+              }}
+            >
+              Apply
+            </button>
+          </div>
+          <button
+            type="button"
+            onClick={() => setActive(false)}
+            className="rounded bg-red-500 px-1 text-black transition-all duration-150 ease-in-out hover:text-white hover:shadow-md"
+          >
+            <IoClose size="20px" />
+          </button>
+        </>
+      ) : (
+        <>
+          <div>{text}</div>
+          <button
+            id={"ChangeButton" + id}
+            className="text-black/50 hover:text-green"
+            onClick={() => {
+              setActive(true);
+              console.log(document.getElementById("ChangeField" + id));
+              document.getElementById("ChangeField" + id)?.focus();
+            }}
+          >
+            <MdModeEdit />
+          </button>
+        </>
+      )}
     </div>
   );
 };

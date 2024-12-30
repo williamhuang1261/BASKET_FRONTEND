@@ -1,5 +1,5 @@
 import useAccountDelete from "../../hooks/user_account/useAccountDelete";
-import useLogOut from "../../hooks/useLogOut";
+import useLogOut from "../../hooks/user_account/useLogOut";
 
 const AccountBox = () => {
   const logOut = useLogOut();

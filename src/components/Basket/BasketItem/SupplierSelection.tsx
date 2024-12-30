@@ -25,10 +25,13 @@ const SupplierSelection = ({ opts }: Props): string | ReactNode => {
         onMouseOver={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
       >
-        <RiArrowDropDownLine
-          size={40}
-          className={`${opts.length === 1 ? "hidden" : ""} ${mouseOver ? "text-green" : ""} h-full flex-none transition-all duration-100 ease-in-out`}
-        />
+        {opts.length === 1 ? null : (
+          <RiArrowDropDownLine
+            size={40}
+            className={`${mouseOver ? "text-green" : ""} h-full flex-none transition-all duration-100 ease-in-out`}
+          />
+        )}
+
         <div className="flex h-full flex-auto items-center justify-center">
           <img
             className=" h-full object-contain"
@@ -39,41 +42,45 @@ const SupplierSelection = ({ opts }: Props): string | ReactNode => {
             }
           />
         </div>
-        <RiArrowDropDownLine
-          size={40}
-          className={`${opts.length === 1 ? "hidden" : ""} ${mouseOver ? "text-green" : ""} h-full flex-none transition-all duration-100 ease-in-out`}
-        />
+        {opts.length === 1 ? null : (
+          <RiArrowDropDownLine
+            size={40}
+            className={`${mouseOver ? "text-green" : ""} h-full flex-none transition-all duration-100 ease-in-out`}
+          />
+        )}
       </button>
       <div className={"overflow-hidden rounded "}>
-        {opts.map((s) => (
-          <div
-            className={` ${displayed.toLowerCase() === s.supplier.toLowerCase() ? "hidden" : ""} ${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${opts.indexOf(s) !== 1 ? "border-t-0.5" : ""} flex cursor-pointer items-center justify-between gap-2 transition-all duration-100 ease-in-out hover:bg-light_gray/50`}
-            key={s.supplier + "altSupplier"}
-            onClick={() => {
-              setDisplayed(s.supplier);
-              setOpen(false);
-              dispatch({
-                group: "CHANGE",
-                type: "SUPPLIER_SELECTION",
-                supplier: s.supplier,
-              });
-            }}
-          >
-            <div className="h-full items-center justify-center">
-              <img
-                className="h-full object-contain"
-                src={
-                  logos.find(
-                    (i) => i.name.toLowerCase() === s.supplier.toLowerCase(),
-                  )?.src
-                }
-              />
+        {opts.map((s) =>
+          displayed.toLowerCase() === s.supplier.toLowerCase() ? null : (
+            <div
+              className={`${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${opts.indexOf(s) !== 1 ? "border-t-0.5" : ""} flex cursor-pointer items-center justify-between gap-2 transition-all duration-100 ease-in-out hover:bg-light_gray/50`}
+              key={s.supplier + "altSupplier"}
+              onClick={() => {
+                setDisplayed(s.supplier);
+                setOpen(false);
+                dispatch({
+                  group: "CHANGE",
+                  type: "SUPPLIER_SELECTION",
+                  supplier: s.supplier,
+                });
+              }}
+            >
+              <div className="h-full items-center justify-center">
+                <img
+                  className="h-full object-contain"
+                  src={
+                    logos.find(
+                      (i) => i.name.toLowerCase() === s.supplier.toLowerCase(),
+                    )?.src
+                  }
+                />
+              </div>
+              <div>
+                <h4>{s.process.priceToShow}</h4>
+              </div>
             </div>
-            <div>
-              <h4>{s.process.priceToShow}</h4>
-            </div>
-          </div>
-        ))}
+          ),
+        )}
       </div>
     </div>
   );

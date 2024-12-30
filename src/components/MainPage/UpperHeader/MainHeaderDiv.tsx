@@ -9,7 +9,7 @@ const MainHeaderDiv = () => {
     <div>
       <header className="border-b-0.5 border-b-dark_gray">
         {winSize >= 1 && (
-          <div className="hidden bg-green/80 md:block">
+          <div className="bg-green/80">
             <div className="container mx-auto flex flex-row items-center justify-between px-20">
               <p className="">
                 Find the best deals for your groceries - Optimize your shopping

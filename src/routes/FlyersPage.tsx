@@ -3,51 +3,56 @@ import FlyerHeader from "../components/Flyers/FlyerHeader";
 import ItemCard from "../components/General/ItemCard/ItemCard";
 import GenNavBar from "../components/NavBar/GenNavBar";
 import items from "../data/ItemsEX";
+import useWindowSize from "../hooks/useWindowSize";
 
 const FlyersPage = () => {
+  const winSize = useWindowSize();
+
   return (
     <>
       <div className="flex h-screen w-screen flex-col overflow-hidden">
         {/* Nav bar */}
-        <div className="flex-none border-b-0.5 border-dark_gray ">
+        <div className="flex-none border-b-0.5 border-dark_gray">
           <GenNavBar page="General" size="Full" />
         </div>
-        <div className="h-max flex-none bg-green/80 ">
+        <div className="h-max flex-none bg-green/80">
           {/* Contains return button, supplier logo, valid dates, Flipp logo, Powered by Flipp */}
           <FlyerHeader />
         </div>
         <div className="flex h-44 w-screen flex-auto ">
-          <section className="hidden w-60 flex-col border-e-0.5 border-dark_gray md:flex 2xl:w-80">
-            {/* Contains item card showing the item that has been clicked */}
-            <div className="flex-none p-3">
-              <ItemCard
-                id = {items[0].id}
-                key={items[0].ref.code}
-                image={items[0].image}
-                name={{
-                  fr: items[0].name.fr,
-                  en: items[0].name.en,
-                  size: items[0].name.size,
-                }}
-                reference={{
-                  standard: items[0].ref.standard,
-                  code: items[0].ref.code
-                }}
-                amount={{
-                  isApprox: items[0].amount.isApprox,
-                  meas: items[0].amount.meas,
-                  units: items[0].amount.units,
-                  quantity: items[0].amount.quantity,
-                }}
-                brand={items[0].brand}
-                suppliers={items[0].suppliers}
-              />
-            </div>
-            {/* Footer on bottom left */}
-            <footer className="flex-auto bg-light_gray/50 p-3">Footer</footer>
-          </section>
+          {winSize >= 1 && (
+            <section className="flex w-60 flex-col border-e-0.5 border-dark_gray 2xl:w-80">
+              {/* Contains item card showing the item that has been clicked */}
+              <div className="flex-none p-3">
+                <ItemCard
+                  id={items[0].id}
+                  key={items[0].ref.code}
+                  image={items[0].image}
+                  name={{
+                    fr: items[0].name.fr,
+                    en: items[0].name.en,
+                    size: items[0].name.size,
+                  }}
+                  reference={{
+                    standard: items[0].ref.standard,
+                    code: items[0].ref.code,
+                  }}
+                  amount={{
+                    isApprox: items[0].amount.isApprox,
+                    meas: items[0].amount.meas,
+                    units: items[0].amount.units,
+                    quantity: items[0].amount.quantity,
+                  }}
+                  brand={items[0].brand}
+                  suppliers={items[0].suppliers}
+                />
+              </div>
+              {/* Footer on bottom left */}
+              <footer className="flex-auto bg-light_gray/50 p-3">Footer</footer>
+            </section>
+          )}
           {/* Flyer display and navigation */}
-          <main className="flex-auto  ">
+          <main className="flex-auto">
             <FlyerContainer />
           </main>
         </div>
