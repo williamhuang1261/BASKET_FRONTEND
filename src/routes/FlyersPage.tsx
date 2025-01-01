@@ -5,6 +5,17 @@ import GenNavBar from "../components/NavBar/GenNavBar";
 import items from "../data/ItemsEX";
 import useWindowSize from "../hooks/useWindowSize";
 
+/**
+ * @description Digital flyers viewing page
+ * @summary Main sections:
+ * - Navigation bar
+ * - Flyer header with supplier info
+ * - Item details sidebar (desktop)
+ * - Flyer display area
+ * - Footer section
+ * 
+ * @returns {JSX.Element} Flyers page with navigation, item details sidebar, and flyer display
+ */
 const FlyersPage = () => {
   const winSize = useWindowSize();
 

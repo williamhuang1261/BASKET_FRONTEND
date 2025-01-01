@@ -4,7 +4,16 @@ import ChangeLocation from "./ChangeLocation";
 import FilterStoresDrop from "./FilterStoresDrop";
 import MaxStoresSelect from "./MaxStoresSelect";
 
-// Header of Basket Page containing banner, info boxes and filters
+/**
+ * @component BasketHeader
+ * @description Header component for the Basket page that displays a banner, information boxes, and filtering options
+ * Contains controls for:
+ * - Filtering stores
+ * - Setting maximum number of stores
+ * - Changing location
+ * 
+ * @returns {JSX.Element} Header section with banner and filter controls
+ */
 const BasketHeader = () => {
   const { basket } = useBasketState();
 

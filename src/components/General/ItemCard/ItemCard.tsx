@@ -21,6 +21,18 @@ interface Props {
   suppliers: SuppliersProp[];
 }
 
+/**
+ * @description Displays a product card with image, details, pricing, and purchase options
+ * @param {Object} props - The component props
+ * @param {string} props.id - Product identifier
+ * @param {string} props.image - Product image URL
+ * @param {NameProp} props.name - Product name in different languages
+ * @param {RefProp} props.reference - Product reference information
+ * @param {AmountProp} props.amount - Product quantity information
+ * @param {string} props.brand - Product brand name
+ * @param {SuppliersProp[]} props.suppliers - Array of supplier information
+ * @returns {JSX.Element} Product card component
+ */
 const ItemCard = ({
   id,
   image,

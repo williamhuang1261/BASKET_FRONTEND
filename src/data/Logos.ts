@@ -8,6 +8,18 @@ import TnT from "../assets/T&T_logo.png";
 import panierExtra from "../assets/Panier_extra_logo.png";
 import provigo from '../assets/Provigo_logo.png'
 
+/**
+ * Store logo configuration and URLs
+ * @type {Array<{
+ *   src: string,
+ *   name: string,
+ *   ref: {
+ *     cadFR: string,
+ *     cadEN: string,
+ *     usEN: string
+ *   }
+ * }>}
+ */
 const logos = [
   {
     src: walmart,

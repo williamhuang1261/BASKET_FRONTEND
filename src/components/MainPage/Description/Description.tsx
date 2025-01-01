@@ -6,6 +6,12 @@ import DescriptionCard from "./DescriptionCard";
 
 
 // All description cards
+
+/**
+ * @description Container component for feature description cards
+ * @summary Renders a section containing multiple description cards highlighting application features
+ * @returns {JSX.Element} A section containing multiple feature description cards
+ */
 const Description = () => {
   const cards = [
     {

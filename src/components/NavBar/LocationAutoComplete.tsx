@@ -10,6 +10,12 @@ interface Props {
   id: string;
 }
 
+/**
+ * @description Location autocomplete component using Google Places API.
+ * @param {Object} props - The properties object.
+ * @param {string} props.id - Unique identifier for the location input.
+ * @returns {JSX.Element} The location autocomplete component.
+ */
 const LocationAutoComplete = ({ id }: Props) => {
   const { user, dispatch } = useUserState();
   const [tempAddress, setTempAddress] = useState(

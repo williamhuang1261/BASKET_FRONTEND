@@ -9,7 +9,13 @@ interface Props {
   id: string;
 }
 
-// Search bar, flex in md+ and block in md-
+/**
+ * @description A search bar component that allows users to search for products and locations.
+ * @param {Object} props - The properties object.
+ * @param {Array<"Location" | "Search">} [props.hidden] - Array specifying which elements to hide.
+ * @param {string} props.id - Unique identifier for the search inputs.
+ * @returns {JSX.Element} The search bar component.
+ */
 const SearchBar = ({ hidden, id }: Props) => {
   const [locMouseOver, setLocMouseOver] = useState(false);
 

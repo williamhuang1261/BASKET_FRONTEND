@@ -41,6 +41,13 @@ type ChangeAction =
 
 export type basketItemAction = ChangeAction;
 
+/**
+ * @description Reducer function to manage individual basket item state
+ * @summary Handles item-specific changes including method, units, quantity, and supplier selection
+ * @param {basketItemProp} state - Current basket item state
+ * @param {basketItemAction} action - Action object containing group, type and payload
+ * @returns {basketItemProp} Updated basket item state
+ */
 const basketItemReducer = (
   state: basketItemProp,
   action: basketItemAction,

@@ -6,6 +6,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 import useStatusState from "../../../hooks/state/useStatusState";
 
+/**
+ * @description Component for user registration with email and password
+ * @summary Has the ability to register a user with:
+ * - Email
+ * + Password with the following criteria:
+ *    + Contains 8 to 128 characters
+ *    + Contains an uppercase letter
+ *    + Contains a lowercase letter
+ *    + Contains a number
+ *    + Contains any of the following special characters: !@#$%^&*(),.?":{}|<>
+ * - Confirm password
+ * 
+ * @returns {JSX.Element} A form with email and password inputs, password criteria validation, and submit button
+ */
 const SignUp = () => {
   const { dispatch } = useStatusState();
   const [email, setEmail] = useState("");

@@ -32,6 +32,13 @@ type ActionDelete = filterDelete;
 
 export type filterAction = ActionAdd | ActionChange | ActionDelete;
 
+/**
+ * @description Reducer function to manage search filter state
+ * @summary Handles filter changes including categories, stores, and distance parameters
+ * @param {SearchFilterProps} state - Current search filter state
+ * @param {filterAction} action - Action object containing group, type and payload
+ * @returns {SearchFilterProps} Updated search filter state
+ */
 const searchFilterReducer = (
   state: SearchFilterProps,
   action: filterAction,

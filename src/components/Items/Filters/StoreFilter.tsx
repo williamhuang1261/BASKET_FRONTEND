@@ -3,7 +3,11 @@ import useSearchFilterState from "../../../hooks/state/useSearchFilterState";
 import useUserState from "../../../hooks/state/useUserState";
 import ExpandableCheckboxList from "./ExpandableCheckboxList";
 
-// Store selection filters
+/**
+ * @description Component that handles store filtering functionality
+ * @summary Displays a list of stores that can be filtered through checkboxes
+ * @returns {JSX.Element} A store filter component with expandable checkbox list
+ */
 const StoreFilter = () => {
   const { dispatch } = useSearchFilterState();
   const {user} = useUserState();

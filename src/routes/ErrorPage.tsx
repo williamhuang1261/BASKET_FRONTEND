@@ -2,7 +2,17 @@ import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 import GenNavBar from "../components/NavBar/GenNavBar";
 import FooterDiv from "../components/General/Footer/FooterDiv";
 
-// Shows error page
+/**
+ * @description Error handling and display page
+ * @summary Main sections:
+ * - Navigation bar
+ * - Error message display
+ * - Error description
+ * - Navigation options
+ * - Footer
+ * 
+ * @returns {JSX.Element} Error page with custom error message and navigation
+ */
 const ErrorPage = () => {
   const error = useRouteError();
 

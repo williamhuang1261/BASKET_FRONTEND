@@ -1,7 +1,11 @@
 import useUserState from "../../hooks/state/useUserState";
 import EditField from "../Users/EditField";
 
-// Change location input
+/**
+ * @description Renders an input field for changing the user's location
+ * @summary Allows users to update their shopping location for calculations
+ * @returns {JSX.Element} The change location component
+ */
 const ChangeLocation = () => {
   const { user } = useUserState();
 

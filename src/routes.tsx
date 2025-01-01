@@ -12,6 +12,14 @@ export const UserLoginPage = lazy(() => import("./routes/UserLoginPage"));
 export const UserSignUpPage = lazy(() => import("./routes/UserSignUpPage"));
 export const TestPage = lazy(() => import("./routes/TestPage"));
 
+/**
+ * @description This is the router for all the mains pages in the application
+ * @summary Lazy loads for all pages, ErrorPage is the errorElement page
+ * @returns {Router} All the routes for the application
+ * @see src/routes.tsx for the implementation of the router
+ * 
+ */
+
 const router = createBrowserRouter([
   { path: "/", element: <HomePage />, errorElement: <ErrorPage />},
   { path: "/users", element: <UsersPage />, errorElement: <ErrorPage /> },

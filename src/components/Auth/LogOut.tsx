@@ -1,5 +1,9 @@
 import useLogOut from "../../hooks/user_account/useLogOut";
 
+/**
+ * @description Component that handles user logout functionality
+ * @returns {JSX.Element} A button that triggers the logout process
+ */
 const LogOut = () => {
   const logOut = useLogOut();
 

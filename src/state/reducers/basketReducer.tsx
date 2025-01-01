@@ -30,6 +30,13 @@ type DeleteAction = DeleteFilteredStores;
 
 export type BasketAction = AddAction | ChangeAction | DeleteAction;
 
+/**
+ * @description Reducer function to manage shopping basket state
+ * @summary Handles basket operations including filtered stores, max stores limit, and total cost
+ * @param {basketProp} state - Current basket state
+ * @param {BasketAction} action - Action object containing group, type and payload
+ * @returns {basketProp} Updated basket state
+ */
 const basketReducer = (state: basketProp, action: BasketAction): basketProp => {
   const { group, type } = action;
 

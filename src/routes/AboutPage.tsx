@@ -5,6 +5,18 @@ import Information from "../components/About/Information";
 import FooterDiv from "../components/General/Footer/FooterDiv";
 import GenNavBar from "../components/NavBar/GenNavBar";
 
+/**
+ * @description About page component displaying company information
+ * @summary Main sections:
+ * - Navigation bar
+ * - About header section
+ * - Information section
+ * - FAQ section
+ * - Contact form
+ * - Footer
+ * 
+ * @returns {JSX.Element} About page with header, information sections, and footer
+ */
 const AboutPage = () => {
   return (
     <div className="flex min-h-screen flex-col overflow-hidden">

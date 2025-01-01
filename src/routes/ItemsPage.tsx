@@ -6,6 +6,17 @@ import GenNavBar from "../components/NavBar/GenNavBar";
 import useWindowSize from "../hooks/useWindowSize";
 import SearchFilterProvider from "../state/providers/SearchFilterProvider";
 
+/**
+ * @description Product catalog and search page
+ * @summary Main sections:
+ * - Navigation bar
+ * - Filter sidebar (desktop only)
+ * - Search results header
+ * - Product grid/list
+ * - Footer
+ * 
+ * @returns {JSX.Element} Items page with filter sidebar, search results, and responsive layout
+ */
 const ItemsPage = () => {
   const winSize = useWindowSize();
   return (

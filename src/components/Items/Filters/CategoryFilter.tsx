@@ -4,6 +4,12 @@ import useUserState from "../../../hooks/state/useUserState";
 import ExpandableCheckboxList from "./ExpandableCheckboxList";
 
 // Categories filter
+
+/**
+ * @description Component that handles category filtering functionality
+ * @summary Displays a list of categories that can be filtered through checkboxes
+ * @returns {JSX.Element} A category filter component with expandable checkbox list
+ */
 const CategoryFilter = () => {
   const { dispatch } = useSearchFilterState();
   const {user} = useUserState();

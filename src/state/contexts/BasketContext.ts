@@ -1,3 +1,8 @@
+/**
+ * @description Context for managing the shopping basket state
+ * @summary Provides basket data and methods to modify the basket
+ * @type {React.Context<BasketContextType>}
+ */
 import React, { Dispatch } from "react";
 import { BasketAction, basketProp } from "../reducers/basketReducer";
 

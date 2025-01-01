@@ -3,6 +3,12 @@ import "./LogoSlideShow.css";
 
 // Slider (Found in Home Page)
 // cust-anim found in ./LogoSlideShow.css
+
+/**
+ * @description Continuous sliding showcase of partner logos
+ * @summary Creates an infinite horizontal scroll of company logos with hover pause functionality
+ * @returns {JSX.Element} An auto-scrolling container of partner logos
+ */
 const LogoSlideShow = () => {
   return (
     <>

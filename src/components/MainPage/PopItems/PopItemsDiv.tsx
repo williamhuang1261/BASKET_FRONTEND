@@ -4,6 +4,12 @@ import LoadingCard from "../../Loading/LoadingCard";
 import ItemCard from "../../General/ItemCard/ItemCard";
 
 // Containing all popular items
+
+/**
+ * @description Displays a grid of popular items with loading states
+ * @summary Shows a collection of product cards with a loading animation while data is being fetched
+ * @returns {JSX.Element} A grid section containing either loading placeholders or product cards
+ */
 const PopItemsDiv = () => {
   const [itemsLoading, setItemsLoading] = useState(true);
 

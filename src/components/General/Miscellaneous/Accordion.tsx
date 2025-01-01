@@ -1,5 +1,12 @@
 import { useState } from "react";
 
+/**
+ * @description An expandable accordion component for showing/hiding content
+ * @param {Object} props - The properties object
+ * @param {string} props.title - The text shown in the accordion header
+ * @param {string} props.answer - The content revealed when accordion is expanded
+ * @returns {JSX.Element} An expandable accordion section
+ */
 interface Props {
   title: string;
   answer: string;

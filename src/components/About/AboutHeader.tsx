@@ -1,6 +1,12 @@
+/**
+ * @description Header for the About page (Green background)
+ * @summary This is a simple header that is used to display the title of the page
+ * @returns {JSX.Element} The header of the About page
+ */
+
 const AboutHeader = () => {
   return (
-    <div className="flex items-center justify-center rounded bg-green/80 h-28 shadow-md">
+    <div className="flex h-28 items-center justify-center rounded bg-green/80 shadow-md">
       <h1 className="text-xl font-bold lg:text-3xl 3xl:text-4xl">About</h1>
     </div>
   );

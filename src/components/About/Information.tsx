@@ -1,3 +1,9 @@
+/**
+ * @description The Information component displays information about the website
+ * @summary This component displays a list of information with a title and a body. An array of objects is used to store the information
+ * @returns {JSX.Element} The Information component
+ */
+
 const Information = () => {
   const info = [
     {

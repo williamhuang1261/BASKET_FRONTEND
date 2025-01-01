@@ -1,5 +1,11 @@
 import Accordion from "../General/Miscellaneous/Accordion";
 
+/**
+ * @description Frequently Asked Questions component
+ * @summary Contains a list of questions and answers. Each question can be clicked to reveal the answer
+ * @returns {JSX.Element} The FAQ component
+ */
+
 const FAQ = () => {
   const QA = [
     {

@@ -1,5 +1,34 @@
 import image from "../assets/AdExample(1_1).jpg";
 
+/**
+ * Example product items with detailed information including pricing, suppliers, and promotions
+ * @type {Array<{
+ *   id: string,
+ *   name: {fr: string, en: string, size: string},
+ *   ref: {standard: string, code: string},
+ *   amount: {isApprox: boolean, meas: string, units: string, quantity: number},
+ *   description: string,
+ *   brand: string,
+ *   suppliers: Array<{
+ *     supplier: string,
+ *     pricing: {
+ *       normal: number,
+ *       method: string,
+ *       limited?: Array<{
+ *         typeOfRebate: string,
+ *         X?: number,
+ *         Y?: number,
+ *         C: number,
+ *         rebatePricing: string,
+ *         start: number,
+ *         end: number,
+ *         onlyMembers: boolean
+ *       }>
+ *     }
+ *   }>,
+ *   image: string
+ * }>}
+ */
 const items = [
   {
     id: '66f3853cbe017003c58fced5',
@@ -767,11 +796,6 @@ const items = [
   },
   {
     id: '66f3853cbe017003c58fcedf',
-
-
-
-
-
 
     name: {
       fr: "Pomme",

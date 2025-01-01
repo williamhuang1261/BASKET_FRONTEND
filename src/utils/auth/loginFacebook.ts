@@ -4,6 +4,11 @@ import {
 } from "firebase/auth";
 import { auth } from "./initFirebase";
 
+/**
+ * @description Handles Facebook OAuth authentication using Firebase
+ * @summary Creates a Facebook auth provider and initiates popup sign-in flow
+ * @returns {Promise<void>} Resolves when login is successful
+ */
 const loginFacebook = () => {
 
   const provider = new FacebookAuthProvider();

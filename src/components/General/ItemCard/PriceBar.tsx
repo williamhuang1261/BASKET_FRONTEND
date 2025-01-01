@@ -1,5 +1,12 @@
 import PriceProps from "../../../interface/PriceProps";
 
+/**
+ * @description Displays price information with optional rebate indication
+ * @param {Object} props - The component props
+ * @param {PriceProps | string} props.filtered - The filtered price data or error message
+ * @param {Array<{supplier: string, normalPrice: string}> | undefined} props.normal - Normal price information for each supplier
+ * @returns {JSX.Element} Price display component
+ */
 interface Props {
   filtered: PriceProps | string;
   normal: { supplier: string; normalPrice: string }[] | undefined;

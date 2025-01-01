@@ -4,6 +4,12 @@ import searchFilterEX from "../../../data/SearchFilterEX";
 import { useState } from "react";
 
 // Location slider
+
+/**
+ * @description Component for filtering items by distance/location
+ * @summary Provides a slider to adjust the search radius/distance
+ * @returns {JSX.Element} A location filter component with distance slider
+ */
 const LocationFilter = () => {
   const { searchFilter, dispatch } = useSearchFilterState();
   const [value, setValue] = useState(searchFilterEX.distance.amount);

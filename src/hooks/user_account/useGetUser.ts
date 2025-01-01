@@ -6,6 +6,11 @@ import { AxiosError, AxiosResponse } from "axios";
 import useError from "../useError";
 import { useQueryClient } from "@tanstack/react-query";
 
+/**
+ * @description Hook to fetch and initialize user data
+ * @returns {() => Promise<void>} Async function that fetches and sets up user data
+ * @summary Handles user authentication state and fetches user data from the server
+ */
 const useGetUser = () => {
   const { dispatch: userDispatch } = useUserState();
   const queryClient = useQueryClient();

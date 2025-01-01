@@ -1,5 +1,11 @@
 import { FaPlus } from "react-icons/fa6";
 
+/**
+ * @description Button component for adding items to the shopping basket
+ * @param {Object} props - The component props
+ * @param {Function} props.onClick - Callback function when button is clicked
+ * @returns {JSX.Element} Add to basket button component
+ */
 interface Props {
   onClick: () => void;
 }

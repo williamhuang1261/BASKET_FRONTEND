@@ -12,10 +12,18 @@ type GenericResponse = {
   [key: string]: any;
 };
 
+/**
+ * @description Hook to handle error states and messages
+ * @returns {(err: AxiosError | GenericError | FirebaseError, hideHome?: boolean) => void} Error handling function
+ * @summary Provides unified error handling for Axios, Firebase, and generic errors
+ */
 const useError = () => {
   const { dispatch } = useStatusState();
 
-  const errorHandler = (err: AxiosError | GenericError | FirebaseError, hideHome?: boolean) => {
+  const errorHandler = (
+    err: AxiosError | GenericError | FirebaseError,
+    hideHome?: boolean,
+  ) => {
     console.error(err);
 
     let code: number | string;

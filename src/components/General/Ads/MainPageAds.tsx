@@ -2,7 +2,11 @@ import useWindowSize from "../../../hooks/useWindowSize";
 import CarouselAdDiv from "./CarouselAdDiv";
 import VerticalAd from "./VerticalAd";
 
-// TODO: Load ads conditionally according to window size
+/**
+ * @description Main advertisement section for the home page that adapts to window size.
+ * @summary Displays a combination of carousel and vertical ads based on screen width.
+ * @returns {JSX.Element} A responsive section containing different types of advertisements.
+ */
 const MainPageAds = () => {
   const winSize = useWindowSize();
   return (

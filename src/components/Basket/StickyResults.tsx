@@ -1,7 +1,11 @@
 import useBasketState from "../../hooks/state/useBasketState";
 import useUserState from "../../hooks/state/useUserState";
 
-// Banner for price result and calculate button
+/**
+ * @description Renders a sticky banner showing the total cost and calculate button
+ * @summary Displays the current basket total and provides a button to trigger calculations
+ * @returns {JSX.Element} The sticky results component
+ */
 const StickyResults = () => {
   const {dispatch: userDispatch} = useUserState();
   const { basket, dispatch: basketDispatch } = useBasketState();

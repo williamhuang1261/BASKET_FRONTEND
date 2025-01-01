@@ -1,4 +1,7 @@
-// Conversion factors
+/**
+ * @description Conversion factors for weight and volume units to base units (mg and mL)
+ * @type {Object.<string, number>}
+ */
 export const convFactor:{ [key: string]: number } = {
   // Conversion factors for weight units
   mg: 1,

@@ -1,7 +1,10 @@
 import { SlCalculator } from "react-icons/sl";
 import { Link } from "react-router-dom";
 
-// Links to Basket Page
+/**
+ * @description Calculator tab component that links to the basket calculator page.
+ * @returns {JSX.Element} The calculator tab component with link.
+ */
 const CalculatorTab = () => {
   return (
     <Link to="/basket" aria-label="Go to Calculator Basket Page" className="w-full h-full">

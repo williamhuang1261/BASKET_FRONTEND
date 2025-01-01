@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useError from "../../../hooks/useError";
 import useGetUser from "../../../hooks/user_account/useGetUser";
+import {NavigationProps} from "../../../interface/NavigateProps";
 
 interface SocialLoginProps {
   type: "Sign in" | "Sign up";
@@ -15,6 +16,17 @@ interface SocialLoginProps {
 // Facebook: #0866FF
 // Google: #FBBC04
 
+/**
+ * @description This is a component that will allow you to sign in or sign up with a social media account.
+ * @summary Can be used for sign in and sign up for one-click authentication.
+ * @param {Object} props - The properties object.
+ * @param {"Sign In" | "Sign Up"} props.type - The type of action to be performed.
+ * @param {string} props.provider - The social media provider (e.g., Google, Facebook, Microsoft).
+ * @param {string} props.logo - The URL of the provider's logo or its string representation.
+ * @param {function} props.onClick - The asynchronous function to call when the button is clicked.
+ * @param {string} props.color - The color of the button. Must use the format #RRGGBB.
+ * @returns {JSX.Element} The social login button component.
+ */
 const SocialLogin = ({
   type,
   provider,
@@ -33,8 +45,8 @@ const SocialLogin = ({
       .then(() => {
         getUser()
           .then(() => {
-            const from = location.state?.from?.pathname || "/";
-            navigate(from);
+            const goTo = (location.state as NavigationProps)?.pathname || "/";
+            navigate(goTo);
             window.location.reload();
           })
           .catch(() => {

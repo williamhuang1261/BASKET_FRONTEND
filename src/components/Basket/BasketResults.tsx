@@ -2,7 +2,11 @@ import BasketItem from "./BasketItem/BasketItem";
 import items from "../../data/ItemsEX";
 import BasketItemProvider from "../../state/providers/BasketItemProvider";
 
-// TODO: Add first API
+/**
+ * @description Renders a list of basket items with their details
+ * @summary Displays all items in the basket with their respective suppliers and prices
+ * @returns {JSX.Element} The basket results component containing all basket items
+ */
 const BasketResults = () => {
   return (
     <div className="mt-5 flex flex-col overflow-hidden border-0.5 rounded shadow-sm">

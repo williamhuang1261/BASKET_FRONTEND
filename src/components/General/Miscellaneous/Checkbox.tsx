@@ -1,3 +1,15 @@
+/**
+ * @description A customizable checkbox group component
+ * @param {Object} props - The properties object
+ * @param {string[]} props.items - Array of items to create checkboxes for
+ * @param {string} [props.gap] - Optional spacing between checkboxes
+ * @param {string} [props.xpadding] - Optional horizontal padding
+ * @param {number} [props.size] - Optional size for the checkboxes
+ * @param {(item: string) => void} [props.onCheck] - Optional callback when item is checked
+ * @param {(item: string) => void} [props.onUncheck] - Optional callback when item is unchecked
+ * @param {Set<string>} [props.checkSet] - Optional set of pre-checked items
+ * @returns {JSX.Element} A group of styled checkboxes
+ */
 interface Props {
   items: string[];
   gap?: string;

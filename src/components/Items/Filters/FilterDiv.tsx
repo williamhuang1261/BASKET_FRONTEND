@@ -6,6 +6,11 @@ import LocationFilter from "./LocationFilter";
 import StoreFilter from "./StoreFilter";
 
 // Div containing all filters
+/**
+ * @description A container component for all filter components
+ * @summary Displays all filter options in a sidebar layout with advertisements
+ * @returns {JSX.Element} A filter container with location, category, and store filters
+ */
 const FilterDiv = () => {
   const { dispatch } = useUserState();
   const { searchFilter } = useSearchFilterState();

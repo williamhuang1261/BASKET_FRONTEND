@@ -4,6 +4,14 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import logos from "../../../data/Logos";
 import useBasketItemState from "../../../hooks/state/useBasketItemState";
 
+/**
+ * @description Component that renders a dropdown for supplier selection with prices.
+ * @summary Displays supplier logos and prices in a collapsible dropdown menu.
+ * Manages its own open/close state and selected supplier.
+ * @param {Object} props - The properties object
+ * @param {OptsProps[]} props.opts - Array of supplier options containing supplier names and pricing
+ * @returns {string | ReactNode} Returns "No suppliers available" message or the supplier selection component
+ */
 interface Props {
   opts: OptsProps[];
 }

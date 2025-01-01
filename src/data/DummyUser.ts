@@ -1,5 +1,9 @@
 import UserTransportProp from "../interface/UserTransportProp";
 
+/**
+ * @description Default user object with empty/default values
+ * @type {UserTransportProp}
+ */
 const DummyUser: UserTransportProp = {
   meta: {
     name: "",

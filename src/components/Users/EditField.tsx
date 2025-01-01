@@ -1,15 +1,33 @@
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { MdModeEdit } from "react-icons/md";
+import Spinner from "../General/Miscellaneous/Spinner";
 
 interface Props {
   text: string;
   placeholder: string;
   onConfirm: (v: string) => void;
   id: string;
+  isLoading?: boolean;
 }
 
-const EditField = ({ text, placeholder, id, onConfirm }: Props) => {
+/**
+ * @description A reusable edit field component with toggle functionality
+ * @param {Object} props - The properties object
+ * @param {string} props.text - The current text value
+ * @param {string} props.placeholder - Placeholder text for the input field
+ * @param {function} props.onConfirm - Callback function when changes are confirmed
+ * @param {string} props.id - Unique identifier for the field
+ * @param {boolean} [props.isLoading] - Loading state of the field
+ * @returns {JSX.Element} An editable field component with confirm/cancel actions
+ */
+const EditField = ({
+  text,
+  placeholder,
+  id,
+  onConfirm,
+  isLoading = false,
+}: Props) => {
   const [active, setActive] = useState(false);
 
   const getValue = () => {
@@ -54,18 +72,26 @@ const EditField = ({ text, placeholder, id, onConfirm }: Props) => {
         </>
       ) : (
         <>
-          <div>{text}</div>
-          <button
-            id={"ChangeButton" + id}
-            className="text-black/50 hover:text-green"
-            onClick={() => {
-              setActive(true);
-              console.log(document.getElementById("ChangeField" + id));
-              document.getElementById("ChangeField" + id)?.focus();
-            }}
-          >
-            <MdModeEdit />
-          </button>
+          {isLoading ? (
+            <>
+              <Spinner color="dark_gray" size={"4"} />
+            </>
+          ) : (
+            <>
+              <div>{text}</div>
+              <button
+                id={"ChangeButton" + id}
+                className="text-black/50 hover:text-green"
+                onClick={() => {
+                  setActive(true);
+                  console.log(document.getElementById("ChangeField" + id));
+                  document.getElementById("ChangeField" + id)?.focus();
+                }}
+              >
+                <MdModeEdit />
+              </button>
+            </>
+          )}
         </>
       )}
     </div>

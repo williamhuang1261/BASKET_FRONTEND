@@ -1,5 +1,15 @@
 import { ReactNode, useState } from "react";
 
+/**
+ * @description A customizable dropdown component that can be triggered by hover or click
+ * @param {Object} props - The properties object
+ * @param {string} props.ariaLabel - Accessibility label for the dropdown button
+ * @param {ReactNode} props.title - The content displayed in the dropdown trigger button
+ * @param {string} [props.className] - Optional CSS classes for the dropdown
+ * @param {ReactNode} props.body - The content displayed in the dropdown menu
+ * @param {"Hover" | "Click"} props.type - The interaction type to trigger the dropdown
+ * @returns {JSX.Element} A dropdown menu component
+ */
 interface DropdownProps {
   ariaLabel: string;
   title: ReactNode;

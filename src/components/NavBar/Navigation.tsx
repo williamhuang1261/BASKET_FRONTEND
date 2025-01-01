@@ -3,7 +3,10 @@ import { IoMenu } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import Dropdown from "../General/Miscellaneous/Dropdown";
 
-// Navigation links, found in Home Page
+/**
+ * @description Main navigation component displaying categories dropdown and main navigation links.
+ * @returns {JSX.Element} The navigation component with categories and links.
+ */
 const Navigation = () => {
   return (
     <div className="flex items-center justify-start text-xl">

@@ -3,6 +3,12 @@ import useStatusState from "../../../hooks/state/useStatusState";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
+/**
+ * @description A sticky error notification bar that displays at the top of the page
+ * @param {Object} props - The properties object
+ * @param {"Full" | "Container"} props.size - The width style of the error bar
+ * @returns {JSX.Element} A dismissible error notification bar
+ */
 interface Props {
   size: "Full" | "Container";
 }

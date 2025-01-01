@@ -1,6 +1,12 @@
 import useUserState from "../../hooks/state/useUserState";
 import EditField from "./EditField";
+import EmailModif from "./EmailModif";
+import UsernameModif from "./UsernameModif";
 
+/**
+ * @description Component that handles user preferences including username, email, language and location
+ * @returns {JSX.Element} A container with various user preference modification options
+ */
 const PreferencesBox = () => {
   const { user, dispatch } = useUserState();
 
@@ -18,34 +24,10 @@ const PreferencesBox = () => {
   return (
     <div className="rounded border">
       <div className="flex max-h-min min-h-11 w-full flex-wrap items-center justify-between gap-2 border-b px-2 py-1">
-        <h2 className="font-semibold">Username</h2>
-        <EditField
-          text={user.meta.name}
-          placeholder="New Username"
-          id="username"
-          onConfirm={(v) => {
-            dispatch({
-              group: "CHANGE",
-              type: "ID",
-              new: v,
-            });
-          }}
-        />
+        <UsernameModif />
       </div>
       <div className="flex max-h-min min-h-11 w-full flex-wrap items-center justify-between gap-2 border-b px-2 py-1">
-        <h2 className="font-semibold">Email</h2>
-        <EditField
-          text={user.meta.email}
-          placeholder="New Email"
-          id="email"
-          onConfirm={(v) => {
-            dispatch({
-              group: "CHANGE",
-              type: "EMAIL",
-              new: v,
-            });
-          }}
-        />
+        <EmailModif />
       </div>
       <div className="flex h-11 w-full items-center justify-between border-b px-2">
         <h2 className="font-semibold">Language</h2>

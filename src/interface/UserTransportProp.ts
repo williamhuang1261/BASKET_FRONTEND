@@ -1,5 +1,9 @@
 import { allUnitsType, distanceUnitsType, weightUnitsType } from "./UnitsProp";
 
+/**
+ * @description Represents the core user data structure with preferences and settings
+ * @interface UserProp
+ */
 interface UserProp {
   name: string;
   email: string;
@@ -35,6 +39,10 @@ interface UserProp {
   };
 }
 
+/**
+ * @description Extends UserProp to include authentication state
+ * @interface UserTransportProp
+ */
 interface UserTransportProp {
   meta: UserProp;
   isLoggedIn: boolean;

@@ -1,6 +1,10 @@
 import useAccountDelete from "../../hooks/user_account/useAccountDelete";
 import useLogOut from "../../hooks/user_account/useLogOut";
 
+/**
+ * @description Component that provides account management options
+ * @returns {JSX.Element} A container with logout and account deletion buttons
+ */
 const AccountBox = () => {
   const logOut = useLogOut();
   const deleteAccount = useAccountDelete();

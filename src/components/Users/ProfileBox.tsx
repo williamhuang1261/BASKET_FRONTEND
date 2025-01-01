@@ -1,5 +1,9 @@
 import useUserState from "../../hooks/state/useUserState";
 
+/**
+ * @description Displays the user's profile information in a styled box
+ * @returns {JSX.Element} A section containing the user's greeting and name
+ */
 const ProfileBox = () => {
   const { user } = useUserState();
   return (

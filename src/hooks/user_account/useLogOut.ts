@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 import useError from "../useError";
 import { FirebaseError } from "firebase/app";
 
+/**
+ * @description Hook to handle user logout functionality
+ * @returns {() => void} Function that handles the logout process
+ * @summary Logs out the user, updates the global state, and redirects to home page
+ */
 const useLogOut = () => {
   const {dispatch} = useUserState();
   const navigate = useNavigate();
