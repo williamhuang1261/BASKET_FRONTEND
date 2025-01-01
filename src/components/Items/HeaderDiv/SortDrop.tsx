@@ -4,7 +4,6 @@
  * @returns {JSX.Element} A select element with sorting options
  */
 const SortDrop = () => {
-  const opts = ['Relevance', 'Alphabetical: A-Z', 'Alphabetical: Z-A'];
 
   const opts = ['Relevance', 'Alphabetical: A-Z', 'Alphabetical: Z-A'];
 
@@ -17,12 +16,7 @@ const SortDrop = () => {
             {opt}
           </option>
         ))}
-      <select className="rounded-full bg-light_gray/80 px-2 ">
-        {opts.map((opt, i) => (
-          <option key={i} className="bg-white" value={opt}>
-            {opt}
-          </option>
-        ))}
+
       </select>
     </div>
   );
