@@ -9,6 +9,16 @@ import loginMicrosoft from "../utils/auth/loginMicrosoft";
 import microsoftLogo from "../assets/Microsoft_logo.svg";
 import { Link } from "react-router-dom";
 
+/**
+ * @description User registration page with standard and social sign-up options
+ * @summary
+ * - Provides email/password registration
+ * - Offers social media sign-up options
+ * - Links to login page for existing users
+ * - Includes terms acceptance and validation
+ * 
+ * @returns {JSX.Element} Sign-up page with multiple registration methods
+ */
 const UserSignUpPage = () => {
   return (
     <div className=" ">

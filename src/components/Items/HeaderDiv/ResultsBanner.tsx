@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-// Choose the search query, allow change between products and flyers
+/**
+ * @description A banner component displaying search results and view toggles
+ * @summary Shows the search query and allows switching between Products and Flyers views
+ * @returns {JSX.Element} A banner with title and view toggle buttons
+ */
 const ResultsBanner = () => {
   const [section, setSection] = useState<string>("Products");
 

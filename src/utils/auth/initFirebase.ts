@@ -11,10 +11,7 @@ import configData from '../../../config/default.json'
 
 // Your web app's Firebase configuration
 
-const firebaseConfig = {
-  //Configuration data
-};
-
+const firebaseConfig = configData.firebaseConfig;
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);

@@ -1,3 +1,8 @@
+/**
+ * @description A loading placeholder component that mimics the structure of a product card
+ * @summary Shows an animated loading state with placeholder elements for image, text, and buttons
+ * @returns {JSX.Element} A card-shaped skeleton loader with pulsing animation
+ */
 const LoadingCard = () => {
   return (
     <div className="h-[420px] w-72 animate-pulse rounded-lg border shadow-lg md:w-full z-0">

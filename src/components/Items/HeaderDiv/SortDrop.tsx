@@ -1,4 +1,8 @@
-// Sorting filter
+/**
+ * @description A dropdown component for sorting search results
+ * @summary Provides options to sort results by relevance and alphabetical order
+ * @returns {JSX.Element} A select element with sorting options
+ */
 const SortDrop = () => {
   const opts = ['Relevance', 'Alphabetical: A-Z', 'Alphabetical: Z-A'];
 
