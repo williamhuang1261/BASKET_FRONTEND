@@ -1,3 +1,8 @@
+/**
+ * @description Component that embeds a Flipp flyer viewer
+ * @summary Displays an iframe containing a specific store's Flipp flyer
+ * @returns {JSX.Element} Iframe component containing the embedded Flipp flyer
+ */
 const Flyer = () => {
   return (
     <iframe

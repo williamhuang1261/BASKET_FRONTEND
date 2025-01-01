@@ -1,3 +1,9 @@
+/**
+ * @description Component that renders a select dropdown for measurement method.
+ * @summary Allows users to switch between weight-based and unit-based measurement.
+ * Updates the basket item state when method changes.
+ * @returns {JSX.Element} The method selection dropdown
+ */
 import useBasketItemState from "../../../hooks/state/useBasketItemState";
 
 const MethodSelection = () => {

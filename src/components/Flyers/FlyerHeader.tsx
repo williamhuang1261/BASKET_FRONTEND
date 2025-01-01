@@ -4,7 +4,11 @@ import { AiOutlineStepBackward } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import useWindowSize from "../../hooks/useWindowSize";
 
-// Header above flyer display
+/**
+ * @description Header component displayed above flyer content showing navigation, dates, and logos
+ * @summary Renders different layouts based on window size with store logo, date range, and Flipp attribution
+ * @returns {JSX.Element} Header component with responsive layout
+ */
 const FlyerHeader = () => {
   const winSize = useWindowSize();
   const startDate = new Date();

@@ -1,4 +1,8 @@
-// Changing language in standard presentation (Home Page)
+/**
+ * @description Language selection component for switching between available languages
+ * @summary Provides a dropdown menu to change the application's language
+ * @returns {JSX.Element} A select element with language options
+ */
 const LanguageHeader = () => {
   const changeLanguage = () => {
     console.log("Changed");

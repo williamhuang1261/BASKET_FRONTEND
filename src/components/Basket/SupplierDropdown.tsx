@@ -3,10 +3,22 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import logos from "../../data/Logos";
 import PriceProps from "../../interface/PriceProps";
 
+/**
+ * @interface Props
+ * @description Interface for the SupplierDropdown component props
+ * @property {PriceProps | string} filtered - The filtered price data or error message
+ */
 interface Props {
   filtered: PriceProps | string;
 }
 
+/**
+ * @description Renders a dropdown component displaying supplier logos and their corresponding prices
+ * @summary Shows the primary supplier at the top with optional dropdown for alternative suppliers
+ * @param {Props} props - Component props
+ * @param {PriceProps | string} props.filtered - The filtered price data or error message
+ * @returns {JSX.Element | string | undefined} The supplier dropdown component, error message, or undefined
+ */
 const SupplierDropdown = ({ filtered }: Props) => {
   const [open, setOpen] = useState(false);
   const [mouseOver, setMouseOver] = useState(false);

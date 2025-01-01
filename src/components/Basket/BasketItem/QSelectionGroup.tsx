@@ -3,6 +3,14 @@ import useBasketItemState from "../../../hooks/state/useBasketItemState";
 import { allUnitsType } from "../../../interface/UnitsProp";
 import useUserState from "../../../hooks/state/useUserState";
 
+/**
+ * @description Component that groups measurement method, units, and quantity selection controls.
+ * @summary Manages the state and interactions between measurement method, units, and quantity.
+ * Syncs changes with both basket item state and user preferences.
+ * @param {Object} props - The properties object
+ * @param {string} props.id - Unique identifier for the selection group
+ * @returns {JSX.Element} The grouped selection controls
+ */
 interface Props {
   id: string;
 }

@@ -1,3 +1,7 @@
+/**
+ * @description List of available product categories for the application
+ * @type {string[]}
+ */
 const categories = [
   "Produce",
   "Dairy",

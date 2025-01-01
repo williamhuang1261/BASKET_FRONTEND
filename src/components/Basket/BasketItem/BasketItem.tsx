@@ -13,6 +13,19 @@ import useBasketState from "../../../hooks/state/useBasketState";
 import { useCallback, useMemo } from "react";
 import useWindowSize from "../../../hooks/useWindowSize";
 
+/**
+ * @description Component that renders a single item in the shopping basket.
+ * @summary Displays item details, price, quantity controls, and supplier selection.
+ * Provides responsive layout for different screen sizes.
+ * @param {Object} props - The properties object
+ * @param {string} props.id - Unique identifier for the basket item
+ * @param {NameProp} props.name - Item name in different languages
+ * @param {AmountProp} props.amount - Item amount information
+ * @param {RefProp} props.reference - Item reference data
+ * @param {SuppliersProp[]} props.suppliers - Array of supplier information
+ * @param {string} props.image - URL of the item's image
+ * @returns {JSX.Element} The basket item component
+ */
 interface Props {
   id: string;
   name: NameProp;

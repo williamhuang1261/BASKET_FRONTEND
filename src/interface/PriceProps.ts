@@ -1,6 +1,10 @@
 import { AmountProp, NameProp, RefProp } from "./Destructed";
 import { allUnitsType } from "./UnitsProp";
 
+/**
+ * @description Configuration options for price calculations and display
+ * @interface OptsProps
+ */
 export interface OptsProps {
   supplier: string;
   meta?: {
@@ -19,12 +23,20 @@ export interface OptsProps {
   };
 }
 
+/**
+ * @description Represents quantity selection with method, units, and amount
+ * @interface QuantitySelection
+ */
 export interface QuantitySelection {
   method: string;
   units: allUnitsType;
   quantity: number
 }
 
+/**
+ * @description Core price structure containing name, reference, amount and options
+ * @interface PriceProps
+ */
 interface PriceProps {
   name : NameProp;
   ref: RefProp;

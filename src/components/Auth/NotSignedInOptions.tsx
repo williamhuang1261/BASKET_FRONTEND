@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 
+/**
+ * @description Component that displays options available for non-signed-in users
+ * @returns {JSX.Element} A dropdown menu with sign in and sign up options
+ */
 const SignedInOptions = () => {
   return (
     <div className="absolute -left-14 z-10 grid w-28 grid-rows-2 rounded border-0.5 border-dark_gray bg-white">

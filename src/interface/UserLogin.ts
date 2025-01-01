@@ -1,5 +1,9 @@
 import { allUnitsType, distanceUnitsType, weightUnitsType } from "./UnitsProp";
 
+/**
+ * @description Represents the user login data structure received from the server
+ * @interface UserLogin
+ */
 interface UserLogin {
   name: string | null;
   email: string | null;
@@ -32,7 +36,7 @@ interface UserLogin {
       filteredStores: string[];
       maxStores: number;
     };
-  }
+  };
 }
 
 export default UserLogin;

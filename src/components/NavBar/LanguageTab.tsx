@@ -1,8 +1,10 @@
 import { GrLanguage } from "react-icons/gr";
 import Dropdown from "../General/Miscellaneous/Dropdown";
 
-// Contains the dropdown for changing languages (using the icon)
-
+/**
+ * @description Language selection dropdown component.
+ * @returns {JSX.Element} The language selection component with dropdown menu.
+ */
 const LanguageTab = () => {
   return (
     <div>

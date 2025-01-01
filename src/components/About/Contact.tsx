@@ -1,7 +1,18 @@
+/**
+ * @description The contact form for the about page
+ * @summary This is a simple contact form that is used to allow users to contact the website. It contains:
+ * - A name field
+ * - An email field
+ * - A subject field
+ * - A message field
+ * - A submit button
+ * @returns {JSX.Element} The contact form for the about page
+ */
+
 const Contact = () => {
   return (
-    <div className="grid xl:grid-cols-2 py-5 ">
-      <div className="flex-auto md:px-20 pb-5 xl:p-0">
+    <div className="grid py-5 xl:grid-cols-2 ">
+      <div className="flex-auto pb-5 md:px-20 xl:p-0">
         <h2 className="text-xl font-semibold lg:text-3xl 3xl:text-4xl">
           Contact us
         </h2>
@@ -15,13 +26,13 @@ const Contact = () => {
         <h3 className="text-lg">Your Name</h3>
         <input
           type="text"
-          className="mb-2 md:w-80 w-60 rounded border bg-white p-1 outline-none"
+          className="mb-2 w-60 rounded border bg-white p-1 outline-none md:w-80"
           aria-label="Name field"
         />
         <h3 className="text-lg">Your Email</h3>
         <input
           type="email"
-          className="mb-2 md:w-80 w-60 rounded border bg-white p-1 outline-none"
+          className="mb-2 w-60 rounded border bg-white p-1 outline-none md:w-80"
           aria-label="Email field"
         />
         <h3 className="text-lg">Subject</h3>
@@ -49,9 +60,7 @@ const Contact = () => {
             <p>Other</p>
           </option>
         </select>
-        <h3 className="text-lg">
-          What are you reaching out about today?
-        </h3>
+        <h3 className="text-lg">What are you reaching out about today?</h3>
         <textarea className="mb-2 h-32 w-full rounded border bg-white p-2 outline-none"></textarea>
         <button
           type="button"

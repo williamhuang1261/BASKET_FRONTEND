@@ -7,6 +7,18 @@ import GenNavBar from "../components/NavBar/GenNavBar";
 import useWindowSize from "../hooks/useWindowSize";
 import BasketProvider from "../state/providers/BasketProvider";
 
+/**
+ * @description Shopping basket page showing selected items
+ * @summary Main sections:
+ * - Navigation bar
+ * - Basket header with filters
+ * - Sticky calculation summary
+ * - Basket items list
+ * - Advertisement section
+ * - Footer
+ * 
+ * @returns {JSX.Element} Basket page with header, results, and sticky calculation summary
+ */
 const BasketPage = () => {
   const winSize = useWindowSize();
 

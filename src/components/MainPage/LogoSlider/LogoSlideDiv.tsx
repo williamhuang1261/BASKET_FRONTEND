@@ -1,7 +1,10 @@
 import LogoSlideShow from "./LogoSlideshow";
 
-
-// Logo slider div
+/**
+ * @description Container component for the logo slideshow
+ * @summary Wraps the logo slideshow component in a styled section
+ * @returns {JSX.Element} A section containing the logo slideshow
+ */
 const LogoSlideDiv = () => {
   return (
     <section className="bg-green/60">

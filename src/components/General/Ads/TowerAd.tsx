@@ -1,7 +1,11 @@
 import Ad from "../../../assets/AdExample(1_2).jpg";
 
-
 // Tower Ad found in the side of results section
+/**
+ * @description Tall vertical advertisement component used in the results section.
+ * @summary Displays a 1:2 aspect ratio advertisement with rounded borders.
+ * @returns {JSX.Element} A tall advertisement container with an image.
+ */
 const TowerAd = () => {
   return (
     <div className="aspect-1/2 w-full overflow-hidden rounded border-0.5 border-dark_gray">

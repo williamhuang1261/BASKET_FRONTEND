@@ -7,6 +7,12 @@ interface PasswordCriteriaProps {
   }[]
 }
 
+/**
+ * @description Component that displays a list of password criteria and their validation status
+ * @param {Object} props - Component props
+ * @param {Array<{label: string, isValid: boolean}>} props.criteria - Array of criteria objects with label and validation status
+ * @returns {JSX.Element} A list of password criteria with visual validation indicators
+ */
 const PasswordCriteriaBox: React.FC<PasswordCriteriaProps> = ({criteria}) => {
   return (
     <ul className="mx-7 list-disc">

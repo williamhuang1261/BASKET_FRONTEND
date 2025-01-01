@@ -1,6 +1,10 @@
 import useBasketState from "../../hooks/state/useBasketState";
 
-// Setting the maximum number of stores to be visited
+/**
+ * @description Renders a select dropdown for choosing maximum number of stores
+ * @summary Allows users to limit the number of stores in their shopping calculation
+ * @returns {JSX.Element} The max stores selection component
+ */
 const MaxStoresSelect = () => {
   const { dispatch } = useBasketState();
 

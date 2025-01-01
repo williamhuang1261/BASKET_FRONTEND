@@ -2,6 +2,15 @@ import { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Checkbox from "../../General/Miscellaneous/Checkbox";
 
+/**
+ * @description Props for the ExpandableCheckboxList component
+ * @interface ListProps
+ * @property {string[]} items - Array of items to display as checkboxes
+ * @property {Set<string>} checkedSet - Set of currently checked items
+ * @property {number} show - Number of items to show initially
+ * @property {function} onCheck - Callback when an item is checked
+ * @property {function} onUncheck - Callback when an item is unchecked
+ */
 interface ListProps {
   items: string[];
   checkedSet: Set<string>;
@@ -10,14 +19,19 @@ interface ListProps {
   onUncheck: (i: string) => void;
 }
 
-// Logic to return many checkbox filters
+/**
+ * @description A component that displays an expandable list of checkboxes
+ * @summary Shows a limited number of checkboxes with option to show more
+ * @param {ListProps} props - The properties object
+ * @returns {JSX.Element} An expandable list of checkboxes with show more/less functionality
+ */
 const ExpandableCheckboxList = ({
   items,
   show,
   onCheck,
   onUncheck,
   checkedSet,
-}: ListProps) => {
+}: ListProps): JSX.Element => {
   const [more, setMore] = useState(false);
 
   // Number of items to be shown

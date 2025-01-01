@@ -1,6 +1,12 @@
 import useBasketItemState from "../../../hooks/state/useBasketItemState";
 import { allUnitsType } from "../../../interface/UnitsProp";
 
+/**
+ * @description Component that renders a select dropdown for units of measurement.
+ * @summary Allows users to switch between different measurement units (kg, g, lb, oz).
+ * Only displays when basketItem.method is not "unit".
+ * @returns {JSX.Element | null} The units selection dropdown or null if method is "unit"
+ */
 const UnitsSelection = () => {
   const { basketItem, dispatch } = useBasketItemState();
 

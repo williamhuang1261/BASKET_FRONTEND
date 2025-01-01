@@ -5,9 +5,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 import useError from "../../../hooks/useError";
 import useStatusState from "../../../hooks/state/useStatusState";
+import { NavigationProps } from "../../../interface/NavigateProps";
 
+/**
+ * @description Component for user authentication with email and password
+ * @summary This component is used for user authentication with email and password. Can also handle tasks that require re-authentification before proceeding.
+ * @returns {JSX.Element} A form with email and password inputs, remember me option, and submit button
+ */
 const StandardLogin = () => {
-  const {dispatch} = useStatusState();
+  const { dispatch } = useStatusState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -18,22 +24,22 @@ const StandardLogin = () => {
     event.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        const from = location.state?.from?.pahtname || '/'
-        navigate(from)
+        const goTo = (location.state as NavigationProps)?.pathname || "/";
+        navigate(goTo);
       })
       .catch((err: FirebaseError) => {
         errorHandler(err);
         dispatch({
-          group: 'CHANGE',
-          type: 'STATUS',
+          group: "CHANGE",
+          type: "STATUS",
           newError: true,
           newErrorCode: 400,
-          newMessage: "Invalid email or password"
-        })
+          newMessage: "Invalid email or password",
+        });
         dispatch({
-          group: 'CHANGE',
-          type:'DISPLAY',
-          show: true
+          group: "CHANGE",
+          type: "DISPLAY",
+          show: true,
         });
       });
   };

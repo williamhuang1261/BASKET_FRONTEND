@@ -5,7 +5,18 @@ import LogoSlideDiv from "../components/MainPage/LogoSlider/LogoSlideDiv";
 import Description from "../components/MainPage/Description/Description";
 import PopItemsDiv from "../components/MainPage/PopItems/PopItemsDiv";
 
-// Home Page
+/**
+ * @description Landing page of the application
+ * @summary Main sections:
+ * - Main header with navigation
+ * - Advertisement banner
+ * - Partner logos slider
+ * - Feature descriptions
+ * - Popular items section
+ * - Footer
+ * 
+ * @returns {JSX.Element} The home page of the application
+ */
 const HomePage = () => {
   return (
     <>

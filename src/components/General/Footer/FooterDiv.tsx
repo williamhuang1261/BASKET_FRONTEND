@@ -1,7 +1,9 @@
-
 import Logo from "../../NavBar/Logo";
 
-
+/**
+ * @description Footer component displaying site information and navigation links
+ * @returns {JSX.Element} Footer component
+ */
 const FooterDiv = () => {
   return (
     <footer className=" bg-green/80">

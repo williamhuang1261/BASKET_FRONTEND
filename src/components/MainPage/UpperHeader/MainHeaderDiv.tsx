@@ -2,7 +2,11 @@ import LanguageHeader from "./LanguageHeader";
 import GenNavBar from "../../NavBar/GenNavBar";
 import useWindowSize from "../../../hooks/useWindowSize";
 
-// Div for entire header of Home Page
+/**
+ * @description Main header component that contains the language selector and navigation bar
+ * @summary Renders the top section of the home page, including a promotional message and language controls
+ * @returns {JSX.Element} A header containing language selection and navigation components
+ */
 const MainHeaderDiv = () => {
   const winSize = useWindowSize();
   return (

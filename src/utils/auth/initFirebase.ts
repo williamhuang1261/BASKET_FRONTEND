@@ -1,15 +1,16 @@
 import { initializeApp } from "firebase/app";
 import { browserLocalPersistence, getAuth, setPersistence } from "firebase/auth";
+import configData from '../../../config/default.json'
+
+/**
+ * @description Initializes Firebase configuration and authentication
+ * @summary Sets up Firebase app with config and enables local persistence
+ * @exports {object} app - The initialized Firebase app instance
+ * @exports {object} auth - The Firebase authentication instance
+ */
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyAgjvpquqnp9UIRq3t66vKOaaUv7uvD5ww",
-  authDomain: "projectorangetestphase.firebaseapp.com",
-  projectId: "projectorangetestphase",
-  storageBucket: "projectorangetestphase.firebasestorage.app",
-  messagingSenderId: "1042653613547",
-  appId: "1:1042653613547:web:e66b9707bba79bbd1f9dae",
-};
+const firebaseConfig = configData.firebaseConfig;
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

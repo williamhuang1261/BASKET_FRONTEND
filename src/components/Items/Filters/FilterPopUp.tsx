@@ -5,6 +5,11 @@ import LocationFilter from "./LocationFilter";
 import CategoryFilter from "./CategoryFilter";
 import StoreFilter from "./StoreFilter";
 
+/**
+ * @description A popup modal component containing all filter options
+ * @summary Provides a modal interface for all available filters with apply functionality
+ * @returns {JSX.Element} A filter popup component with location, category, and store filters
+ */
 const FilterPopUp = () => {
   const [open, setOpen] = useState(false);
 

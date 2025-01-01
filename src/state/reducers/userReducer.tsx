@@ -110,6 +110,13 @@ export type UserAction = ChangeAction | AddAction | DeleteAction | InitAction;
 
 // Another function should handle the update in the server
 
+/**
+ * @description Reducer function to manage user state in the application
+ * @summary Handles various user-related state changes including profile updates, preferences, filters, and items
+ * @param {UserTransportProp} state - Current user state
+ * @param {UserAction} action - Action object containing group, type and payload
+ * @returns {UserTransportProp} Updated user state
+ */
 const userReducer = (
   state: UserTransportProp,
   action: UserAction,

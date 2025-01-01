@@ -1,5 +1,11 @@
 import CardProps from "../../../interface/CardProps";
 
+/**
+ * @description Formats normal prices for each supplier into a standardized format
+ * @param {Object} props - The component props
+ * @param {Object[]} props.suppliers - Array of supplier information with pricing details
+ * @returns {Array<{supplier: string, normalPrice: string}> | undefined} Formatted price information or undefined if no suppliers
+ */
 const ShowNormal = ({ suppliers }: CardProps) => {
   const output: {
     supplier: string;

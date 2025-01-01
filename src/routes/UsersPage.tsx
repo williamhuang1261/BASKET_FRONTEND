@@ -8,6 +8,17 @@ import PreferencesBox from "../components/Users/PreferencesBox";
 import ProfileBox from "../components/Users/ProfileBox";
 import useUserState from "../hooks/state/useUserState";
 
+/**
+ * @description User profile and settings management page
+ * @summary Main sections:
+ * - Navigation bar
+ * - Profile information box
+ * - Preferences settings
+ * - Account management
+ * - Footer
+ * 
+ * @returns {JSX.Element} User page with profile, preferences, and account settings
+ */
 const UsersPages = () => {
   const { user } = useUserState();
 

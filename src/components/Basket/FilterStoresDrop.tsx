@@ -4,7 +4,11 @@ import Dropdown from "../General/Miscellaneous/Dropdown";
 import Checkbox from "../General/Miscellaneous/Checkbox";
 import useBasketState from "../../hooks/state/useBasketState";
 
-// Filter the selection of stores
+/**
+ * @description Renders a dropdown menu for filtering store selections
+ * @summary Provides a checkbox list of available stores that users can filter
+ * @returns {JSX.Element} The filter stores dropdown component
+ */
 const FilterStoresDrop = () => {
   const { dispatch } = useBasketState();
 

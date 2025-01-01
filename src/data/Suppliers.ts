@@ -1,3 +1,7 @@
+/** 
+ * List of supported supplier/store names in the application
+ * @type {string[]}
+ */
 const suppliers: string[] = [
   "Loblaws",
   "Sobeys",

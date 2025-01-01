@@ -10,6 +10,12 @@ interface Props {
 
 // Drawer
 
+/**
+ * @description Sidebar drawer component for navigation.
+ * @param {Object} props - The properties object.
+ * @param {string} props.size - Size of the drawer trigger button.
+ * @returns {JSX.Element} The drawer component.
+ */
 const Drawer = ({ size }: Props) => {
   const [active, setActive] = useState(false);
   const [mouseOver, setMouseOver] = useState(false);

@@ -5,7 +5,11 @@ import CarouselAd3 from "../../../assets/AdExample(2_3)Red.jpg";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
-// Carousel ad found in the Home Page
+/**
+ * @description A carousel component that displays rotating advertisements with navigation controls.
+ * @summary Automatically rotates through ad images every 5 seconds, with manual controls appearing on hover.
+ * @returns {JSX.Element} A carousel component with navigation arrows and progress indicators.
+ */
 const CarouselAdDiv = () => {
   const [index, setIndex] = useState(0);
   const [mouseOver, setMouseOver] = useState(false);

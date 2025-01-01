@@ -3,7 +3,11 @@ import LoadingCard from "../../Loading/LoadingCard";
 import cards from "./CardEX";
 import { useEffect, useState } from "react";
 
-// Contains all results, show more button
+/**
+ * @description Component that displays a grid of result cards with loading states and pagination
+ * @summary Shows product cards in a responsive grid layout with loading states, ads, and a show more button
+ * @returns {JSX.Element} A grid container with product cards, loading states, and pagination controls
+ */
 const ResultsDiv = () => {
   const [more, setMore] = useState(false);
   const [isLoading, setIsLoading] = useState(true);

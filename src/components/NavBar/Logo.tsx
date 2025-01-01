@@ -1,7 +1,10 @@
 import { IoLogoJavascript } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-// Logo icon with link to Home Page
+/**
+ * @description Logo component that links to the home page.
+ * @returns {JSX.Element} The logo component with home page link.
+ */
 const Logo = () => {
   return (
     <button aria-label="Go to Home Page">

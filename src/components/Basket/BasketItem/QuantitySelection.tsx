@@ -1,3 +1,9 @@
+/**
+ * @description Component that renders a number input for quantity selection.
+ * @summary Allows users to input the desired quantity of an item.
+ * Updates the basket item state when quantity changes.
+ * @returns {JSX.Element} The quantity input field
+ */
 import useBasketItemState from "../../../hooks/state/useBasketItemState";
 
 

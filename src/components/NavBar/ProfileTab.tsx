@@ -5,7 +5,10 @@ import UserContext from "../../state/contexts/UserContext";
 import NotSignedInOptions from "../Auth/NotSignedInOptions";
 import SignedInOptions from "../Auth/SignedInOptions";
 
-// Allows access to profile, profile settings, and sign out button
+/**
+ * @description A profile dropdown component that displays different options based on user authentication status.
+ * @returns {JSX.Element} The profile tab component with dropdown menu.
+ */
 const ProfileTab = () => {
   const {user} = useContext(UserContext)
 

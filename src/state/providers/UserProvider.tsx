@@ -1,3 +1,10 @@
+/**
+ * @description Provider component for user context
+ * @summary Wraps the application with user context provider
+ * @param {Object} props - The properties object
+ * @param {ReactNode} props.children - Child components to be wrapped
+ * @returns {JSX.Element} A provider component that supplies user context
+ */
 import { ReactNode, useReducer } from "react";
 import UserContext from "../contexts/UserContext";
 import userReducer from "../reducers/userReducer";

@@ -11,6 +11,17 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import useError from "../hooks/useError";
 
+/**
+ * @description User authentication page
+ * @summary Main sections:
+ * - Navigation bar
+ * - Login form
+ * - Sign up link
+ * - Social login options
+ * - Error handling
+ * 
+ * @returns {JSX.Element} Login page with multiple authentication methods
+ */
 const UserLoginPage = () => {
   const location = useLocation();
   const errorHandler = useError();

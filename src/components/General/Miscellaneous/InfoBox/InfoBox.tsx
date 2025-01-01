@@ -2,6 +2,14 @@ import { ImInfo } from "react-icons/im";
 import { ReactNode, useState } from "react";
 import { IoClose } from "react-icons/io5";
 
+/**
+ * @description A modal information box that displays additional details when clicked
+ * @param {Object} props - The properties object
+ * @param {ReactNode} props.children - The content to display in the info box
+ * @param {number} props.iconSize - The size of the information icon
+ * @param {string} props.title - The title displayed at the top of the info box
+ * @returns {JSX.Element} An info icon that opens a modal with additional information
+ */
 interface Props {
   children: ReactNode;
   iconSize: number;

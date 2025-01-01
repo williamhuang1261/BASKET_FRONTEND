@@ -6,7 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { FirebaseError } from "firebase/app";
+import {NavigationProps} from "../../interface/NavigateProps";
 
+/**
+ * @description Hook to handle account deletion
+ * @returns {() => Promise<void>} Async function that handles the account deletion process
+ * @summary Deletes user account from both backend and Firebase, handles re-authentication if needed
+ */
 const useAccountDelete = () => {
   const queryClient = useQueryClient();
   const { dispatch } = useUserState();
@@ -40,13 +46,13 @@ const useAccountDelete = () => {
       if (err instanceof FirebaseError && err.code === "auth/requires-recent-login") {
         navigate("/user-login", {
           state: {
-            from: "/account/delete",
+            pathname: "/users",
             error: {
               message: "You must re-authenticate to delete your account",
               code: 401,
               hideHome: true
             },
-          },
+          } as NavigationProps,
         });
         return;
       }

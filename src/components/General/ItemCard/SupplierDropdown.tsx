@@ -7,6 +7,12 @@ interface Props {
   filtered: PriceProps | string;
 }
 
+/**
+ * @description A dropdown component that displays suppliers and their prices
+ * @param {Object} props - The properties object
+ * @param {PriceProps | string} props.filtered - The filtered price data or error message
+ * @returns {JSX.Element | string | undefined} The dropdown component, error message, or undefined
+ */
 const SupplierDropdown = ({ filtered }: Props) => {
   const [open, setOpen] = useState(false);
   const [mouseOver, setMouseOver] = useState(false);

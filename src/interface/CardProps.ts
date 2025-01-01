@@ -1,5 +1,9 @@
 import { AmountProp, NameProp, RefProp, SuppliersProp } from "./Destructed";
 
+/**
+ * @description Properties for product card display components
+ * @interface CardProps
+ */
 interface CardProps {
   id?: string
   name?: NameProp;

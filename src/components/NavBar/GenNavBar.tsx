@@ -28,6 +28,14 @@ interface Props {
   size: "Full" | "Container";
 }
 
+/**
+ * @description Generic navbar component with configurable elements.
+ * @param {Object} props - The properties object.
+ * @param {Array<"Side"|"SearchBar"|"Calc"|"Language"|"Profile"|"Location"|"Search"|"SideForSmall">} [props.hidden] - Elements to hide from navbar.
+ * @param {"Main"|"General"} [props.page] - Preset page configuration.
+ * @param {"Full"|"Container"} props.size - Width configuration of navbar.
+ * @returns {JSX.Element} The generic navbar component.
+ */
 const GenNavBar = ({ hidden, page, size }: Props) => {
   const searchBarHidden: ("Search" | "Location")[] = [];
   const winSize = useWindowSize();

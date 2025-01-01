@@ -21,6 +21,11 @@ interface UserModifProp {
   };
 }
 
+/**
+ * @description Internal function to handle user settings modification request
+ * @param {UserModifProp} req - The user modification request object
+ * @returns {Promise<void>} A promise that resolves when the modification is complete
+ */
 const fn = (req: UserModifProp) => {
   const { name, email, location, preferences } = req;
   if (!(name || email || location || preferences)) {
@@ -38,6 +43,10 @@ const fn = (req: UserModifProp) => {
   return UserServices.put("/info", {}, load).then();
 };
 
+/**
+ * @description Custom hook to handle user settings modifications
+ * @returns {Object} Object containing the putUserInfo function
+ */
 const useUserSettingsModif = () => {
   const queryClient = useQueryClient();
 

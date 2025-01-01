@@ -7,7 +7,11 @@ import ItemCard from "../General/ItemCard/ItemCard";
 import items from "../../data/ItemsEX";
 import useWindowSize from "../../hooks/useWindowSize";
 
-// Div containing flyers
+/**
+ * @description Container component for flyer display with zoom controls and navigation
+ * @summary Provides navigation arrows, zoom controls, and modal item display for mobile
+ * @returns {JSX.Element} Container with flyer controls and optional mobile item modal
+ */
 const FlyerContainer = () => {
   const [open, setOpen] = useState(true);
   const winSize = useWindowSize();

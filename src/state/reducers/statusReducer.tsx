@@ -23,6 +23,13 @@ interface showStatus {
 
 export type StatusAction = SetStatus | showStatus;
 
+/**
+ * @description Reducer function to manage application status state
+ * @summary Handles status changes including error states, messages, and display settings
+ * @param {StatusProp} state - Current status state
+ * @param {StatusAction} action - Action object containing group, type and payload
+ * @returns {StatusProp} Updated status state
+ */
 const statusReducer = (state: StatusProp, action: StatusAction): StatusProp => {
   switch (action.group) {
     case 'CHANGE':
