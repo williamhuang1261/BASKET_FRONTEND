@@ -1,6 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { browserLocalPersistence, getAuth, setPersistence } from "firebase/auth";
-import configData from '../../../config/default.json'
+import {
+  browserLocalPersistence,
+  getAuth,
+  setPersistence,
+} from "firebase/auth";
+import configData from "../../../config/default.json";
 
 /**
  * @description Initializes Firebase configuration and authentication
@@ -11,7 +15,7 @@ import configData from '../../../config/default.json'
 
 // Your web app's Firebase configuration
 
-const firebaseConfig = configData.firebaseConfig
+const firebaseConfig = configData.firebaseConfig;
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
