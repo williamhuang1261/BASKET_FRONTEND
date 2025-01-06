@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import useError from "../../../hooks/useError";
 import useGetUser from "../../../hooks/user_account/useGetUser";
-import {NavigationProps} from "../../../interface/NavigateProps";
+import useCustomNavigation from "../../../hooks/useCustomNavigation";
 
 interface SocialLoginProps {
   type: "Sign in" | "Sign up";
@@ -35,9 +34,8 @@ const SocialLogin = ({
   color,
 }: SocialLoginProps) => {
   const [mouseOver, setMouseOver] = useState(false);
-  const navigate = useNavigate();
+  const { nav } = useCustomNavigation();
   const errorHandler = useError();
-  const location = useLocation();
   const getUser = useGetUser();
 
   const clickHandler = () => {
@@ -45,9 +43,9 @@ const SocialLogin = ({
       .then(() => {
         getUser()
           .then(() => {
-            const goTo = (location.state as NavigationProps)?.pathname || "/";
-            navigate(goTo);
-            window.location.reload();
+            nav().then(() => {
+              window.location.reload();
+            });
           })
           .catch(() => {
             errorHandler({

@@ -29,7 +29,7 @@ const Information = () => {
       {info.map((i) => (
         <div className="flex flex-col gap-1" key={i.title}>
           <h2 className="text-xl font-bold">{i.title}</h2>
-          <p>{i.body}</p>
+          <span>{i.body}</span>
         </div>
       ))}
     </div>

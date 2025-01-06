@@ -47,7 +47,7 @@ const useGetUser = () => {
   };
 
   return async () => {
-    try{
+    try {
       if (!auth.currentUser) {
         onAuthStateChanged(auth, async () => {
           if (auth.currentUser) {
@@ -57,8 +57,7 @@ const useGetUser = () => {
       } else {
         await handleRequest();
       }
-    }
-    catch (err) {
+    } catch (err) {
       handleErr(err as AxiosError);
     }
   };

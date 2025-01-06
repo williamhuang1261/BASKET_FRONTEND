@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 import useStatusState from "./state/useStatusState";
 import { FirebaseError } from "firebase/app";
 
-type GenericError = {
+export type GenericError = {
   code: number | string;
   message: string;
 };
@@ -46,16 +46,16 @@ const useError = () => {
 
     dispatch({
       group: "CHANGE",
-      type: "DISPLAY",
-      show: true,
-      hideHome: hideHome ? true : false,
-    });
-    dispatch({
-      group: "CHANGE",
       type: "STATUS",
       newError: true,
       newErrorCode: code,
       newMessage: message,
+    });
+    dispatch({
+      group: "CHANGE",
+      type: "DISPLAY",
+      show: true,
+      hideHome: hideHome ? true : false,
     });
   };
 

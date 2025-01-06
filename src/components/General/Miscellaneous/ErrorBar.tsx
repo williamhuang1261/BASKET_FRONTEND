@@ -1,7 +1,9 @@
 import { IoClose } from "react-icons/io5";
-import useStatusState from "../../../hooks/state/useStatusState";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import useStatusState from "../../../hooks/state/useStatusState";
+import { CustomLocationState } from "../../../interface/NavigateProps";
+import useError from "../../../hooks/useError";
 
 /**
  * @description A sticky error notification bar that displays at the top of the page
@@ -16,6 +18,7 @@ interface Props {
 const ErrorBar = ({ size }: Props) => {
   const { status, dispatch } = useStatusState();
   const location = useLocation();
+  const errHandler = useError();
 
   const handleClick = () => {
     dispatch({
@@ -29,9 +32,12 @@ const ErrorBar = ({ size }: Props) => {
     dispatch({
       group: "CHANGE",
       type: "DISPLAY",
-      show: false,
-    });
-  }, [location, dispatch]);
+      show: false
+    })
+    if ((location.state as CustomLocationState)?.currErr) {
+      errHandler(location.state?.currErr)
+    }
+  }, [location.pathname, location.state]);
 
   return (
     <div className="sticky top-0 z-50 w-full bg-red-500">

@@ -39,26 +39,15 @@ const Contact = () => {
         <select
           aria-label="Subject of inquiry"
           className="mb-2 rounded border bg-white p-1 outline-none"
+          defaultValue={""}
         >
-          <option value="" selected></option>
-          <option value="Account">
-            <p>Account</p>
-          </option>
-          <option value="Bug / Issue">
-            <p>Bug / Issue</p>
-          </option>
-          <option value="Career">
-            <p>Career</p>
-          </option>
-          <option value="Partnership">
-            <p>Partnership</p>
-          </option>
-          <option value="Review">
-            <p>Review</p>
-          </option>
-          <option value="Other">
-            <p>Other</p>
-          </option>
+          <option value=""></option>
+          <option value="Account">Account</option>
+          <option value="Bug / Issue">Bug / Issue</option>
+          <option value="Career">Career</option>
+          <option value="Partnership">Partnership</option>
+          <option value="Review">Review</option>
+          <option value="Other">Other</option>
         </select>
         <h3 className="text-lg">What are you reaching out about today?</h3>
         <textarea className="mb-2 h-32 w-full rounded border bg-white p-2 outline-none"></textarea>

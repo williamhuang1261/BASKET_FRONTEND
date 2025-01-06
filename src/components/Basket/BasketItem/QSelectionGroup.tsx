@@ -8,7 +8,7 @@ import useUserState from "../../../hooks/state/useUserState";
  * @summary Manages the state and interactions between measurement method, units, and quantity.
  * Syncs changes with both basket item state and user preferences.
  * @param {Object} props - The properties object
- * @param {string} props.id - Unique identifier for the selection group
+ * @param {string} props.id - Unique identifier for the selection group (The item's id)
  * @returns {JSX.Element} The grouped selection controls
  */
 interface Props {

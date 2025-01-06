@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
-import { Link } from "react-router-dom";
 import categories from "../../data/Categories";
+import useCustomNavigation from "../../hooks/useCustomNavigation";
 
 interface Props {
   size: string;
@@ -19,6 +19,7 @@ interface Props {
 const Drawer = ({ size }: Props) => {
   const [active, setActive] = useState(false);
   const [mouseOver, setMouseOver] = useState(false);
+  const { directNav } = useCustomNavigation();
 
   // Open and close logics
   const [open, setOpen] = useState(false);
@@ -66,9 +67,12 @@ const Drawer = ({ size }: Props) => {
           <div className="flex-max flex flex-col gap-1 overflow-y-auto p-3">
             {/* Links */}
             <div className="cursor-pointer rounded p-1 px-2 text-xl font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green">
-              <Link to={"/"} aria-label="Go back to Home Page">
+              <div
+                onClick={() => directNav({ pathname: "/" })}
+                aria-label="Go back to Home Page"
+              >
                 Home
-              </Link>
+              </div>
             </div>
             <div className="">
               {/* Categories  */}
@@ -85,33 +89,42 @@ const Drawer = ({ size }: Props) => {
                   className="flex flex-col"
                 >
                   {categories.map((c) => (
-                    <Link
-                      to={"/items"}
+                    <div
+                      onClick={() => directNav({ pathname: `/items` })}
                       key={c}
                       aria-label="Go to Item Results Page"
                       className=" mx-4 cursor-pointer rounded border-b-0.5 border-light_gray p-2 text-lg hover:bg-light_gray hover:text-green"
                     >
                       {c}
-                    </Link>
+                    </div>
                   ))}
                 </div>
               )}
             </div>
             {/* Continue normal links */}
             <div className="cursor-pointer rounded p-1 px-2 text-xl font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green">
-              <Link to={"/flyers"} aria-label="Go to Flyers result Page">
+              <div
+                onClick={() => directNav({ pathname: "/flyers" })}
+                aria-label="Go to Flyers result Page"
+              >
                 Flyers
-              </Link>
+              </div>
             </div>
             <div className="cursor-pointer rounded p-1 px-2 text-xl font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green">
-              <Link to={"/basket"} aria-label="Go to Basket Calculator Page">
+              <div
+                onClick={() => directNav({ pathname: "/basket" })}
+                aria-label="Go to Basket Calculator Page"
+              >
                 Calculator
-              </Link>
+              </div>
             </div>
             <div className="cursor-pointer rounded p-1 px-2 text-xl font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green">
-              <Link to={"/about"} aria-label="Go to About Page">
+              <div
+                onClick={() => directNav({ pathname: "/about" })}
+                aria-label="Go to About Page"
+              >
                 About
-              </Link>
+              </div>
             </div>
           </div>
         </div>

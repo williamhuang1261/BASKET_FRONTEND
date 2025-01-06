@@ -7,9 +7,7 @@ import loginMicrosoft from "../utils/auth/loginMicrosoft";
 import microsoftLogo from "../assets/Microsoft_logo.svg";
 import googleLogo from "../assets/Google__G__logo.svg";
 import facebookLogo from "../assets/Facebook_Logo_Primary.png";
-import { Link, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import useError from "../hooks/useError";
+import { Link } from "react-router-dom";
 
 /**
  * @description User authentication page
@@ -23,15 +21,6 @@ import useError from "../hooks/useError";
  * @returns {JSX.Element} Login page with multiple authentication methods
  */
 const UserLoginPage = () => {
-  const location = useLocation();
-  const errorHandler = useError();
-
-  useEffect(() => {
-    if (location.state?.error) {
-      console.log(location.state.error, location.state.error.hideHome || false)
-      errorHandler(location.state.error, location.state.error.hideHome || false);
-    }
-  }, []);
 
   return (
     <div className="flex h-screen flex-col">

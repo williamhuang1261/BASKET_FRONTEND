@@ -1,21 +1,26 @@
-import { Location } from "react-router-dom";
+import { ListNode } from "../classes/LinkedList";
 
-/**
- * @description Properties required for navigation events including error handling and callbacks
- * @typedef NavigationProps
- */
 export type NavigationProps = {
-    pathname: string | Location<any>;
-    error?: {
-      message: string;
-      code: number;
-    }
-    callback?: () => void;
-    promiseFn?: () => Promise<void>;
+  /** The target path or location to navigate to */
+  pathname: string;
+  /** Error information if navigation fails */
+  error?: {
+    /** Error message to display */
+    message: string;
+    /** Error code for identifying the type of error */
+    code: number;
+    /** Optional flag to hide the home button */
+    hideHome?: boolean;
+  };
+  /** Optional callback function to execute during navigation */
+  callback?: () => void;
+  /** Optional promise function to execute during navigation */
+  promiseFn?: () => Promise<void>;
 };
 
-/**
- * @description Queue of navigation events to be processed
- * @typedef NavigationQueue
- */
-export type NavigationQueue = NavigationProps[]
+export type NavigationLinkedList = ListNode<NavigationProps>;
+
+export type CustomLocationState = {
+  paths: NavigationLinkedList | null;
+  currErr: NavigationProps["error"] | null
+};

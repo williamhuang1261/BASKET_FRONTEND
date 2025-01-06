@@ -19,6 +19,7 @@ const initStatus: StatusProp = {
   errorCode: 200,
   message: "",
   hideHome: false,
+  loading: false,
 }
 
 const StatusProvider = ({ children }: Props) => {

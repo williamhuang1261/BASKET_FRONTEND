@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import PasswordCriteriaBox from "./PasswordCriteriaBox";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../utils/auth/initFirebase";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
-import useStatusState from "../../../hooks/state/useStatusState";
+import useError from "../../../hooks/useError";
+import useCustomNavigation from "../../../hooks/useCustomNavigation";
 
 /**
  * @description Component for user registration with email and password
@@ -17,17 +18,17 @@ import useStatusState from "../../../hooks/state/useStatusState";
  *    + Contains a number
  *    + Contains any of the following special characters: !@#$%^&*(),.?":{}|<>
  * - Confirm password
- * 
+ *
  * @returns {JSX.Element} A form with email and password inputs, password criteria validation, and submit button
  */
 const SignUp = () => {
-  const { dispatch } = useStatusState();
+  const errHandler = useError();
+  const { nav } = useCustomNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showCriteria, setShowCriteria] = useState(false);
   const [confirm_password, setConfirmPassword] = useState("");
   const [alreadyExists, setAlreadyExists] = useState(false);
-  const navigate = useNavigate();
 
   const criteria = [
     {
@@ -55,24 +56,13 @@ const SignUp = () => {
     event.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
-        navigate("/");
+        nav();
       })
       .catch((err: FirebaseError) => {
         if (err.code === "auth/email-already-in-use") {
           setAlreadyExists(true);
         } else {
-          dispatch({
-            group: "CHANGE",
-            type: "STATUS",
-            newError: true,
-            newErrorCode: err.message,
-            newMessage: err.code,
-          });
-          dispatch({
-            group: "CHANGE",
-            type: "DISPLAY",
-            show: true,
-          });
+          errHandler(err)
         }
       });
   };

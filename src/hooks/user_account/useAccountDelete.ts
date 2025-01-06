@@ -2,11 +2,10 @@ import { deleteUser, getAuth } from "firebase/auth";
 import { UserServices } from "../../services/restricted-service";
 import useUserState from "../state/useUserState";
 import useError from "../useError";
-import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { FirebaseError } from "firebase/app";
-import {NavigationProps} from "../../interface/NavigateProps";
+import useCustomNavigation from "../useCustomNavigation";
 
 /**
  * @description Hook to handle account deletion
@@ -17,8 +16,8 @@ const useAccountDelete = () => {
   const queryClient = useQueryClient();
   const { dispatch } = useUserState();
   const errorHandler = useError();
-  const navigate = useNavigate();
   const auth = getAuth();
+  const { add, nav } = useCustomNavigation();
 
   return async () => {
     // Delete the user account
@@ -40,23 +39,23 @@ const useAccountDelete = () => {
         type: "LOGIN_STATUS",
         status: false,
       });
-      navigate("/");
+      nav();
       window.location.reload();
     } catch (err) {
-      if (err instanceof FirebaseError && err.code === "auth/requires-recent-login") {
-        navigate("/user-login", {
-          state: {
-            pathname: "/users",
-            error: {
-              message: "You must re-authenticate to delete your account",
-              code: 401,
-              hideHome: true
-            },
-          } as NavigationProps,
+      if (
+        err instanceof FirebaseError &&
+        err.code === "auth/requires-recent-login"
+      ) {
+        add({
+          pathname: "/user-login",
+          error: {
+            message: "You must re-authenticate to delete your account",
+            code: 401,
+            hideHome: true,
+          },
         });
         return;
-      }
-      else {
+      } else {
         errorHandler(err as AxiosError | FirebaseError);
       }
     }

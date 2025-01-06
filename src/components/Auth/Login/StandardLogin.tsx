@@ -1,11 +1,10 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../../../utils/auth/initFirebase";
-import { useLocation, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 import useError from "../../../hooks/useError";
 import useStatusState from "../../../hooks/state/useStatusState";
-import { NavigationProps } from "../../../interface/NavigateProps";
+import useCustomNavigation from "../../../hooks/useCustomNavigation";
 
 /**
  * @description Component for user authentication with email and password
@@ -14,18 +13,16 @@ import { NavigationProps } from "../../../interface/NavigateProps";
  */
 const StandardLogin = () => {
   const { dispatch } = useStatusState();
+  const {nav} = useCustomNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   const errorHandler = useError();
-  const location = useLocation();
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        const goTo = (location.state as NavigationProps)?.pathname || "/";
-        navigate(goTo);
+        nav();
       })
       .catch((err: FirebaseError) => {
         errorHandler(err);

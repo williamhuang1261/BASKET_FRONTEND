@@ -12,7 +12,7 @@ const App = () => {
   const getUser = useGetUser();
 
   useEffect(() => {
-    getUser().then(() => console.log("Startup complete"));
+    getUser();
   }, []);
 
   return <RouterProvider router={router} />;

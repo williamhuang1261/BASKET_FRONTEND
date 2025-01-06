@@ -3,25 +3,32 @@ export interface StatusProp {
   error: boolean;
   errorCode: number | string;
   message: string;
-  hideHome: boolean
+  hideHome: boolean;
+  loading: boolean;
 }
 
 interface SetStatus {
-  group: 'CHANGE',
-  type: 'STATUS',
-  newError?: boolean,
-  newErrorCode?: number | string,
-  newMessage?: string
+  group: "CHANGE";
+  type: "STATUS";
+  newError?: boolean;
+  newErrorCode?: number | string;
+  newMessage?: string;
 }
 
 interface showStatus {
-  group: 'CHANGE',
-  type: 'DISPLAY',
-  show: boolean,
-  hideHome?: boolean
+  group: "CHANGE";
+  type: "DISPLAY";
+  show: boolean;
+  hideHome?: boolean;
 }
 
-export type StatusAction = SetStatus | showStatus;
+interface setLoadStatus {
+  group: "CHANGE";
+  type: "LOADING";
+  loading: boolean;
+}
+
+export type StatusAction = SetStatus | showStatus | setLoadStatus;
 
 /**
  * @description Reducer function to manage application status state
@@ -32,28 +39,33 @@ export type StatusAction = SetStatus | showStatus;
  */
 const statusReducer = (state: StatusProp, action: StatusAction): StatusProp => {
   switch (action.group) {
-    case 'CHANGE':
-      switch(action.type) {
-        case 'STATUS':
+    case "CHANGE":
+      switch (action.type) {
+        case "STATUS":
           return {
             ...state,
             error: action.newError ?? state.error,
             errorCode: action.newErrorCode ?? state.errorCode,
-            message: action.newMessage ?? state.message
-          }
-        case 'DISPLAY':
+            message: action.newMessage ?? state.message,
+          };
+        case "DISPLAY":
           return {
             ...state,
             show: action.show,
-            hideHome: action.hideHome ?? state.hideHome
-          }
+            hideHome: action.hideHome ?? state.hideHome,
+          };
+        case "LOADING": {
+          return {
+            ...state,
+            loading: action.loading,
+          };
+        }
         default:
-          return state
+          return state;
       }
     default:
-      return state
+      return state;
   }
-}
-
+};
 
 export default statusReducer;

@@ -12,8 +12,7 @@ import {
   verifyBeforeUpdateEmail,
 } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
-import { useLocation, useNavigate } from "react-router-dom";
-import {NavigationProps} from "../../interface/NavigateProps";
+import useCustomNavigation from "../../hooks/useCustomNavigation";
 
 /**
  * @description Component that handles email modification with Firebase authentication
@@ -21,11 +20,10 @@ import {NavigationProps} from "../../interface/NavigateProps";
  */
 const EmailModif = () => {
   const { user, dispatch } = useUserState();
+  const {add, nav} = useCustomNavigation();
   const [isLoading, setLoading] = useState(false);
   const queryClient = useQueryClient();
   const errorHandler = useError();
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const fn = async (v: string) => {
     try {
@@ -46,15 +44,14 @@ const EmailModif = () => {
       return null;
     } catch (err) {
       if ((err as FirebaseError).code === "auth/requires-recent-login") {
-        navigate("/user-login", {
-          state: {
-            pathname: location,
-            error: {
-              message: "You must be logged in to view this page",
-              code: 401,
-            },
-          } as NavigationProps,
+        add({
+          pathname: "/user-login",
+          error: {
+            message: "You must reauthenticate to change your email",
+            code: 401,
+          },
         });
+        nav();
       }
       setLoading(false);
       errorHandler(err as AxiosError);
