@@ -1,5 +1,5 @@
 import useBasketState from "../../hooks/state/useBasketState";
-import InfoBox from "../General/Miscellaneous/InfoBox/InfoBox";
+import InfoBox from "../General/Miscellaneous/InfoBox";
 import ChangeLocation from "./ChangeLocation";
 import FilterStoresDrop from "./FilterStoresDrop";
 import MaxStoresSelect from "./MaxStoresSelect";
@@ -11,7 +11,7 @@ import MaxStoresSelect from "./MaxStoresSelect";
  * - Filtering stores
  * - Setting maximum number of stores
  * - Changing location
- * 
+ *
  * @returns {JSX.Element} Header section with banner and filter controls
  */
 const BasketHeader = () => {
@@ -20,7 +20,7 @@ const BasketHeader = () => {
   return (
     <div className="">
       <div
-        className="flex h-16 items-center justify-center gap-3 rounded border-0.5 bg-green/80 md:h-24 lg:h-32 shadow-md"
+        className="flex h-16 items-center justify-center gap-3 rounded border-0.5 bg-green/80 shadow-md md:h-24 lg:h-32"
         onClick={() => console.log(basket)}
       >
         <h1 className="3xl:text-gray-4xl text-xl font-bold lg:text-3xl">

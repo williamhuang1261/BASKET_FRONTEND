@@ -1,6 +1,7 @@
-import LanguageHeader from "./LanguageHeader";
 import GenNavBar from "../../NavBar/GenNavBar";
 import useWindowSize from "../../../hooks/useWindowSize";
+import LanguageSelect from "../../Users/LanguageSelect";
+import Spinner from "../../General/Miscellaneous/Spinner";
 
 /**
  * @description Main header component that contains the language selector and navigation bar
@@ -18,7 +19,12 @@ const MainHeaderDiv = () => {
               <p className="">
                 Find the best deals for your groceries - Optimize your shopping
               </p>
-              <LanguageHeader />
+              <LanguageSelect
+                id="header"
+                loadingComponent={<Spinner color="dark_gray" size={"2"} />}
+                selectClassName="cursor-pointer rounded-none border-none bg-green/5 outline-none hover:text-black/50"
+                optionClassName="bg-white text-black"
+              />
             </div>
           </div>
         )}

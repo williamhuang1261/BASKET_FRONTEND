@@ -6,7 +6,7 @@ import UserTransportProp from "../interface/UserTransportProp";
  */
 const DummyUser: UserTransportProp = {
   meta: {
-    name: "",
+    name: "User",
     email: "",
     location: {
       country: "Canada",

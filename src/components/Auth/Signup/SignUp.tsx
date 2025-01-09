@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import PasswordCriteriaBox from "./PasswordCriteriaBox";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../utils/auth/initFirebase";
-import { Link } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 import useError from "../../../hooks/useError";
 import useCustomNavigation from "../../../hooks/useCustomNavigation";
+import CustomDirectNav from "../../General/Miscellaneous/CustomDirectNav";
 
 /**
  * @description Component for user registration with email and password
@@ -139,9 +139,9 @@ const SignUp = () => {
         {alreadyExists && (
           <h2 className="text-red-500">
             {"This email is already in use. Try "}
-            <Link to="/user-login" className="text-blue-500 underline">
+            <CustomDirectNav pathname="/user-login" className="text-blue-500 underline">
               {"Login"}
-            </Link>
+            </CustomDirectNav>
           </h2>
         )}
       </form>

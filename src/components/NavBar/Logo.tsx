@@ -1,5 +1,5 @@
 import { IoLogoJavascript } from "react-icons/io";
-import { Link } from "react-router-dom";
+import CustomDirectNav from "../General/Miscellaneous/CustomDirectNav";
 
 /**
  * @description Logo component that links to the home page.
@@ -7,14 +7,12 @@ import { Link } from "react-router-dom";
  */
 const Logo = () => {
   return (
-    <button aria-label="Go to Home Page">
-      <Link to="/" aria-label="Go back to Home Page">
-        <IoLogoJavascript
-          size="50"
-          className="transition-all duration-150 hover:text-green"
-        />
-      </Link>
-    </button>
+    <CustomDirectNav aria-label="Go to Home Page" pathname="/">
+      <IoLogoJavascript
+        size="50"
+        className="transition-all duration-150 hover:text-green"
+      />
+    </CustomDirectNav>
   );
 };
 

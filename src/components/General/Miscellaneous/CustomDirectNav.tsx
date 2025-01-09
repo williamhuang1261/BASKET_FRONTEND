@@ -1,27 +1,21 @@
 import useCustomNavigation from "../../../hooks/useCustomNavigation";
 import { NavigationProps } from "../../../interface/NavigateProps";
 
-/**
- * Props type extending NavigationProps and HTML div element attributes
- */
-type Prop = NavigationProps & React.HTMLAttributes<HTMLDivElement>;
+type Prop = NavigationProps & React.HTMLAttributes<HTMLButtonElement>;
 
 /**
- * A custom navigation component that handles direct navigation with additional functionality
- * @param {string} pathname - The target route path
- * @param {string} [error] - Optional error message to display
- * @param {Function} [callback] - Optional callback function to execute after navigation
- * @param {Function} [promiseFn] - Optional promise function to execute before navigation
- * @param {React.ReactNode} children - Child elements to render within the component
- * @param {React.HTMLAttributes<HTMLDivElement>} rest - Additional HTML div attributes
- * @returns {JSX.Element} A div element with navigation capabilities
- * @see useCustomNavigation.ts - For the custom navigation hook
- * @see NavigateProps.ts - For the navigation properties interface
- * @see directNav - For the navigation function
+ * Custom button component that handles navigation with optional callbacks and error handling
+ * @param {Object} props - Component properties
+ * @param {string} props.pathname - Target route path
+ * @param {string} [props.error] - Error message to display if navigation fails
+ * @param {Function} [props.callback] - Function to execute after successful navigation
+ * @param {Function} [props.promiseFn] - Promise to resolve before navigation
+ * @param {React.ReactNode} props.children - Button content
+ * @returns {JSX.Element} Navigation button
  * @example
  * <CustomDirectNav pathname='/'>Home</CustomDirectNav>
  * // is equivalent to
- * <div onClick={() => directNav({ pathname: '/' })}>Home</div>
+ * <button onClick={() => directNav({ pathname: '/' })}>Home</button>
  */
 const CustomDirectNav = ({
   pathname,
@@ -34,12 +28,12 @@ const CustomDirectNav = ({
   const { directNav } = useCustomNavigation();
 
   return (
-    <div
+    <button
       {...rest}
       onClick={() => directNav({ pathname, error, callback, promiseFn })}
     >
       {children}
-    </div>
+    </button>
   );
 };
 

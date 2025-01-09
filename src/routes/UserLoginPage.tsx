@@ -7,7 +7,7 @@ import loginMicrosoft from "../utils/auth/loginMicrosoft";
 import microsoftLogo from "../assets/Microsoft_logo.svg";
 import googleLogo from "../assets/Google__G__logo.svg";
 import facebookLogo from "../assets/Facebook_Logo_Primary.png";
-import { Link } from "react-router-dom";
+import CustomDirectNav from "../components/General/Miscellaneous/CustomDirectNav";
 
 /**
  * @description User authentication page
@@ -17,11 +17,10 @@ import { Link } from "react-router-dom";
  * - Sign up link
  * - Social login options
  * - Error handling
- * 
+ *
  * @returns {JSX.Element} Login page with multiple authentication methods
  */
 const UserLoginPage = () => {
-
   return (
     <div className="flex h-screen flex-col">
       <GenNavBar
@@ -42,11 +41,13 @@ const UserLoginPage = () => {
             <h2 className="w-full text-2xl font-bold">Login to The Basket</h2>
             <div className="flex w-full gap-2 py-2">
               <h3>Don't have an account yet? </h3>
-              <button className="font-bold underline transition-all duration-150 ease-in-out hover:text-green">
-                <Link to="/user-signup">
-                  <h2>Sign Up</h2>
-                </Link>
-              </button>
+              <CustomDirectNav
+                pathname="/user-signup"
+                aria-label="Go to Sign Up Page"
+                className="font-bold underline transition-all duration-150 ease-in-out hover:text-green"
+              >
+                <h2>Sign Up</h2> 
+              </CustomDirectNav>
             </div>
           </div>
           <div className="">

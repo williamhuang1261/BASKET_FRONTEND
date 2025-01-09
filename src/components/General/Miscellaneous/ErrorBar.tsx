@@ -1,9 +1,10 @@
 import { IoClose } from "react-icons/io5";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import useStatusState from "../../../hooks/state/useStatusState";
 import { CustomLocationState } from "../../../interface/NavigateProps";
 import useError from "../../../hooks/useError";
+import CustomDirectNav from "./CustomDirectNav";
 
 /**
  * @description A sticky error notification bar that displays at the top of the page
@@ -32,12 +33,12 @@ const ErrorBar = ({ size }: Props) => {
     dispatch({
       group: "CHANGE",
       type: "DISPLAY",
-      show: false
-    })
+      show: false,
+    });
     if ((location.state as CustomLocationState)?.currErr) {
-      errHandler(location.state?.currErr)
+      errHandler(location.state?.currErr);
     }
-  }, [location.pathname, location.state]);
+  }, [location.pathname]);
 
   return (
     <div className="sticky top-0 z-50 w-full bg-red-500">
@@ -47,10 +48,10 @@ const ErrorBar = ({ size }: Props) => {
         >
           <h3 className="">
             Error: {status.message} ({status.errorCode}){" "}
-            {status.hideHome ? null : (
-              <Link className="font-bold underline" to="/">
+            {status.hideHome || location.pathname === '/' ? null : (
+              <CustomDirectNav className="font-bold underline" pathname="/">
                 Return to Home Page
-              </Link>
+              </CustomDirectNav>
             )}
           </h3>
           <button

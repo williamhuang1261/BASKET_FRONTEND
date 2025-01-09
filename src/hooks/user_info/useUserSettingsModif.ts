@@ -1,9 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
-import {
-  distanceUnitsType,
-  weightUnitsType,
-} from "../../../interface/UnitsProp";
-import { UserServices } from "../../../services/restricted-service";
+import { distanceUnitsType, weightUnitsType } from "../../interface/UnitsProp";
+import { UserServices } from "../../services/restricted-service";
 
 interface UserModifProp {
   name?: string;
@@ -15,9 +12,9 @@ interface UserModifProp {
     formattedAddress: string;
   };
   preferences?: {
-    weightUnits: weightUnitsType;
-    distUnits: distanceUnitsType;
-    language: "fr" | "en";
+    weightUnits?: weightUnitsType;
+    distUnits?: distanceUnitsType;
+    language?: "fr" | "en";
   };
 }
 
@@ -40,18 +37,41 @@ const fn = (req: UserModifProp) => {
     preferences,
   };
 
-  return UserServices.put("/info", {}, load).then();
+  return UserServices.put("/info/me", {}, load).then();
 };
 
 /**
  * @description Custom hook to handle user settings modifications
  * @returns {Object} Object containing the putUserInfo function
+
  */
 const useUserSettingsModif = () => {
   const queryClient = useQueryClient();
 
-  const putUserInfo = (req: UserModifProp) => {
-    queryClient.fetchQuery({
+  /**
+   *
+   * @param req
+   * @example
+   * // Must be of form
+   * const { putUserInfo } = useUserSettingsModif();
+   * putUserInfo({
+   *   name?: string;
+   *   email?: string;
+   *   location?: {
+   *     country: "Canada" | "USA";
+   *     type: "Point";
+   *     coordinates: [number, number];
+   *     formattedAddress: string;
+   *   };
+   *   preferences?: {
+   *      weightUnits: weightUnitsType;
+   *      distUnits: distanceUnitsType;
+   *      language: "fr" | "en";
+   *   };
+   * });
+   */
+  const putUserInfo = async (req: UserModifProp) => {
+    await queryClient.fetchQuery({
       queryKey: ["user", "settings", "update"],
       queryFn: () => fn(req),
     });

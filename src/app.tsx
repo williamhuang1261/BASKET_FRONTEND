@@ -12,7 +12,7 @@ const App = () => {
   const getUser = useGetUser();
 
   useEffect(() => {
-    getUser();
+    getUser()
   }, []);
 
   return <RouterProvider router={router} />;

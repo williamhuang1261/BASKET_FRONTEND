@@ -45,6 +45,7 @@ const GenNavBar = ({ hidden, page, size }: Props) => {
 
   return (
     <>
+      {/* Md + displays */}
       <ErrorBar size={size} />
       {winSize >= 1 && (
         <nav

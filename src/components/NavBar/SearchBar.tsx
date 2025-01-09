@@ -2,7 +2,7 @@ import { IoSearch } from "react-icons/io5";
 import { CiLocationOn } from "react-icons/ci";
 import { useState } from "react";
 import useUserState from "../../hooks/state/useUserState";
-import LocationAutoComplete from "./LocationAutoComplete";
+import LocationSearchSelection from "./LocationSearchSelection";
 
 interface Props {
   hidden?: ("Location" | "Search")[];
@@ -24,7 +24,9 @@ const SearchBar = ({ hidden, id }: Props) => {
   return (
     <form className="w-full md:flex md:h-12">
       {hidden?.includes("Search") ? null : (
-        <div className="flex overflow-hidden rounded-t outline outline-1 outline-dark_gray md:w-1/2 md:rounded-l md:rounded-r-none lg:w-7/12">
+        <div
+          className={`${hidden?.includes("Location") ? "md:w-full md:rounded-r rounded-b" : "md:w-1/2 md:rounded-r-none lg:w-7/12"} flex overflow-hidden rounded-t outline outline-1 outline-dark_gray md:rounded-l  `}
+        >
           <input
             type="text"
             placeholder="Search products"
@@ -44,19 +46,18 @@ const SearchBar = ({ hidden, id }: Props) => {
       {hidden?.includes("Location") ? null : (
         <div className="relative flex items-center rounded-b bg-white outline outline-1 outline-dark_gray md:w-1/2 md:rounded-l-none md:rounded-r lg:w-5/12">
           <div className="relative flex h-12 w-full items-center rounded">
-            <LocationAutoComplete id={id} />
+            <LocationSearchSelection />
           </div>
           <div
             className="flex-none bg-white pe-2"
             onMouseOver={() => setLocMouseOver(true)}
             onMouseLeave={() => setLocMouseOver(false)}
           >
-            {locMouseOver && (
-              <p className="absolute right-0 top-12 z-40 h-auto rounded bg-light_gray p-1 transition-all duration-1000">
-                <b>Your location :</b> {user.meta.location.formattedAddress}
-              </p>
-            )}
-
+            <p
+              className={`${locMouseOver ? "pointer-events-auto translate-y-0 opacity-100" : "-translate-y-2 opacity-0"} absolute right-0 top-12 z-40 h-auto rounded bg-light_gray p-1 transition-all duration-150`}
+            >
+              <b>Your location :</b> {user.meta.location.formattedAddress}
+            </p>
             {/* Location Search Bar */}
             <CiLocationOn
               size="35"

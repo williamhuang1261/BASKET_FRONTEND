@@ -1,10 +1,9 @@
-import { useQueryClient } from "@tanstack/react-query";
 import useUserState from "../../hooks/state/useUserState";
 import EditField from "./EditField";
 import { useState } from "react";
 import useError from "../../hooks/useError";
 import { AxiosError } from "axios";
-import { UserServices } from "../../services/restricted-service";
+import useUserSettingsModif from "../../hooks/user_info/useUserSettingsModif";
 
 /**
  * @description Component that handles username modification functionality
@@ -14,26 +13,14 @@ const UsernameModif = () => {
   const { user, dispatch } = useUserState();
   const [isLoading, setIsLoading] = useState(false);
   const errorHandler = useError();
-  const queryClient = useQueryClient();
-
-  const fn = async (v: string) => {
-    setIsLoading(true);
-    return UserServices.put("/info/me", {}, { name: v }).then(() => {
-      setIsLoading(false);
-      dispatch({ group: "CHANGE", type: "ID", new: v });
-      return null
-    });
-  };
+  const { putUserInfo } = useUserSettingsModif();
 
   const useHandler = (v: string) => {
-    try {
-      queryClient.fetchQuery({
-        queryKey: ["user", "settings", "username"],
-        queryFn: () => fn(v),
-      });
-    } catch (err) {
-      errorHandler(err as AxiosError);
-    }
+    setIsLoading(true);
+    putUserInfo({ name: v })
+      .then(() => dispatch({ group: "CHANGE", type: "ID", new: v }))
+      .catch((err) => errorHandler(err as AxiosError))
+      .finally(() => setIsLoading(false));
   };
 
   return (

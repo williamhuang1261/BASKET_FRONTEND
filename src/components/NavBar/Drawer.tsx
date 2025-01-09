@@ -82,14 +82,14 @@ const Drawer = ({ size }: Props) => {
                 <div
                   onMouseOver={() => setMouseOver(true)}
                   onMouseLeave={() => setMouseOver(false)}
-                  className="flex flex-col"
+                  className={`flex flex-col`}
                 >
                   {categories.map((c) => (
                     <CustomDirectNav
                       pathname={`/items`}
                       key={c}
                       aria-label="Go to Item Results Page"
-                      className=" mx-4 cursor-pointer rounded border-b-0.5 border-light_gray p-2 text-lg hover:bg-light_gray hover:text-green"
+                      className="flex mx-4 cursor-pointer rounded border-b-0.5 border-light_gray p-2 text-lg hover:bg-light_gray hover:text-green"
                     >
                       {c}
                     </CustomDirectNav>

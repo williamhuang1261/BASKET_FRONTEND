@@ -1,8 +1,8 @@
 import logos from "../../data/Logos";
 import flipp from "../../assets/Flipp_logo.webp";
 import { AiOutlineStepBackward } from "react-icons/ai";
-import { Link } from "react-router-dom";
 import useWindowSize from "../../hooks/useWindowSize";
+import CustomDirectNav from "../General/Miscellaneous/CustomDirectNav";
 
 /**
  * @description Header component displayed above flyer content showing navigation, dates, and logos
@@ -18,14 +18,13 @@ const FlyerHeader = () => {
     <>
       {winSize < 1 && (
         <div className="flex h-full items-center justify-between gap-4 px-3 py-0.5">
-          <Link to={"/items"}>
-            <button
-              type="button"
-              className="flex items-center hover:text-black/50"
-            >
-              <AiOutlineStepBackward size={30} />
-            </button>
-          </Link>
+          <CustomDirectNav
+            pathname={"/items"}
+            className="flex items-center hover:text-black/50"
+            aria-label="Go to Items Page"
+          >
+            <AiOutlineStepBackward size={30} />
+          </CustomDirectNav>
           <div>
             <p className="flex text-center">
               {startDate.toLocaleDateString("en-US")} to{" "}
@@ -53,15 +52,14 @@ const FlyerHeader = () => {
       )}
       {winSize >= 1 && (
         <div className="flex h-full items-center justify-between gap-4 px-3 py-0.5 ">
-          <Link to={"/items"}>
-            <button
-              type="button"
-              className="flex items-center hover:text-black/50"
-            >
-              <AiOutlineStepBackward size={20} />
-              <h2 className="text-center xl:text-lg">Results</h2>
-            </button>
-          </Link>
+          <CustomDirectNav
+            pathname={"/items"}
+            aria-label="Go to Items Page"
+            className="flex items-center hover:text-black/50"
+          >
+            <AiOutlineStepBackward size={20} />
+            <h2 className="text-center xl:text-lg">Results</h2>
+          </CustomDirectNav>
           <div className="flex h-full items-center justify-center">
             <a href={logos[0].ref.cadEN} target="_blank">
               <img

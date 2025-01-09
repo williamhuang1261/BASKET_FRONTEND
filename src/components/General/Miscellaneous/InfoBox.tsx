@@ -1,6 +1,7 @@
 import { ImInfo } from "react-icons/im";
 import { ReactNode, useState } from "react";
 import { IoClose } from "react-icons/io5";
+import Popup from "./Popup";
 
 /**
  * @description A modal information box that displays additional details when clicked
@@ -31,29 +32,23 @@ const InfoBox = ({ children, iconSize, title }: Props) => {
           className={`text-black transition-all duration-150 hover:text-green`}
         />
       </button>
-      {active && (
+      <Popup key={title + "_info_box"} open={active}>
         <div
-          key={title + "_info_box"}
-          className="no-doc-scroll fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-dark_gray/50"
+          className={`${active ? "no-doc-scroll" : ""} h-min w-60 overflow-hidden rounded bg-white md:w-96`}
         >
-          <div className="h-min w-60 overflow-hidden rounded bg-white md:w-96">
-            <div className="grid grid-cols-3 bg-green/80 p-2">
-              <h2 className="col-start-2 flex items-center justify-center text-lg font-semibold lg:text-xl">
-                {title}
-              </h2>
-              <div className="flex w-full items-center justify-end">
-                <button onClick={() => setActive(false)}>
-                  <IoClose
-                    size={30}
-                    className="text-black/50 hover:text-black"
-                  />
-                </button>
-              </div>
+          <div className="grid grid-cols-3 bg-green/80 p-2">
+            <h2 className="col-start-2 flex items-center justify-center text-lg font-semibold lg:text-xl">
+              {title}
+            </h2>
+            <div className="flex w-full items-center justify-end">
+              <button onClick={() => setActive(false)}>
+                <IoClose size={30} className="text-black/50 hover:text-black" />
+              </button>
             </div>
-            <p className="p-2">{children}</p>
           </div>
+          <p className="p-2">{children}</p>
         </div>
-      )}
+      </Popup>
     </>
   );
 };

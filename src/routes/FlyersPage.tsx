@@ -13,7 +13,7 @@ import useWindowSize from "../hooks/useWindowSize";
  * - Item details sidebar (desktop)
  * - Flyer display area
  * - Footer section
- * 
+ *
  * @returns {JSX.Element} Flyers page with navigation, item details sidebar, and flyer display
  */
 const FlyersPage = () => {
@@ -24,7 +24,7 @@ const FlyersPage = () => {
       <div className="flex h-screen w-screen flex-col overflow-hidden">
         {/* Nav bar */}
         <div className="flex-none border-b-0.5 border-dark_gray">
-          <GenNavBar page="General" size="Full" />
+          <GenNavBar page="General" size="Full" hidden={["Location"]} />
         </div>
         <div className="h-max flex-none bg-green/80">
           {/* Contains return button, supplier logo, valid dates, Flipp logo, Powered by Flipp */}

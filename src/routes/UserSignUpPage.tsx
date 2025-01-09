@@ -7,7 +7,7 @@ import loginFacebook from "../utils/auth/loginFacebook";
 import facebookLogo from "../assets/Facebook_Logo_Primary.png";
 import loginMicrosoft from "../utils/auth/loginMicrosoft";
 import microsoftLogo from "../assets/Microsoft_logo.svg";
-import { Link } from "react-router-dom";
+import CustomDirectNav from "../components/General/Miscellaneous/CustomDirectNav";
 
 /**
  * @description User registration page with standard and social sign-up options
@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
  * - Offers social media sign-up options
  * - Links to login page for existing users
  * - Includes terms acceptance and validation
- * 
+ *
  * @returns {JSX.Element} Sign-up page with multiple registration methods
  */
 const UserSignUpPage = () => {
@@ -35,19 +35,20 @@ const UserSignUpPage = () => {
         page="General"
       />
       <div className="flex justify-center">
-        <div className="items-center justify-center p-6 sm:w-min rounded sm:border sm:shadow-lg">
+        <div className="items-center justify-center rounded p-6 sm:w-min sm:border sm:shadow-lg">
           <div className="w-full">
             <h1 className="text-2xl font-bold">Sign Up to The Basket</h1>
             <div className="mb-3 py-2">
               <h3 className="sm:w-96">
                 Use our built-in calculator and stay tuned for upcoming
                 features. Already have an account?{" "}
-                <Link
+                <CustomDirectNav
                   className="font-bold underline transition-all duration-150 ease-in-out hover:text-green"
-                  to="/user-login"
+                  pathname="/user-login"
+                  aria-label="Go to Sign In Page"
                 >
                   Sign In
-                </Link>
+                </CustomDirectNav>
               </h3>
             </div>
           </div>

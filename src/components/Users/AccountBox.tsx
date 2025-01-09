@@ -10,16 +10,16 @@ const AccountBox = () => {
   const deleteAccount = useAccountDelete();
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex gap-5">
       <button
         onClick={logOut}
-        className="w-full rounded bg-red-100 shadow-md transition-all duration-150 ease-in-out hover:bg-red-500"
+        className="w-full rounded bg-red-100 p-1 shadow-md transition-all duration-150 ease-in-out hover:bg-red-500"
       >
         Log out
       </button>
       <button
         onClick={deleteAccount}
-        className="w-full rounded text-red-500 shadow-sm outline outline-2 outline-red-500 transition-all duration-150 ease-in-out hover:bg-red-500 hover:text-black hover:shadow-md"
+        className="w-full rounded p-1 border-2 border-red-500 text-red-500 shadow-sm transition-all duration-150 ease-in-out hover:bg-red-500 hover:text-black hover:shadow-md"
       >
         Delete Account
       </button>
