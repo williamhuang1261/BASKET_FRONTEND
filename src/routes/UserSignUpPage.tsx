@@ -21,7 +21,7 @@ import CustomDirectNav from "../components/General/Miscellaneous/CustomDirectNav
  */
 const UserSignUpPage = () => {
   return (
-    <div className=" ">
+    <div className=" min-w-80">
       <GenNavBar
         size={"Container"}
         hidden={[

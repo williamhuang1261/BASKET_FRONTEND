@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import PasswordCriteriaBox from "./PasswordCriteriaBox";
+import PasswordCriteriaBox from "./CriteriaBox";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../utils/auth/initFirebase";
 import { FirebaseError } from "firebase/app";
 import useError from "../../../hooks/useError";
 import useCustomNavigation from "../../../hooks/useCustomNavigation";
 import CustomDirectNav from "../../General/Miscellaneous/CustomDirectNav";
+import EmailBox from "../EmailBox";
+import PasswordBox from "../PasswordBox";
+import passwordCriteria from "../../../utils/auth/passwordCriteria";
 
 /**
  * @description Component for user registration with email and password
@@ -27,30 +30,13 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showCriteria, setShowCriteria] = useState(false);
-  const [confirm_password, setConfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [alreadyExists, setAlreadyExists] = useState(false);
-
-  const criteria = [
-    {
-      label: "Contains 8 to 128 characters",
-      isValid: password.length >= 8 && password.length <= 128,
-    },
-    { label: "Contains an uppercase letter", isValid: /[A-Z]/.test(password) },
-    { label: "Contains a lowercase letter", isValid: /[a-z]/.test(password) },
-    { label: "Contains a number", isValid: /\d/.test(password) },
-    {
-      label:
-        'Contains any of the following special characters: !@#$%^&*(),.?":{}|<>-',
-      isValid: /[!@#$%^&*(),.?":{}|<>-]/.test(password),
-    },
-  ];
-
-  const isSamePassword = [
-    {
-      label: "Passwords match",
-      isValid: password === confirm_password && password.length > 0,
-    },
-  ];
+  const { criteria, isSamePassword, allValid } = passwordCriteria(
+    password,
+    confirmPassword,
+    email,
+  );
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -62,7 +48,7 @@ const SignUp = () => {
         if (err.code === "auth/email-already-in-use") {
           setAlreadyExists(true);
         } else {
-          errHandler(err)
+          errHandler(err);
         }
       });
   };
@@ -71,75 +57,66 @@ const SignUp = () => {
     <div className="flex flex-col items-center sm:w-96 ">
       <form onSubmit={handleSubmit} className="flex w-full flex-col">
         <div className="">
-          <label htmlFor="email" className="py-1">
-            <h3 className="font-semibold">Email</h3>
-          </label>
-          <input
-            type="email"
-            id="signup_email"
+          <EmailBox
+            id={"signup_email"}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
-            placeholder="Enter you email"
-            className="w-full rounded border p-2"
           />
         </div>
         <div className="py-2">
-          <div className="flex justify-between py-1">
-            <label htmlFor="password">
-              <h3 className="font-semibold">Password</h3>
-            </label>
-          </div>
-          <input
-            type="password"
-            id="signup_password"
+          <PasswordBox
+            id={"signup_password"}
             value={password}
+            showForgot={false}
+            title={"Password"}
+            placeholder={"Enter your password"}
             onChange={(e) => setPassword(e.target.value)}
             onSelect={() => setShowCriteria(true)}
-            required
-            placeholder="Enter your password"
-            className="w-full rounded border p-2"
           />
         </div>
         {showCriteria && (
           <div>
-            <PasswordCriteriaBox criteria={criteria} />
+            <PasswordCriteriaBox
+              className="mx-7"
+              successMessage="Password is OK"
+              criteria={criteria}
+            />
           </div>
         )}
-
         <div className="py-1">
-          <div className="flex justify-between py-1">
-            <label htmlFor="confirm_password">
-              <h3 className="font-semibold">Confirm password</h3>
-            </label>
-          </div>
-          <input
-            type="password"
-            id="confirm_password"
-            value={confirm_password}
+          <PasswordBox
+            id={"confirm_password"}
+            value={confirmPassword}
+            showForgot={false}
+            title={"Confirm password"}
+            placeholder={"Confirm your password"}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-            placeholder="Confirm your password"
-            className="w-full rounded border p-2"
           />
         </div>
-        {confirm_password.length > 0 && (
+        {confirmPassword.length > 0 && (
           <div>
-            <PasswordCriteriaBox criteria={isSamePassword} />
+            <PasswordCriteriaBox
+              className="mx-7"
+              successMessage="Passwords match"
+              criteria={isSamePassword}
+            />
           </div>
         )}
 
         <button
           type="submit"
-          className={`${email && isSamePassword[0].isValid ? "bg-green/75 text-white outline-none ring-green hover:bg-green hover:ring-1" : "text-green/50 outline outline-green/50"} mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out`}
-          disabled={!isSamePassword[0].isValid || email.length === 0}
+          className={`${allValid ? "bg-green/75 text-white outline-none ring-green hover:bg-green hover:ring-1" : "text-green/50 outline outline-green/50 cursor-not-allowed"} mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out`}
+          disabled={!allValid}
         >
           SIGN UP
         </button>
         {alreadyExists && (
           <h2 className="text-red-500">
             {"This email is already in use. Try "}
-            <CustomDirectNav pathname="/user-login" className="text-blue-500 underline">
+            <CustomDirectNav
+              pathname="/user-login"
+              className="text-blue-500 underline"
+            >
               {"Login"}
             </CustomDirectNav>
           </h2>

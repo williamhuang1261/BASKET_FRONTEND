@@ -32,7 +32,7 @@ const StickyResults = () => {
         </h2>
         <button
           type="button"
-          className="h-full w-24 bg-light_green p-2 font-semibold transition duration-150 ease-in-out hover:bg-green hover:font-bold xl:w-40 xl:text-lg"
+          className="h-full w-24 bg-green/50 p-2 font-semibold transition duration-150 ease-in-out hover:bg-green/80 xl:w-40 xl:text-lg"
           onClick={handleOnClick}
         >
           Calculate

@@ -32,7 +32,7 @@ const FilterPopUp = () => {
         <h2>Filters</h2>
         <HiOutlineAdjustmentsHorizontal size={25} />
       </button>
-      <Popup open={open} className="p-10" key={"FilterPopup"}>
+      <Popup openCondition={open} className="p-10" key={"FilterPopup"}>
         <form
           onSubmit={handleSubmit}
           className="m-10 flex h-full w-full flex-col items-center overflow-auto overscroll-contain rounded bg-white pb-5"

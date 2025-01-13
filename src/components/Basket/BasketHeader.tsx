@@ -1,6 +1,6 @@
 import useBasketState from "../../hooks/state/useBasketState";
 import InfoBox from "../General/Miscellaneous/InfoBox";
-import ChangeLocation from "./ChangeLocation";
+import ChangeLocation from "./BasketLocationModif";
 import FilterStoresDrop from "./FilterStoresDrop";
 import MaxStoresSelect from "./MaxStoresSelect";
 
@@ -51,7 +51,7 @@ const BasketHeader = () => {
             combination with 7 stores.
           </InfoBox>
         </div>
-        <div className="flex-none px-2 py-1">
+        <div className="flex w-full flex-none items-center justify-center px-2 py-1 lg:max-w-max">
           <ChangeLocation />
           {/* Have Distance option, change location as a button */}
         </div>

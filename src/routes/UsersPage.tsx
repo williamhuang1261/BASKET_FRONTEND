@@ -1,12 +1,11 @@
-// import React from 'react'
-
 import FooterDiv from "../components/General/Footer/FooterDiv";
 import MustBeLoggedIn from "../components/General/Miscellaneous/MustBeLoggedIn";
 import GenNavBar from "../components/NavBar/GenNavBar";
 import AccountBox from "../components/Users/AccountBox";
-import PreferencesBox from "../components/Users/PreferencesBox";
+import AccountSettings from "../components/Users/AccountSettings";
+import PreferencesSettings from "../components/Users/PreferencesSettings";
 import ProfileBox from "../components/Users/ProfileBox";
-import useUserState from "../hooks/state/useUserState";
+import useCustomNavigation from "../hooks/useCustomNavigation";
 
 /**
  * @description User profile and settings management page
@@ -16,14 +15,14 @@ import useUserState from "../hooks/state/useUserState";
  * - Preferences settings
  * - Account management
  * - Footer
- * 
+ *
  * @returns {JSX.Element} User page with profile, preferences, and account settings
  */
 const UsersPages = () => {
-  const { user } = useUserState();
+  const { directNav } = useCustomNavigation();
 
   return (
-    <MustBeLoggedIn className="flex min-h-screen flex-col">
+    <MustBeLoggedIn className="flex min-h-screen min-w-80 flex-col">
       <div className="flex-none border-b-0.5 border-dark_gray">
         <GenNavBar
           size="Container"
@@ -33,12 +32,24 @@ const UsersPages = () => {
       </div>
       <main className="flex justify-center px-3 py-5">
         <div className="w-full max-w-[1024px]">
-          <div className="" onClick={() => console.log(user.meta)}>
+          <div className="">
             <ProfileBox />
           </div>
           <div className="flex flex-col gap-2 py-5">
-            <h1 className="text-xl font-semibold">Settings & Preferences</h1>
-            <PreferencesBox />
+            <h2 className="text-xl font-semibold">Account Settings</h2>
+            <AccountSettings />
+          </div>
+          <div className="flex flex-col gap-2">
+            <h2 className="text-xl font-semibold">Preferences</h2>
+            <PreferencesSettings />
+          </div>
+          <div className="w-full py-5">
+            <button
+              className="w-full rounded bg-green/50 p-1 shadow-sm transition-all duration-150 ease-in-out hover:bg-green"
+              onClick={() => directNav({ pathname: "/" }, true)}
+            >
+              Done
+            </button>
           </div>
           <div className="">
             <AccountBox />

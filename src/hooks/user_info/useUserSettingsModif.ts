@@ -37,7 +37,9 @@ const fn = (req: UserModifProp) => {
     preferences,
   };
 
-  return UserServices.put("/info/me", {}, load).then();
+  return UserServices.put("/info/me", {}, load).then(() => {
+    return null;
+  });
 };
 
 /**

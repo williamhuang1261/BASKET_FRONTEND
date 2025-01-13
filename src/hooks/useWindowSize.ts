@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
  * @description Returns the current window width with a number
  * @example
  * width: {
+ *   undersized: -2 (width < 320),
  *   xs: -1 (width < 640),
  *   sm: 0 (640 <= width < 768),
  *   md: 1 (768 <= width < 1024),
@@ -36,22 +37,21 @@ const useWindowSize = () => {
 
   const { width } = windowSize;
 
-  if (width < 640) {
-    return -1;
-  }
-  if (640 <= width && width < 768) {
+  if (width < 320)
+    return -2; // undersized
+  else if (320 <= width && width < 640)
+    return -1; // xs
+  else if (640 <= width && width < 768)
     return 0; // sm
-  } else if (width >= 768 && width < 1024) {
+  else if (768 <= width && width < 1024)
     return 1; // md
-  } else if (width >= 1024 && width < 1280) {
+  else if (1024 <= width && width < 1280)
     return 2; // lg
-  } else if (width >= 1280 && width < 1536) {
+  else if (1280 <= width && width < 1536)
     return 3; // xl
-  } else if (width >= 1536 && width < 2048) {
+  else if (1536 <= width && width < 2048)
     return 4; //2xl
-  } else {
-    return 5; //3xl
-  }
+  else return 5; //3xl
 };
 
 export default useWindowSize;

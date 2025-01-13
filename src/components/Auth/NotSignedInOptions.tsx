@@ -10,7 +10,7 @@ const SignedInOptions = () => {
       <CustomDirectNav
         pathname={"/user-login"}
         aria-label="Go to Sign In Page"
-        className="m-1 flex items-center justify-center rounded border-b-0.5 bg-light_green p-0.5 shadow-sm transition-all duration-150 hover:bg-green"
+        className="m-1 flex items-center justify-center rounded border-b-0.5 bg-green/50 p-0.5 shadow-sm transition-all duration-150 hover:bg-green/80"
       >
         Sign In
       </CustomDirectNav>

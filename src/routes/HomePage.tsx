@@ -20,7 +20,7 @@ import PopItemsDiv from "../components/MainPage/PopItems/PopItemsDiv";
 const HomePage = () => {
   return (
     <>
-      <div className="flex min-h-screen  flex-col overflow-hidden">
+      <div className="flex min-h-screen flex-col overflow-hidden min-w-80">
         {/* The MainHeadDiv encapsulates the caption + language header, and the GenNavBar */}
         <MainHeaderDiv />
         <main>

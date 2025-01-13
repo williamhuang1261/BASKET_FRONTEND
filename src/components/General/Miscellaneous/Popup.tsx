@@ -4,7 +4,7 @@
  */
 interface Props extends React.HTMLProps<HTMLDivElement> {
   /** Controls the visibility of the popup */
-  open: boolean;
+  openCondition: boolean;
 }
 
 /**
@@ -16,10 +16,10 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
  * @param props.className - Additional CSS classes
  * @returns A modal popup container with fade transitions
  */
-const Popup = ({ children, open, className, ...rest }: Props) => {
+const Popup = ({ children, openCondition, className, ...rest }: Props) => {
   return (
     <div
-      className={`${className} ${open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"} fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black/50 p-2`}
+      className={`${className} ${openCondition ? "no-doc-scroll pointer-events-auto opacity-100" : "pointer-events-none opacity-0"} fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black/50 p-2 transition-all duration-150`}
       {...rest}
     >
       {children}

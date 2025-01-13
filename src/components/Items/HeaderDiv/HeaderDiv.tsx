@@ -14,7 +14,7 @@ const HeaderDiv = () => {
   return (
     <div className="flex-none">
       <ResultsBanner />
-      <div className="flex items-center justify-between py-2">
+      <div className="flex items-center justify-between py-2 flex-wrap">
         {winSize < 1 ? (
           <div className="z-[60]">
             <FilterPopUp />
@@ -22,7 +22,7 @@ const HeaderDiv = () => {
         ) : (
           <h4 className="flex-none">48 items found</h4>
         )}
-        <div className="flex flex-wrap items-center justify-end gap-2 ">
+        <div className="flex flex-wrap items-center justify-end gap-2 my-1">
           <SortDrop />
         </div>
       </div>

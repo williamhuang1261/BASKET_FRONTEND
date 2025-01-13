@@ -5,6 +5,9 @@ import { FirebaseError } from "firebase/app";
 import useError from "../../../hooks/useError";
 import useStatusState from "../../../hooks/state/useStatusState";
 import useCustomNavigation from "../../../hooks/useCustomNavigation";
+import EmailBox from "../EmailBox";
+import PasswordBox from "../PasswordBox";
+import RememberMe from "../RememberMe";
 
 /**
  * @description Component for user authentication with email and password
@@ -13,7 +16,7 @@ import useCustomNavigation from "../../../hooks/useCustomNavigation";
  */
 const StandardLogin = () => {
   const { dispatch } = useStatusState();
-  const {nav} = useCustomNavigation();
+  const { nav } = useCustomNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const errorHandler = useError();
@@ -44,52 +47,29 @@ const StandardLogin = () => {
   return (
     <div className="flex flex-col items-center sm:w-96 ">
       <form onSubmit={handleSubmit} className="flex w-full flex-col">
-        <div className="">
-          <label htmlFor="email" className="py-1">
-            <h3 className="font-semibold">Email</h3>
-          </label>
-          <input
-            type="email"
-            id="login_email"
+        <div>
+          <EmailBox
+            id={"login_email"}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
-            placeholder="Enter you email"
-            className="w-full rounded border p-2"
           />
         </div>
         <div className="py-2">
-          <div className="flex justify-between py-1">
-            <label htmlFor="password">
-              <h3 className="font-semibold">Password</h3>
-            </label>
-            <button className="text-black/50 underline">
-              <h3>Forgot Password?</h3>
-            </button>
-          </div>
-          <input
-            type="password"
-            id="login_password"
+          <PasswordBox
+            id={"login_password"}
             value={password}
+            showForgot={true}
+            title={"Password"}
+            placeholder={"Enter your password"}
             onChange={(e) => setPassword(e.target.value)}
-            required
-            placeholder="Enter your password"
-            className="w-full rounded border p-2"
           />
         </div>
         <div className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            className="rounded border p-1"
-            id="RememberMe"
-          />
-          <label htmlFor="RememberMe">
-            <h3>Remember me</h3>
-          </label>
+          <RememberMe id={"login_remember_me"} />
         </div>
         <button
           type="submit"
-          className={`${email && password ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1" : "text-green/50 outline outline-green/50"} mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out hover:shadow-sm`}
+          className={`${email && password ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1" : "cursor-not-allowed text-green/50 outline outline-green/50"} mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out hover:shadow-sm`}
           disabled={!email || !password}
         >
           SIGN IN

@@ -4,7 +4,6 @@ import StickyResults from "../components/Basket/StickyResults";
 import HorizontalAd from "../components/General/Ads/HorizontalAd";
 import FooterDiv from "../components/General/Footer/FooterDiv";
 import GenNavBar from "../components/NavBar/GenNavBar";
-import useWindowSize from "../hooks/useWindowSize";
 import BasketProvider from "../state/providers/BasketProvider";
 
 /**
@@ -20,17 +19,16 @@ import BasketProvider from "../state/providers/BasketProvider";
  * @returns {JSX.Element} Basket page with header, results, and sticky calculation summary
  */
 const BasketPage = () => {
-  const winSize = useWindowSize();
 
   return (
     <BasketProvider>
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col min-w-80">
         {/* NavBar, without calclulator icon and search bar */}
         {/* Full navbar limited by container in the outside to obtain the effect of changing size */}
         <div className="border-b-0.5 border-dark_gray lg:container lg:mx-auto lg:px-20">
           <div>
             <GenNavBar
-              hidden={winSize >= 1 ? ["Calc"] : ["Calc", "Location"]}
+              hidden={["Calc", "Location"]}
               page="General"
               size="Full"
             />

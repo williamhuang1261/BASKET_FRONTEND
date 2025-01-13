@@ -32,7 +32,7 @@ const InfoBox = ({ children, iconSize, title }: Props) => {
           className={`text-black transition-all duration-150 hover:text-green`}
         />
       </button>
-      <Popup key={title + "_info_box"} open={active}>
+      <Popup key={title + "_info_box"} openCondition={active}>
         <div
           className={`${active ? "no-doc-scroll" : ""} h-min w-60 overflow-hidden rounded bg-white md:w-96`}
         >

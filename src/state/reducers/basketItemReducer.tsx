@@ -1,8 +1,7 @@
-import { RefProp } from "../../interface/Destructed";
 import { allUnitsType } from "../../interface/UnitsProp";
 
 export interface basketItemProp {
-  ref: RefProp;
+  itemId: string
   method: string;
   units: allUnitsType;
   quantity: number;

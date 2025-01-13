@@ -15,6 +15,15 @@ const UsernameModif = () => {
   const errorHandler = useError();
   const { putUserInfo } = useUserSettingsModif();
 
+  const criteriaFn = (v: string) => {
+    return [
+      {
+        label: "Contains between 3 and 32 characters",
+        isValid: v.length >= 3 && v.length <= 32,
+      },
+    ];
+  }
+
   const useHandler = (v: string) => {
     setIsLoading(true);
     putUserInfo({ name: v })
@@ -25,13 +34,14 @@ const UsernameModif = () => {
 
   return (
     <>
-      <h2 className="font-semibold">Username</h2>
+      <h3 className="font-semibold">Username</h3>
       <EditField
         text={user.meta.name}
         placeholder="New Username"
         id="username"
         onConfirm={useHandler}
         isLoading={isLoading}
+        criteriaFn={criteriaFn}
       />
     </>
   );

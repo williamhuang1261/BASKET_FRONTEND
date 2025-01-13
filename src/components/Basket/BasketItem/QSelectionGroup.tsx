@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import useBasketItemState from "../../../hooks/state/useBasketItemState";
 import { allUnitsType } from "../../../interface/UnitsProp";
 import useUserState from "../../../hooks/state/useUserState";
@@ -16,93 +16,56 @@ interface Props {
 }
 
 const QSelectionGroup = ({ id }: Props) => {
-  const { user, dispatch: userDispatch } = useUserState();
+  const { dispatch: userDispatch } = useUserState();
   const { basketItem, dispatch: basketItemDispatch } = useBasketItemState();
-
   const [method, setMethod] = useState(basketItem.method);
 
-  const handleMethodChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    basketItemDispatch({
-      group: "CHANGE",
-      type: "METHOD",
-      method: e.target.value,
-    });
-    userDispatch({
-      group: "CHANGE",
-      type: "BASKET_ITEM_SELECTION",
-      itemRef: basketItem.ref,
-      target: "METHOD",
-      newMethod: e.target.value as "weight" | "unit",
-    });
-    if (e.target.value !== "" && basketItem.units === "unit") {
-      basketItemDispatch({
-        group: "CHANGE",
-        type: "UNITS",
-        units: user.meta.preferences.weightUnits,
-      });
-      userDispatch({
-        group: "CHANGE",
-        type: "BASKET_ITEM_SELECTION",
-        itemRef: basketItem.ref,
-        target: "UNITS",
-        newUnits: user.meta.preferences.weightUnits,
-      });
-    }
-    setMethod(e.target.value);
-  };
+  const methodRef = useRef<HTMLSelectElement>(null);
+  const unitsRef = useRef<HTMLSelectElement>(null);
+  const quantityRef = useRef<HTMLInputElement>(null);
 
-  const handleUnitsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    basketItemDispatch({
-      group: "CHANGE",
-      type: "UNITS",
-      units: e.target.value as allUnitsType,
-    });
-    userDispatch({
-      group: "CHANGE",
-      type: "BASKET_ITEM_SELECTION",
-      itemRef: basketItem.ref,
-      target: "UNITS",
-      newUnits: e.target.value as allUnitsType,
-    });
-    if (e.target.value !== "unit" && basketItem.method === "unit") {
+  const handleChange = () => {
+    if (methodRef.current && unitsRef.current && quantityRef.current) {
       basketItemDispatch({
         group: "CHANGE",
         type: "METHOD",
-        method: "weight",
+        method: methodRef.current.value,
+      });
+      basketItemDispatch({
+        group: "CHANGE",
+        type: "UNITS",
+        units: unitsRef.current.value as allUnitsType,
+      });
+      basketItemDispatch({
+        group: "CHANGE",
+        type: "QUANTITY",
+        quantity: parseInt(quantityRef.current.value),
       });
       userDispatch({
         group: "CHANGE",
         type: "BASKET_ITEM_SELECTION",
-        itemRef: basketItem.ref,
-        target: "METHOD",
-        newMethod: "weight",
+        itemId: basketItem.itemId,
+        new: {
+          method: methodRef.current.value as "weight" | "unit",
+          units: unitsRef.current.value as allUnitsType,
+          quantity: parseInt(quantityRef.current.value),
+        },
       });
     }
-  };
-
-  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    basketItemDispatch({
-      group: "CHANGE",
-      type: "QUANTITY",
-      quantity: parseInt(e.target.value),
-    });
-    userDispatch({
-      group: "CHANGE",
-      type: "BASKET_ITEM_SELECTION",
-      itemRef: basketItem.ref,
-      target: "QUANTITY",
-      newQuantity: parseInt(e.target.value),
-    });
   };
 
   return (
     <>
       <select
+        ref={methodRef}
         aria-label="Select the method of measurement"
         className="cursor-pointer rounded-full bg-light_gray/50 px-1 py-0.5 font-semibold hover:text-green"
-        onChange={handleMethodChange}
+        onChange={(e) => {
+          setMethod(e.target.value as string);
+          handleChange();
+        }}
         defaultValue={basketItem.method}
-        id={basketItem.ref.code + "_method_select_" + id}
+        id={basketItem.itemId + "_method_select_" + id}
       >
         <option value={"weight"} className="bg-white text-black">
           Weight
@@ -111,13 +74,14 @@ const QSelectionGroup = ({ id }: Props) => {
           Unit
         </option>
       </select>
-      {method === "weight" ? null : (
+      {method === "unit" ? null : (
         <select
+          ref={unitsRef}
           aria-label="Select the unit of measurement"
           className="cursor-pointer rounded-full bg-light_gray/50 px-1 py-0.5 font-semibold hover:text-green"
-          onChange={handleUnitsChange}
+          onChange={handleChange}
           defaultValue={basketItem.units}
-          id={basketItem.ref.code + "_unit_select_" + id}
+          id={basketItem.itemId + "_unit_select_" + id}
         >
           <option value={"kg"} className="bg-white text-black">
             kg
@@ -135,13 +99,14 @@ const QSelectionGroup = ({ id }: Props) => {
       )}
 
       <input
-        id={basketItem.ref.code + "_quantity_select_" + id}
+        ref={quantityRef}
+        id={basketItem.itemId + "_quantity_select_" + id}
         type="number"
         min="0"
         aria-label="Change quantity"
         defaultValue={basketItem.quantity}
         className="w-14 rounded border-0.5 border-dark_gray px-2 py-1 sm:w-20"
-        onChange={handleQuantityChange}
+        onChange={handleChange}
       />
     </>
   );

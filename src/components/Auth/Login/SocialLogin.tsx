@@ -2,6 +2,8 @@ import { useState } from "react";
 import useError from "../../../hooks/useError";
 import useGetUser from "../../../hooks/user_account/useGetUser";
 import useCustomNavigation from "../../../hooks/useCustomNavigation";
+import { useLocation } from "react-router-dom";
+import { CustomLocationState } from "../../../interface/NavigateProps";
 
 interface SocialLoginProps {
   type: "Sign in" | "Sign up";
@@ -37,23 +39,31 @@ const SocialLogin = ({
   const { nav } = useCustomNavigation();
   const errorHandler = useError();
   const getUser = useGetUser();
+  const location = useLocation();
 
   const clickHandler = () => {
     onClick()
       .then(() => {
-        getUser()
-          .then(() => {
-            nav().then(() => {
-              window.location.reload();
+        if (
+          (location.state as CustomLocationState).currErr?.message ===
+          "You must re-authenticate to delete your account"
+        ) {
+          document.dispatchEvent(new Event("accountDeletionSuccess"));
+        } else {
+          getUser()
+            .then(() => {
+              nav().then(() => {
+                window.location.reload();
+              });
+            })
+            .catch(() => {
+              errorHandler({
+                code: 500,
+                message:
+                  "Failed initializing your account - Try reloading the Home Page",
+              });
             });
-          })
-          .catch(() => {
-            errorHandler({
-              code: 500,
-              message:
-                "Failed reinitializing the app - Try reloading the Home Page",
-            });
-          });
+        }
       })
       .catch(() => {
         errorHandler({

@@ -25,7 +25,7 @@ const ErrorPage = () => {
 
   return (
     <>
-      <div className="flex min-h-screen w-screen flex-col overflow-hidden">
+      <div className="flex min-h-screen w-screen flex-col overflow-hidden min-w-80">
         <div className=" border-b-0.5 border-dark_gray">
           <GenNavBar page="General" size="Container" />
         </div>

@@ -17,22 +17,22 @@ const useAccountDelete = () => {
   const { dispatch } = useUserState();
   const errorHandler = useError();
   const auth = getAuth();
-  const { add, nav } = useCustomNavigation();
+  const { directNav, add, nav } = useCustomNavigation();
 
-  return async () => {
+  const fn = async () => {
+    if (!auth.currentUser) {
+      errorHandler({
+        code: 401,
+        message: "User is not authenticated",
+      });
+      return;
+    }
     // Delete the user account
     try {
       await queryClient.fetchQuery({
         queryKey: ["Delete_Account"],
         queryFn: () => UserServices.delete("/account/me"),
       });
-      if (!auth.currentUser) {
-        errorHandler({
-          code: 500,
-          message: "Failed to delete account",
-        });
-        return;
-      }
       await deleteUser(auth.currentUser);
       dispatch({
         group: "CHANGE",
@@ -54,11 +54,32 @@ const useAccountDelete = () => {
             hideHome: true,
           },
         });
+        add({
+          pathname: "/",
+          customEvent: "accountDeletionRetry",
+        });
+        document.addEventListener("accountDeletionRetry", () => {
+          if (!auth.currentUser) {
+            errorHandler({ code: 401, message: "User is not authenticated" });
+            return;
+          }
+          deleteUser(auth.currentUser)
+            .then(() => directNav({ pathname: "/" }))
+            .catch((err) =>
+              directNav({
+                pathname: "/",
+                error: { message: err.message, code: 500 },
+              }),
+            );
+        });
+        nav();
         return;
       } else {
         errorHandler(err as AxiosError | FirebaseError);
       }
     }
   };
+
+  return fn;
 };
 export default useAccountDelete;

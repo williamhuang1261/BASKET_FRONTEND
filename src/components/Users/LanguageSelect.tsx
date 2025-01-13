@@ -68,10 +68,7 @@ const LanguageSelect = ({
       value={selectedLanguage}
       aria-label="LanguageSelection"
     >
-      <option
-        value="en"
-        className={optionClassName + " bg-light_gray"}
-      >
+      <option value="en" className={optionClassName}>
         English
       </option>
       <option value="fr" className={optionClassName}>

@@ -58,6 +58,18 @@ interface loginChange {
   status: boolean;
 }
 
+interface DistUnitsChange {
+  group: "CHANGE";
+  type: "DISTANCE_UNITS";
+  new: "km" | "mi";
+}
+
+interface WeightUnitsChange {
+  group: "CHANGE";
+  type: "WEIGHT_UNITS";
+  new: "kg" | "lb";
+}
+
 type ChangeAction =
   | GeneralChange
   | LocationChange
@@ -65,7 +77,9 @@ type ChangeAction =
   | DistanceChange
   | MaxStoresChange
   | BasketItemChangeSelection
-  | loginChange;
+  | loginChange
+  | DistUnitsChange
+  | WeightUnitsChange;
 
 interface GeneralAdd {
   group: "ADD";
@@ -209,6 +223,28 @@ const userReducer = (
             isLoggedIn: action.status,
           };
         }
+        case 'DISTANCE_UNITS':
+          return {
+            ...state,
+            meta: {
+              ...state.meta,
+              preferences: {
+                ...state.meta.preferences,
+                distUnits: action.new,
+              },
+            },
+          };
+        case 'WEIGHT_UNITS':
+          return {
+            ...state,
+            meta: {
+              ...state.meta,
+              preferences: {
+                ...state.meta.preferences,
+                weightUnits: action.new,
+              },
+            },
+          };
         default:
           return state;
       }

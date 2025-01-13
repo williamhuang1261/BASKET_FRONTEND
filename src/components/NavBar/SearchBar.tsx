@@ -25,7 +25,7 @@ const SearchBar = ({ hidden, id }: Props) => {
     <form className="w-full md:flex md:h-12">
       {hidden?.includes("Search") ? null : (
         <div
-          className={`${hidden?.includes("Location") ? "md:w-full md:rounded-r rounded-b" : "md:w-1/2 md:rounded-r-none lg:w-7/12"} flex overflow-hidden rounded-t outline outline-1 outline-dark_gray md:rounded-l  `}
+          className={`${hidden?.includes("Location") ? "rounded-b md:w-full md:rounded-r" : "md:w-1/2 md:rounded-r-none lg:w-7/12"} flex overflow-hidden rounded-t outline outline-1 outline-dark_gray md:rounded-l  `}
         >
           <input
             type="text"

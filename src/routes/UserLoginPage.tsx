@@ -22,7 +22,7 @@ import CustomDirectNav from "../components/General/Miscellaneous/CustomDirectNav
  */
 const UserLoginPage = () => {
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex h-screen flex-col min-w-80">
       <GenNavBar
         size={"Container"}
         hidden={[

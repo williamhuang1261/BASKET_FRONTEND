@@ -9,7 +9,7 @@ import Spinner from "../General/Miscellaneous/Spinner";
 const LanguageModif = () => {
   return (
     <>
-      <h2 className="font-semibold">Language</h2>
+      <h3 className="font-semibold">Language</h3>
       <LanguageSelect
         id="User_Settings"
         loadingComponent={<Spinner color="dark_gray" size={"2"} />}

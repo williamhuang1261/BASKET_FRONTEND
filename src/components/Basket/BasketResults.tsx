@@ -19,7 +19,7 @@ const BasketResults = () => {
               : "border-b-0.5"
           }
         >
-          <BasketItemProvider reference={i.ref}>
+          <BasketItemProvider itemId={i.id}>
             <BasketItem
               id={i.id}
               image={i.image}
