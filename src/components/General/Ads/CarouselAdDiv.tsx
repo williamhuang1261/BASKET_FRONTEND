@@ -47,7 +47,7 @@ const CarouselAdDiv = () => {
           />
         ))}
       </div>
-      <div className="absolute flex h-full w-full justify-between outline">
+      <div className="absolute flex h-full w-full justify-between">
         <button
           className={
             (mouseOver ? "text-black" : "text-transparent") +

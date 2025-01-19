@@ -58,8 +58,8 @@ const ItemCard = ({
   return (
     <div className="flex max-h-full min-h-max w-72 flex-col rounded border bg-white shadow-lg md:w-full ">
       <div className="w-full flex-none">
-        <div className="items-align mt-2 flex w-full justify-center">
-          <img alt={name?.en} src={image} className="h-52 w-52 object-cover" />
+        <div className="flex w-full justify-center p-1">
+          <img alt={name?.en} src={image} className="h-52 w-52 object-contain rounded" />
         </div>
         <div className="p-2">
           <div className="flex flex-wrap justify-between">
@@ -71,7 +71,7 @@ const ItemCard = ({
                 amount?.units}
             </h5>
           </div>
-          <h4 className="text-xl">{name?.en}</h4>
+          <h4 className="text-lg">{name?.en}</h4>
         </div>
         <div className="px-2">
           <PriceBar filtered={filtered} normal={normals} />

@@ -50,7 +50,7 @@ const GenNavBar = ({ hidden, page, size }: Props) => {
       {winSize >= 1 && (
         <nav
           className={
-            size === "Container" ? "container mx-auto px-20 " : " px-3 "
+            `${size === "Container" ? "container mx-auto lg:px-20 2xl:px-44 3xl:px-64 px-3" : " px-3"}`
           }
         >
           <div className="flex flex-row items-center justify-between py-2">
@@ -96,7 +96,7 @@ const GenNavBar = ({ hidden, page, size }: Props) => {
       )}
       {/* Small Diplays */}
       {winSize < 1 && (
-        <nav className="px-3 pb-2 ">
+        <nav className="pb-3 px-3">
           <div className="flex flex-row items-center justify-between">
             <div className="flex flex-none flex-row items-center">
               {hidden?.indexOf("SideForSmall") !== -1 ? null : (

@@ -94,7 +94,7 @@ const BasketItem = ({
     <>
       {/* below md display */}
       {winSize < 0 && (
-        <div className="flex">
+        <div className="flex bg-white">
           <div className="flex items-center justify-center px-2">
             <div className="h-20 w-20 flex-none overflow-hidden rounded">
               <img src={image} alt={name.en} className="object-fit" />
@@ -103,11 +103,11 @@ const BasketItem = ({
           <div className="flex-auto">
             <div className="flex justify-between p-2">
               <div className="flex flex-wrap items-center justify-start px-2">
-                <h2 className="... w-full overflow-hidden text-ellipsis font-bold lg:text-lg ">
+                <h2 className="... w-full overflow-hidden text-ellipsis font-bold ">
                   {name.en}
                 </h2>
               </div>
-              <h3 className="flex items-center px-2 font-bold lg:text-lg">
+              <h3 className="flex items-center px-2 font-bold ">
                 {showPrice()}
               </h3>
             </div>
@@ -131,7 +131,7 @@ const BasketItem = ({
       )}
       {/* md and above display */}
       {winSize >= 0 && (
-        <div className="flex h-max w-full justify-between gap-2">
+        <div className="flex h-max w-full justify-between gap-2 bg-white">
           <div className="flex flex-none items-center">
             <div className="m-2 h-32 w-32 overflow-hidden rounded">
               <img alt={name.en} src={image} className="object-fit" />
@@ -139,7 +139,7 @@ const BasketItem = ({
           </div>
           <div className="my-2 flex flex-auto items-center">
             <div className="flex w-3/12 flex-wrap items-center justify-start px-2">
-              <h2 className="... w-full overflow-hidden text-ellipsis font-bold lg:text-lg">
+              <h2 className="... w-full overflow-hidden text-ellipsis font-bold">
                 {name.en}
               </h2>
             </div>
@@ -167,7 +167,7 @@ const BasketItem = ({
               </>
             )}
 
-            <h3 className="flex w-2/12 items-center px-2 font-bold xl:text-lg">
+            <h3 className="flex w-2/12 items-center px-2 font-bold ">
               {showPrice()}
             </h3>
           </div>

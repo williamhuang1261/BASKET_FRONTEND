@@ -9,7 +9,7 @@ import CustomDirectNav from "../General/Miscellaneous/CustomDirectNav";
  */
 const Navigation = () => {
   return (
-    <div className="flex items-center justify-start text-xl">
+    <div className="flex items-center justify-start text-lg">
         {/* Categories dropdown */}
         <Dropdown
           title={
@@ -19,13 +19,13 @@ const Navigation = () => {
             </div>
           }
           body={
-            <div className="grid grid-flow-col grid-rows-10-free rounded border-0.5 border-dark_gray bg-white py-1">
+            <div className="grid grid-flow-col grid-rows-10-free rounded border-0.5 border-dark_gray bg-white py-2">
               {categories.map((c) => (
                 <CustomDirectNav
                   pathname={"/items/"}
                   key={c}
                   aria-label={"Go to " + c + " Category"}
-                  className="mx-2 px-2 flex-auto cursor-pointer border-b-0.5 border-light_gray py-1 text-base hover:text-green lg:text-lg"
+                  className="mx-2 px-2 flex-auto cursor-pointer border-b-0.5 border-light_gray py-1 hover:text-green"
                 >
                   <p className="flex leading-snug w-max h-full items-start justify-start text-left">{c}</p>
                 </CustomDirectNav>

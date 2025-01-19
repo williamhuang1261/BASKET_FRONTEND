@@ -38,7 +38,7 @@ const Description = () => {
 
   return (
     <section className="border-none border-dark_gray lg:border-b-0.5">
-      <div className="container mx-auto px-10 pb-2 pt-4 md:px-20 lg:flex lg:flex-row">
+      <div className="container mx-auto px-10 pb-2 pt-4 lg:px-20 lg:flex lg:flex-row 2xl:px-44  3xl:px-64">
         {cards.map((c) => (
           <DescriptionCard
             Icon={c.icon}

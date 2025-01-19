@@ -1,3 +1,5 @@
+import CustomDirectNav from "../General/Miscellaneous/CustomDirectNav";
+
 interface Props {
   id: string;
   value: string;
@@ -16,16 +18,23 @@ const PasswordBox = ({
   onChange,
   onSelect,
 }: Props) => {
+
   return (
     <>
-      <div className="flex justify-between py-1 gap-2">
+      <div className="flex justify-between gap-2 py-1">
         <label htmlFor={id}>
           <h3 className="font-semibold">{title}</h3>
         </label>
         {showForgot && (
-          <button>
-            <h3 className="text-black/50 underline hover:text-black transition-all duration-150 ease-in-out">Forgot Password?</h3>
-          </button>
+          <CustomDirectNav
+            pathname="/auth/reset-request"
+            aria-label="Reset Password"
+            type="button"
+          >
+            <h3 className="text-black/50 underline transition-all duration-150 ease-in-out hover:text-black">
+              Forgot Password?
+            </h3>
+          </CustomDirectNav>
         )}
       </div>
       <input

@@ -39,7 +39,7 @@ const FilterPopUp = () => {
         >
           <div className="sticky top-0 z-20 w-full bg-white">
             <div className=" flex  items-center justify-between bg-green/80 p-2 px-5">
-              <h2 className="bold text-3xl">Filters</h2>
+              <h2 className="bold text-2xl">Filters</h2>
               <div className="flex items-center justify-center gap-2">
                 <input
                   type="submit"

@@ -71,7 +71,7 @@ const Checkbox = ({
           <label
             key={i + " label"}
             htmlFor={i}
-            className="flex-auto ps-2 text-lg hover:cursor-pointer"
+            className="flex-auto ps-2 hover:cursor-pointer"
           >
             {i}
           </label>

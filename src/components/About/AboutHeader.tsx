@@ -7,7 +7,7 @@
 const AboutHeader = () => {
   return (
     <div className="flex h-28 items-center justify-center rounded bg-green/80 shadow-md">
-      <h1 className="text-xl font-bold lg:text-3xl 3xl:text-4xl">About</h1>
+      <h1 className="text-lg font-bold lg:text-2xl 3xl:text-3xl">About</h1>
     </div>
   );
 };

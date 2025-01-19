@@ -1,7 +1,9 @@
 import useCustomNavigation from "../../../hooks/useCustomNavigation";
 import { NavigationProps } from "../../../interface/NavigateProps";
 
-type Prop = NavigationProps & React.HTMLAttributes<HTMLButtonElement>;
+type Prop = NavigationProps & React.HTMLAttributes<HTMLButtonElement> & {
+  type?: 'button' | 'submit' | 'reset';
+}
 
 /**
  * Custom button component that handles navigation with optional callbacks and error handling
@@ -18,11 +20,11 @@ type Prop = NavigationProps & React.HTMLAttributes<HTMLButtonElement>;
  * <button onClick={() => directNav({ pathname: '/' })}>Home</button>
  */
 const CustomDirectNav = ({
+  type,
   pathname,
   error,
-  callback,
-  promiseFn,
   children,
+  customEvent,
   ...rest
 }: Prop) => {
   const { directNav } = useCustomNavigation();
@@ -30,7 +32,8 @@ const CustomDirectNav = ({
   return (
     <button
       {...rest}
-      onClick={() => directNav({ pathname, error, callback, promiseFn })}
+      type={type}
+      onClick={() => directNav({ pathname, error, customEvent })}
     >
       {children}
     </button>

@@ -1,13 +1,14 @@
-import SocialLogin from "../components/Auth/Login/SocialLogin";
-import SignUp from "../components/Auth/Signup/SignUp";
-import GenNavBar from "../components/NavBar/GenNavBar";
-import loginGoogle from "../utils/auth/loginGoogle";
-import googleLogo from "../assets/Google__G__logo.svg";
-import loginFacebook from "../utils/auth/loginFacebook";
-import facebookLogo from "../assets/Facebook_Logo_Primary.png";
-import loginMicrosoft from "../utils/auth/loginMicrosoft";
-import microsoftLogo from "../assets/Microsoft_logo.svg";
-import CustomDirectNav from "../components/General/Miscellaneous/CustomDirectNav";
+import CustomDirectNav from "../../components/General/Miscellaneous/CustomDirectNav";
+import SocialLogin from "../../components/Auth/Login/SocialLogin";
+import SignUp from "../../components/Auth/Signup/SignUp";
+import GenNavBar from "../../components/NavBar/GenNavBar";
+import loginGoogle from "../../utils/auth/loginGoogle";
+import loginFacebook from "../../utils/auth/loginFacebook";
+import loginMicrosoft from "../../utils/auth/loginMicrosoft";
+import googleLogo from "../../assets/Google__G__logo.svg";
+import facebookLogo from "../../assets/Facebook_Logo_Primary.png";
+import microsoftLogo from "../../assets/Microsoft_logo.svg";
+import { IoClose } from "react-icons/io5";
 
 /**
  * @description User registration page with standard and social sign-up options
@@ -21,7 +22,7 @@ import CustomDirectNav from "../components/General/Miscellaneous/CustomDirectNav
  */
 const UserSignUpPage = () => {
   return (
-    <div className=" min-w-80">
+    <div className="min-w-80 min-h-screen">
       <GenNavBar
         size={"Container"}
         hidden={[
@@ -35,16 +36,24 @@ const UserSignUpPage = () => {
         page="General"
       />
       <div className="flex justify-center">
-        <div className="items-center justify-center rounded p-6 sm:w-min sm:border sm:shadow-lg">
+        <div className="items-center justify-center rounded bg-white p-6 sm:w-min sm:border sm:shadow-lg">
           <div className="w-full">
-            <h1 className="text-2xl font-bold">Sign Up to The Basket</h1>
+            <div className="flex items-center justify-between">
+              <h1 className="text-2xl font-bold">Sign Up to The Basket</h1>
+              <CustomDirectNav pathname="/" aria-label="Close Sign Up Page">
+                <IoClose
+                  size={"28"}
+                  className="text-black/50 transition-all duration-150 ease-in-out hover:text-black"
+                />
+              </CustomDirectNav>
+            </div>
             <div className="mb-3 py-2">
               <h3 className="sm:w-96">
                 Use our built-in calculator and stay tuned for upcoming
                 features. Already have an account?{" "}
                 <CustomDirectNav
                   className="font-bold underline transition-all duration-150 ease-in-out hover:text-green"
-                  pathname="/user-login"
+                  pathname="/auth/login"
                   aria-label="Go to Sign In Page"
                 >
                   Sign In

@@ -16,7 +16,7 @@ const CategoryFilter = () => {
 
   return (
     <div className="py-5">
-      <h2 className="pb-2 text-xl font-semibold">Categories</h2>
+      <h2 className="pb-2 text-lg font-semibold">Categories</h2>
       <ExpandableCheckboxList
         items={categories}
         checkedSet={user.meta.filters.searchPreferences.categories}

@@ -12,15 +12,14 @@ export type NavigationProps = {
     /** Optional flag to hide the home button */
     hideHome?: boolean;
   };
-  /** Optional callback function to execute during navigation */
-  callback?: () => void;
-  /** Optional promise function to execute during navigation */
-  promiseFn?: () => Promise<void>;
+  /** Optional flag for a custom Event (event listeners) */
+  customEvent?: string
 };
 
 export type NavigationLinkedList = ListNode<NavigationProps>;
 
 export type CustomLocationState = {
   paths: NavigationLinkedList | null;
-  currErr: NavigationProps["error"] | null
+  currErr: NavigationProps["error"] | null;
+  pendingFn: string[];
 };

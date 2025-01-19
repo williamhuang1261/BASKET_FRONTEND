@@ -1,0 +1,7 @@
+<svg width="1280" height="1280" xmlns="http://www.w3.org/2000/svg">
+	<circle cy='120' cx='120' r="100" stroke-width="4" fill="#6ee94f" opacity='0.1' />
+	<circle cy='200' cx='330' r="150" stroke-width="4" fill="#6ee94f" opacity='0.15' />
+	<circle cy='300' cx='200' r="200" stroke-width="4" fill="#6ee94f" opacity='0.1' />
+	<circle cy='540' cx='80' r="180" fill="#6ee94f" opacity='0.15' />
+	<circle cy='720' cx='1280' r='300' fill='#6ee94f' opacity='0.15' />
+</svg>

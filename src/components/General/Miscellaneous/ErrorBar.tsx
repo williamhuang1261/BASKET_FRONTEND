@@ -44,7 +44,7 @@ const ErrorBar = ({ size }: Props) => {
     <div className="sticky top-0 z-50 w-full bg-red-500">
       {status.show && (
         <div
-          className={`${size === "Container" ? "px-3 md:container md:mx-auto md:px-20" : "px-3 "} flex items-center justify-between`}
+          className={`${size === "Container" ? "px-3 md:container md:mx-auto lg:px-20 2xl:px-44 3xl:px-64" : "px-3 "} flex items-center justify-between `}
         >
           <h3 className="">
             Error: {status.message} ({status.errorCode}){" "}

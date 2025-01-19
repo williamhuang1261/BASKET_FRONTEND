@@ -7,9 +7,9 @@ import LogoSlideShow from "./LogoSlideshow";
  */
 const LogoSlideDiv = () => {
   return (
-    <section className="bg-green/60">
-      <div className="px-3 md:container md:mx-auto md:w-max md:px-20">
-        <LogoSlideShow />
+    <section className="bg-light_green">
+        <div className="px-3 md:px-0 md:container md:mx-auto md:w-max lg:px-20 2xl:px-44  3xl:px-64">
+          <LogoSlideShow />
       </div>
     </section>
   );

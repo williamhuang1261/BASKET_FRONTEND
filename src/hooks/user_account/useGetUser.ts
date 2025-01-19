@@ -38,7 +38,7 @@ const useGetUser = () => {
     try {
       const res = await queryClient.fetchQuery({
         queryKey: ["account"],
-        queryFn: () => UserServices.post("/account/oauth"),
+        queryFn: () => UserServices.post("/oauth"),
       });
       setUser(res);
     } catch (err) {

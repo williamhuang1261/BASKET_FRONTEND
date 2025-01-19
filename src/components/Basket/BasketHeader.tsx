@@ -18,14 +18,12 @@ const BasketHeader = () => {
   const { basket } = useBasketState();
 
   return (
-    <div className="">
+    <div className="bg-white">
       <div
         className="flex h-16 items-center justify-center gap-3 rounded border-0.5 bg-green/80 shadow-md md:h-24 lg:h-32"
         onClick={() => console.log(basket)}
       >
-        <h1 className="3xl:text-gray-4xl text-xl font-bold lg:text-3xl">
-          Basket
-        </h1>
+        <h1 className="text-lg font-bold lg:text-2xl 3xl:text-3xl">Basket</h1>
         <div className="flex xl:mt-0.5">
           <InfoBox iconSize={25} title="Basket">
             Here, the website will calculate the best stores combination for you

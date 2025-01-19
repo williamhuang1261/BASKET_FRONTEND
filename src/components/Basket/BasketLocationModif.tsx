@@ -16,7 +16,7 @@ const ChangeLocation = () => {
     <div className="relative flex w-full">
       <LocationAutoComplete
         id={"BasketModification"}
-        inputClassName="border outline-none rounded-s text-md p-2 h-10 w-full lg:min-w-96"
+        inputClassName="border outline-none rounded-s p-2 h-10 w-full lg:min-w-96"
         dropdownClassName="absolute top-10 z-50 w-full overflow-hidden rounded bg-white"
         elemClassName="hover:bg-light_gray/50 cursor-pointer min-h-10 w-full px-4 py-1 flex items-center"
         loadingClassName="h-10 w-full px-4 py-1 flex items-center border-b"

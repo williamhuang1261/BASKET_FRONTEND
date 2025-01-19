@@ -13,7 +13,7 @@ const Contact = () => {
   return (
     <div className="grid py-5 xl:grid-cols-2 ">
       <div className="flex-auto pb-5 md:px-20 xl:p-0">
-        <h2 className="text-xl font-semibold lg:text-3xl 3xl:text-4xl">
+        <h2 className="text-lg font-semibold lg:text-2xl 3xl:text-3xl">
           Contact us
         </h2>
         <p>
@@ -23,19 +23,19 @@ const Contact = () => {
         </p>
       </div>
       <form className="md:px-20">
-        <h3 className="text-lg">Your Name</h3>
+        <h3 className="font-semibold">Your Name</h3>
         <input
           type="text"
           className="mb-2 w-60 rounded border bg-white p-1 outline-none md:w-80"
           aria-label="Name field"
         />
-        <h3 className="text-lg">Your Email</h3>
+        <h3 className="font-semibold">Your Email</h3>
         <input
           type="email"
           className="mb-2 w-60 rounded border bg-white p-1 outline-none md:w-80"
           aria-label="Email field"
         />
-        <h3 className="text-lg">Subject</h3>
+        <h3 className="font-semibold">Subject</h3>
         <select
           aria-label="Subject of inquiry"
           className="mb-2 rounded border bg-white p-1 outline-none"
@@ -49,7 +49,7 @@ const Contact = () => {
           <option value="Review">Review</option>
           <option value="Other">Other</option>
         </select>
-        <h3 className="text-lg">What are you reaching out about today?</h3>
+        <h3 className="font-semibold">What are you reaching out about today?</h3>
         <textarea className="mb-2 h-32 w-full rounded border bg-white p-2 outline-none"></textarea>
         <button
           type="button"

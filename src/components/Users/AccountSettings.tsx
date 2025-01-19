@@ -20,7 +20,7 @@ const AccountSettings = () => {
   });
 
   return (
-    <div className="rounded border">
+    <div className="rounded border bg-white">
       <div className="flex min-h-11 w-full flex-wrap justify-between gap-2 border-b p-3">
         <UsernameModif />
       </div>

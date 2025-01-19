@@ -13,7 +13,7 @@ const AccountBox = () => {
   const [confirm, setConfirm] = useState(false);
 
   return (
-    <div className="flex gap-5">
+    <div className="flex gap-5 w-full">
       <button
         onClick={logOut}
         className="w-full rounded bg-red-100 p-1 shadow-md transition-all duration-150 ease-in-out hover:bg-red-500"
@@ -22,7 +22,7 @@ const AccountBox = () => {
       </button>
       <button
         onClick={() => setConfirm(true)}
-        className="w-full rounded border-2 border-red-500 p-1 text-red-500 shadow-sm transition-all duration-150 ease-in-out hover:bg-red-500 hover:text-black hover:shadow-md"
+        className="w-full rounded border-2 border-red-500 p-1 bg-white text-red-500 shadow-sm transition-all duration-150 ease-in-out hover:bg-red-500 hover:text-black hover:shadow-md"
       >
         Delete Account
       </button>
@@ -33,8 +33,8 @@ const AccountBox = () => {
             Account Deletion
           </h2>
           <div className="bg-white p-2">
-            <span>Please confirm you want to delete your account</span>
-            <div className="flex justify-center gap-5">
+            <span className="w-full flex justify-center">Please confirm you want to delete your account</span>
+            <div className="flex justify-center gap-5 mt-1">
               <button
                 onClick={() => setConfirm(false)}
                 className="w-full rounded bg-green/50 p-1 transition-all duration-150 ease-in-out hover:bg-green/80 hover:shadow-md"

@@ -20,7 +20,7 @@ const PriceBar = ({ filtered, normal }: Props) => {
         <div
           className={`${filtered.opts?.[0].process.isRebate ? "bg-green/75" : ""} rounded px-1`}
         >
-          <h3 className="font-mona text-xl font-semibold">
+          <h3 className="font-mona text-lg font-semibold">
             {filtered.opts?.[0].process.priceToShow}
           </h3>
         </div>

@@ -1,10 +1,29 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   CustomLocationState,
-  NavigationLinkedList,
   NavigationProps,
 } from "../interface/NavigateProps";
 import { ListNode } from "../classes/LinkedList";
+
+
+interface NavFunctions {
+  name: string;
+  callback?: () => void;
+  promiseFn?: () => Promise<void>;
+}
+
+const fnHandler = async (functions: NavFunctions) => {
+  if (functions.callback) functions.callback();
+  if (functions.promiseFn) {
+    try {
+      await functions.promiseFn();
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  document.removeEventListener(functions.name, fnHandler);
+  return;
+};
 
 /**
  * Custom hook for managing navigation state and transitions
@@ -15,6 +34,17 @@ import { ListNode } from "../classes/LinkedList";
 const useCustomNavigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const clear = () => {
+    if (location.state && location.state?.pendingFn) {
+      location.state.pendingFn.forEach((fn: string) => {
+        document.removeEventListener(fn, fnHandler);
+      });
+    }
+    location.state = null;
+    return;
+  };
+
 
   /**
    * @description Adds a new navigation state to the chain
@@ -31,7 +61,7 @@ const useCustomNavigation = () => {
    *   }
    * });
    */
-  const add = (info: NavigationProps) => {
+  const add = (info: NavigationProps, functions?: NavFunctions) => {
     const state: CustomLocationState | null | undefined = location.state;
     if (!state) {
       location.state = {
@@ -43,15 +73,12 @@ const useCustomNavigation = () => {
     } else {
       location.state.paths.append(info);
     }
-  };
 
-  /**
-   * @description Clears the navigation state
-   * @example
-   * clear();
-   */
-  const clear = () => {
-    location.state = null;
+    if (functions) {
+      
+      if (!location.state.pendingFn.includes(functions.name))
+        document.addEventListener(functions.name, fnHandler);
+    }
   };
 
   /**
@@ -83,14 +110,21 @@ const useCustomNavigation = () => {
       navigate("/");
       return;
     }
-    if (value.callback) value.callback();
-    if (value.promiseFn) await value.promiseFn();
+    let pendingFn = state.pendingFn;
+    if (value.customEvent) {
+      document.dispatchEvent(new CustomEvent(value.customEvent));
+      pendingFn = pendingFn.filter((fn) => fn !== value.customEvent);
+    }
     if (value.pathname === location.pathname) {
       window.location.reload();
       return;
     }
     navigate(value.pathname, {
-      state: { paths: paths.next, currErr: value.error },
+      state: {
+        paths: paths.next,
+        currErr: value.error,
+        pendingFn: pendingFn,
+      },
     });
     if (reload) window.location.reload();
   };
@@ -111,13 +145,12 @@ const useCustomNavigation = () => {
    * });
    */
   const directNav = async (info: NavigationProps, reload?: boolean) => {
-    if (location.state && location.state.paths)
-      (location.state as NavigationLinkedList).clear();
+    clear();
     add(info);
     await nav(reload);
   };
 
-  return { add, clear, nav, directNav };
+  return { add, nav, directNav };
 };
 
 export default useCustomNavigation;

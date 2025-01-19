@@ -22,7 +22,7 @@ const Accordion = ({ title, answer }: Props) => {
         className="flex w-full items-center justify-between p-2 transition-all duration-100 ease-in-out hover:bg-light_gray"
         onClick={() => setOpen(!open)}
       >
-        <span className="text-lg font-semibold">{title}</span>
+        <span className="font-semibold">{title}</span>
         <svg
           className="ml-8 shrink-0"
           width="16"

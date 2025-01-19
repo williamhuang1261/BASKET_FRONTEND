@@ -14,7 +14,7 @@ const StoreFilter = () => {
 
   return (
     <div className=" py-5">
-      <h2 className="pb-2 text-xl font-semibold">Stores</h2>
+      <h2 className="pb-2 text-lg font-semibold">Stores</h2>
       <ExpandableCheckboxList
         checkedSet={user.meta.filters.searchPreferences.stores}
         items={suppliers}

@@ -21,7 +21,7 @@ const FlyersPage = () => {
 
   return (
     <>
-      <div className="flex h-screen w-screen flex-col overflow-hidden min-w-80">
+      <div className="flex h-screen w-screen flex-col overflow-hidden min-w-80 bg-white">
         {/* Nav bar */}
         <div className="flex-none border-b-0.5 border-dark_gray">
           <GenNavBar page="General" size="Full" hidden={["Location"]} />

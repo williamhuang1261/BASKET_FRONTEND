@@ -58,7 +58,7 @@ const FlyerHeader = () => {
             className="flex items-center hover:text-black/50"
           >
             <AiOutlineStepBackward size={20} />
-            <h2 className="text-center xl:text-lg">Results</h2>
+            <h2 className="text-center">Results</h2>
           </CustomDirectNav>
           <div className="flex h-full items-center justify-center">
             <a href={logos[0].ref.cadEN} target="_blank">

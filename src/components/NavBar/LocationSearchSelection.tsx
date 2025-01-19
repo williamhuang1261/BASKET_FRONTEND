@@ -10,11 +10,11 @@ const LocationSearchSelection = () => {
   return (
     <LocationAutoComplete
       id="location-search-selection"
-      inputClassName="rounded h-full w-full outline-none border-none p-4 text-lg md:max-lg:text-sm"
-      dropdownClassName="absolute top-12 z-50 w-full overflow-hidden rounded bg-white"
-      elemClassName="hover:bg-light_gray/50 cursor-pointer min-h-12 w-full px-4 py-1 flex items-center"
-      loadingClassName="h-12 w-full px-4 py-1 flex items-center border-b"
-      errorClassName="h-12 w-full px-4 py-1 flex items-center text-red-500"
+      inputClassName="rounded h-full w-full outline-none border-none p-4"
+      dropdownClassName="absolute top-10 z-50 w-full overflow-hidden rounded bg-white"
+      elemClassName="hover:bg-light_gray/50 cursor-pointer min-h-10 w-full px-4 py-1 flex items-center"
+      loadingClassName="h-10 w-full px-4 py-1 flex items-center border-b"
+      errorClassName="h-10 w-full px-4 py-1 flex items-center text-red-500"
     />
   );
 };

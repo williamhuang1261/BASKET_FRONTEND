@@ -47,7 +47,7 @@ const useAccountDelete = () => {
         err.code === "auth/requires-recent-login"
       ) {
         add({
-          pathname: "/user-login",
+          pathname: "/auth/login",
           error: {
             message: "You must re-authenticate to delete your account",
             code: 401,

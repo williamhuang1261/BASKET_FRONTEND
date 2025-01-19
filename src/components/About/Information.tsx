@@ -28,7 +28,7 @@ const Information = () => {
     <div className="flex flex-col gap-5">
       {info.map((i) => (
         <div className="flex flex-col gap-1" key={i.title}>
-          <h2 className="text-xl font-bold">{i.title}</h2>
+          <h2 className="text-lg font-bold">{i.title}</h2>
           <span>{i.body}</span>
         </div>
       ))}

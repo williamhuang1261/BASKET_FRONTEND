@@ -21,7 +21,7 @@ const PopItemsDiv = () => {
 
   return (
     <div>
-      <section className="mx-3 pb-4 pt-2 md:container md:mx-auto md:px-20">
+      <section className="mx-3 pb-4 pt-2 md:container md:mx-auto lg:px-20 2xl:px-44  3xl:px-64">
         <h2 className="text-2xl">Popular Items</h2>
         <div className="mt-2 grid flex-none grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-6">
           {itemsLoading

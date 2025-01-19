@@ -25,7 +25,7 @@ const MustBeLoggedIn = ({ children, ...attributes }: Props) => {
       onAuthStateChanged(auth, (user) => {
         if (!user) {
           add({
-            pathname: "/user-login",
+            pathname: "/auth/login",
             error: {
               message: "You must be logged in to view this page",
               code: 401,

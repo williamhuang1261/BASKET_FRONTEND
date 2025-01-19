@@ -16,7 +16,7 @@ const LocationFilter = () => {
 
   return (
     <div className="py-5">
-      <h2 className="text-xl font-semibold">Distance</h2>
+      <h2 className="font-semibold">Distance</h2>
       <Slider
         id={"LocationSlider"}
         initial={searchFilterEX.distance.amount}
@@ -33,7 +33,7 @@ const LocationFilter = () => {
           });
         }}
       />
-      <div className="flex w-52 justify-center text-lg">
+      <div className="flex w-52 justify-center text">
         <h3 className="flex w-8 justify-end pe-1 ">{value}</h3>
         <h3 className="">{searchFilter.distance.units}</h3>
       </div>

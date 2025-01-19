@@ -28,7 +28,7 @@ const FilterDiv = () => {
     <div className="p-5">
       <div>
         <div className="flex justify-between border-b-0.5 border-dark_gray/50 pb-3">
-          <h1 className=" text-2xl font-semibold">Filters</h1>
+          <h1 className=" text-xl font-semibold">Filters</h1>
           <input
             type="button"
             value={"Apply"}

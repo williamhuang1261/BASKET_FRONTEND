@@ -12,10 +12,14 @@ const App = () => {
   const getUser = useGetUser();
 
   useEffect(() => {
-    getUser()
+    getUser();
   }, []);
 
-  return <RouterProvider router={router} />;
+  return (
+    <div className="bg">
+      <RouterProvider router={router} />
+    </div>
+  );
 };
 
 export default App;

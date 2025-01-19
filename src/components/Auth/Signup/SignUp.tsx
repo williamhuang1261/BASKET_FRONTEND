@@ -105,7 +105,7 @@ const SignUp = () => {
 
         <button
           type="submit"
-          className={`${allValid ? "bg-green/75 text-white outline-none ring-green hover:bg-green hover:ring-1" : "text-green/50 outline outline-green/50 cursor-not-allowed"} mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out`}
+          className={`${allValid ? "bg-green/75 text-white outline-none ring-green hover:bg-green hover:ring-1" : "text-green outline outline-green/50 cursor-not-allowed"} mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out`}
           disabled={!allValid}
         >
           SIGN UP
@@ -114,7 +114,7 @@ const SignUp = () => {
           <h2 className="text-red-500">
             {"This email is already in use. Try "}
             <CustomDirectNav
-              pathname="/user-login"
+              pathname="/auth/login"
               className="text-blue-500 underline"
             >
               {"Login"}

@@ -4,7 +4,7 @@ import WeightUnitsModif from "./WeightUnitsModif";
 
 const PreferencesSettings = () => {
   return (
-    <div className="rounded border">
+    <div className="rounded border bg-white">
       <div className="flex h-11 w-full items-center justify-between border-b px-2">
         <LanguageModif />
       </div>

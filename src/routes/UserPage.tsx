@@ -18,12 +18,12 @@ import useCustomNavigation from "../hooks/useCustomNavigation";
  *
  * @returns {JSX.Element} User page with profile, preferences, and account settings
  */
-const UsersPages = () => {
+const UserPage = () => {
   const { directNav } = useCustomNavigation();
 
   return (
     <MustBeLoggedIn className="flex min-h-screen min-w-80 flex-col">
-      <div className="flex-none border-b-0.5 border-dark_gray">
+      <div className="flex-none border-b-0.5 border-dark_gray bg-white">
         <GenNavBar
           size="Container"
           page={"General"}
@@ -37,21 +37,27 @@ const UsersPages = () => {
           </div>
           <div className="flex flex-col gap-2 py-5">
             <h2 className="text-xl font-semibold">Account Settings</h2>
-            <AccountSettings />
+            <div className="px-3">
+              <AccountSettings />
+            </div>
           </div>
           <div className="flex flex-col gap-2">
             <h2 className="text-xl font-semibold">Preferences</h2>
-            <PreferencesSettings />
+            <div className="px-3">
+              <PreferencesSettings />
+            </div>
           </div>
-          <div className="w-full py-5">
-            <button
-              className="w-full rounded bg-green/50 p-1 shadow-sm transition-all duration-150 ease-in-out hover:bg-green"
-              onClick={() => directNav({ pathname: "/" }, true)}
-            >
-              Done
-            </button>
+          <div className="flex w-full items-center justify-center py-5">
+            <div className="bg-white w-full">
+              <button
+                className="w-full rounded bg-green/50 p-1 shadow-sm transition-all duration-150 ease-in-out hover:bg-green"
+                onClick={() => directNav({ pathname: "/" }, true)}
+              >
+                Done
+              </button>
+            </div>
           </div>
-          <div className="">
+          <div className="flex items-center justify-center">
             <AccountBox />
           </div>
         </div>
@@ -64,4 +70,4 @@ const UsersPages = () => {
   );
 };
 
-export default UsersPages;
+export default UserPage;

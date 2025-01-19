@@ -12,10 +12,10 @@ const MainHeaderDiv = () => {
   const winSize = useWindowSize();
   return (
     <div>
-      <header className="border-b-0.5 border-b-dark_gray">
+      <header className="border-b-0.5 border-b-dark_gray bg-white">
         {winSize >= 1 && (
           <div className="bg-green/80">
-            <div className="container mx-auto flex flex-row items-center justify-between px-20">
+            <div className="container mx-auto flex flex-row items-center justify-between lg:px-20 2xl:px-44 3xl:px-64">
               <p className="">
                 Find the best deals for your groceries - Optimize your shopping
               </p>
