@@ -1,4 +1,6 @@
-<svg width="1280" height="1280" xmlns="http://www.w3.org/2000/svg">
+
+<svg class='bg-image' width="1280" height="1280" xmlns="http://www.w3.org/2000/svg">
+	<rect width="1280" height="1280" fill="#ffffff"/>
 	<!-- Left: Upper left -->
 	<circle cy='100' cx='130' r="100" fill="#ecfce8" opacity='0.8'/>
 	<!-- Left: Upper right -->

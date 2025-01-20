@@ -16,14 +16,14 @@ const MainHeaderDiv = () => {
         {winSize >= 1 && (
           <div className="bg-green/80">
             <div className="container mx-auto flex flex-row items-center justify-between lg:px-20 2xl:px-44 3xl:px-64">
-              <p className="">
+              <p className="text-sm">
                 Find the best deals for your groceries - Optimize your shopping
               </p>
               <LanguageSelect
                 id="header"
                 loadingComponent={<Spinner color="dark_gray" size={"2"} />}
-                selectClassName="cursor-pointer rounded-none border-none bg-green/5 outline-none hover:text-black/50"
-                optionClassName="bg-white text-black"
+                selectClassName="cursor-pointer rounded-none border-none bg-green/5 outline-none hover:text-black/50 text-sm"
+                optionClassName="bg-white text-black text-sm"
               />
             </div>
           </div>

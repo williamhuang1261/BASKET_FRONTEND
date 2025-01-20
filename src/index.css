@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  outline: none
+}
+
+select {
+  cursor: pointer
+}
+
 :root:has(.no-doc-scroll) {
   overflow:hidden;
 }
@@ -13,11 +21,4 @@
   background-size: cover;
 }
 
-* {
-  outline: none
-}
-
-select {
-  cursor: pointer
-}
 

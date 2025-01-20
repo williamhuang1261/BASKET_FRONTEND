@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 
 /**
- * @returns xs: -1 | sm: 0 | md: 1 | lg: 2 | xl: 3 | 2xl: 4 | 3xl: 5
  * @description Returns the current window width with a number
+ * @param custom - A custom width to compare with
+ * @param range - A range of width to compare with
+ * @returns xs: -1 | sm: 0 | md: 1 | lg: 2 | xl: 3 | 2xl: 4 | 3xl: 5 (If custom / range is not provided)
+ * @returns Under / Out of range: 0 | Over / In range: 1 (If custom / range is provided)
  * @example
  * width: {
  *   undersized: -2 (width < 320),
@@ -15,7 +18,7 @@ import { useEffect, useState } from "react";
  *   3xl: 5 (2048 <= width)
  * }
  */
-const useWindowSize = () => {
+const useWindowSize = (custom?: number, range?: [number, number]) => {
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
   });
@@ -26,16 +29,23 @@ const useWindowSize = () => {
         width: window.innerWidth,
       });
     };
-
     window.addEventListener("resize", handleResize);
-
     // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
   const { width } = windowSize;
+
+  if (custom) {
+    if (width < custom) return 0;
+    else return 1;
+  }
+
+  if (range) {
+    if (width < range[0] || width > range[1]) return 0;
+    else return 1;
+  }
 
   if (width < 320)
     return -2; // undersized
