@@ -1,4 +1,9 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  browserLocalPersistence,
+  browserSessionPersistence,
+  setPersistence,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../../../utils/auth/initFirebase";
 import { FirebaseError } from "firebase/app";
@@ -8,6 +13,7 @@ import useCustomNavigation from "../../../hooks/useCustomNavigation";
 import EmailBox from "../EmailBox";
 import PasswordBox from "../PasswordBox";
 import RememberMe from "../RememberMe";
+
 
 /**
  * @description Component for user authentication with email and password
@@ -19,26 +25,35 @@ const StandardLogin = () => {
   const { nav } = useCustomNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const errorHandler = useError();
+  const rememberMeRef = React.useRef<HTMLInputElement>(null);
+  const errHandler = useError();
+  const isValid = email.length >= 3 && password.length >= 1;
+
 
   const handleSubmit = (event: React.FormEvent) => {
+
     event.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
+        setPersistence(
+          auth,
+          rememberMeRef.current?.checked
+            ? browserLocalPersistence
+            : browserSessionPersistence,
+        ).catch(errHandler);
         nav();
       })
       .catch((err: FirebaseError) => {
-        errorHandler(err);
+        errHandler(err);
         dispatch({
           group: "CHANGE",
-          type: "STATUS",
-          newError: true,
-          newErrorCode: 400,
-          newMessage: "Invalid email or password",
+          type: "ERROR_STATUS",
+          errorCode: 400,
+          message: "Invalid email or password",
         });
         dispatch({
           group: "CHANGE",
-          type: "DISPLAY",
+          type: "ERROR_DISPLAY",
           show: true,
         });
       });
@@ -69,8 +84,8 @@ const StandardLogin = () => {
         </div>
         <button
           type="submit"
-          className={`${email && password ? "bg-green/80 text-white ring-green hover:bg-green hover:ring-1" : "cursor-not-allowed text-green outline outline-green/50"} mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out hover:shadow-sm`}
-          disabled={!email || !password}
+          className={`${isValid ? "bg-green/75 text-black ring-green hover:bg-green hover:ring-1" : "cursor-not-allowed text-green outline outline-green/50"} mt-4 w-full rounded p-2 font-extrabold transition-all duration-150 ease-in-out hover:shadow-sm`}
+          disabled={!isValid}
         >
           SIGN IN
         </button>

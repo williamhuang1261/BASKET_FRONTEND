@@ -24,31 +24,35 @@ const ErrorBar = ({ size }: Props) => {
   const handleClick = () => {
     dispatch({
       group: "CHANGE",
-      type: "DISPLAY",
+      type: "ERROR_DISPLAY",
       show: false,
     });
+    if (location.state?.currErr) {
+      location.state.currErr = null;
+    }
   };
 
   useEffect(() => {
     dispatch({
       group: "CHANGE",
-      type: "DISPLAY",
+      type: "ERROR_DISPLAY",
       show: false,
     });
     if ((location.state as CustomLocationState)?.currErr) {
       errHandler(location.state?.currErr);
+      location.state.currErr = null
     }
   }, [location.pathname]);
 
   return (
     <div className="sticky top-0 z-50 w-full bg-red-500">
-      {status.show && (
+      {status.error.show && (
         <div
           className={`${size === "Container" ? "px-3 md:container md:mx-auto lg:px-20 2xl:px-44 3xl:px-64" : "px-3 "} flex items-center justify-between `}
         >
           <h3 className="">
-            Error: {status.message} ({status.errorCode}){" "}
-            {status.hideHome || location.pathname === '/' ? null : (
+            Error: {status.error.message} ({status.error.errorCode}){" "}
+            {status.error.hideHome || location.pathname === "/" ? null : (
               <CustomDirectNav className="font-bold underline" pathname="/">
                 Return to Home Page
               </CustomDirectNav>

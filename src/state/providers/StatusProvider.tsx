@@ -14,22 +14,27 @@ interface Props {
 }
 
 const initStatus: StatusProp = {
-  show: false,
-  error: false,
-  errorCode: 200,
-  message: "",
-  hideHome: false,
+  error: {
+    errorCode: 200,
+    message: "",
+    hideHome: false,
+    show: false,
+  },
+  succes: {
+    message: "",
+    show: false,
+  },
   loading: false,
-}
+};
 
 const StatusProvider = ({ children }: Props) => {
-  const [status, dispatch] = useReducer(statusReducer, initStatus)
+  const [status, dispatch] = useReducer(statusReducer, initStatus);
 
   return (
     <StatusContext.Provider value={{ status, dispatch }}>
       {children}
     </StatusContext.Provider>
-  )
+  );
 };
 
 export default StatusProvider;

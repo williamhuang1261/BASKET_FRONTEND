@@ -45,16 +45,12 @@ const SocialLogin = ({
     onClick()
       .then(() => {
         if (
-          (location.state as CustomLocationState).currErr?.message ===
+          (location.state as CustomLocationState).currErr?.message !==
           "You must re-authenticate to delete your account"
         ) {
-          document.dispatchEvent(new Event("accountDeletionSuccess"));
-        } else {
           getUser()
             .then(() => {
-              nav().then(() => {
-                window.location.reload();
-              });
+              nav();
             })
             .catch(() => {
               errorHandler({
@@ -63,6 +59,8 @@ const SocialLogin = ({
                   "Failed initializing your account - Try reloading the Home Page",
               });
             });
+        } else {
+          nav();
         }
       })
       .catch(() => {

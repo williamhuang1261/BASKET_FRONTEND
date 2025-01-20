@@ -46,14 +46,13 @@ const useError = () => {
 
     dispatch({
       group: "CHANGE",
-      type: "STATUS",
-      newError: true,
-      newErrorCode: code,
-      newMessage: message,
+      type: "ERROR_STATUS",
+      errorCode: code,
+      message: message,
     });
     dispatch({
       group: "CHANGE",
-      type: "DISPLAY",
+      type: "ERROR_DISPLAY",
       show: true,
       hideHome: hideHome ? true : false,
     });

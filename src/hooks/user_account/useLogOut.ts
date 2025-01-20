@@ -15,7 +15,7 @@ const useLogOut = () => {
   const errorHandler = useError();
   const auth = getAuth();
 
-  return () => {
+  return async () => {
     signOut(auth)
       .then(() => {
         dispatch({

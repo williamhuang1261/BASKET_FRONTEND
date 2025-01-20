@@ -4,64 +4,69 @@ import {
   NavigationProps,
 } from "../interface/NavigateProps";
 import { ListNode } from "../classes/LinkedList";
-
-
-interface NavFunctions {
-  name: string;
-  callback?: () => void;
-  promiseFn?: () => Promise<void>;
-}
-
-const fnHandler = async (functions: NavFunctions) => {
-  if (functions.callback) functions.callback();
-  if (functions.promiseFn) {
-    try {
-      await functions.promiseFn();
-    } catch (err) {
-      console.error(err);
-    }
-  }
-  document.removeEventListener(functions.name, fnHandler);
-  return;
-};
+import useError, { GenericError } from "./useError";
+import { FirebaseError } from "firebase/app";
+import { AxiosError } from "axios";
 
 /**
  * Custom hook for managing navigation state and transitions
- * @returns {Object} Navigation utilities
+ * @returns {Object} An object containing navigation utilities
+ * @returns {(info: NavigationProps, functions?: NavFunctions) => void} add - Adds a new navigation state
+ * @returns {(reload?: boolean) => Promise<void>} nav - Executes the navigation chain
+ * @returns {(info: NavigationProps, reload?: boolean) => Promise<void>} directNav - Directly navigates to a new path
  * @example
  * const { add, clear, nav } = useCustomNavigation();
  */
 const useCustomNavigation = () => {
   const navigate = useNavigate();
+  const errHandler = useError();
   const location = useLocation();
 
   const clear = () => {
-    if (location.state && location.state?.pendingFn) {
-      location.state.pendingFn.forEach((fn: string) => {
-        document.removeEventListener(fn, fnHandler);
-      });
-    }
     location.state = null;
     return;
   };
 
+  interface NavFunctions {
+    name: string;
+    callback?: () => void;
+    promiseFn?: () => Promise<void>;
+  }
 
   /**
-   * @description Adds a new navigation state to the chain
-   * @param {NavigationProps} info - Navigation information
+   * Adds a new navigation state to the chain and optionally registers navigation event handlers
+   * @param {NavigationProps} info - Navigation information including pathname and error details
+   * @param {NavFunctions} [functions] - Optional callbacks and promise functions to execute during navigation
+   * @throws {Error} When promise function execution fails
    * @example
    * add({
    *   pathname: '/',
-   *   callback: () => console.log('Navigating...'),
-   *   promiseFn: async () => await fetchData(),
    *   error: {
    *     message: 'Error occurred',
    *     code: 404,
    *     hideHome: false
-   *   }
+   *   },
+   *  customEvent: 'customEventName'
+   * }, {
+   *   name: 'customEventName',
+   *   callback: () => console.log('Custom event triggered'),
+   *   promiseFn: async () => await fetchData()
    * });
    */
   const add = (info: NavigationProps, functions?: NavFunctions) => {
+    const fnHandler = async (functions: NavFunctions) => {
+      if (functions.callback) functions.callback();
+      if (functions.promiseFn) {
+        try {
+          await functions.promiseFn();
+        } catch (err) {
+          errHandler(err as FirebaseError | GenericError | AxiosError);
+        }
+      }
+      document.removeEventListener(functions.name, () => fnHandler(functions));
+      return;
+    };
+
     const state: CustomLocationState | null | undefined = location.state;
     if (!state) {
       location.state = {
@@ -75,26 +80,23 @@ const useCustomNavigation = () => {
     }
 
     if (functions) {
-      
-      if (!location.state.pendingFn.includes(functions.name))
-        document.addEventListener(functions.name, fnHandler);
+      if (!location.state.pendingFn?.includes(functions.name))
+        document.addEventListener(functions.name, () => fnHandler(functions));
+      if (!location.state.pendingFn)
+        location.state.pendingFn = [functions.name];
+      else location.state.pendingFn.push(functions.name);
     }
   };
 
   /**
-   * @description Executes the navigation chain
-   * @summary Executes in the following order
-   *  - Path verification / Home redirection
-   *  - Callback function
-   *  - Promise function
-   *  - If current path is the same as the next path, reload the page
-   *  - Navigation
-   *  - Error handling
-   *  - Page reload (If applicable)
+   * Executes the navigation chain with pending functions and error handling
+   * @param {boolean} [reload] - Optional flag to reload the page after navigation
+   * @returns {Promise<void>} Resolves when navigation is complete
+   * @throws {Error} When navigation state is invalid
    * @example
    * await nav();
    */
-  const nav = async (reload?: boolean) => {
+  const nav = (reload?: boolean) => {
     const state: CustomLocationState | null | undefined = location.state;
     if (!state) {
       navigate("/");
@@ -122,7 +124,7 @@ const useCustomNavigation = () => {
     navigate(value.pathname, {
       state: {
         paths: paths.next,
-        currErr: value.error,
+        currErr: value.error || null,
         pendingFn: pendingFn,
       },
     });
@@ -130,8 +132,10 @@ const useCustomNavigation = () => {
   };
 
   /**
-   * @description Directly navigates to a new path
-   * @param {NavigationProps} info - Navigation information
+   * Directly navigates to a new path by clearing current state and creating a new navigation chain
+   * @param {NavigationProps} info - Navigation information including pathname and error details
+   * @param {boolean} [reload] - Optional flag to reload the page after navigation
+   * @returns {Promise<void>} Resolves when navigation is complete
    * @example
    * directNav({
    *   pathname: '/',
@@ -147,7 +151,7 @@ const useCustomNavigation = () => {
   const directNav = async (info: NavigationProps, reload?: boolean) => {
     clear();
     add(info);
-    await nav(reload);
+    nav(reload);
   };
 
   return { add, nav, directNav };
