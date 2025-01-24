@@ -54,7 +54,7 @@ const Contact = () => {
         <button
           type="button"
           aria-label="Submit contact form"
-          className="rounded bg-green/50 px-3 py-1 font-semibold transition-all duration-150 ease-in-out hover:bg-green/80 hover:shadow-md"
+          className="rounded bg-green/50 px-3 py-1 font-semibold transition-all hover:bg-green/80 hover:shadow-md"
         >
           Send
         </button>

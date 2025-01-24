@@ -48,7 +48,7 @@ const Dropdown = ({
       <div
         onMouseOver={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
-        className={`absolute transition-all duration-150 ease-in-out ${active || mouseOver ? "pointer-events-auto translate-y-0 opacity-100 shadow-md" : "pointer-events-none -translate-y-2 opacity-0 shadow-none"}`}
+        className={`absolute transition-all ${active || mouseOver ? "pointer-events-auto translate-y-0 opacity-100 shadow-md" : "pointer-events-none -translate-y-2 opacity-0 shadow-none"}`}
       >
         {body}
       </div>

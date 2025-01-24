@@ -12,7 +12,7 @@ const LogOut = () => {
       type="button"
       aria-label="Sign out"
       className="p-1 text-red-500 hover:bg-light_gray"
-      onClick={logOut}
+      onClick={() => logOut(true)}
     >
       Sign out
     </button>

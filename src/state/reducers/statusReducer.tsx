@@ -1,55 +1,7 @@
-export interface StatusProp {
-  error: {
-    show: boolean;
-    errorCode: number | string;
-    message: string;
-    hideHome: boolean;
-  };
-  succes: {
-    show: boolean;
-    message: string;
-  };
-  loading: boolean;
-}
-
-interface SetError {
-  group: "CHANGE"
-  type: "ERROR_STATUS";
-  errorCode?: number | string;
-  message?: string;
-}
-
-interface ShowError {
-  group: "CHANGE";
-  type: "ERROR_DISPLAY";
-  show: boolean;
-  hideHome?: boolean;
-}
-
-interface SetLoadStatus {
-  group: "CHANGE";
-  type: "LOADING_STATUS";
-  loading: boolean;
-}
-
-interface SetSuccess {
-  group: "CHANGE";
-  type: "SUCCESS_STATUS";
-  newMessage: string;
-}
-
-interface showSuccess {
-  group: "CHANGE";
-  type: "SUCCESS_DISPLAY";
-  show: boolean;
-}
-
-export type StatusAction =
-  | SetError
-  | ShowError
-  | SetLoadStatus
-  | SetSuccess
-  | showSuccess;
+import {
+  StatusProp,
+  StatusAction,
+} from "../../interface/reducers/statusAction";
 
 /**
  * @description Reducer function to manage application status state
@@ -62,7 +14,7 @@ const statusReducer = (state: StatusProp, action: StatusAction): StatusProp => {
   switch (action.group) {
     case "CHANGE":
       switch (action.type) {
-        case "ERROR_STATUS":
+        case "ERROR_DETAILS":
           return {
             ...state,
             error: {
@@ -86,7 +38,7 @@ const statusReducer = (state: StatusProp, action: StatusAction): StatusProp => {
             loading: action.loading,
           };
         }
-        case "SUCCESS_STATUS": {
+        case "SUCCESS_DETAILS": {
           return {
             ...state,
             succes: {

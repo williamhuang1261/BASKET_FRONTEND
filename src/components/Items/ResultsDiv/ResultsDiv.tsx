@@ -53,7 +53,7 @@ const ResultsDiv = () => {
       <div className="col-span-1 lg:col-span-2 xl:col-span-3 2xl:col-span-4 3xl:col-span-6">
         <button
           type="button"
-          className="rounded border bg-green/50 px-4 py-2 transition-all duration-150 ease-in-out hover:border-transparent hover:bg-green/80 hover:shadow-md"
+          className="rounded border bg-green/50 px-4 py-2 transition-all hover:border-transparent hover:bg-green/80 hover:shadow-md"
           onClick={() => setMore(!more)}
         >
           {more ? "Show Less" : "Show More"}

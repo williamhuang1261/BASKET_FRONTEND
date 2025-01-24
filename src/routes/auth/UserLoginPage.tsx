@@ -44,7 +44,7 @@ const UserLoginPage = () => {
               <CustomDirectNav pathname="/" aria-label="Close Login Page">
                 <IoClose
                   size={"28"}
-                  className="text-black/50 transition-all duration-150 ease-in-out hover:text-black"
+                  className="text-black/50 transition-all hover:text-black"
                 />
               </CustomDirectNav>
             </div>
@@ -53,7 +53,7 @@ const UserLoginPage = () => {
               <CustomDirectNav
                 pathname="/auth/signup"
                 aria-label="Go to Sign Up Page"
-                className="font-bold underline transition-all duration-150 ease-in-out hover:text-green"
+                className="font-bold underline transition-all hover:text-green"
               >
                 <h2>Sign Up</h2>
               </CustomDirectNav>

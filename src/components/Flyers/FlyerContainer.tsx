@@ -27,7 +27,7 @@ const FlyerContainer = () => {
         <div className="pointer-events-none absolute z-20 flex h-full w-full flex-none ">
           <button
             type="button"
-            className=" pointer-events-auto flex w-10 flex-none items-center justify-center bg-light_gray/50 transition-all duration-150 ease-in-out hover:bg-light_gray/75 hover:text-green"
+            className=" pointer-events-auto flex w-10 flex-none items-center justify-center bg-light_gray/50 transition-all hover:bg-light_gray/75 hover:text-green"
           >
             <IoIosArrowBack size={30} />
           </button>
@@ -35,7 +35,7 @@ const FlyerContainer = () => {
             <div className="pointer-events-auto flex items-center justify-center gap-2 p-2">
               <button
                 type="button"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-light_gray transition-all duration-150 ease-in-out hover:bg-green/80"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-light_gray transition-all hover:bg-green/80"
               >
                 <FaMinus />
               </button>
@@ -44,7 +44,7 @@ const FlyerContainer = () => {
               </p>
               <button
                 type="button"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-light_gray transition-all duration-150 ease-in-out hover:bg-green/80"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-light_gray transition-all hover:bg-green/80"
               >
                 <FaPlus />
               </button>
@@ -52,7 +52,7 @@ const FlyerContainer = () => {
           </div>
           <button
             type="button"
-            className="pointer-events-auto flex w-10 flex-none items-center justify-center bg-light_gray/50 transition-all duration-150 ease-in-out hover:bg-light_gray/75 hover:text-green"
+            className="pointer-events-auto flex w-10 flex-none items-center justify-center bg-light_gray/50 transition-all hover:bg-light_gray/75 hover:text-green"
           >
             <IoIosArrowForward size={30} />
           </button>
@@ -66,7 +66,7 @@ const FlyerContainer = () => {
                 <h2 className="ps-2 text-3xl">Item</h2>
                 <button
                   type="button"
-                  className="transition-all ease-in-out hover:text-black/50"
+                  className="transition-all hover:text-black/50"
                   onClick={handleClick}
                 >
                   <IoClose size="36px" />

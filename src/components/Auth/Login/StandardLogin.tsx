@@ -14,7 +14,6 @@ import EmailBox from "../EmailBox";
 import PasswordBox from "../PasswordBox";
 import RememberMe from "../RememberMe";
 
-
 /**
  * @description Component for user authentication with email and password
  * @summary This component is used for user authentication with email and password. Can also handle tasks that require re-authentification before proceeding.
@@ -29,9 +28,7 @@ const StandardLogin = () => {
   const errHandler = useError();
   const isValid = email.length >= 3 && password.length >= 1;
 
-
   const handleSubmit = (event: React.FormEvent) => {
-
     event.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
@@ -47,7 +44,7 @@ const StandardLogin = () => {
         errHandler(err);
         dispatch({
           group: "CHANGE",
-          type: "ERROR_STATUS",
+          type: "ERROR_DETAILS",
           errorCode: 400,
           message: "Invalid email or password",
         });
@@ -84,7 +81,7 @@ const StandardLogin = () => {
         </div>
         <button
           type="submit"
-          className={`${isValid ? "bg-green/75 text-black ring-green hover:bg-green hover:ring-1" : "cursor-not-allowed text-green outline outline-green/50"} mt-4 w-full rounded p-2 font-extrabold transition-all duration-150 ease-in-out hover:shadow-sm`}
+          className={`${isValid ? "bg-green/75 text-black ring-green hover:bg-green hover:ring-1" : "cursor-not-allowed text-green outline outline-green/50"} mt-4 w-full rounded p-2 font-extrabold transition-all hover:shadow-sm`}
           disabled={!isValid}
         >
           SIGN IN

@@ -36,7 +36,7 @@ const SearchBar = ({ hidden, id }: Props) => {
           />
           <button
             aria-label="Search"
-            className="flex-none bg-green px-4 hover:bg-light_gray md:bg-white md:transition-all md:duration-150 md:ease-in-out md:hover:bg-green"
+            className="flex-none bg-green px-4 hover:bg-light_gray md:bg-white md:transition-all md:hover:bg-green"
           >
             {/* Product Search Bar */}
             <IoSearch size="26" />
@@ -50,14 +50,14 @@ const SearchBar = ({ hidden, id }: Props) => {
           </div>
           <div className="flex-none bg-white pe-2">
             <p
-              className={`${locMouseOver ? "pointer-events-auto translate-y-0 opacity-100" : "-translate-y-2 opacity-0"} absolute right-0 top-11 z-40 h-auto rounded bg-light_gray p-1 transition-all duration-150`}
+              className={`${locMouseOver ? "pointer-events-auto translate-y-0 opacity-100" : "-translate-y-2 opacity-0"} absolute right-0 top-11 z-40 h-auto rounded bg-light_gray p-1 transition-all`}
             >
               <b>Your location :</b> {user.meta.location.formattedAddress}
             </p>
             {/* Location Search Bar */}
             <CiLocationOn
               size="30"
-              className={"transition-all duration-150 hover:text-orange-600"}
+              className={"transition-all hover:text-orange-600"}
               onMouseOver={() => setLocMouseOver(true)}
               onMouseLeave={() => setLocMouseOver(false)}
             />

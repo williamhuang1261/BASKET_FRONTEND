@@ -1,36 +1,5 @@
-import SearchFilterProps from "../../interface/SearchFilterProps";
-
-interface filterAdd {
-  group: "ADD";
-  type: "CAT" | "FILTERED_STORE";
-  item: string;
-}
-
-type ActionAdd = filterAdd;
-
-interface distanceAmountChange {
-  group: "CHANGE";
-  type: "DIST_AMOUNT";
-  amount: number;
-}
-
-interface distanceUnitsChange {
-  group: "CHANGE";
-  type: "DIST_UNITS";
-  units: string;
-}
-
-type ActionChange = distanceAmountChange | distanceUnitsChange;
-
-interface filterDelete {
-  group: "DELETE";
-  type: "CAT" | "FILTERED_STORE";
-  item: string;
-}
-
-type ActionDelete = filterDelete;
-
-export type filterAction = ActionAdd | ActionChange | ActionDelete;
+import { filterAction } from "../../interface/reducers/searchFilterReducer";
+import { SearchFilterProps } from "../../interface/SearchFilterProps";
 
 /**
  * @description Reducer function to manage search filter state

@@ -16,4 +16,4 @@ interface CardProps {
   image?: string;
 }
 
-export default CardProps
+export type {CardProps}

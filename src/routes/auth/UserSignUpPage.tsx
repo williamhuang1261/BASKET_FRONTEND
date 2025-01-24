@@ -43,7 +43,7 @@ const UserSignUpPage = () => {
               <CustomDirectNav pathname="/" aria-label="Close Sign Up Page">
                 <IoClose
                   size={"28"}
-                  className="text-black/50 transition-all duration-150 ease-in-out hover:text-black"
+                  className="text-black/50 transition-all hover:text-black"
                 />
               </CustomDirectNav>
             </div>
@@ -52,7 +52,7 @@ const UserSignUpPage = () => {
                 Use our built-in calculator and stay tuned for upcoming
                 features. Already have an account?{" "}
                 <CustomDirectNav
-                  className="font-bold underline transition-all duration-150 ease-in-out hover:text-green"
+                  className="font-bold underline transition-all hover:text-green"
                   pathname="/auth/login"
                   aria-label="Go to Sign In Page"
                 >

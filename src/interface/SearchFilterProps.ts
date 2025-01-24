@@ -11,4 +11,4 @@ interface SearchFilterProps {
   store: string[]
 }
 
-export default SearchFilterProps;
+export type {SearchFilterProps};

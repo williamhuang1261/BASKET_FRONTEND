@@ -54,7 +54,7 @@ const EditField = ({
           <button
             type="button"
             id={"ApplyButton" + id}
-            className={`${allValid ? "hover:bg-green" : "cursor-not-allowed"} flex-none rounded-e bg-green/50 px-2 py-1 transition-all duration-150 ease-in-out`}
+            className={`${allValid ? "hover:bg-green" : "cursor-not-allowed"} flex-none rounded-e bg-green/50 px-2 py-1 transition-all`}
             onClick={() => {
               onConfirm(value);
               setActive(false);
@@ -68,7 +68,7 @@ const EditField = ({
         <button
           type="button"
           onClick={() => setActive(false)}
-          className="h-8 rounded bg-red-500 px-1 text-black transition-all duration-150 ease-in-out hover:text-white hover:shadow-md"
+          className="h-8 rounded bg-red-500 px-1 text-black transition-all hover:text-white hover:shadow-md"
         >
           <IoClose size="20px" className="h-full" />
         </button>
@@ -92,7 +92,7 @@ const EditField = ({
           <div>{text}</div>
           <button
             id={"ChangeButton" + id}
-            className="text-black/50 transition-all duration-150 ease-in-out hover:text-green"
+            className="text-black/50 transition-all hover:text-green"
             onClick={() => {
               setActive(true);
               document.getElementById("ChangeField" + id)?.focus();

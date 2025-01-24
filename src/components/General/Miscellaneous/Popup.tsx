@@ -19,7 +19,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
 const Popup = ({ children, openCondition, className, ...rest }: Props) => {
   return (
     <div
-      className={`${className} ${openCondition ? "no-doc-scroll pointer-events-auto opacity-100" : "pointer-events-none opacity-0"} fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black/50 p-2 transition-all duration-150`}
+      className={`${className} ${openCondition ? "no-doc-scroll pointer-events-auto opacity-100" : "pointer-events-none opacity-0"} fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black/50 p-2 transition-all`}
       {...rest}
     >
       {children}

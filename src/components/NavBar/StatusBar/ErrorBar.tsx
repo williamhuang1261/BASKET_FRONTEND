@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import useStatusState from "../../../hooks/state/useStatusState";
 import { CustomLocationState } from "../../../interface/NavigateProps";
 import useError from "../../../hooks/useError";
-import CustomDirectNav from "./CustomDirectNav";
+import CustomDirectNav from "../../General/Miscellaneous/CustomDirectNav";
 
 /**
  * @description A sticky error notification bar that displays at the top of the page
@@ -40,12 +40,11 @@ const ErrorBar = ({ size }: Props) => {
     });
     if ((location.state as CustomLocationState)?.currErr) {
       errHandler(location.state?.currErr);
-      location.state.currErr = null
     }
   }, [location.pathname]);
 
   return (
-    <div className="sticky top-0 z-50 w-full bg-red-500">
+    <div className="w-full bg-red-500">
       {status.error.show && (
         <div
           className={`${size === "Container" ? "px-3 md:container md:mx-auto lg:px-20 2xl:px-44 3xl:px-64" : "px-3 "} flex items-center justify-between `}
@@ -59,7 +58,7 @@ const ErrorBar = ({ size }: Props) => {
             )}
           </h3>
           <button
-            className="flex h-min w-min items-center justify-center transition-all duration-150 ease-in-out hover:text-dark_gray"
+            className="flex h-min w-min items-center justify-center transition-all hover:text-dark_gray"
             onClick={handleClick}
           >
             <IoClose size={20} />

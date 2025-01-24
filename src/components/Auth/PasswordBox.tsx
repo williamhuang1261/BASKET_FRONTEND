@@ -31,7 +31,7 @@ const PasswordBox = ({
             aria-label="Reset Password"
             type="button"
           >
-            <h3 className="text-black/50 underline transition-all duration-150 ease-in-out hover:text-black">
+            <h3 className="text-black/50 underline transition-all hover:text-black">
               Forgot Password?
             </h3>
           </CustomDirectNav>

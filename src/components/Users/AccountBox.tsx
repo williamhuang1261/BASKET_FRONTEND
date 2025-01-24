@@ -16,13 +16,13 @@ const AccountBox = () => {
     <div className="flex gap-5 w-full">
       <button
         onClick={logOut}
-        className="w-full rounded bg-red-100 p-1 shadow-md transition-all duration-150 ease-in-out hover:bg-red-500"
+        className="w-full rounded bg-red-100 p-1 shadow-md transition-all hover:bg-red-500"
       >
         Log out
       </button>
       <button
         onClick={() => setConfirm(true)}
-        className="w-full rounded border-2 border-red-500 p-1 bg-white text-red-500 shadow-sm transition-all duration-150 ease-in-out hover:bg-red-500 hover:text-black hover:shadow-md"
+        className="w-full rounded border-2 border-red-500 p-1 bg-white text-red-500 shadow-sm transition-all hover:bg-red-500 hover:text-black hover:shadow-md"
       >
         Delete Account
       </button>
@@ -37,14 +37,14 @@ const AccountBox = () => {
             <div className="flex justify-center gap-5 mt-1">
               <button
                 onClick={() => setConfirm(false)}
-                className="w-full rounded bg-green/50 p-1 transition-all duration-150 ease-in-out hover:bg-green/80 hover:shadow-md"
+                className="w-full rounded bg-green/50 p-1 transition-all hover:bg-green/80 hover:shadow-md"
                 aria-label="Cancel account deletion"
               >
                 Cancel
               </button>
               <button
                 onClick={deleteAccount}
-                className="w-full rounded border-2 border-red-500 p-1 text-red-500 shadow-sm transition-all duration-150 ease-in-out hover:bg-red-500 hover:text-black hover:shadow-md"
+                className="w-full rounded border-2 border-red-500 p-1 text-red-500 shadow-sm transition-all hover:bg-red-500 hover:text-black hover:shadow-md"
                 aria-label="Confirm account deletion"
               >
                 Confirm

@@ -8,7 +8,7 @@ const FooterDiv = () => {
   return (
     <footer className="bg-white">
       <div className=" bg-green/80">
-        <div className="px-3 py-2 md:container md:mx-auto lg:px-20 2xl:px-44  3xl:px-64">
+        <div className="px-3 py-2 md:container md:mx-auto md:px-3 lg:px-24 2xl:px-48 3xl:px-72">
           <div className="md:flex md:justify-between">
             <div className="my-2">
               <Logo />

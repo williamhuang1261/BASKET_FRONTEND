@@ -10,7 +10,7 @@ const Logo = () => {
     <CustomDirectNav aria-label="Go to Home Page" pathname="/">
       <IoLogoJavascript
         size="50"
-        className="transition-all duration-150 hover:text-green"
+        className="transition-all hover:text-green"
       />
     </CustomDirectNav>
   );

@@ -2,7 +2,7 @@
  * @description Multilingual name properties with size information
  * @interface NameProp
  */
-export interface NameProp {
+interface NameProp {
   fr: string;
   en: string;
   size: string;
@@ -12,7 +12,7 @@ export interface NameProp {
  * @description Reference identifiers for products
  * @interface RefProp
  */
-export interface RefProp {
+interface RefProp {
   standard: string;
   code: string;
 }
@@ -21,7 +21,7 @@ export interface RefProp {
  * @description Measurement and quantity properties
  * @interface AmountProp
  */
-export interface AmountProp {
+interface AmountProp {
   isApprox?: boolean;
   meas: string;
   units: string;
@@ -32,7 +32,7 @@ export interface AmountProp {
  * @description Properties for limited-time offers and rebates
  * @interface LimitedProp
  */
-export interface LimitedProp {
+interface LimitedProp {
   typeOfRebate: string;
   X?: number;
   Y?: number;
@@ -40,14 +40,14 @@ export interface LimitedProp {
   rebatePricing: string;
   start: number;
   end: number;
-  onlyMembers: boolean
+  onlyMembers: boolean;
 }
 
 /**
  * @description Supplier information including pricing details
  * @interface SuppliersProp
  */
-export interface SuppliersProp {
+interface SuppliersProp {
   supplier: string;
   pricing: {
     normal: number;
@@ -55,3 +55,5 @@ export interface SuppliersProp {
     limited?: LimitedProp[];
   };
 }
+
+export type { NameProp, RefProp, AmountProp, SuppliersProp, LimitedProp };

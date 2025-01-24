@@ -32,7 +32,7 @@ const ChangeLocation = () => {
       <div className="flex items-center gap-1">
         <h3>{user.meta.location.formattedAddress}</h3>
         <div
-          className="cursor-pointer transition-all duration-150 ease-in-out hover:text-green"
+          className="cursor-pointer transition-all hover:text-green"
           onClick={() => setOpen(true)}
         >
           <MdModeEdit />

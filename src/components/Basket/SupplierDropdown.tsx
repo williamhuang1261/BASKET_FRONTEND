@@ -39,7 +39,7 @@ const SupplierDropdown = ({ filtered }: Props) => {
         {filtered.opts.length === 1 ? null : (
           <RiArrowDropDownLine
             size={40}
-            className={`${mouseOver ? "text-green" : ""} h-full transition-all duration-100 ease-in-out`}
+            className={`${mouseOver ? "text-green" : ""} h-full transition-all duration-100`}
           />
         )}
 
@@ -56,14 +56,14 @@ const SupplierDropdown = ({ filtered }: Props) => {
         {filtered.opts.length === 1 ? null : (
           <RiArrowDropDownLine
             size={40}
-            className={`${mouseOver ? "text-green" : ""} h-full transition-all duration-100 ease-in-out`}
+            className={`${mouseOver ? "text-green" : ""} h-full transition-all duration-100`}
           />
         )}
       </button>
       <div className={"overflow-hidden rounded "}>
         {filtered.opts?.slice(1).map((s) => (
           <div
-            className={` ${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${filtered.opts?.indexOf(s) !== 1 ? "border-t-0.5" : ""} flex items-center justify-between gap-2 transition-all duration-100 ease-in-out`}
+            className={` ${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${filtered.opts?.indexOf(s) !== 1 ? "border-t-0.5" : ""} flex items-center justify-between gap-2 transition-all duration-100`}
             key={s.supplier + "altSupplier"}
           >
             <div className="h-full items-center justify-center">

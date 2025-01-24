@@ -48,5 +48,4 @@ interface UserTransportProp {
   isLoggedIn: boolean;
 }
 
-export default UserTransportProp;
-export type { UserProp };
+export type { UserTransportProp, UserProp};

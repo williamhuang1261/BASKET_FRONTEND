@@ -36,7 +36,7 @@ const SupplierSelection = ({ opts }: Props): string | ReactNode => {
         {opts.length === 1 ? null : (
           <RiArrowDropDownLine
             size={40}
-            className={`${mouseOver ? "text-green" : ""} h-full flex-none transition-all duration-100 ease-in-out`}
+            className={`${mouseOver ? "text-green" : ""} h-full flex-none transition-all`}
           />
         )}
 
@@ -53,7 +53,7 @@ const SupplierSelection = ({ opts }: Props): string | ReactNode => {
         {opts.length === 1 ? null : (
           <RiArrowDropDownLine
             size={40}
-            className={`${mouseOver ? "text-green" : ""} h-full flex-none transition-all duration-100 ease-in-out`}
+            className={`${mouseOver ? "text-green" : ""} h-full flex-none transition-all`}
           />
         )}
       </button>
@@ -61,7 +61,7 @@ const SupplierSelection = ({ opts }: Props): string | ReactNode => {
         {opts.map((s) =>
           displayed.toLowerCase() === s.supplier.toLowerCase() ? null : (
             <div
-              className={`${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${opts.indexOf(s) !== 1 ? "border-t-0.5" : ""} flex cursor-pointer items-center justify-between gap-2 transition-all duration-100 ease-in-out hover:bg-light_gray/50`}
+              className={`${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${opts.indexOf(s) !== 1 ? "border-t-0.5" : ""} flex cursor-pointer items-center justify-between gap-2 transition-all hover:bg-light_gray/50`}
               key={s.supplier + "altSupplier"}
               onClick={() => {
                 setDisplayed(s.supplier);

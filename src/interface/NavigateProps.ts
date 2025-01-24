@@ -13,13 +13,14 @@ export type NavigationProps = {
     hideHome?: boolean;
   };
   /** Optional flag for a custom Event (event listeners) */
-  customEvent?: string
+  customEvent?: string;
 };
 
-export type NavigationLinkedList = ListNode<NavigationProps>;
-
-export type CustomLocationState = {
+type NavigationLinkedList = ListNode<NavigationProps>;
+type CustomLocationState = {
   paths: NavigationLinkedList | null;
   currErr: NavigationProps["error"] | null;
   pendingFn: string[];
 };
+
+export type { NavigationLinkedList, CustomLocationState };

@@ -35,7 +35,7 @@ const ErrorPage = () => {
           <p className=" text-2xl">{typeError()}</p>
           <CustomDirectNav
             pathname="/"
-            className="p-5 text-2xl underline transition-all duration-150 ease-in-out hover:text-green"
+            className="p-5 text-2xl underline transition-all hover:text-green"
           >
             Go to Home Page
           </CustomDirectNav>

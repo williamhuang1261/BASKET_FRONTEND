@@ -122,7 +122,7 @@ const BasketItem = ({
             <button
               type="button"
               aria-label="Delete item"
-              className="h-full flex-none bg-red-100 p-1.5 font-bold text-dark_gray transition-all duration-100 ease-in-out hover:bg-red-600 hover:text-white"
+              className="h-full flex-none bg-red-100 p-1.5 font-bold text-dark_gray transition-all hover:bg-red-600 hover:text-white"
             >
               X
             </button>
@@ -175,7 +175,7 @@ const BasketItem = ({
             <button
               type="button"
               aria-label="Delete item"
-              className=" h-full bg-red-100 p-1.5 font-bold text-dark_gray transition-all duration-100 ease-in-out hover:bg-red-500 hover:text-white"
+              className=" h-full bg-red-100 p-1.5 font-bold text-dark_gray transition-all hover:bg-red-500 hover:text-white"
             >
               X
             </button>

@@ -15,14 +15,14 @@ const SignedInOptions = () => {
       <CustomDirectNav
         pathname={"/auth/login"}
         aria-label="Go to Sign In Page"
-        className="m-1 flex items-center justify-center rounded bg-green/50 p-0.5 shadow-sm transition-all duration-150 hover:bg-green/80"
+        className="m-1 flex items-center justify-center rounded bg-green/50 p-0.5 shadow-sm transition-all hover:bg-green/80"
       >
         Sign In
       </CustomDirectNav>
       <CustomDirectNav
         pathname={"/auth/signup"}
         aria-label="Go to Sign Up Page"
-        className="m-1 mt-0 flex items-center justify-center rounded p-0.5 transition-all duration-150 hover:bg-light_gray hover:shadow-sm"
+        className="m-1 mt-0 flex items-center justify-center rounded p-0.5 transition-all hover:bg-light_gray hover:shadow-sm"
       >
         Sign Up
       </CustomDirectNav>

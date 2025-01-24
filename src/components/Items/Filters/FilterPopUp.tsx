@@ -26,7 +26,7 @@ const FilterPopUp = () => {
     <div className={`${open ? "no-doc-scroll" : ""} `}>
       <button
         type="button"
-        className="flex gap-1 rounded border-0.5 bg-green/50 px-2 py-1 transition-all duration-150 ease-in-out hover:border-transparent hover:bg-green/80 hover:shadow-md"
+        className="flex gap-1 rounded border-0.5 bg-green/50 px-2 py-1 transition-all hover:border-transparent hover:bg-green/80 hover:shadow-md"
         onClick={() => setOpen(true)}
       >
         <h2>Filters</h2>
@@ -44,11 +44,11 @@ const FilterPopUp = () => {
                 <input
                   type="submit"
                   value={"Apply"}
-                  className="rounded border-0.5 border-light_gray bg-light_gray px-3 py-1 font-semibold shadow-md transition-all duration-150 ease-in-out hover:cursor-pointer hover:border-transparent hover:bg-light_green"
+                  className="rounded border-0.5 border-light_gray bg-light_gray px-3 py-1 font-semibold shadow-md transition-all hover:cursor-pointer hover:border-transparent hover:bg-light_green"
                 />
                 <button
                   type="button"
-                  className="transition-all ease-in-out hover:text-black/50"
+                  className="transition-all hover:text-black/50"
                   onClick={() => setOpen(false)}
                 >
                   <IoClose size="36px" />

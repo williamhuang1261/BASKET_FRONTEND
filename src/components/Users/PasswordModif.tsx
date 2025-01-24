@@ -43,7 +43,7 @@ const PasswordModif = () => {
       <div className="flex items-center gap-1">
         <p className="font-semibold">{"\u25CF".repeat(8)}</p>
         <button
-          className="flex h-min cursor-pointer text-black/50 transition-all duration-150 ease-in-out hover:text-green"
+          className="flex h-min cursor-pointer text-black/50 transition-all hover:text-green"
           onClick={() => setOpen(true)}
         >
           <MdModeEdit />
@@ -56,7 +56,7 @@ const PasswordModif = () => {
               Modify your password
             </h3>
             <button
-              className="hover:text-black/50 transition-all duration-150 ease-in-out"
+              className="hover:text-black/50 transition-all"
               onClick={() => setOpen(false)}
             >
               <IoClose size={"28"} />
@@ -118,7 +118,7 @@ const PasswordModif = () => {
                   allValid
                     ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1"
                     : "text-green/50 outline outline-green/50 cursor-not-allowed"
-                } mt-4 w-full rounded p-2 font-black transition-all duration-150 ease-in-out hover:shadow-sm`}
+                } mt-4 w-full rounded p-2 font-black transition-all hover:shadow-sm`}
                 disabled={!allValid}
               >
                 SAVE CHANGES

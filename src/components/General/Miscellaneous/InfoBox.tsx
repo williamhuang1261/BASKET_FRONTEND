@@ -29,7 +29,7 @@ const InfoBox = ({ children, iconSize, title }: Props) => {
       >
         <ImInfo
           size={iconSize}
-          className={`text-black transition-all duration-150 hover:text-green`}
+          className={`text-black hover:text-green`}
         />
       </button>
       <Popup key={title + "_info_box"} openCondition={active}>

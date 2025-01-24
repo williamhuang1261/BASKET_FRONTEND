@@ -91,12 +91,13 @@ const useCustomNavigation = () => {
   /**
    * Executes the navigation chain with pending functions and error handling
    * @param {boolean} [reload] - Optional flag to reload the page after navigation
+   * @param {boolean} [blockAutoReload] - Optional flag to prevent auto-reload on same path
    * @returns {Promise<void>} Resolves when navigation is complete
    * @throws {Error} When navigation state is invalid
    * @example
    * await nav();
    */
-  const nav = (reload?: boolean) => {
+  const nav = (reload?: boolean, blockAutoReload?: boolean) => {
     const state: CustomLocationState | null | undefined = location.state;
     if (!state) {
       navigate("/");
@@ -117,7 +118,7 @@ const useCustomNavigation = () => {
       document.dispatchEvent(new CustomEvent(value.customEvent));
       pendingFn = pendingFn.filter((fn) => fn !== value.customEvent);
     }
-    if (value.pathname === location.pathname) {
+    if (value.pathname === location.pathname && !blockAutoReload) {
       window.location.reload();
       return;
     }
@@ -135,6 +136,7 @@ const useCustomNavigation = () => {
    * Directly navigates to a new path by clearing current state and creating a new navigation chain
    * @param {NavigationProps} info - Navigation information including pathname and error details
    * @param {boolean} [reload] - Optional flag to reload the page after navigation
+   * @param {boolean} [blockAutoReload] - Optional flag to prevent auto-reload on same path
    * @returns {Promise<void>} Resolves when navigation is complete
    * @example
    * directNav({
@@ -146,12 +148,16 @@ const useCustomNavigation = () => {
    *     code: 404,
    *     hideHome: false
    *   }
-   * });
+   * }, false, false);
    */
-  const directNav = async (info: NavigationProps, reload?: boolean) => {
+  const directNav = async (
+    info: NavigationProps,
+    reload?: boolean,
+    blockAutoReload?: boolean,
+  ) => {
     clear();
     add(info);
-    nav(reload);
+    nav(reload, blockAutoReload);
   };
 
   return { add, nav, directNav };

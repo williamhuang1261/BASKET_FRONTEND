@@ -42,7 +42,7 @@ const CarouselAdDiv = () => {
             src={c}
             key={images.indexOf(c)}
             alt="Carousel Advertisement"
-            className="aspect-3/2 w-full object-cover transition-all duration-500 ease-in-out"
+            className="aspect-3/2 w-full object-cover transition-all duration-300"
             style={{ translate: `${-100 * index}%` }}
           />
         ))}
@@ -52,7 +52,7 @@ const CarouselAdDiv = () => {
           className={
             (mouseOver ? "text-black" : "text-transparent") +
             " " +
-            "p-1 transition duration-300 ease-in-out hover:bg-dark_gray/40 hover:text-green md:p-3"
+            "p-1 transition duration-300 hover:bg-dark_gray/40 hover:text-green md:p-3"
           }
           type="button"
           onClick={() => setIndex(index !== 0 ? index - 1 : indexMax)}
@@ -78,7 +78,7 @@ const CarouselAdDiv = () => {
                     ? "bg-green"
                     : "bg-dark_gray hover:bg-green/50") +
                   " " +
-                  "mx-2 my-2 h-1 flex-auto rounded border-black transition-all duration-500 ease-in-out md:h-1.5"
+                  "mx-2 my-2 h-1 flex-auto rounded border-black transition-all duration-500 md:h-1.5"
                 }
                 aria-label={`Go to Ad ${images.indexOf(c) + 1}`}
               ></button>
@@ -89,7 +89,7 @@ const CarouselAdDiv = () => {
           className={
             (mouseOver ? "text-black" : "text-transparent") +
             " " +
-            "p-1 transition duration-300 ease-in-out hover:bg-dark_gray/40 hover:text-green md:p-3"
+            "p-1 transition duration-300 hover:bg-dark_gray/40 hover:text-green md:p-3"
           }
           type="button"
           onClick={() => setIndex(index < indexMax ? index + 1 : 0)}

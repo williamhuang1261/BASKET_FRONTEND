@@ -10,7 +10,7 @@ const LanguageTab = () => {
     <div>
       <Dropdown
         title={
-          <GrLanguage size="35" className={"cursor-pointer hover:text-green duration-150 transition-all"} />
+          <GrLanguage size="35" className={"cursor-pointer hover:text-green transition-all"} />
         }
         className="text-green"
         body={

@@ -1,12 +1,12 @@
 import { deleteUser, getAuth } from "firebase/auth";
 import { UserServices } from "../../services/restricted-service";
-import useUserState from "../state/useUserState";
 import useError from "../useError";
 import { useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { FirebaseError } from "firebase/app";
 import useCustomNavigation from "../useCustomNavigation";
 import useLogOut from "./useLogOut";
+import useSuccess from "../useSuccess";
 
 /**
  * @description Hook to handle account deletion
@@ -15,14 +15,13 @@ import useLogOut from "./useLogOut";
  */
 const useAccountDelete = () => {
   const queryClient = useQueryClient();
-  const { dispatch } = useUserState();
   const errorHandler = useError();
+  const successHandler = useSuccess();
   const auth = getAuth();
   const logOut = useLogOut();
   const { add, nav } = useCustomNavigation();
 
   const reauthenticateHandler = async () => {
-    console.log("reauthenticating");
     const user = auth.currentUser;
     if (!user) {
       errorHandler({
@@ -54,14 +53,8 @@ const useAccountDelete = () => {
         queryFn: () => UserServices.delete("/account/me"),
       });
       await deleteUser(auth.currentUser);
-      dispatch({
-        group: "CHANGE",
-        type: "LOGIN_STATUS",
-        status: false,
-      });
+      successHandler("Account deleted successfully");
       await logOut();
-      nav();
-      window.location.reload();
     } catch (err) {
       if (
         err instanceof FirebaseError &&

@@ -49,7 +49,7 @@ const ResetPassword = () => {
                 <CustomDirectNav pathname="/" aria-label="Close Login Page">
                   <IoClose
                     size={"28"}
-                    className="text-black/50 transition-all duration-150 ease-in-out hover:text-black"
+                    className="text-black/50 transition-all hover:text-black"
                   />
                 </CustomDirectNav>
               )}
@@ -64,7 +64,7 @@ const ResetPassword = () => {
                   pathname="/auth/login"
                   aria-label="Close Reset Password Page"
                 >
-                  <h2 className="font-semibold underline transition-all duration-150 ease-in-out hover:text-green">
+                  <h2 className="font-semibold underline transition-all hover:text-green">
                     Return to Login Page
                   </h2>
                 </CustomDirectNav>
@@ -89,14 +89,14 @@ const ResetPassword = () => {
                   <CustomDirectNav
                     pathname="/auth/login"
                     aria-label="Go to Sign Up Page"
-                    className="font-bold underline transition-all duration-150 ease-in-out hover:text-green"
+                    className="font-bold underline transition-all hover:text-green"
                   >
                     <h2>Sign in</h2>
                   </CustomDirectNav>
                 </div>
                 <button
                   type="submit"
-                  className={`${isValid ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1" : "cursor-not-allowed text-green/50 outline outline-green/50"} w-full rounded p-2 font-black transition-all duration-150 ease-in-out hover:shadow-sm`}
+                  className={`${isValid ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1" : "cursor-not-allowed text-green/50 outline outline-green/50"} w-full rounded p-2 font-black transition-all hover:shadow-sm`}
                   disabled={!isValid}
                   onClick={handleClick}
                 >

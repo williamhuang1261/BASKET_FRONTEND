@@ -31,7 +31,7 @@ const LocationModif = () => {
             />
           </div>
           <button
-            className="h-12 rounded-e bg-green/75 px-3 transition-all duration-150 ease-in-out hover:bg-green"
+            className="h-12 rounded-e bg-green/75 px-3 transition-all hover:bg-green"
             id={"UserSettingsApply"}
           >
             Apply
@@ -42,7 +42,7 @@ const LocationModif = () => {
           <div>{user.meta.location.formattedAddress}</div>
           <button
             id={"ChangeButton" + "location"}
-            className="text-black/50 transition-all duration-150 ease-in-out hover:text-green"
+            className="text-black/50 transition-all hover:text-green"
             onClick={() => setActive(true)}
           >
             <MdModeEdit />

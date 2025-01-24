@@ -39,4 +39,4 @@ interface UserLogin {
   };
 }
 
-export default UserLogin;
+export type { UserLogin };

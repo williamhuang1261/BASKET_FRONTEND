@@ -1,34 +1,7 @@
-export interface basketProp {
-  filteredStores: string[];
-  maxStores: number;
-  totalCost: number;
-}
-
-interface AddFilteredStores {
-  group: "ADD";
-  type: "FILTERED_STORES";
-  store: string;
-}
-
-type AddAction = AddFilteredStores;
-
-interface GeneralChange {
-  group: "CHANGE";
-  type: "MAX_STORES" | "TOTAL_COST";
-  number: number;
-}
-
-type ChangeAction = GeneralChange;
-
-interface DeleteFilteredStores {
-  group: "DELETE";
-  type: "FILTERED_STORES";
-  store: string;
-}
-
-type DeleteAction = DeleteFilteredStores;
-
-export type BasketAction = AddAction | ChangeAction | DeleteAction;
+import {
+  BasketAction,
+  basketProp,
+} from "../../interface/reducers/basketAction";
 
 /**
  * @description Reducer function to manage shopping basket state

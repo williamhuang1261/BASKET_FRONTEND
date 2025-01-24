@@ -46,7 +46,7 @@ const useError = () => {
 
     dispatch({
       group: "CHANGE",
-      type: "ERROR_STATUS",
+      type: "ERROR_DETAILS",
       errorCode: code,
       message: message,
     });
