@@ -33,13 +33,13 @@ describe("toUnit function", () => {
     expect(res).toBe(undefined);
   });
   it("Should return undefined if  `required` parameter is undefined", () => {
-    // @ts-expect-error
+    // @ts-expect-error Testing error handling
     required = undefined;
     const res = exec();
     expect(res).toBe(undefined);
   });
   it("Should return undefined if `amount` parameter is undefined", () => {
-    // @ts-expect-error
+    // @ts-expect-error Testing error handling
     amount = undefined;
     const res = exec();
     expect(res).toBe(undefined);

@@ -1,8 +1,8 @@
 import BestPerSupplier from "../../../src/utils/SortingPrice/BestPerSupplier";
 import { describe, it, expect, beforeEach } from "vitest";
 import SortByPrice from "../../../src/utils/SortingPrice/SortByPrice";
-import CardProps from "../../../src/interface/CardProps";
-import PriceProps from "../../../src/interface/PriceProps";
+import {CardProps} from "../../../src/interface/CardProps";
+import {PriceProps} from "../../../src/interface/PriceProps";
 
 type itemType = Pick<CardProps, "name" | "ref" | "amount" | "suppliers">;
 interface ItemProp extends itemType {}

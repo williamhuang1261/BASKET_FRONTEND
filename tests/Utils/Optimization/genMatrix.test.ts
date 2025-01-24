@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import PriceProps, { OptsProps } from "../../../src/interface/PriceProps";
+import {PriceProps, OptsProps } from "../../../src/interface/PriceProps";
 import {
   AmountProp,
   NameProp,

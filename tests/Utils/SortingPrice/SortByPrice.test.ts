@@ -1,7 +1,7 @@
 import SortByPrice from "../../../src/utils/SortingPrice/SortByPrice";
 import { describe, it, expect, beforeEach } from "vitest";
-import CardProps from "../../../src/interface/CardProps";
-import PriceProps from "../../../src/interface/PriceProps";
+import {CardProps} from "../../../src/interface/CardProps";
+import {PriceProps} from "../../../src/interface/PriceProps";
 import items from "../../../src/data/ItemsEX";
 
 type ItemType = Pick<CardProps, "name" | "ref" | "amount" | "suppliers">;
