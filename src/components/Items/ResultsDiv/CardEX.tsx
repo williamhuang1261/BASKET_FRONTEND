@@ -18,11 +18,10 @@ const card = (
     }}
     amount={{
       isApprox: items[0].amount.isApprox,
-      meas: items[0].amount.meas,
+      method: items[0].amount.method,
       units: items[0].amount.units,
       quantity: items[0].amount.quantity,
     }}
-    brand={items[0].brand}
     suppliers={items[0].suppliers}
   />
 );

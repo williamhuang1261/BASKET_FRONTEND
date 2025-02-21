@@ -8,7 +8,7 @@ const selectCost = (
   normalPrice: number,
   normalMethod: string,
 ) => {
-  const { typeOfRebate, X, Y, C, rebatePricing } = limited;
+  const { typeOfRebate, X, Y, C, method } = limited;
 
   let X2: number;
   if (!X) X2 = 0;
@@ -21,14 +21,14 @@ const selectCost = (
       cost = calcCost(
         { amount },
         C,
-        rebatePricing,
+        method,
         { quantity: reqNum, units: "unit" },
         undefined,
       );
       break;
     case "buyXgetYforC":
     case "buyXgetYatC": {
-      if (typeOfRebate === "buyXgetYatC" && rebatePricing !== "unit")
+      if (typeOfRebate === "buyXgetYatC" && method !== "unit")
         return undefined;
       if (!Y) {
         cost = calcCost(
@@ -51,7 +51,7 @@ const selectCost = (
         rebatePart = calcCost(
           { amount },
           C,
-          rebatePricing,
+          method,
           { quantity: coeff * Y, units: "unit" },
           undefined,
         );

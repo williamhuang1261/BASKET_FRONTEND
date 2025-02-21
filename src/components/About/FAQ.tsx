@@ -5,8 +5,7 @@ import Accordion from "../General/Miscellaneous/Accordion";
  * @summary Contains a list of questions and answers. Each question can be clicked to reveal the answer
  * @returns {JSX.Element} The FAQ component
  */
-
-const FAQ = () => {
+const Faq = () => {
   const QA = [
     {
       Q: "Question 1",
@@ -32,7 +31,7 @@ const FAQ = () => {
 
   return (
     <div className="flex px-5 w-full max-w-screen-lg flex-col items-center justify-center gap-2 pt-5">
-      <h2 className="text-lg font-semibold lg:text-2xl 3xl:text-3xl">FAQ</h2>
+      <h2 className="text-lg font-semibold lg:text-2xl 3xl:text-3xl">Faq</h2>
       <div className="w-full rounded border-0.5 bg-white shadow-md">
         {QA.map((qa) => (
           <div
@@ -47,4 +46,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default Faq;

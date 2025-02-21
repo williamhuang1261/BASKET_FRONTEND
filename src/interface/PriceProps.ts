@@ -12,7 +12,7 @@ interface OptsProps {
     X?: number;
     Y?: number;
     C: number;
-    rebatePricing: string;
+    method: string;
     start: number;
     end: number;
   };

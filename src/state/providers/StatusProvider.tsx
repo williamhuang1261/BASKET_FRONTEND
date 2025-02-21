@@ -6,8 +6,9 @@
  * @returns {JSX.Element} A provider component that supplies status context
  */
 import { ReactNode, useReducer } from "react";
-import statusReducer, { StatusProp } from "../reducers/statusReducer";
 import StatusContext from "../contexts/StatusContext";
+import statusReducer from "../reducers/statusReducer";
+import { StatusProp } from "../../interface/reducers/statusAction";
 
 interface Props {
   children: ReactNode;

@@ -12,7 +12,7 @@ describe("selectCost function", () => {
   beforeEach(() => {
     amount = {
       quantity: 1,
-      meas: "weight",
+      method: "weight",
       units: "kg",
       isApprox: false,
     };
@@ -21,9 +21,11 @@ describe("selectCost function", () => {
       X: 1,
       Y: 2,
       C: 1,
-      rebatePricing: "unit",
-      start: Date.now(),
-      end: Date.now() + 20000,
+      method: "unit",
+      timeframe: {
+        start: Date.now(),
+        end: Date.now() + 20000,
+      },
       onlyMembers: false,
     };
     reqNum = 3;
@@ -45,7 +47,11 @@ describe("selectCost function", () => {
     expect(res).toBe(3);
   });
   it("Should return the proper cost with different typeOfRebate", () => {
-    const opts = ["C", "buyXgetYforC", "buyXgetYatC"];
+    const opts: LimitedProp["typeOfRebate"][] = [
+      "C",
+      "buyXgetYforC",
+      "buyXgetYatC",
+    ];
     const output = [3, 11, 12];
     for (let i = 0; i <= 2; i++) {
       limited.typeOfRebate = opts[i];
@@ -54,7 +60,10 @@ describe("selectCost function", () => {
     }
   });
   it("Should return the proper cost even in the presence of 0`s", () => {
-    const types = ["buyXgetYatC", "buyXgetYforC"];
+    const types: LimitedProp["typeOfRebate"][] = [
+      "buyXgetYatC",
+      "buyXgetYforC",
+    ];
     const opts = ["X", "Y", "C"];
     const outputs = [
       [12, 30, 10],
@@ -71,16 +80,16 @@ describe("selectCost function", () => {
       }
     }
   });
-  it('Should return undefined if data is inconsistent', () => {
-    limited.typeOfRebate = 'buyXgetYatC';
-    limited.rebatePricing = 'weight_100g';
+  it("Should return undefined if data is inconsistent", () => {
+    limited.typeOfRebate = "buyXgetYatC";
+    limited.method = "weight_100g";
     const res = exec();
     expect(res).toBeUndefined();
   });
-  it('Should return undefined if value are not accepted fail', () => {
+  it("Should return undefined if value are not accepted fail", () => {
     // @ts-expect-error Testing error handling
-    reqNum = 'string';
+    reqNum = "string";
     const res = exec();
-    expect(res).toBeUndefined()
+    expect(res).toBeUndefined();
   });
 });

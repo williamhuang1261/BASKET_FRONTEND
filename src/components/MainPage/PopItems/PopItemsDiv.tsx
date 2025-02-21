@@ -3,7 +3,7 @@ import items from "../../../data/ItemsEX";
 import LoadingCard from "../../Loading/LoadingCard";
 import ItemCard from "../../General/ItemCard/ItemCard";
 
-// Containing all popular items
+
 
 /**
  * @description Displays a grid of popular items with loading states
@@ -42,11 +42,10 @@ const PopItemsDiv = () => {
                   }}
                   amount={{
                     isApprox: item.amount.isApprox,
-                    meas: item.amount.meas,
+                    method: item.amount.method,
                     units: item.amount.units,
                     quantity: item.amount.quantity,
                   }}
-                  brand={item.brand}
                   suppliers={item.suppliers}
                 />
               ))}

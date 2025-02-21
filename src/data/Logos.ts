@@ -6,7 +6,17 @@ import metro from "../assets/Metro_logo.png";
 import sobeys from "../assets/Sobeys_logo.png";
 import TnT from "../assets/T&T_logo.png";
 import panierExtra from "../assets/Panier_extra_logo.png";
-import provigo from '../assets/Provigo_logo.png'
+import provigo from "../assets/Provigo_logo.png";
+
+type logosObject = {
+  src: string;
+  name: string;
+  ref: {
+    cadFR: string;
+    cadEN: string;
+    usEN: string;
+  };
+};
 
 /**
  * Store logo configuration and URLs
@@ -20,7 +30,7 @@ import provigo from '../assets/Provigo_logo.png'
  *   }
  * }>}
  */
-const logos = [
+const logos: logosObject[] = [
   {
     src: walmart,
     name: "walmart",
@@ -94,14 +104,14 @@ const logos = [
     },
   },
   {
-    src:provigo,
-    name: 'provigo',
+    src: provigo,
+    name: "provigo",
     ref: {
-      cadFR: 'https://www.provigo.ca/',
-      cadEN: 'https://www.provigo.ca/',
-      usEN: '',
-    }
-  }
+      cadFR: "https://www.provigo.ca/",
+      cadEN: "https://www.provigo.ca/",
+      usEN: "",
+    },
+  },
 ];
 
 export default logos;

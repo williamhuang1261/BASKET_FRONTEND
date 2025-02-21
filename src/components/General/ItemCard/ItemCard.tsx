@@ -17,7 +17,6 @@ interface Props {
   name: NameProp;
   reference: RefProp;
   amount: AmountProp;
-  brand: string;
   suppliers: SuppliersProp[];
 }
 
@@ -29,22 +28,18 @@ interface Props {
  * @param {NameProp} props.name - Product name in different languages
  * @param {RefProp} props.reference - Product reference information
  * @param {AmountProp} props.amount - Product quantity information
- * @param {string} props.brand - Product brand name
  * @param {SuppliersProp[]} props.suppliers - Array of supplier information
  * @returns {JSX.Element} Product card component
  */
 const ItemCard = ({
-  id,
   image,
   name,
   reference,
   amount,
-  brand,
   suppliers,
 }: Props) => {
   const sorted = SortByPrice(
     {
-      id: id,
       name: name,
       ref: reference,
       amount: amount,
@@ -53,17 +48,20 @@ const ItemCard = ({
     { maxQuantity: undefined },
   );
   const filtered = BestPerSupplier(sorted);
-  const normals = ShowNormal({ id: id, suppliers: suppliers });
+  const normals = ShowNormal({ suppliers: suppliers });
 
   return (
     <div className="flex max-h-full min-h-max w-72 flex-col rounded border bg-white shadow-lg md:w-full ">
       <div className="w-full flex-none">
         <div className="flex w-full justify-center p-1">
-          <img alt={name?.en} src={image} className="h-52 w-52 object-contain rounded" />
+          <img
+            alt={name?.en}
+            src={image}
+            className="h-52 w-52 rounded object-contain"
+          />
         </div>
         <div className="p-2">
           <div className="flex flex-wrap justify-between">
-            <h5 className="text-black/50">{brand}</h5>
             <h5 className="text-black/50">
               {(amount?.isApprox ? "\x7E " : "") +
                 amount?.quantity.toString() +

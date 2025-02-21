@@ -4,8 +4,9 @@
  * @type {React.Context<UserContextType>}
  */
 import React, { Dispatch } from "react";
-import UserTransportProp from "../../interface/UserTransportProp";
-import { UserAction } from "../reducers/userReducer";
+import { UserAction } from "../../interface/reducers/userAction";
+import { UserTransportProp } from "../../interface/UserTransportProp";
+
 
 interface UserContextType {
   user: UserTransportProp;

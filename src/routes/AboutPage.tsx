@@ -1,6 +1,6 @@
 import AboutHeader from "../components/About/AboutHeader";
 import Contact from "../components/About/Contact";
-import FAQ from "../components/About/FAQ";
+import Faq from "../components/About/Faq";
 import Information from "../components/About/Information";
 import FooterDiv from "../components/General/Footer/FooterDiv";
 import GenNavBar from "../components/NavBar/GenNavBar";
@@ -11,7 +11,7 @@ import GenNavBar from "../components/NavBar/GenNavBar";
  * - Navigation bar
  * - About header section
  * - Information section
- * - FAQ section
+ * - Faq section
  * - Contact form
  * - Footer
  *
@@ -29,7 +29,7 @@ const AboutPage = () => {
       <main className="flex flex-col gap-5 px-3 py-5 md:container md:mx-auto lg:px-20 2xl:px-44 3xl:px-64">
         <Information />
         <div className="flex items-center justify-center w-full">
-          <FAQ />
+          <Faq />
         </div>
         <Contact />
       </main>

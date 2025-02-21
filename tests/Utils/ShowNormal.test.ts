@@ -1,12 +1,17 @@
-import  ShowNormal from "../../src/components/General/ItemCard/ShowNormal";
+import ShowNormal from "../../src/components/General/ItemCard/ShowNormal";
 import { beforeEach, describe, it, expect } from "vitest";
-import { AmountProp, NameProp, RefProp, SuppliersProp } from "../../src/interface/Destructed";
+import {
+  AmountProp,
+  NameProp,
+  RefProp,
+  SuppliersProp,
+} from "../../src/interface/Destructed";
 
 interface ItemProp {
   name: NameProp;
-  ref: RefProp
+  ref: RefProp;
   amount: AmountProp;
-  suppliers?: SuppliersProp[];
+  suppliers: SuppliersProp[];
 }
 
 describe("ShowNormal function", () => {
@@ -33,13 +38,14 @@ describe("ShowNormal function", () => {
       },
       amount: {
         isApprox: true,
-        meas: "weight",
+        method: "weight",
         units: "g",
         quantity: 250,
       },
       suppliers: [
         {
           supplier: "Provigo",
+          brand: "Loblaws",
           pricing: {
             normal: 2.56,
             method: "weight_kg",
@@ -49,43 +55,53 @@ describe("ShowNormal function", () => {
                 X: 1,
                 Y: 10,
                 C: 0,
-                rebatePricing: 'unit',
-                start: Date.now(),
-                end: Date.now() + 200000000,
-                onlyMembers: false
+                method: "unit",
+                timeframe: {
+                  start: Date.now(),
+                  end: Date.now() + 200000000,
+                },
+                onlyMembers: false,
               },
               {
-                typeOfRebate: "XforC",
-                X: 2,
+                typeOfRebate: "buyXgetYforC",
+                X: 0,
+                Y: 2,
                 C: 2.56,
-                rebatePricing: 'unit',
-                start: Date.now(),
-                end: Date.now() + 500000000,
-                onlyMembers: false
+                method: "unit",
+                timeframe: {
+                  start: Date.now(),
+                  end: Date.now() + 500000000,
+                },
+                onlyMembers: false,
               },
             ],
           },
         },
         {
           supplier: "Metro",
+          brand : "Metro",
           pricing: {
             normal: 2.56,
             method: "weight_kg",
             limited: [
               {
-                typeOfRebate: "XforC",
-                X: 2,
+                typeOfRebate: "buyXgetYforC",
+                X: 0,
+                Y: 2,
                 C: 2.56,
-                rebatePricing: 'unit',
-                start: Date.now() + 200000000,
-                end: Date.now() + 500000000,
-                onlyMembers: false
+                method: "unit",
+                timeframe: {
+                  start: Date.now(),
+                  end: Date.now() + 200000000,
+                },
+                onlyMembers: false,
               },
             ],
           },
         },
         {
           supplier: "IGA",
+          brand: "Sobeys",
           pricing: {
             normal: 2.57,
             method: "weight_kg",
@@ -113,6 +129,7 @@ describe("ShowNormal function", () => {
     let res = exec();
     expect(res).toBeUndefined();
 
+    // @ts-expect-error Testing purposes
     item.suppliers = undefined;
     res = exec();
     expect(res).toBeUndefined();

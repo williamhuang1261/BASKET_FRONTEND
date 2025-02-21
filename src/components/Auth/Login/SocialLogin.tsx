@@ -18,15 +18,21 @@ interface SocialLoginProps {
 // Google: #FBBC04
 
 /**
- * @description This is a component that will allow you to sign in or sign up with a social media account.
- * @summary Can be used for sign in and sign up for one-click authentication.
- * @param {Object} props - The properties object.
- * @param {"Sign In" | "Sign Up"} props.type - The type of action to be performed.
- * @param {string} props.provider - The social media provider (e.g., Google, Facebook, Microsoft).
- * @param {string} props.logo - The URL of the provider's logo or its string representation.
- * @param {function} props.onClick - The asynchronous function to call when the button is clicked.
- * @param {string} props.color - The color of the button. Must use the format #RRGGBB.
- * @returns {JSX.Element} The social login button component.
+ * Social media authentication button with visual feedback
+ * @param {SocialLoginProps} props Component properties
+ * @param {string} props.type - Type of authentication ("Sign in" or "Sign up")
+ * @param {string} props.provider - OAuth provider name
+ * @param {string} props.logo - Provider's logo URL
+ * @param {string} props.color - Button theme color (hex format)
+ * @param {() => Promise<void>} props.onClick - Authentication callback
+ * @example
+ * <SocialLogin
+ *   type="Sign in"
+ *   provider="Google"
+ *   logo="/google-logo.png"
+ *   color="#FBBC04"
+ *   onClick={handleGoogleAuth}
+ * />
  */
 const SocialLogin = ({
   type,
@@ -48,17 +54,11 @@ const SocialLogin = ({
           (location.state as CustomLocationState).currErr?.message !==
           "You must re-authenticate to delete your account"
         ) {
-          getUser()
-            .then(() => {
+          getUser({
+            callback: () => {
               nav();
-            })
-            .catch(() => {
-              errorHandler({
-                code: 500,
-                message:
-                  "Failed initializing your account - Try reloading the Home Page",
-              });
-            });
+            },
+          });
         } else {
           nav();
         }

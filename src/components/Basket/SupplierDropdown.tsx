@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import logos from "../../data/Logos";
-import PriceProps from "../../interface/PriceProps";
+import {PriceProps} from "../../interface/PriceProps";
 
 /**
  * @interface Props

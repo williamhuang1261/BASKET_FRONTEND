@@ -50,19 +50,19 @@ describe("genMatrix function", () => {
     ];
     amountArray = [
       {
-        meas: "weight",
+        method: "weight",
         units: "kg",
         quantity: 1,
         isApprox: false,
       },
       {
-        meas: "weight",
+        method: "weight",
         units: "kg",
         quantity: 1,
         isApprox: false,
       },
       {
-        meas: "weight",
+        method: "weight",
         units: "kg",
         quantity: 1,
         isApprox: false,

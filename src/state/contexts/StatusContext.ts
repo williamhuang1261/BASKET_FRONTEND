@@ -3,8 +3,8 @@
  * @summary Provides status information and methods to update application state
  * @type {React.Context<StatusContextProp>}
  */
-import { StatusAction, StatusProp } from "../reducers/statusReducer";
 import React from "react";
+import { StatusProp, StatusAction } from "../../interface/reducers/statusAction";
 
 interface StatusContextProp {
   status: StatusProp;

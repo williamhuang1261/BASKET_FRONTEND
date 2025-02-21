@@ -1,4 +1,4 @@
-import PriceProps from "../../interface/PriceProps";
+import {PriceProps} from "../../interface/PriceProps";
 
 const getPotSuppliers = (basket: PriceProps[]): string[] => {
   const suppliers: string[] = [];

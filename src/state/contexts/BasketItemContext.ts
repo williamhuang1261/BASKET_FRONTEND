@@ -4,7 +4,7 @@
  * @type {React.Context<BasketItemType>}
  */
 import React, { Dispatch } from "react";
-import { basketItemAction, basketItemProp } from "../reducers/basketItemReducer";
+import { basketItemProp, basketItemAction } from "../../interface/reducers/basketItemAction";
 
 interface BasketItemType {
   basketItem: basketItemProp;

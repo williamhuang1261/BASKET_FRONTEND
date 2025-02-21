@@ -1,3 +1,5 @@
+import { allUnitsType } from "./UnitsProp";
+
 /**
  * @description Multilingual name properties with size information
  * @interface NameProp
@@ -5,7 +7,7 @@
 interface NameProp {
   fr: string;
   en: string;
-  size: string;
+  size: "S" | "M" | "L" | "XL";
 }
 
 /**
@@ -13,7 +15,7 @@ interface NameProp {
  * @interface RefProp
  */
 interface RefProp {
-  standard: string;
+  standard: "PLU" | "UPC" | "EAN";
   code: string;
 }
 
@@ -22,9 +24,9 @@ interface RefProp {
  * @interface AmountProp
  */
 interface AmountProp {
-  isApprox?: boolean;
-  meas: string;
-  units: string;
+  isApprox: boolean;
+  method: "weight" | "unit" | "volume";
+  units: allUnitsType;
   quantity: number;
 }
 
@@ -33,13 +35,15 @@ interface AmountProp {
  * @interface LimitedProp
  */
 interface LimitedProp {
-  typeOfRebate: string;
+  typeOfRebate: "buyXgetYatC" | "buyXgetYforC" | "C";
   X?: number;
   Y?: number;
   C: number;
-  rebatePricing: string;
-  start: number;
-  end: number;
+  method: "unit" | "weight_lb" | "weight_kg" | "weight_100g";
+  timeframe: {
+    start: number;
+    end: number;
+  };
   onlyMembers: boolean;
 }
 
@@ -49,6 +53,7 @@ interface LimitedProp {
  */
 interface SuppliersProp {
   supplier: string;
+  brand: string;
   pricing: {
     normal: number;
     method: string;

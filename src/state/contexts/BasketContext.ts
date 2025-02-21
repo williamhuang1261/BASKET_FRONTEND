@@ -4,7 +4,7 @@
  * @type {React.Context<BasketContextType>}
  */
 import React, { Dispatch } from "react";
-import { BasketAction, basketProp } from "../reducers/basketReducer";
+import { basketProp, BasketAction } from "../../interface/reducers/basketAction";
 
 interface BasketContextType {
   basket: basketProp;

@@ -6,16 +6,27 @@ import { AxiosError, AxiosResponse } from "axios";
 import useError from "../useError";
 import { useQueryClient } from "@tanstack/react-query";
 
+type Props = {
+  callback?: () => void;
+  promiseFn?: () => Promise<void>;
+  onErr?: (err: AxiosError) => void;
+};
+
 /**
- * @description Hook to fetch and initialize user data
- * @returns {() => Promise<void>} Async function that fetches and sets up user data
- * @summary Handles user authentication state and fetches user data from the server
+ * Hook for managing user authentication and data synchronization
+ * @returns {(options: Props) => Promise<void>} Authentication handler function
+ * @example
+ * const getUser = useGetUser();
+ * await getUser({
+ *   callback: () => console.log('Success'),
+ *   onErr: (err) => console.error(err)
+ * });
  */
 const useGetUser = () => {
   const { dispatch: userDispatch } = useUserState();
   const queryClient = useQueryClient();
   const auth = getAuth();
-  const errorHandler = useError();
+  const errHandler = useError();
 
   const setUser = (res: AxiosResponse) => {
     userDispatch({
@@ -30,35 +41,31 @@ const useGetUser = () => {
     });
   };
 
-  const handleErr = (err: AxiosError) => {
-    errorHandler(err);
-  };
-
   const handleRequest = async () => {
-    try {
-      const res = await queryClient.fetchQuery({
-        queryKey: ["account"],
-        queryFn: () => UserServices.post("/account/oauth"),
-      });
-      setUser(res);
-    } catch (err) {
-      handleErr(err as AxiosError);
-    }
+    const res = await queryClient.fetchQuery({
+      queryKey: ["account"],
+      queryFn: () => UserServices.post("/account/oauth"),
+    });
+    setUser(res);
   };
 
-  return async () => {
+  return async ({ callback, promiseFn, onErr }: Props = {}) => {
     try {
       if (!auth.currentUser) {
-        onAuthStateChanged(auth, async () => {
+        onAuthStateChanged(auth, () => {
           if (auth.currentUser) {
-            await handleRequest();
+            handleRequest().catch(errHandler)
+            if (callback) callback();
+            if (promiseFn) promiseFn();
           }
         });
       } else {
-        await handleRequest();
+        if (callback) callback();
+        if (promiseFn) await promiseFn();
       }
     } catch (err) {
-      handleErr(err as AxiosError);
+      errHandler(err as AxiosError);
+      if (onErr) onErr(err as AxiosError);
     }
   };
 };

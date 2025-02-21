@@ -1,4 +1,4 @@
-import PriceProps from "../../../interface/PriceProps";
+import {PriceProps} from "../../../interface/PriceProps";
 
 /**
  * @description Displays price information with optional rebate indication

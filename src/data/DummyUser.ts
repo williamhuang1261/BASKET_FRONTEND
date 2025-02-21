@@ -1,4 +1,4 @@
-import UserTransportProp from "../interface/UserTransportProp";
+import { UserTransportProp } from "../interface/UserTransportProp";
 
 /**
  * @description Default user object with empty/default values

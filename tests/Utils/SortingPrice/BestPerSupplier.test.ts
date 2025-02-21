@@ -32,13 +32,14 @@ describe("SortByPrice", () => {
       },
       amount: {
         isApprox: true,
-        meas: "weight",
+        method: "weight",
         units: "g",
         quantity: 250,
       },
       suppliers: [
         {
           supplier: "Provigo",
+          brand: 'Sunkiss',
           pricing: {
             normal: 2.56,
             method: "weight_kg",
@@ -48,18 +49,22 @@ describe("SortByPrice", () => {
                 X: 1,
                 Y: 10,
                 C: 0,
-                rebatePricing: "unit",
-                start: Date.now(),
-                end: Date.now() + 200000000,
+                method: "unit",
+                timeframe: {
+                  start: Date.now(),
+                  end: Date.now() + 200000000,
+                },
                 onlyMembers: false,
               },
               {
-                typeOfRebate: "XforC",
-                X: 2,
+                typeOfRebate: "buyXgetYforC",
+                Y: 2,
                 C: 2.56,
-                rebatePricing: "unit",
-                start: Date.now(),
-                end: Date.now() + 500000000,
+                method: "unit",
+                timeframe: {
+                  start: Date.now(),
+                  end: Date.now() + 500000000,
+                },
                 onlyMembers: false,
               },
             ],
@@ -67,17 +72,20 @@ describe("SortByPrice", () => {
         },
         {
           supplier: "Metro",
+          brand: 'Selection',
           pricing: {
             normal: 2.56,
             method: "weight_kg",
             limited: [
               {
-                typeOfRebate: "XforC",
+                typeOfRebate: "buyXgetYforC",
                 X: 2,
                 C: 2.56,
-                rebatePricing: "unit",
-                start: Date.now() + 200000000,
-                end: Date.now() + 500000000,
+                method: "unit",
+                timeframe: {
+                  start: Date.now() + 200000000,
+                  end: Date.now() + 500000000,
+                },
                 onlyMembers: false,
               },
             ],
@@ -85,6 +93,7 @@ describe("SortByPrice", () => {
         },
         {
           supplier: "IGA",
+          brand: 'IGA',
           pricing: {
             normal: 2.57,
             method: "weight_kg",

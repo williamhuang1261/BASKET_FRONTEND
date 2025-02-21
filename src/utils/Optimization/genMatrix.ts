@@ -1,5 +1,5 @@
 import { RefProp } from "../../interface/Destructed";
-import PriceProps from "../../interface/PriceProps";
+import {PriceProps} from "../../interface/PriceProps";
 
 interface MatrixItem {
   ref: RefProp;

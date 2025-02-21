@@ -1,8 +1,9 @@
 import SortByPrice from "../../../src/utils/SortingPrice/SortByPrice";
 import { describe, it, expect, beforeEach } from "vitest";
-import {CardProps} from "../../../src/interface/CardProps";
-import {PriceProps} from "../../../src/interface/PriceProps";
+import { CardProps } from "../../../src/interface/CardProps";
+import { PriceProps } from "../../../src/interface/PriceProps";
 import items from "../../../src/data/ItemsEX";
+import { allUnitsType } from "../../../src/interface/UnitsProp";
 
 type ItemType = Pick<CardProps, "name" | "ref" | "amount" | "suppliers">;
 interface ItemProp extends ItemType {}
@@ -26,13 +27,14 @@ describe("SortByPrice", () => {
       },
       amount: {
         isApprox: true,
-        meas: "weight",
+        method: "weight",
         units: "g",
         quantity: 250,
       },
       suppliers: [
         {
           supplier: "Provigo",
+          brand: "Sunkiss",
           pricing: {
             normal: 10,
             method: "weight_kg",
@@ -42,9 +44,11 @@ describe("SortByPrice", () => {
                 X: 1,
                 Y: 2,
                 C: 1,
-                rebatePricing: "unit",
-                start: Date.now(),
-                end: Date.now() + 200000000,
+                method: "unit",
+                timeframe: {
+                  start: Date.now(),
+                  end: Date.now() + 200000000,
+                },
                 onlyMembers: false,
               },
               {
@@ -52,9 +56,11 @@ describe("SortByPrice", () => {
                 X: 1,
                 Y: 2,
                 C: 1,
-                rebatePricing: "unit",
-                start: Date.now(),
-                end: Date.now() + 500000000,
+                method: "unit",
+                timeframe: {
+                  start: Date.now(),
+                  end: Date.now() + 500000000,
+                },
                 onlyMembers: false,
               },
             ],
@@ -62,6 +68,7 @@ describe("SortByPrice", () => {
         },
         {
           supplier: "Metro",
+          brand: "Sunkiss",
           pricing: {
             normal: 10,
             method: "weight_kg",
@@ -71,9 +78,11 @@ describe("SortByPrice", () => {
                 X: 1,
                 Y: 2,
                 C: 1,
-                rebatePricing: "unit",
-                start: Date.now() + 200000000,
-                end: Date.now() + 500000000,
+                method: "unit",
+                timeframe: {
+                  start: Date.now() + 200000000,
+                  end: Date.now() + 500000000,
+                },
                 onlyMembers: false,
               },
             ],
@@ -81,6 +90,7 @@ describe("SortByPrice", () => {
         },
         {
           supplier: "IGA",
+          brand: "Sunkiss",
           pricing: {
             normal: 10,
             method: "weight_kg",
@@ -158,7 +168,7 @@ describe("SortByPrice", () => {
   it("Should return an ordered array of the best prices for an item using volume", () => {
     item.amount = {
       isApprox: true,
-      meas: "volume",
+      method: "volume",
       units: "mL",
       quantity: 250,
     };
@@ -196,7 +206,7 @@ describe("SortByPrice", () => {
   it("Should return an ordered array of the best prices for an item using unit", () => {
     item.amount = {
       isApprox: true,
-      meas: "unit",
+      method: "unit",
       units: "unit",
       quantity: 1,
     };
@@ -234,7 +244,7 @@ describe("SortByPrice", () => {
   });
   it("Should adapt to the variations in units", () => {
     // Weight units
-    let units = ["mg", "g", "kg", "oz", "lb"];
+    let units: allUnitsType[] = ["mg", "g", "kg", "oz", "lb"];
     if (item.amount) {
       for (const unit of units) {
         item.amount.units = unit;
@@ -247,7 +257,7 @@ describe("SortByPrice", () => {
 
       // Volume units
       units = ["mL", "L", "fl oz", "pint", "quart", "gallon"];
-      item.amount.meas = "volume";
+      item.amount.method = "volume";
       if (item.suppliers) {
         for (const s of item.suppliers) {
           s.pricing.method = "volume";
@@ -265,6 +275,7 @@ describe("SortByPrice", () => {
     }
   });
   it("Should return a string if no prices are available", () => {
+    // @ts-expect-error Testing error handling
     item.suppliers = undefined;
     let res = exec();
     expect(typeof res).toBe("string");
@@ -276,6 +287,7 @@ describe("SortByPrice", () => {
     item.suppliers = [
       {
         supplier: "Provigo",
+        brand: "Sunkiss",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -285,18 +297,23 @@ describe("SortByPrice", () => {
               X: 1,
               Y: 10,
               C: 0,
-              rebatePricing: "unit",
-              start: Date.now() - 200,
-              end: Date.now() - 10,
+              method: "unit",
+              timeframe: {
+                start: Date.now() - 2000000000,
+                end: Date.now() - 500000000,
+              },
               onlyMembers: false,
             },
             {
-              typeOfRebate: "XforC",
-              X: 2,
+              typeOfRebate: "buyXgetYforC",
+              X: 0,
+              Y: 0,
               C: 2.56,
-              rebatePricing: "unit",
-              start: Date.now() + 2000000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 2000000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -325,18 +342,21 @@ describe("SortByPrice", () => {
       item.suppliers = [
         {
           supplier: "Provigo",
+          brand: "Sunkiss",
           pricing: {
             normal: 2.56,
             method: "weight_kg",
             limited: [
               {
-                typeOfRebate: "XforC",
+                typeOfRebate: "buyXgetYforC",
                 X: 1,
                 Y: 10,
                 C: 0,
-                rebatePricing: "unit",
-                start: Date.now(),
-                end: Date.now() + 5000000000,
+                method: "unit",
+                timeframe: {
+                  start: Date.now(),
+                  end: Date.now() + 5000000000,
+                },
                 onlyMembers: false,
               },
             ],
@@ -357,6 +377,7 @@ describe("SortByPrice", () => {
       item.suppliers = [
         {
           supplier: "Provigo",
+          brand: "Sunkiss",
           pricing: {
             normal: 2.56,
             method: "weight_kg",
@@ -366,9 +387,11 @@ describe("SortByPrice", () => {
                 X: 1,
                 Y: 10,
                 C: 0,
-                rebatePricing: "unit",
-                start: Date.now(),
-                end: Date.now() + 5000000000,
+                method: "unit",
+                timeframe: {
+                  start: Date.now(),
+                  end: Date.now() + 5000000000,
+                },
                 onlyMembers: false,
               },
             ],
@@ -396,7 +419,6 @@ describe("SortByPrice", () => {
     expect(res.opts.length).toBe(3);
   });
   it("Should ignore a faulty pricing method for a supplier", () => {
-    // @ts-expect-error Already checked
     item.suppliers[2].pricing.method = "invalid";
     const res = exec();
     // @ts-expect-error Already checked
@@ -418,13 +440,14 @@ describe("SortByPrice", () => {
       },
       amount: {
         isApprox: true,
-        meas: "weight",
+        method: "weight",
         units: "kg",
         quantity: 1,
       },
       suppliers: [
         {
           supplier: "Provigo",
+          brand: "Sunkiss",
           pricing: {
             normal: 10,
             method: "weight_kg",
@@ -432,9 +455,11 @@ describe("SortByPrice", () => {
               {
                 typeOfRebate: "C",
                 C: 1,
-                rebatePricing: "unit",
-                start: Date.now(),
-                end: Date.now() + 200000000,
+                method: "unit",
+                timeframe: {
+                  start: Date.now(),
+                  end: Date.now() + 200000000,
+                },
                 onlyMembers: false,
               },
               {
@@ -442,9 +467,11 @@ describe("SortByPrice", () => {
                 X: 1,
                 Y: 2,
                 C: 1,
-                rebatePricing: "unit",
-                start: Date.now(),
-                end: Date.now() + 500000000,
+                method: "unit",
+                timeframe: {
+                  start: Date.now(),
+                  end: Date.now() + 500000000,
+                },
                 onlyMembers: false,
               },
               {
@@ -452,9 +479,11 @@ describe("SortByPrice", () => {
                 X: 1,
                 Y: 2,
                 C: 1,
-                rebatePricing: "unit",
-                start: Date.now(),
-                end: Date.now() + 500000000,
+                method: "unit",
+                timeframe: {
+                  start: Date.now(),
+                  end: Date.now() + 500000000,
+                },
                 onlyMembers: false,
               },
             ],
@@ -490,7 +519,6 @@ describe("SortByPrice", () => {
   });
   it("Should return the proper values if qSelection is present (simple to read)", () => {
     item.suppliers?.splice(1, 2);
-    // @ts-expect-error Already checked
     item.suppliers[0].pricing.limited?.splice(1, 1);
     qSelection = { quantity: 3, units: "unit" };
     const res = exec();

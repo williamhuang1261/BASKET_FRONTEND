@@ -4,9 +4,10 @@
  * @type {React.Context<SearchFilterContextType>}
  */
 import { Dispatch } from "react";
-import SearchFilterProps from "../../interface/SearchFilterProps";
-import { filterAction } from "../reducers/searchFilterReducer";
+
 import React from "react";
+import { filterAction } from "../../interface/reducers/searchFilterReducer";
+import { SearchFilterProps } from "../../interface/SearchFilterProps";
 
 interface SearchFilterContextType {
   searchFilter: SearchFilterProps;

@@ -1,9 +1,9 @@
-import CardProps from "../../interface/CardProps";
+import { CardProps } from "../../interface/CardProps";
 import shuffleArray from "../ShuffleArray";
 import giveTextAfterPrice from "./giveTextAfterPrice";
 import setMaxItem from "./setMaxItem";
 import calcCost from "./calcCost";
-import PriceProps, { OptsProps } from "../../interface/PriceProps";
+import { PriceProps, OptsProps } from "../../interface/PriceProps";
 import toUnit from "../Units/toUnit";
 import getCompPrice from "./getCompPrice";
 
@@ -24,9 +24,16 @@ export interface FilterProps {
   };
 }
 
+interface InfoProps {
+  name: CardProps["name"];
+  ref: CardProps["ref"];
+  amount: CardProps["amount"];
+  suppliers: CardProps["suppliers"];
+}
+
 // Function to sort prices for further uses in cards / basket item
 const SortByPrice = (
-  { name, ref, amount, suppliers }: CardProps,
+  { name, ref, amount, suppliers }: InfoProps,
   { maxQuantity, hiddenSuppliers, qSelection }: FilterProps,
 ): PriceProps | string => {
   // Case where no supplier provides this item / no data for comparison

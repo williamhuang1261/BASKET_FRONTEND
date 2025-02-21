@@ -1,3 +1,4 @@
+import { categoriesType } from "../data/Categories";
 import { AmountProp, NameProp, RefProp, SuppliersProp } from "./Destructed";
 
 /**
@@ -5,15 +6,17 @@ import { AmountProp, NameProp, RefProp, SuppliersProp } from "./Destructed";
  * @interface CardProps
  */
 interface CardProps {
-  id?: string
-  name?: NameProp;
-  ref?:RefProp;
-  amount?: AmountProp;
-  description?: string;
-  brand?: string;
-  suppliers?: SuppliersProp[]
-  tags?: string[];
-  image?: string;
+  id: string;
+  name: NameProp;
+  ref: RefProp;
+  amount: AmountProp;
+  description?: {
+    en?: string;
+    fr: string;
+  };
+  suppliers: SuppliersProp[];
+  categories: categoriesType[];
+  image: string;
 }
 
-export type {CardProps}
+export type { CardProps };

@@ -10,7 +10,8 @@ describe("toUnit function", () => {
   };
   beforeEach(() => {
     amount = {
-      meas: "weight",
+      isApprox: false,
+      method: "weight",
       units: "g",
       quantity: 100,
     };

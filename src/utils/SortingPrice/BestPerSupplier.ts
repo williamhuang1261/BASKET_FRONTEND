@@ -1,4 +1,4 @@
-import PriceProps, { OptsProps } from "../../interface/PriceProps";
+import {PriceProps,  OptsProps } from "../../interface/PriceProps";
 
 const BestPerSupplier = (sorted: PriceProps | string): PriceProps | string => {
   if (typeof sorted === "string") return sorted;

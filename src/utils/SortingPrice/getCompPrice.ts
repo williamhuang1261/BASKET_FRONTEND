@@ -21,7 +21,8 @@ const getCompPrice = (
   const { normal, method } = pricing;
 
   // Logic for transforming price to be compared with normal price
-  const { typeOfRebate, X, Y, C, rebatePricing, start, end } = limited;
+  const { typeOfRebate, X, Y, C, method: rebateMethod, timeframe } = limited;
+  const { start, end } = timeframe;
 
   // Verifying date of rebate
   if (Date.now() < start || Date.now() > end) return undefined;
@@ -37,15 +38,14 @@ const getCompPrice = (
 
   // Verifying that all necessary information is present
   if (
-    (typeOfRebate === "buyXgetYforC" &&
+    ((typeOfRebate === "buyXgetYforC" || typeOfRebate === "buyXgetYatC") &&
       (X === undefined || Y === undefined || C === undefined)) ||
-    (typeOfRebate === "XforC" && (X === undefined || C === undefined)) ||
     (typeOfRebate === "C" && C === undefined)
   )
     return undefined;
 
   // Obtaining text after rebate format
-  const rebateTextAfterPrice = giveTextAfterPrice(rebatePricing);
+  const rebateTextAfterPrice = giveTextAfterPrice(rebateMethod);
   if (!rebateTextAfterPrice) return undefined;
 
   // Calculating cost if quantity selection was asked for
@@ -62,7 +62,7 @@ const getCompPrice = (
         X: X,
         Y: Y,
         C: C,
-        rebatePricing: rebatePricing,
+        method: rebateMethod,
         start: start,
         end: end,
       },
@@ -81,14 +81,14 @@ const getCompPrice = (
   let compPrice: number | undefined;
   switch (typeOfRebate) {
     case "C":
-      calcPrice = calcCost({ amount }, C, rebatePricing, undefined, method);
+      calcPrice = calcCost({ amount }, C, rebateMethod, undefined, method);
       if (calcPrice === undefined) return undefined;
       return {
         supplier: supplier,
         meta: {
           typeOfRebate: typeOfRebate,
           C: C,
-          rebatePricing: rebatePricing,
+          method: rebateMethod,
           start: start,
           end: end,
         },
@@ -105,7 +105,7 @@ const getCompPrice = (
       else X2 = X;
 
       if (!Y) return undefined;
-      if (typeOfRebate === "buyXgetYatC" && rebatePricing !== "unit")
+      if (typeOfRebate === "buyXgetYatC" && rebateMethod !== "unit")
         return undefined;
 
       const normalPart: number | undefined = calcCost(
@@ -120,7 +120,7 @@ const getCompPrice = (
       if (typeOfRebate === "buyXgetYforC") {
         rebatePart = C;
       } else {
-        convPrice = calcCost({ amount }, C, rebatePricing, undefined, "unit");
+        convPrice = calcCost({ amount }, C, rebateMethod, undefined, "unit");
         if (convPrice === undefined) return undefined;
 
         rebatePart = Y * convPrice;
@@ -144,7 +144,7 @@ const getCompPrice = (
           X: X2,
           Y: Y,
           C: C,
-          rebatePricing: rebatePricing,
+          method: rebateMethod,
           start: start,
           end: end,
         },

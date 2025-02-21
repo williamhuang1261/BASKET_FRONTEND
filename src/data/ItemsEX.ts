@@ -1,4 +1,5 @@
 import image from "../assets/AdExample(1_1).jpg";
+import { CardProps } from "../interface/CardProps";
 
 /**
  * Example product items with detailed information including pricing, suppliers, and promotions
@@ -6,9 +7,8 @@ import image from "../assets/AdExample(1_1).jpg";
  *   id: string,
  *   name: {fr: string, en: string, size: string},
  *   ref: {standard: string, code: string},
- *   amount: {isApprox: boolean, meas: string, units: string, quantity: number},
+ *   amount: {isApprox: boolean, method: string, units: string, quantity: number},
  *   description: string,
- *   brand: string,
  *   suppliers: Array<{
  *     supplier: string,
  *     pricing: {
@@ -19,19 +19,20 @@ import image from "../assets/AdExample(1_1).jpg";
  *         X?: number,
  *         Y?: number,
  *         C: number,
- *         rebatePricing: string,
+ *         method: string,
  *         start: number,
  *         end: number,
  *         onlyMembers: boolean
  *       }>
  *     }
  *   }>,
- *   image: string
+ *   image: string,
+ *   categories: categoriesType[]
  * }>}
  */
-const items = [
+const items: CardProps[] = [
   {
-    id: '66f3853cbe017003c58fced5',
+    id: "66f3853cbe017003c58fced5",
     name: {
       fr: "Pomme",
       en: "Apple",
@@ -43,15 +44,19 @@ const items = [
     },
     amount: {
       isApprox: true,
-      meas: "weight",
+      method: "weight",
       units: "g",
       quantity: 250,
     },
-    description: "An apple a day keeps the doctor away",
-    brand: "Sunkiss",
+    description: {
+      en: "An apple a day keeps the doctor away",
+      fr: "Une pomme par jour éloigne le médecin pour toujours"
+    },
+    categories: ["Produce", "Bio"],
     suppliers: [
       {
         supplier: "Provigo",
+        brand: "Sunkiss",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -61,9 +66,11 @@ const items = [
               X: 1,
               Y: 10,
               C: 0,
-              rebatePricing: "unit",
-              start: Date.now(),
-              end: Date.now() + 200000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now(),
+                end: Date.now() + 200000000,
+              },
               onlyMembers: false,
             },
             {
@@ -71,9 +78,12 @@ const items = [
               X: 1,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
+
               onlyMembers: false,
             },
           ],
@@ -81,6 +91,7 @@ const items = [
       },
       {
         supplier: "Metro",
+        brand: "Selection",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -90,9 +101,11 @@ const items = [
               X: 5,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -100,6 +113,7 @@ const items = [
       },
       {
         supplier: "IGA",
+        brand: "Compliments",
         pricing: {
           normal: 2.57,
           method: "weight_kg",
@@ -109,7 +123,7 @@ const items = [
     image: image,
   },
   {
-    id: '66f3853cbe017003c58fced6',
+    id: "66f3853cbe017003c58fced6",
 
     name: {
       fr: "Pomme",
@@ -122,15 +136,19 @@ const items = [
     },
     amount: {
       isApprox: true,
-      meas: "weight",
+      method: "weight",
       units: "g",
       quantity: 250,
     },
-    description: "An apple a day keeps the doctor away",
-    brand: "Sunkiss",
+    description: {
+      en: "An apple a day keeps the doctor away",
+      fr: "Une pomme par jour éloigne le médecin pour toujours"
+    },
+    categories: ["Produce"],
     suppliers: [
       {
         supplier: "Provigo",
+        brand: "Sunkiss",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -140,9 +158,11 @@ const items = [
               X: 2,
               Y: 1,
               C: 0,
-              rebatePricing: "unit",
-              start: Date.now(),
-              end: Date.now() + 200000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now(),
+                end: Date.now() + 200000000,
+              },
               onlyMembers: false,
             },
             {
@@ -150,9 +170,11 @@ const items = [
               X: 5,
               Y: 6,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -160,6 +182,7 @@ const items = [
       },
       {
         supplier: "Metro",
+        brand: "Selection",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -169,9 +192,11 @@ const items = [
               X: 1,
               Y: 10,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -179,6 +204,7 @@ const items = [
       },
       {
         supplier: "IGA",
+        brand: "Compliments",
         pricing: {
           normal: 2.57,
           method: "weight_kg",
@@ -188,7 +214,7 @@ const items = [
     image: image,
   },
   {
-    id: '66f3853cbe017003c58fced7',
+    id: "66f3853cbe017003c58fced7",
 
     name: {
       fr: "Pomme",
@@ -201,15 +227,19 @@ const items = [
     },
     amount: {
       isApprox: true,
-      meas: "weight",
+      method: "weight",
       units: "g",
       quantity: 250,
     },
-    description: "An apple a day keeps the doctor away",
-    brand: "Sunkiss",
+    description: {
+      en: "An apple a day keeps the doctor away",
+      fr: "Une pomme par jour éloigne le médecin pour toujours"
+    },
+    categories: ["Produce"],
     suppliers: [
       {
         supplier: "Provigo",
+        brand: "Sunkiss",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -219,9 +249,11 @@ const items = [
               X: 2,
               Y: 1,
               C: 0,
-              rebatePricing: "unit",
-              start: Date.now(),
-              end: Date.now() + 200000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now(),
+                end: Date.now() + 200000000,
+              },
               onlyMembers: false,
             },
             {
@@ -229,9 +261,11 @@ const items = [
               X: 36,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -239,6 +273,7 @@ const items = [
       },
       {
         supplier: "Metro",
+        brand: "Selection",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -248,9 +283,11 @@ const items = [
               X: 1,
               Y: 25,
               C: 0,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -258,6 +295,7 @@ const items = [
       },
       {
         supplier: "IGA",
+        brand: "Compliments",
         pricing: {
           normal: 1.0,
           method: "weight_kg",
@@ -267,7 +305,7 @@ const items = [
     image: image,
   },
   {
-    id: '66f3853cbe017003c58fced8',
+    id: "66f3853cbe017003c58fced8",
 
     name: {
       fr: "Pomme",
@@ -280,15 +318,19 @@ const items = [
     },
     amount: {
       isApprox: true,
-      meas: "weight",
+      method: "weight",
       units: "g",
       quantity: 250,
     },
-    description: "An apple a day keeps the doctor away",
-    brand: "The best price you'll ever see",
+    description: {
+      en: "An apple a day keeps the doctor away",
+      fr: "Une pomme par jour éloigne le médecin pour toujours"
+    },
+    categories: ["Produce"],
     suppliers: [
       {
         supplier: "Provigo",
+        brand: "Sunkiss",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -298,9 +340,11 @@ const items = [
               X: 2,
               Y: 1,
               C: 0,
-              rebatePricing: "unit",
-              start: Date.now(),
-              end: Date.now() + 200000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now(),
+                end: Date.now() + 200000000,
+              },
               onlyMembers: false,
             },
             {
@@ -308,9 +352,11 @@ const items = [
               X: 1,
               Y: 1000000000,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -318,6 +364,7 @@ const items = [
       },
       {
         supplier: "Metro",
+        brand: "Selection",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -327,9 +374,11 @@ const items = [
               X: 1,
               Y: 1,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -337,6 +386,7 @@ const items = [
       },
       {
         supplier: "IGA",
+        brand: "Compliments",
         pricing: {
           normal: 2.57,
           method: "weight_kg",
@@ -344,9 +394,11 @@ const items = [
             {
               typeOfRebate: "C",
               C: 0.01,
-              rebatePricing: "unit",
-              start: Date.now(),
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now(),
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -356,7 +408,7 @@ const items = [
     image: image,
   },
   {
-    id: '66f3853cbe017003c58fced9',
+    id: "66f3853cbe017003c58fced9",
 
     name: {
       fr: "Pomme avec beaucoup de miel sur le dessus pour l'Halloween",
@@ -369,15 +421,19 @@ const items = [
     },
     amount: {
       isApprox: true,
-      meas: "weight",
+      method: "weight",
       units: "g",
       quantity: 250,
     },
-    description: "An apple a day keeps the doctor away",
-    brand: "Sunkiss",
+    description: {
+      en: "An apple a day keeps the doctor away",
+      fr: "Une pomme par jour éloigne le médecin pour toujours"
+    },
+    categories: ["Produce"],
     suppliers: [
       {
         supplier: "Provigo",
+        brand: "Sunkiss",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -387,9 +443,11 @@ const items = [
               X: 2,
               Y: 1,
               C: 0,
-              rebatePricing: "unit",
-              start: Date.now(),
-              end: Date.now() + 200000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now(),
+                end: Date.now() + 200000000,
+              },
               onlyMembers: false,
             },
             {
@@ -397,9 +455,11 @@ const items = [
               X: 5,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -407,6 +467,7 @@ const items = [
       },
       {
         supplier: "Metro",
+        brand: "Selection",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -416,9 +477,11 @@ const items = [
               X: 5,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -426,6 +489,7 @@ const items = [
       },
       {
         supplier: "IGA",
+        brand: "Compliments",
         pricing: {
           normal: 2.57,
           method: "weight_kg",
@@ -435,7 +499,7 @@ const items = [
     image: image,
   },
   {
-    id: '66f3853cbe017003c58fceda',
+    id: "66f3853cbe017003c58fceda",
 
     name: {
       fr: "Pomme",
@@ -448,15 +512,19 @@ const items = [
     },
     amount: {
       isApprox: true,
-      meas: "weight",
+      method: "weight",
       units: "g",
       quantity: 250,
     },
-    description: "An apple a day keeps the doctor away",
-    brand: "The greatest brand of all time that also has a massive name",
+    description: {
+      en: "An apple a day keeps the doctor away",
+      fr: "Une pomme par jour éloigne le médecin pour toujours"
+    },
+    categories: ["Produce"],
     suppliers: [
       {
         supplier: "Provigo",
+        brand: "Sunkiss",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -466,9 +534,11 @@ const items = [
               X: 2,
               Y: 1,
               C: 0,
-              rebatePricing: "unit",
-              start: Date.now(),
-              end: Date.now() + 200000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now(),
+                end: Date.now() + 200000000,
+              },
               onlyMembers: false,
             },
             {
@@ -476,9 +546,11 @@ const items = [
               X: 5,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -486,6 +558,7 @@ const items = [
       },
       {
         supplier: "Metro",
+        brand: "Selection",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -495,9 +568,11 @@ const items = [
               X: 5,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -505,6 +580,7 @@ const items = [
       },
       {
         supplier: "IGA",
+        brand: "Compliments",
         pricing: {
           normal: 2.57,
           method: "weight_kg",
@@ -514,7 +590,7 @@ const items = [
     image: image,
   },
   {
-    id: '66f3853cbe017003c58fcedb',
+    id: "66f3853cbe017003c58fcedb",
 
     name: {
       fr: "Pomme",
@@ -527,15 +603,19 @@ const items = [
     },
     amount: {
       isApprox: true,
-      meas: "weight",
+      method: "weight",
       units: "g",
       quantity: 250,
     },
-    description: "An apple a day keeps the doctor away",
-    brand: "Sunkiss",
+    description: {
+      en: "An apple a day keeps the doctor away",
+      fr: "Une pomme par jour éloigne le médecin pour toujours"
+    },
+    categories: ["Produce"],
     suppliers: [
       {
         supplier: "Provigo",
+        brand: "Sunkiss",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -545,9 +625,11 @@ const items = [
               X: 10000,
               Y: 1000000,
               C: 0,
-              rebatePricing: "unit",
-              start: Date.now(),
-              end: Date.now() + 200000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now(),
+                end: Date.now() + 200000000,
+              },
               onlyMembers: false,
             },
             {
@@ -555,9 +637,11 @@ const items = [
               X: 5,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -565,6 +649,7 @@ const items = [
       },
       {
         supplier: "Metro",
+        brand: "Selection",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -574,9 +659,11 @@ const items = [
               X: 5,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -584,6 +671,7 @@ const items = [
       },
       {
         supplier: "IGA",
+        brand: "Compliments",
         pricing: {
           normal: 2.57,
           method: "weight_kg",
@@ -593,7 +681,7 @@ const items = [
     image: image,
   },
   {
-    id: '66f3853cbe017003c58fcedc',
+    id: "66f3853cbe017003c58fcedc",
 
     name: {
       fr: "Pomme",
@@ -606,16 +694,19 @@ const items = [
     },
     amount: {
       isApprox: true,
-      meas: "weight",
+      method: "weight",
       units: "g",
       quantity: 250,
     },
-    description: "An apple a day keeps the doctor away",
-    brand:
-      "An apple a day keeps the doctor away, sponsored by your insurance company",
+    description: {
+      en: "An apple a day keeps the doctor away",
+      fr: "Une pomme par jour éloigne le médecin pour toujours"
+    },
+    categories: ["Produce"],
     suppliers: [
       {
         supplier: "Provigo",
+        brand: "Sunkiss",
         pricing: {
           normal: 999999,
           method: "weight_kg",
@@ -625,9 +716,11 @@ const items = [
               X: 10000,
               Y: 100000,
               C: 0,
-              rebatePricing: "unit",
-              start: Date.now(),
-              end: Date.now() + 200000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now(),
+                end: Date.now() + 200000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -637,7 +730,7 @@ const items = [
     image: image,
   },
   {
-    id: '66f3853cbe017003c58fcedd',
+    id: "66f3853cbe017003c58fcedd",
 
     name: {
       fr: "Pomme",
@@ -650,15 +743,19 @@ const items = [
     },
     amount: {
       isApprox: true,
-      meas: "weight",
+      method: "weight",
       units: "g",
       quantity: 250,
     },
-    description: "An apple a day keeps the doctor away",
-    brand: "Sunkiss",
+    description: {
+      en: "An apple a day keeps the doctor away",
+      fr: "Une pomme par jour éloigne le médecin pour toujours"
+    },
+    categories: ["Produce"],
     suppliers: [
       {
         supplier: "Provigo",
+        brand: "Sunkiss",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -668,9 +765,11 @@ const items = [
               X: 2,
               Y: 1,
               C: 0,
-              rebatePricing: "unit",
-              start: Date.now(),
-              end: Date.now() + 200000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now(),
+                end: Date.now() + 200000000,
+              },
               onlyMembers: false,
             },
             {
@@ -678,9 +777,11 @@ const items = [
               X: 5,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -688,6 +789,7 @@ const items = [
       },
       {
         supplier: "Metro",
+        brand: "Selection",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -697,9 +799,11 @@ const items = [
               X: 5,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -707,6 +811,7 @@ const items = [
       },
       {
         supplier: "IGA",
+        brand: "Compliments",
         pricing: {
           normal: 2.57,
           method: "weight_kg",
@@ -716,7 +821,7 @@ const items = [
     image: image,
   },
   {
-    id: '66f3853cbe017003c58fcede',
+    id: "66f3853cbe017003c58fcede",
 
     name: {
       fr: "Pomme",
@@ -729,15 +834,19 @@ const items = [
     },
     amount: {
       isApprox: true,
-      meas: "weight",
+      method: "weight",
       units: "g",
       quantity: 250,
     },
-    description: "An apple a day keeps the doctor away",
-    brand: "Sunkiss",
+    description: {
+      en: "An apple a day keeps the doctor away",
+      fr: "Une pomme par jour éloigne le médecin pour toujours"
+    },
+    categories: ["Produce"],
     suppliers: [
       {
         supplier: "Provigo",
+        brand: "Sunkiss",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -747,9 +856,11 @@ const items = [
               X: 10000,
               Y: 1000000,
               C: 0,
-              rebatePricing: "unit",
-              start: Date.now(),
-              end: Date.now() + 200000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now(),
+                end: Date.now() + 200000000,
+              },
               onlyMembers: false,
             },
             {
@@ -757,9 +868,11 @@ const items = [
               X: 5,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -767,6 +880,7 @@ const items = [
       },
       {
         supplier: "Metro",
+        brand: "Selection",
         pricing: {
           normal: 2.56,
           method: "weight_kg",
@@ -776,9 +890,11 @@ const items = [
               X: 5,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -786,6 +902,7 @@ const items = [
       },
       {
         supplier: "IGA",
+        brand: "Compliments",
         pricing: {
           normal: 2.57,
           method: "weight_kg",
@@ -795,7 +912,7 @@ const items = [
     image: image,
   },
   {
-    id: '66f3853cbe017003c58fcedf',
+    id: "66f3853cbe017003c58fcedf",
 
     name: {
       fr: "Pomme",
@@ -808,16 +925,19 @@ const items = [
     },
     amount: {
       isApprox: true,
-      meas: "weight",
+      method: "weight",
       units: "g",
       quantity: 250,
     },
-    description: "An apple a day keeps the doctor away",
-    brand:
-      "An apple a day keeps the doctor away, sponsored by your insurance company",
+    description: {
+      en: "An apple a day keeps the doctor away",
+      fr: "Une pomme par jour éloigne le médecin pour toujours"
+    },
+    categories: ["Produce"],
     suppliers: [
       {
         supplier: "Provigo",
+        brand: "Sunkiss",
         pricing: {
           normal: 999999,
           method: "weight_kg",
@@ -827,9 +947,11 @@ const items = [
               X: 10000,
               Y: 100000,
               C: 0,
-              rebatePricing: "unit",
-              start: Date.now(),
-              end: Date.now() + 200000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now(),
+                end: Date.now() + 200000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -839,7 +961,7 @@ const items = [
     image: image,
   },
   {
-    id: '66f3853cbe017003c58fcee0',
+    id: "66f3853cbe017003c58fcee0",
 
     name: {
       fr: "Pomme",
@@ -852,15 +974,19 @@ const items = [
     },
     amount: {
       isApprox: true,
-      meas: "weight",
+      method: "weight",
       units: "g",
       quantity: 250,
     },
-    description: "An apple a day keeps the doctor away",
-    brand: "Sunkiss",
+    description: {
+      en: "An apple a day keeps the doctor away",
+      fr: "Une pomme par jour éloigne le médecin pour toujours"
+    },
+    categories: ["Produce"],
     suppliers: [
       {
         supplier: "Provigo",
+        brand: "Sunkiss",
         pricing: {
           normal: 10,
           method: "weight_kg",
@@ -870,9 +996,11 @@ const items = [
               X: 2,
               Y: 1,
               C: 0,
-              rebatePricing: "unit",
-              start: Date.now(),
-              end: Date.now() + 200000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now(),
+                end: Date.now() + 200000000,
+              },
               onlyMembers: false,
             },
             {
@@ -880,9 +1008,11 @@ const items = [
               X: 5,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -890,6 +1020,7 @@ const items = [
       },
       {
         supplier: "Metro",
+        brand: "Selection",
         pricing: {
           normal: 10,
           method: "weight_kg",
@@ -899,9 +1030,11 @@ const items = [
               X: 5,
               Y: 2,
               C: 1,
-              rebatePricing: "unit",
-              start: Date.now() + 200000000,
-              end: Date.now() + 500000000,
+              method: "unit",
+              timeframe: {
+                start: Date.now() + 200000000,
+                end: Date.now() + 500000000,
+              },
               onlyMembers: false,
             },
           ],
@@ -909,6 +1042,7 @@ const items = [
       },
       {
         supplier: "IGA",
+        brand: "Compliments",
         pricing: {
           normal: 10,
           method: "weight_kg",

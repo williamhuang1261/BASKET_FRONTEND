@@ -15,7 +15,7 @@ const AccountBox = () => {
   return (
     <div className="flex gap-5 w-full">
       <button
-        onClick={logOut}
+        onClick={() => logOut()}
         className="w-full rounded bg-red-100 p-1 shadow-md transition-all hover:bg-red-500"
       >
         Log out

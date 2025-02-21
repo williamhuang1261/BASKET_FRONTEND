@@ -1,15 +1,31 @@
+import {
+  allMeasUnitsType,
+  allUnitsType,
+  nonMeasUnitsType,
+  volumeUnitsType,
+  weightUnitsType,
+} from "../interface/UnitsProp";
+
 /** Array of supported weight measurement units */
-export const weightUnits = ["mg", "g", "kg", "oz", "lb"];
+const weightUnits: weightUnitsType[] = ["mg", "g", "kg", "oz", "lb"];
 
 /** Array of supported volume measurement units */
-export const volumeUnits = ["mL", "L", "fl oz", "pint", "quart", "gallon"];
+const volumeUnits: volumeUnitsType[] = [
+  "mL",
+  "L",
+  "fl oz",
+  "pint",
+  "quart",
+  "gallon",
+];
 
 /** Combined array of all measurement units (weight and volume) */
-export const allMeasUnits = [...weightUnits, ...volumeUnits];
+const allMeasUnits: allMeasUnitsType[] = [...weightUnits, ...volumeUnits];
 
 /** Array of non-measurement units (e.g., count-based units) */
-export const nonMeasUnits = ["unit"];
+const nonMeasUnits: nonMeasUnitsType[] = ["unit"];
 
 /** Complete array of all supported units (measurement and non-measurement) */
-export const allUnits = [...weightUnits, ...volumeUnits, nonMeasUnits];
+const allUnits: allUnitsType[] = [...weightUnits, ...volumeUnits, ...nonMeasUnits];
 
+export { weightUnits, volumeUnits, allMeasUnits, nonMeasUnits, allUnits };

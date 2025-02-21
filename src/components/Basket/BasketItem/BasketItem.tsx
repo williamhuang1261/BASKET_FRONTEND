@@ -1,9 +1,3 @@
-import {
-  AmountProp,
-  NameProp,
-  RefProp,
-  SuppliersProp,
-} from "../../../interface/Destructed";
 import BestPerSupplier from "../../../utils/SortingPrice/BestPerSupplier";
 import SortByPrice from "../../../utils/SortingPrice/SortByPrice";
 import QSelectionGroup from "./QSelectionGroup";
@@ -12,6 +6,7 @@ import SupplierSelection from "./SupplierSelection";
 import useBasketState from "../../../hooks/state/useBasketState";
 import { useCallback, useMemo } from "react";
 import useWindowSize from "../../../hooks/useWindowSize";
+import { CardProps } from "../../../interface/CardProps";
 
 /**
  * @description Component that renders a single item in the shopping basket.
@@ -27,12 +22,11 @@ import useWindowSize from "../../../hooks/useWindowSize";
  * @returns {JSX.Element} The basket item component
  */
 interface Props {
-  id: string;
-  name: NameProp;
-  amount: AmountProp;
-  reference: RefProp;
-  suppliers: SuppliersProp[];
-  image: string;
+  name: CardProps['name']
+  amount: CardProps['amount']
+  reference: CardProps['ref']
+  suppliers: CardProps['suppliers']
+  image: CardProps['image']
 }
 
 // Arrangement for every item in the Basket Page
@@ -42,7 +36,6 @@ const BasketItem = ({
   image,
   reference,
   suppliers,
-  id,
 }: Props) => {
   const { basket } = useBasketState();
   const { basketItem } = useBasketItemState();
@@ -51,7 +44,6 @@ const BasketItem = ({
   const sorted = useMemo(() => {
     return SortByPrice(
       {
-        id: id,
         name: name,
         ref: reference,
         amount: amount,
@@ -65,7 +57,7 @@ const BasketItem = ({
         },
       },
     );
-  }, [basket, basketItem, id, name, reference, amount, suppliers]);
+  }, [basket, basketItem, name, reference, amount, suppliers]);
 
   const filtered = BestPerSupplier(sorted);
 

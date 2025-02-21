@@ -1,5 +1,7 @@
+import { AmountProp } from "../../../src/interface/Destructed";
 import calcCost from "../../../src/utils/SortingPrice/calcCost";
 import { describe, expect, beforeEach, it } from "vitest";
+
 
 describe("calcCost", () => {
   let price: number;
@@ -8,18 +10,13 @@ describe("calcCost", () => {
     quantity: number;
     units: string;
   };
-  let amount: {
-    isApprox: boolean;
-    meas: string;
-    units: string;
-    quantity: number;
-  };
+  let amount: AmountProp
   let conv: string | undefined;
 
   beforeEach(() => {
     amount = {
       isApprox: false,
-      meas: "weight",
+      method: "weight",
       units: "kg",
       quantity: 1,
     };
@@ -83,7 +80,7 @@ describe("calcCost", () => {
     expect(res).toBeUndefined();
     amount = {
       isApprox: false,
-      meas: "weight",
+      method: "weight",
       units: "kg",
       quantity: 1,
     };

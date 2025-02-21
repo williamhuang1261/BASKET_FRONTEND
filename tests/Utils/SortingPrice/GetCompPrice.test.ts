@@ -16,12 +16,13 @@ describe("getCompPrice function", () => {
   beforeEach(() => {
     amount = {
       isApprox: false,
-      meas: "weight",
+      method: "weight",
       units: "kg",
       quantity: 1,
     };
     supplierData = {
       supplier: "Provigo",
+      brand: 'Sunkiss',
       pricing: {
         normal: 1,
         method: "unit",
@@ -31,9 +32,11 @@ describe("getCompPrice function", () => {
             X: 1,
             Y: 1,
             C: 1,
-            rebatePricing: "unit",
-            start: Date.now(),
-            end: Date.now() + 200000,
+            method: "unit",
+            timeframe: {
+              start: Date.now(),
+              end: Date.now() + 200000,
+            },
             onlyMembers: false,
           },
         ],
@@ -116,7 +119,7 @@ describe("getCompPrice function", () => {
         X: supplierData.pricing.limited?.[0].X,
         Y: supplierData.pricing.limited?.[0].Y,
         C: supplierData.pricing.limited?.[0].C,
-        rebatePricing: supplierData.pricing.limited?.[0].rebatePricing,
+        rebatePricing: supplierData.pricing.limited?.[0].method,
         start: expect.any(Number),
         end: expect.any(Number),
       },
@@ -156,7 +159,7 @@ describe("getCompPrice function", () => {
         X: supplierData.pricing.limited?.[0].X,
         Y: supplierData.pricing.limited?.[0].Y,
         C: supplierData.pricing.limited?.[0].C,
-        rebatePricing: supplierData.pricing.limited?.[0].rebatePricing,
+        rebatePricing: supplierData.pricing.limited?.[0].method,
         start: expect.any(Number),
         end: expect.any(Number),
       },
