@@ -17,9 +17,16 @@ const Logo = () => {
       onMouseOver={() => setMouseOver(true)}
       onMouseLeave={() => setMouseOver(false)}
     >
-      <img src={BWLogo} alt={"The Basket BW Logo"} className="" style={
-        { color: mouseOver ? "#6ee94f" : "#000000" }
-      }/>
+      <img
+        src={BWLogo}
+        alt={"The Basket BW Logo"}
+        className=""
+        style={{
+          filter: mouseOver
+            ? "invert(79%) sepia(7%) saturate(4204%) hue-rotate(56deg) brightness(107%) contrast(83%)"
+            : "invert(0%) sepia(93%) saturate(7468%) hue-rotate(182deg) brightness(124%) contrast(91%)",
+        }}
+      />
     </CustomDirectNav>
   );
 };

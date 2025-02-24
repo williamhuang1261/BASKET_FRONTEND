@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import useError from "../../hooks/useError";
 import getSearchAutocomplete from "../../utils/services/search/getSearchAutocomplete";
@@ -9,28 +9,27 @@ interface Props {
 }
 const SearchField = ({ hidden, id }: Props) => {
   const [active, setActive] = useState(false);
-  const input = useRef<HTMLInputElement>(null);
+  const [input, setInput] = useState<string>("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const errHandler = useError();
-  const isGoodLength =
-    input.current &&
-    input.current.value.length >= 2 &&
-    input.current.value.length <= 20;
+  const isGoodLength = input.length >= 2 && input.length <= 20;
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     console.log("Search for:", input);
   };
-
   useEffect(() => {
     setIsLoading(true);
     const delayFetch = setTimeout(() => {
-      if (isGoodLength && input.current) {
-        getSearchAutocomplete(input.current.value)
+      if (isGoodLength) {
+        getSearchAutocomplete(input)
           .then((res) => setSuggestions(res))
           .catch(errHandler)
           .finally(() => setIsLoading(false));
+      }
+      else {
+        setIsLoading(false);
       }
     }, 400);
     return () => {
@@ -43,8 +42,7 @@ const SearchField = ({ hidden, id }: Props) => {
     <div
       onBlur={() => {
         setActive(false);
-        if (!input.current || input.current.value.length < 2)
-          setSuggestions([]);
+        if (input.length < 2) setSuggestions([]);
       }}
       className={`${hidden?.includes("Location") ? "rounded-b md:w-full md:rounded-r" : "md:w-1/2 md:rounded-r-none lg:w-7/12"} relative flex rounded-t outline outline-1 outline-dark_gray md:rounded-l`}
     >
@@ -54,7 +52,7 @@ const SearchField = ({ hidden, id }: Props) => {
         size={4}
         id={id + "_Search"}
         className="h-11 flex-auto border-none px-4 outline-none"
-        ref={input}
+        onChange={(e) => setInput(e.target.value)}
         onFocus={() => setActive(true)}
       />
       <button
