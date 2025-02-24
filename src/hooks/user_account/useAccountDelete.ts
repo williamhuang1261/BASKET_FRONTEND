@@ -1,5 +1,4 @@
 import { deleteUser, getAuth } from "firebase/auth";
-import { UserServices } from "../../services/restricted-service";
 import useError from "../useError";
 import { useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
@@ -7,6 +6,7 @@ import { FirebaseError } from "firebase/app";
 import useCustomNavigation from "../useCustomNavigation";
 import useLogOut from "./useLogOut";
 import useSuccess from "../useSuccess";
+import { UserServices } from "../../services/serviceList";
 
 /**
  * @description Hook to handle account deletion

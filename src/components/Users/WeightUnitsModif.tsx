@@ -1,9 +1,9 @@
 import { useQueryClient } from "@tanstack/react-query";
 import useUserState from "../../hooks/state/useUserState";
 import { useEffect, useState } from "react";
-import { UserServices } from "../../services/restricted-service";
 import useError from "../../hooks/useError";
 import Spinner from "../General/Miscellaneous/Spinner";
+import { UserServices } from "../../services/serviceList";
 
 const WeightUnitsModif = () => {
   const queryClient = useQueryClient();

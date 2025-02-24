@@ -29,7 +29,7 @@ class HttpService {
    * @param {object} headers - Additional headers to include
    * @returns {Promise<any>} The response from the server
    */
-  get(endpoint: string = "", headers: object = {}) {
+  async get(endpoint: string = "", headers: object = {}) {
     return instance.get(this.endpoint + endpoint, {
       headers: { ...this.headers, ...headers },
     });
@@ -42,7 +42,7 @@ class HttpService {
    * @param {object} body - The request body
    * @returns {Promise<any>} The response from the server
    */
-  post(endpoint: string = "", headers: object = {}, body: object = {}) {
+  async post(endpoint: string = "", headers: object = {}, body: object = {}) {
     return instance.post(this.endpoint + endpoint, body, {
       headers: { ...this.headers, ...headers },
     });
@@ -55,7 +55,7 @@ class HttpService {
    * @param {object} body - The request body
    * @returns {Promise<any>} The response from the server
    */
-  put(endpoint: string = "", headers: object = {}, body: object = {}) {
+  async put(endpoint: string = "", headers: object = {}, body: object = {}) {
     return instance.put(this.endpoint + endpoint, body, {
       headers: { ...this.headers, ...headers },
     });
@@ -68,7 +68,7 @@ class HttpService {
    * @param {object} headers - Additional headers to include
    * @returns {Promise<any>} The response from the server
    */
-  delete(endpoint: string = "", params?: object, headers: object = {}) {
+  async delete(endpoint: string = "", params?: object, headers: object = {}) {
     return instance.delete(this.endpoint + endpoint, {
       headers: { ...this.headers, ...headers },
       params: params

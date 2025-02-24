@@ -1,6 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { distanceUnitsType, weightUnitsType } from "../../interface/UnitsProp";
-import { UserServices } from "../../services/restricted-service";
+import { UserServices } from "../../services/serviceList";
 
 interface UserModifProp {
   name?: string;

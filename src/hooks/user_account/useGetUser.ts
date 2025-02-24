@@ -1,10 +1,10 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import useUserState from "../state/useUserState";
 import "../../utils/auth/initFirebase";
-import { UserServices } from "../../services/restricted-service";
 import { AxiosError, AxiosResponse } from "axios";
 import useError from "../useError";
 import { useQueryClient } from "@tanstack/react-query";
+import { UserServices } from "../../services/serviceList";
 
 type Props = {
   callback?: () => void;

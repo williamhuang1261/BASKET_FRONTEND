@@ -1,8 +1,8 @@
-import { IoSearch } from "react-icons/io5";
 import { CiLocationOn } from "react-icons/ci";
 import { useState } from "react";
 import useUserState from "../../hooks/state/useUserState";
 import LocationSearchSelection from "./LocationSearchSelection";
+import HybridSearch from "./SearchField";
 
 interface Props {
   hidden?: ("Location" | "Search")[];
@@ -24,24 +24,7 @@ const SearchBar = ({ hidden, id }: Props) => {
   return (
     <form className="w-full md:flex md:h-11">
       {hidden?.includes("Search") ? null : (
-        <div
-          className={`${hidden?.includes("Location") ? "rounded-b md:w-full md:rounded-r" : "md:w-1/2 md:rounded-r-none lg:w-7/12"} flex overflow-hidden rounded-t outline outline-1 outline-dark_gray md:rounded-l`}
-        >
-          <input
-            type="text"
-            placeholder="Search products"
-            size={4}
-            id={id + "_Search"}
-            className="h-11 flex-auto border-none px-4 outline-none"
-          />
-          <button
-            aria-label="Search"
-            className="flex-none bg-green px-4 hover:bg-light_gray md:bg-white md:transition-all md:hover:bg-green"
-          >
-            {/* Product Search Bar */}
-            <IoSearch size="26" />
-          </button>
-        </div>
+        <HybridSearch hidden={hidden} id={id} />
       )}
       {hidden?.includes("Location") ? null : (
         <div className="relative flex items-center rounded-b bg-white outline outline-1 outline-dark_gray md:w-1/2 md:rounded-l-none md:rounded-r lg:w-5/12">

@@ -4,9 +4,9 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
-import { UserServices } from "../../../services/restricted-service";
 import useError from "../../../hooks/useError";
 import { useQueryClient } from "@tanstack/react-query";
+import { UserServices } from "../../../services/serviceList";
 
 interface Props {
   id: string;

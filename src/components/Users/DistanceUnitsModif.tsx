@@ -1,9 +1,9 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import useUserState from "../../hooks/state/useUserState";
-import { UserServices } from "../../services/restricted-service";
 import Spinner from "../General/Miscellaneous/Spinner";
 import useError from "../../hooks/useError";
+import { UserServices } from "../../services/serviceList";
 
 const DistanceUnitsModif = () => {
   const queryClient = useQueryClient();

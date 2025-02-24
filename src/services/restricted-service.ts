@@ -113,4 +113,3 @@ class RestrictedService extends HttpService {
 export { RestrictedService };
 export const createRestrictedService = (endpoint: string, headers: object) =>
   new RestrictedService(endpoint, headers);
-export const UserServices = createRestrictedService("/users", {});
