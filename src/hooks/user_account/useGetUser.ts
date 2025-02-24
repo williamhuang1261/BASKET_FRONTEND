@@ -1,15 +1,21 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import useUserState from "../state/useUserState";
 import "../../utils/auth/initFirebase";
-import { AxiosError, AxiosResponse } from "axios";
+import { AxiosError } from "axios";
 import useError from "../useError";
-import { useQueryClient } from "@tanstack/react-query";
 import { UserServices } from "../../services/serviceList";
+import { createFetchQuery } from "../../services/fetchQuery";
+import { UserLogin } from "../../interface/UserLogin";
 
 type Props = {
   callback?: () => void;
   promiseFn?: () => Promise<void>;
   onErr?: (err: AxiosError) => void;
+};
+
+type UserResponse = {
+  user: UserLogin;
+  message: string;
 };
 
 /**
@@ -24,11 +30,12 @@ type Props = {
  */
 const useGetUser = () => {
   const { dispatch: userDispatch } = useUserState();
-  const queryClient = useQueryClient();
   const auth = getAuth();
   const errHandler = useError();
 
-  const setUser = (res: AxiosResponse) => {
+  const handleRequest = async () => {
+    const res =
+      await createFetchQuery(UserServices).post<UserResponse>("/account/oauth");
     userDispatch({
       group: "CHANGE",
       type: "LOGIN_STATUS",
@@ -41,25 +48,19 @@ const useGetUser = () => {
     });
   };
 
-  const handleRequest = async () => {
-    const res = await queryClient.fetchQuery({
-      queryKey: ["account"],
-      queryFn: () => UserServices.post("/account/oauth"),
-    });
-    setUser(res);
-  };
-
   return async ({ callback, promiseFn, onErr }: Props = {}) => {
     try {
       if (!auth.currentUser) {
         onAuthStateChanged(auth, () => {
           if (auth.currentUser) {
-            handleRequest().catch(errHandler)
-            if (callback) callback();
-            if (promiseFn) promiseFn();
+            handleRequest().then(() => {
+              if (callback) callback();
+              if (promiseFn) promiseFn();
+            }).catch(errHandler);
           }
         });
       } else {
+        await handleRequest();
         if (callback) callback();
         if (promiseFn) await promiseFn();
       }

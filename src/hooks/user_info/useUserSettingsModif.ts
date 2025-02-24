@@ -1,6 +1,6 @@
-import { useQueryClient } from "@tanstack/react-query";
 import { distanceUnitsType, weightUnitsType } from "../../interface/UnitsProp";
 import { UserServices } from "../../services/serviceList";
+import { createFetchQuery } from "../../services/fetchQuery";
 
 interface UserModifProp {
   name?: string;
@@ -19,37 +19,11 @@ interface UserModifProp {
 }
 
 /**
- * @description Internal function to handle user settings modification request
- * @param {UserModifProp} req - The user modification request object
- * @returns {Promise<void>} A promise that resolves when the modification is complete
- */
-const fn = (req: UserModifProp) => {
-  const { name, email, location, preferences } = req;
-  if (!(name || email || location || preferences)) {
-    // Throw error?
-    return;
-  }
-
-  const load = {
-    name,
-    email,
-    location,
-    preferences,
-  };
-
-  return UserServices.put("/info/me", {}, load).then(() => {
-    return null;
-  });
-};
-
-/**
  * @description Custom hook to handle user settings modifications
  * @returns {Object} Object containing the putUserInfo function
 
  */
 const useUserSettingsModif = () => {
-  const queryClient = useQueryClient();
-
   /**
    *
    * @param req
@@ -73,10 +47,9 @@ const useUserSettingsModif = () => {
    * });
    */
   const putUserInfo = async (req: UserModifProp) => {
-    await queryClient.fetchQuery({
-      queryKey: ["user", "settings", "update"],
-      queryFn: () => fn(req),
-    });
+    const { name, email, location, preferences } = req;
+    if (!(name || email || location || preferences)) return;
+    await createFetchQuery(UserServices).put("/info/me", {}, req);
   };
 
   return { putUserInfo };

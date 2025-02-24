@@ -4,7 +4,7 @@ import { allUnitsType, distanceUnitsType, weightUnitsType } from "./UnitsProp";
  * @description Represents the core user data structure with preferences and settings
  * @interface UserProp
  */
-interface UserProp {
+type UserProp = {
   name: string;
   email: string;
   location: {

@@ -18,7 +18,11 @@ class FetchQueryClass {
     return res;
   }
 
-  async post<T>(endpoint: string = "", headers: object = {}, body: object = {}) {
+  async post<T>(
+    endpoint: string = "",
+    headers: object = {},
+    body: object = {},
+  ) {
     const res: AxiosResponse<T> = await queryClient.fetchQuery({
       queryKey: ["fetchQuery", "post", this.service.endpoint + endpoint],
       queryFn: () => this.service.post(endpoint, headers, body),
@@ -44,4 +48,5 @@ class FetchQueryClass {
 }
 
 export default FetchQueryClass;
-export const createFetchQuery = (service: HttpService | RestrictedService) => new FetchQueryClass(service);
+export const createFetchQuery = (service: HttpService | RestrictedService) =>
+  new FetchQueryClass(service);

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoSearch } from "react-icons/io5";
-import useSearchAutocomplete from "../../hooks/search/useSearchAutocomplete";
 import useError from "../../hooks/useError";
+import getSearchAutocomplete from "../../utils/services/search/getSearchAutocomplete";
 
 interface Props {
   hidden?: ("Location" | "Search")[];
@@ -9,11 +9,14 @@ interface Props {
 }
 const SearchField = ({ hidden, id }: Props) => {
   const [active, setActive] = useState(false);
-  const [input, setInput] = useState("");
+  const input = useRef<HTMLInputElement>(null);
   const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [loading, setLoading] = useState(false);
-  const getSuggestions = useSearchAutocomplete();
+  const [isLoading, setIsLoading] = useState(false);
   const errHandler = useError();
+  const isGoodLength =
+    input.current &&
+    input.current.value.length >= 2 &&
+    input.current.value.length <= 20;
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
@@ -21,20 +24,18 @@ const SearchField = ({ hidden, id }: Props) => {
   };
 
   useEffect(() => {
-    setLoading(true);
+    setIsLoading(true);
     const delayFetch = setTimeout(() => {
-      if (input.length > 2 && input.length <= 20) {
-        getSuggestions(input)
-          .then((res) => {
-            if (res) setSuggestions(res.data.map((s) => s.suggestion));
-          })
+      if (isGoodLength && input.current) {
+        getSearchAutocomplete(input.current.value)
+          .then((res) => setSuggestions(res))
           .catch(errHandler)
-          .then(() => setLoading(false));
+          .finally(() => setIsLoading(false));
       }
     }, 400);
     return () => {
       clearTimeout(delayFetch);
-      setLoading(false);
+      setIsLoading(false);
     };
   }, [input]);
 
@@ -42,7 +43,8 @@ const SearchField = ({ hidden, id }: Props) => {
     <div
       onBlur={() => {
         setActive(false);
-        if (input.length < 2) setSuggestions([]);
+        if (!input.current || input.current.value.length < 2)
+          setSuggestions([]);
       }}
       className={`${hidden?.includes("Location") ? "rounded-b md:w-full md:rounded-r" : "md:w-1/2 md:rounded-r-none lg:w-7/12"} relative flex rounded-t outline outline-1 outline-dark_gray md:rounded-l`}
     >
@@ -52,7 +54,7 @@ const SearchField = ({ hidden, id }: Props) => {
         size={4}
         id={id + "_Search"}
         className="h-11 flex-auto border-none px-4 outline-none"
-        onChange={(e) => setInput(e.target.value)}
+        ref={input}
         onFocus={() => setActive(true)}
       />
       <button
@@ -66,8 +68,8 @@ const SearchField = ({ hidden, id }: Props) => {
       </button>
       {active && (
         <div className="absolute top-11 z-10 w-full rounded-b border border-gray-300 bg-white shadow-md">
-          {loading && <div className="p-2">Loading ...</div>}
-          {suggestions.length === 0 && !loading && input.length >= 2 && (
+          {isLoading && isGoodLength && <div className="p-2">Loading ...</div>}
+          {suggestions.length === 0 && !isLoading && isGoodLength && (
             <div className="p-2 text-red-600">No results found</div>
           )}
           {suggestions.map((s) => (

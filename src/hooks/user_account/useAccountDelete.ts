@@ -1,12 +1,12 @@
 import { deleteUser, getAuth } from "firebase/auth";
 import useError from "../useError";
-import { useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { FirebaseError } from "firebase/app";
 import useCustomNavigation from "../useCustomNavigation";
 import useLogOut from "./useLogOut";
 import useSuccess from "../useSuccess";
 import { UserServices } from "../../services/serviceList";
+import { createFetchQuery } from "../../services/fetchQuery";
 
 /**
  * @description Hook to handle account deletion
@@ -14,7 +14,6 @@ import { UserServices } from "../../services/serviceList";
  * @summary Deletes user account from both backend and Firebase, handles re-authentication if needed
  */
 const useAccountDelete = () => {
-  const queryClient = useQueryClient();
   const errorHandler = useError();
   const successHandler = useSuccess();
   const auth = getAuth();
@@ -48,10 +47,8 @@ const useAccountDelete = () => {
     }
     // Delete the user account
     try {
-      await queryClient.fetchQuery({
-        queryKey: ["Delete_Account"],
-        queryFn: () => UserServices.delete("/account/me"),
-      });
+      const instance = createFetchQuery(UserServices);
+      await instance.delete("/account/me");
       await deleteUser(auth.currentUser);
       successHandler("Account deleted successfully");
       await logOut();
