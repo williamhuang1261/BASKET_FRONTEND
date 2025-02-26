@@ -20,11 +20,11 @@ const Logo = () => {
       <img
         src={BWLogo}
         alt={"The Basket BW Logo"}
-        className=""
+        className="transition-all hover:opacity-90"
         style={{
           filter: mouseOver
-            ? "invert(79%) sepia(7%) saturate(4204%) hue-rotate(56deg) brightness(107%) contrast(83%)"
-            : "invert(0%) sepia(93%) saturate(7468%) hue-rotate(182deg) brightness(124%) contrast(91%)",
+            ? "invert(72%) sepia(39%) saturate(748%) hue-rotate(72deg) brightness(95%) contrast(92%)"
+            : "invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%)",
         }}
       />
     </CustomDirectNav>
