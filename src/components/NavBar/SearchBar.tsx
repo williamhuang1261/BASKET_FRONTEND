@@ -31,20 +31,22 @@ const SearchBar = ({ hidden, id }: Props) => {
           <div className="relative flex h-11 w-full items-center rounded">
             <LocationSearchSelection />
           </div>
-          <div className="flex-none bg-white pe-2">
-            <p
-              className={`${locMouseOver ? "pointer-events-auto translate-y-0 opacity-100" : "-translate-y-2 opacity-0"} absolute right-0 top-11 z-40 h-auto rounded bg-light_gray p-1 transition-all`}
-            >
-              <b>Your location :</b> {user.meta.location.formattedAddress}
-            </p>
-            {/* Location Search Bar */}
+          <div className="aspect-square h-11 flex items-center justify-center">
             <CiLocationOn
               size="30"
-              className={"transition-all hover:text-orange-600"}
+              className={
+                "transition-all hover:text-orange-600 focus:text-orange-600"
+              }
               onMouseOver={() => setLocMouseOver(true)}
               onMouseLeave={() => setLocMouseOver(false)}
+              onClick={() => setLocMouseOver(!locMouseOver)}
             />
           </div>
+          <p
+            className={`${locMouseOver ? "pointer-events-auto translate-y-0 opacity-100" : "-translate-y-2 opacity-0"} absolute right-0 top-11 z-40 h-auto rounded bg-light_gray p-1 transition-all`}
+          >
+            <b>Your location :</b> {user.meta.location.formattedAddress}
+          </p>
         </div>
       )}
     </form>

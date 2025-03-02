@@ -13,8 +13,8 @@ const Logo = () => {
     <CustomDirectNav
       aria-label="Go to Home Page"
       pathname="/"
-      className="w-32 outline"
-      onMouseOver={() => setMouseOver(true)}
+      className="w-32 focus-visible:outline rounded-md"
+      onMouseOver={() => setMouseOver(true)}  
       onMouseLeave={() => setMouseOver(false)}
     >
       <img

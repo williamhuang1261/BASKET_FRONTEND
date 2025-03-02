@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, useEffect, useRef } from "react";
 
 /**
  * @description A customizable dropdown component that can be triggered by hover or click
@@ -26,29 +26,49 @@ const Dropdown = ({
   ariaLabel,
 }: DropdownProps) => {
   const [active, setActive] = useState(false);
-  const [mouseOver, setMouseOver] = useState(false);
+  const bodyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (bodyRef.current) {
+      const interactableElements = bodyRef.current.querySelectorAll<HTMLElement>(
+        'a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
+      );
+      interactableElements.forEach((element) => {
+        if (active) {
+          element.removeAttribute("aria-hidden");
+          element.removeAttribute("tabIndex");
+        } else {
+          element.setAttribute("aria-hidden", "true");
+          element.setAttribute("tabIndex", "-1");
+        }
+      });
+    }
+  }, [active]);
 
   return (
-    <div className={`relative z-40 h-full`}>
+    <div
+      className={`relative z-40 h-full`}
+      onMouseOver={() => {
+        if (type === "Hover") setActive(true);
+      }}
+      onMouseLeave={() => {
+        if (type === "Hover") setActive(false);
+      }}
+    >
       <button
         type="button"
         onClick={() => setActive(!active)}
-        onBlur={() => setActive(false)}
-        onMouseOver={() => setActive(type === "Hover" ? true : active)}
-        onMouseLeave={() => setActive(type === "Hover" ? false : active)}
-        className={
-          "flex h-full items-center" +
-          (active || mouseOver ? className || "" : "")
-        }
+        onBlur={(e) => {
+          if (!e.relatedTarget) setActive(false);
+        }}
+        className={"flex h-full items-center" + (active ? className || "" : "")}
         aria-label={ariaLabel}
       >
         {title}
       </button>
-
       <div
-        onMouseOver={() => setMouseOver(true)}
-        onMouseLeave={() => setMouseOver(false)}
-        className={`absolute transition-all ${active || mouseOver ? "pointer-events-auto translate-y-0 opacity-100 shadow-md" : "pointer-events-none -translate-y-2 opacity-0 shadow-none"}`}
+        ref={bodyRef}
+        className={`absolute transition-all duration-500 ${active ? "pointer-events-auto translate-y-0 opacity-100 shadow-md" : "pointer-events-none -translate-y-2 opacity-0 shadow-none"}`}
       >
         {body}
       </div>

@@ -21,8 +21,8 @@ const MainHeaderDiv = () => {
               </p>
               <LanguageSelect
                 id="header"
-                loadingComponent={<Spinner color="dark_gray" size={"2"} />}
-                selectClassName="cursor-pointer rounded-none border-none bg-green/5 outline-none hover:text-black/50 text-sm"
+                loadingComponent={<Spinner color="dark_gray" size={"2"} borderSize="1"/>}
+                selectClassName="cursor-pointer rounded-none border-none bg-green/5 hover:text-black/50 text-sm"
                 optionClassName="bg-white text-black text-sm"
               />
             </div>

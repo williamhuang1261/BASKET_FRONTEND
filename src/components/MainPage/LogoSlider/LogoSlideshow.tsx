@@ -8,6 +8,8 @@ const LogoBand = () => {
       {logos.map(({ src, name, ref }) => (
         <a
         key={name}
+        tabIndex={-1}
+        aria-hidden
         href={ref.cadEN}
         target="_blank"
         className="mx-5 h-full grayscale transition-all hover:scale-105 hover:grayscale-0 lg:mx-7 2xl:mx-10"

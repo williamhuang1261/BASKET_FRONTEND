@@ -5,12 +5,12 @@ import Dropdown from "../General/Miscellaneous/Dropdown";
  * @description Language selection dropdown component.
  * @returns {JSX.Element} The language selection component with dropdown menu.
  */
-const LanguageTab = () => {
+const LanguageIcon = () => {
   return (
     <div>
       <Dropdown
         title={
-          <GrLanguage size="35" className={"cursor-pointer hover:text-green transition-all"} />
+          <GrLanguage size="35" className={"cursor-pointer hover:text-green transition-all focus-visible:outline outline-red-500"} />
         }
         className="text-green"
         body={
@@ -38,4 +38,4 @@ const LanguageTab = () => {
   );
 };
 
-export default LanguageTab;
+export default LanguageIcon;

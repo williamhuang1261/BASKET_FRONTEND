@@ -1,5 +1,5 @@
 import CalculatorTab from "./CalculatorTab";
-import LanguageTab from "./LanguageTab";
+import LanguageTab from "./LanguageIcon";
 import Logo from "./Logo";
 import Navigation from "./Navigation";
 import ProfileTab from "./ProfileTab";

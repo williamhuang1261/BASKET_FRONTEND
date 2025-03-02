@@ -1,9 +1,9 @@
-import { LuUser2 } from "react-icons/lu";
 import Dropdown from "../General/Miscellaneous/Dropdown";
 import { useContext } from "react";
 import UserContext from "../../state/contexts/UserContext";
 import NotSignedInOptions from "../Auth/NotSignedInOptions";
 import SignedInOptions from "../Auth/SignedInOptions";
+import { LuUserRound } from "react-icons/lu";
 
 /**
  * @description A profile dropdown component that displays different options based on user authentication status.
@@ -16,9 +16,9 @@ const ProfileTab = () => {
     <div>
       <Dropdown
         title={
-          <LuUser2
+          <LuUserRound
             size="35"
-            className="cursor-pointer transition-all duration-300 hover:text-green"
+            className="cursor-pointer transition-all duration-300 hover:text-green focus-visible:outline outline-red-500"
           />
         }
         className="text-green"

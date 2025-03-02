@@ -48,7 +48,7 @@ const EditField = ({
             id={"ChangeInputField" + id}
             type="text"
             placeholder={placeholder}
-            className="flex-auto rounded-s border px-1 py-1 outline-none"
+            className="flex-auto rounded-s border px-1 py-1"
             onChange={(e) => setValue(e.target.value)}
           />
           <button
@@ -85,7 +85,7 @@ const EditField = ({
     <div className="flex items-center gap-1">
       {isLoading ? (
         <>
-          <Spinner color="dark_gray" size={"4"} />
+          <Spinner color="dark_gray" size={"4"} borderSize="1"/>
         </>
       ) : (
         <>

@@ -19,11 +19,11 @@ const LocationModif = () => {
         Location
       </h3>
       {active ? (
-        <div className="relative mb-2 flex w-full rounded outline-none md:my-2 md:w-8/12">
+        <div className="relative mb-2 flex w-full rounded md:my-2 md:w-8/12">
           <div className="h-full w-full">
             <LocationAutoComplete
               id="UserSettings"
-              inputClassName="outline-none w-full h-12 px-2 border rounded-s"
+              inputClassName=" w-full h-12 px-2 border rounded-s"
               dropdownClassName="z-50 w-full rounded bg-white shadow-md"
               elemClassName="hover:bg-light_gray/50 cursor-pointer min-h-10 w-full px-4 py-1 flex items-center"
               loadingClassName="h-12 w-full px-4 py-1 flex items-center border-b"
