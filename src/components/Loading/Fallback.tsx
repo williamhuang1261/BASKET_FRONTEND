@@ -1,5 +1,5 @@
 import Spinner from "../General/Miscellaneous/Spinner";
-import BWLogo from "../../assets/BW_Basket_Logo.svg";
+import BasketLogo from '../../assets/BasketLogo.svg'
 
 const Fallback = () => {
   return (
@@ -7,13 +7,13 @@ const Fallback = () => {
       <div className="w-56 p-2 flex flex-col items-center justify-center">
         <div className="py-5">
           <img
-            src={BWLogo}
+            src={BasketLogo}
             alt={"The Basket BW Logo"}
             className="h-full w-full"
           />
         </div>
         <div className="w-12 h-12">
-          <Spinner color="green/50" className="h-full w-full" size="full" borderSize="7"/>
+          <Spinner size="32px" color="#6ee94f" opacity=""/>
         </div>
       </div>
     </div>

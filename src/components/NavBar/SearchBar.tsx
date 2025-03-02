@@ -35,7 +35,7 @@ const SearchBar = ({ hidden, id }: Props) => {
             <CiLocationOn
               size="30"
               className={
-                "transition-all hover:text-orange-600 focus:text-orange-600"
+                "transition-all hover:text-orange-600 focus-within:text-orange-600"
               }
               onMouseOver={() => setLocMouseOver(true)}
               onMouseLeave={() => setLocMouseOver(false)}

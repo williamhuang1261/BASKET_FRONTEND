@@ -1,6 +1,6 @@
 import CalculatorTab from "./CalculatorTab";
 import LanguageTab from "./LanguageIcon";
-import Logo from "./Logo";
+import BasketLogo from "./BasketLogo";
 import Navigation from "./Navigation";
 import ProfileTab from "./ProfileTab";
 import SearchBar from "./SearchBar";
@@ -59,7 +59,10 @@ const GenNavBar = ({ hidden, page, size }: Props) => {
                 </div>
               )}
               <div className="flex-none pe-4">
-                <Logo />
+                <div className="w-32">
+                <BasketLogo />
+
+                </div>
               </div>
             </div>
             {hidden?.indexOf("SearchBar") !== -1 && hidden ? null : (
@@ -104,7 +107,7 @@ const GenNavBar = ({ hidden, page, size }: Props) => {
               )}
 
               <div className="me-2 flex-none">
-                <Logo />
+                <BasketLogo />
               </div>
             </div>
             <div className="flex flex-none flex-row">

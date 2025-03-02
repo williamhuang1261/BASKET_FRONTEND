@@ -58,6 +58,7 @@ module.exports = {
       fontFamily: {
         sans: ["Nunito", "sans"],
         "mona": ["Mona", "sans-serif"],
+        "righteous": ["Righteous"]
       },
     },
   },

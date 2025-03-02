@@ -21,7 +21,6 @@ const BasketResults = () => {
         >
           <BasketItemProvider itemId={i.id}>
             <BasketItem
-              id={i.id}
               image={i.image || ''}
               name={i.name}
               reference={i.ref}
