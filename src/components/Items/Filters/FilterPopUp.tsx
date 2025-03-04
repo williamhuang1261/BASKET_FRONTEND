@@ -26,7 +26,7 @@ const FilterPopUp = () => {
     <div className={`${open ? "no-doc-scroll" : ""} `}>
       <button
         type="button"
-        className="flex gap-1 rounded border-0.5 bg-green/50 px-2 py-1 transition-all hover:border-transparent hover:bg-green/80 hover:shadow-md"
+        className="flex gap-1 rounded-sm border-0.5 border-gray-200 bg-green/50 px-2 py-1 transition-all hover:border-transparent hover:bg-green/80 hover:shadow-md"
         onClick={() => setOpen(true)}
       >
         <h2>Filters</h2>
@@ -35,7 +35,7 @@ const FilterPopUp = () => {
       <Popup openCondition={open} className="p-10" key={"FilterPopup"}>
         <form
           onSubmit={handleSubmit}
-          className="m-10 flex h-full w-full flex-col items-center overflow-auto overscroll-contain rounded bg-white pb-5"
+          className="m-10 flex h-full w-full flex-col items-center overflow-auto overscroll-contain rounded-sm bg-white pb-5"
         >
           <div className="sticky top-0 z-20 w-full bg-white">
             <div className=" flex  items-center justify-between bg-green/80 p-2 px-5">
@@ -44,7 +44,7 @@ const FilterPopUp = () => {
                 <input
                   type="submit"
                   value={"Apply"}
-                  className="rounded border-0.5 border-light_gray bg-light_gray px-3 py-1 font-semibold shadow-md transition-all hover:cursor-pointer hover:border-transparent hover:bg-light_green"
+                  className="rounded-sm border-0.5 border-light_gray bg-light_gray px-3 py-1 font-semibold shadow-md transition-all hover:cursor-pointer hover:border-transparent hover:bg-light_green"
                 />
                 <button
                   type="button"

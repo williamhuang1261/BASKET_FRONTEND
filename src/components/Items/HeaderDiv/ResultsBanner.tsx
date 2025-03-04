@@ -9,8 +9,8 @@ const ResultsBanner = () => {
   const [section, setSection] = useState<string>("Products");
 
   return (
-    <div className=" h-28 rounded bg-white shadow-md lg:h-44">
-      <div className="flex h-full w-full flex-col items-center justify-center gap-2 rounded bg-green/80">
+    <div className=" h-28 rounded-sm bg-white shadow-md lg:h-44">
+      <div className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-sm bg-green/80">
         <h1 className="text-2xl font-bold lg:text-3xl ">Pineapples</h1>
         <div className="flex w-full justify-center lg:text-lg">
           <button

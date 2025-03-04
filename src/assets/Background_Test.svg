@@ -1,14 +1,19 @@
-
 <svg class='bg-image' width="1280" height="1280" xmlns="http://www.w3.org/2000/svg">
-	<rect width="1280" height="1280" fill="#ffffff"/>
+	<style>
+		.base-color {
+		fill: #ffffff
+		}
+
+	</style>
+	<rect width="1280" height="1280" class="base-color" />
 	<!-- Left: Upper left -->
-	<circle cy='100' cx='130' r="100" fill="#ecfce8" opacity='0.8'/>
+	<circle cy='100' cx='130' r="100" fill="#ecfce8" opacity='0.8' />
 	<!-- Left: Upper right -->
-	<circle cy='200' cx='330' r="150" fill="#ecfce8"/>
+	<circle cy='200' cx='330' r="150" fill="#ecfce8" />
 	<!-- Left: Lower left -->
-	<circle cy='540' cx='80' r="180" fill="#ecfce8" opacity='0.8'/>
+	<circle cy='540' cx='80' r="180" fill="#ecfce8" opacity='0.8' />
 	<!-- Left: Center -->
-	<circle cy='300' cx='200' r="200" fill="#daf9d2"/>
+	<circle cy='300' cx='200' r="200" fill="#daf9d2" />
 	<!-- Lower Right -->
-	<circle cy='720' cx='1280' r='300' fill='#daf9d2'/>
+	<circle cy='720' cx='1280' r='300' fill='#daf9d2' />
 </svg>

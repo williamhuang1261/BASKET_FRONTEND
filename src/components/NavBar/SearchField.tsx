@@ -55,7 +55,7 @@ const SearchField = ({ hidden, id }: Props) => {
         placeholder="Search products"
         size={4}
         id={id + "_Search"}
-        className={`h-full flex-auto rounded border-none px-4`}
+        className={`h-full flex-auto rounded-sm border-none px-4`}
         onChange={(e) => setInput(e.target.value)}
         onFocus={() => setActive(true)}
       />
@@ -63,7 +63,7 @@ const SearchField = ({ hidden, id }: Props) => {
         onClick={handleClick}
         type="submit"
         aria-label="Search"
-        className="flex-none bg-green px-4 hover:bg-light_gray focus-visible:outline-none md:bg-white md:transition-all md:hover:bg-green md:focus-visible:bg-green"
+        className="flex-none bg-green px-4 hover:bg-light_gray focus-visible:outline-hidden md:bg-white md:transition-all md:hover:bg-green md:focus-visible:bg-green"
       >
         {/* Product Search Bar */}
         <IoSearch size="26" />

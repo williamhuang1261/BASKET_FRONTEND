@@ -34,7 +34,7 @@ const HomePage = () => {
           <PopItemsDiv />
         </main>
         {/* Used to stick footer to the bottom of the page or content */}
-        <div className="flex-grow"></div>
+        <div className="grow"></div>
         <FooterDiv />
       </div>
     </>

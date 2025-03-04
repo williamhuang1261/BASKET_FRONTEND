@@ -18,9 +18,9 @@ const PriceBar = ({ filtered, normal }: Props) => {
     <div className="">
       <div className="flex flex-wrap justify-between gap-2">
         <div
-          className={`${filtered.opts?.[0].process.isRebate ? "bg-green/75" : ""} rounded px-1`}
+          className={`${filtered.opts?.[0].process.isRebate ? "bg-green/75" : ""} rounded-sm px-1`}
         >
-          <h3 className="font-mona text-lg font-semibold">
+          <h3 className="font-roboto text-lg font-semibold">
             {filtered.opts?.[0].process.priceToShow}
           </h3>
         </div>

@@ -51,13 +51,13 @@ const ItemCard = ({
   const normals = ShowNormal({ suppliers: suppliers });
 
   return (
-    <div className="flex max-h-full min-h-max w-72 flex-col rounded border bg-white shadow-lg md:w-full ">
+    <div className="flex max-h-full min-h-max w-72 flex-col rounded-sm border  border-gray-200 bg-white shadow-lg md:w-full ">
       <div className="w-full flex-none">
         <div className="flex w-full justify-center p-1">
           <img
             alt={name?.en}
             src={image}
-            className="h-52 w-52 rounded object-contain"
+            className="h-52 w-52 rounded-sm object-contain"
           />
         </div>
         <div className="p-2">

@@ -65,7 +65,7 @@ const Drawer = ({ size }: Props) => {
           </div>
           <div className="flex-max flex flex-col gap-1 overflow-y-auto p-3">
             {/* Links */}
-            <div className="cursor-pointer rounded p-1 px-2 text-lg font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green">
+            <div className="cursor-pointer rounded-sm p-1 px-2 text-lg font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green">
               <CustomDirectNav pathname="/" aria-label="Go back to Home Page">
                 Home
               </CustomDirectNav>
@@ -74,7 +74,7 @@ const Drawer = ({ size }: Props) => {
               {/* Categories  */}
               <div
                 onClick={() => setActive(!active)}
-                className="cursor-pointer rounded p-1 px-2 text-lg font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green"
+                className="cursor-pointer rounded-sm p-1 px-2 text-lg font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green"
               >
                 Categories
               </div>
@@ -89,7 +89,7 @@ const Drawer = ({ size }: Props) => {
                       pathname={`/items`}
                       key={c}
                       aria-label="Go to Item Results Page"
-                      className="flex mx-4 cursor-pointer rounded border-b-0.5 border-light_gray p-2 hover:bg-light_gray hover:text-green"
+                      className="flex mx-4 cursor-pointer rounded-sm border-b-0.5 border-light_gray p-2 hover:bg-light_gray hover:text-green"
                     >
                       {c}
                     </CustomDirectNav>
@@ -98,7 +98,7 @@ const Drawer = ({ size }: Props) => {
               )}
             </div>
             {/* Continue normal links */}
-            <div className="cursor-pointer rounded p-1 px-2 text-lg font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green">
+            <div className="cursor-pointer rounded-sm p-1 px-2 text-lg font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green">
               <CustomDirectNav
                 pathname="/flyers"
                 aria-label="Go to Flyers result Page"
@@ -106,7 +106,7 @@ const Drawer = ({ size }: Props) => {
                 Flyers
               </CustomDirectNav>
             </div>
-            <div className="cursor-pointer rounded p-1 px-2 text-lg font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green">
+            <div className="cursor-pointer rounded-sm p-1 px-2 text-lg font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green">
               <CustomDirectNav
                 pathname="/basket"
                 aria-label="Go to Basket Calculator Page"
@@ -114,7 +114,7 @@ const Drawer = ({ size }: Props) => {
                 Calculator
               </CustomDirectNav>
             </div>
-            <div className="cursor-pointer rounded p-1 px-2 text-lg font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green">
+            <div className="cursor-pointer rounded-sm p-1 px-2 text-lg font-semibold transition-all ease-in-out hover:bg-gray-50 hover:text-green">
               <CustomDirectNav pathname="/about" aria-label="Go to About Page">
                 About
               </CustomDirectNav>
@@ -122,7 +122,7 @@ const Drawer = ({ size }: Props) => {
           </div>
         </div>
         {/* Drawer gray zone */}
-        <div className="flex-grow bg-black/50" onClick={closeDrawer}></div>
+        <div className="grow bg-black/50" onClick={closeDrawer}></div>
       </div>
     </>
   );

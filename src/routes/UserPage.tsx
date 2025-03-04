@@ -50,7 +50,7 @@ const UserPage = () => {
           <div className="flex w-full items-center justify-center py-5">
             <div className="bg-white w-full">
               <button
-                className="w-full rounded bg-green/50 p-1 shadow-sm transition-all hover:bg-green"
+                className="w-full rounded-sm bg-green/50 p-1 shadow-xs transition-all hover:bg-green"
                 onClick={() => directNav({ pathname: "/" }, true)}
               >
                 Done

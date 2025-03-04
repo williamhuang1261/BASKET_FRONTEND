@@ -31,7 +31,7 @@ const SupplierDropdown = ({ filtered }: Props) => {
   return (
     <div className="flex flex-col py-2 ">
       <button
-        className={`${filtered.opts.length === 1 ? "justify-center hover:cursor-default" : "justify-between"} flex h-10 items-center rounded bg-light_gray p-1`}
+        className={`${filtered.opts.length === 1 ? "justify-center hover:cursor-default" : "justify-between"} flex h-10 items-center rounded-sm bg-light_gray p-1`}
         onClick={() => setOpen(!open)}
         onMouseOver={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
@@ -60,10 +60,10 @@ const SupplierDropdown = ({ filtered }: Props) => {
           />
         )}
       </button>
-      <div className={"overflow-hidden rounded "}>
+      <div className={"overflow-hidden rounded-sm "}>
         {filtered.opts?.slice(1).map((s) => (
           <div
-            className={` ${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${filtered.opts?.indexOf(s) !== 1 ? "border-t-0.5" : ""} flex items-center justify-between gap-2 transition-all duration-100`}
+            className={` ${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${filtered.opts?.indexOf(s) !== 1 ? "border-t-0.5 border-gray-200" : ""} flex items-center justify-between gap-2 transition-all duration-100`}
             key={s.supplier + "altSupplier"}
           >
             <div className="h-full items-center justify-center">

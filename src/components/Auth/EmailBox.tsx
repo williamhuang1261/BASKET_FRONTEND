@@ -17,7 +17,7 @@ const EmailBox = ({ id, value, onChange }: Props) => {
         onChange={onChange}
         required
         placeholder="Enter you email"
-        className="w-full rounded border p-2"
+        className="w-full rounded-sm border border-gray-200 p-2"
       />
     </>
   );

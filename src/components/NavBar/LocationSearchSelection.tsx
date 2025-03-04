@@ -10,10 +10,10 @@ const LocationSearchSelection = () => {
   return (
     <LocationAutoComplete
       id="location-search-selection"
-      inputClassName="rounded h-full w-full border-none p-4"
-      dropdownClassName="absolute top-11 z-50 w-full overflow-hidden rounded bg-white"
+      inputClassName="rounded-sm h-full w-full border-none border-gray-200 p-4"
+      dropdownClassName="absolute top-11 z-50 w-full overflow-hidden rounded-sm bg-white"
       elemClassName="hover:bg-light_gray/50 cursor-pointer min-h-10 w-full px-4 py-1 flex items-center"
-      loadingClassName="h-10 w-full px-4 py-1 flex items-center border-b"
+      loadingClassName="h-10 w-full px-4 py-1 flex items-center border-b border-gray-200"
       errorClassName="h-10 w-full px-4 py-1 flex items-center text-red-500"
     />
   );

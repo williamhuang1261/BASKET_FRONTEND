@@ -34,7 +34,7 @@ const InfoBox = ({ children, iconSize, title }: Props) => {
       </button>
       <Popup key={title + "_info_box"} openCondition={active}>
         <div
-          className={`${active ? "no-doc-scroll" : ""} h-min w-60 overflow-hidden rounded bg-white md:w-96`}
+          className={`${active ? "no-doc-scroll" : ""} h-min w-60 overflow-hidden rounded-sm bg-white md:w-96`}
         >
           <div className="grid grid-cols-3 bg-green/80 p-2">
             <h2 className="col-start-2 flex items-center justify-center text-lg font-semibold lg:text-xl">

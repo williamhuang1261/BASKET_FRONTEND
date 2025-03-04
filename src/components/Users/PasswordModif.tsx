@@ -50,8 +50,8 @@ const PasswordModif = () => {
         </button>
       </div>
       <Popup id={"PasswordModif_Popup"} openCondition={open} className="">
-        <div className=" max-h-screen overflow-auto rounded bg-white">
-          <div className="flex items-center justify-between border-b bg-green px-5 py-3">
+        <div className=" max-h-screen overflow-auto rounded-sm bg-white">
+          <div className="flex items-center justify-between border-b border-gray-200 bg-green px-5 py-3">
             <h3 className="text-lg font-semibold lg:text-xl">
               Modify your password
             </h3>
@@ -118,7 +118,7 @@ const PasswordModif = () => {
                   allValid
                     ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1"
                     : "text-green/50 outline outline-green/50 cursor-not-allowed"
-                } mt-4 w-full rounded p-2 font-black transition-all hover:shadow-sm`}
+                } mt-4 w-full rounded-sm p-2 font-black transition-all hover:shadow-xs`}
                 disabled={!allValid}
               >
                 SAVE CHANGES

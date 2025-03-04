@@ -10,19 +10,19 @@ const SignedInOptions = () => {
 
   return (
     <div
-      className={`${winSize === 1 ? "-left-[76px]" : "-left-14"} flex absolute -left-14 z-10 w-28 flex-col rounded border-0.5 border-dark_gray bg-white`}
+      className={`${winSize === 1 ? "-left-[76px]" : "-left-14"} flex absolute -left-14 z-10 w-28 flex-col rounded-sm border-0.5 border-dark_gray bg-white`}
     >
       <CustomDirectNav
         pathname={"/auth/login"}
         aria-label="Go to Sign In Page"
-        className="m-1 flex items-center justify-center rounded bg-green/50 p-0.5 shadow-sm transition-all hover:bg-green/80"
+        className="m-1 flex items-center justify-center rounded-sm bg-green/50 p-0.5 shadow-xs transition-all hover:bg-green/80"
       >
         Sign In
       </CustomDirectNav>
       <CustomDirectNav
         pathname={"/auth/signup"}
         aria-label="Go to Sign Up Page"
-        className="m-1 mt-0 flex items-center justify-center rounded p-0.5 transition-all hover:bg-light_gray hover:shadow-sm"
+        className="m-1 mt-0 flex items-center justify-center rounded-sm p-0.5 transition-all hover:bg-light_gray hover:shadow-xs"
       >
         Sign Up
       </CustomDirectNav>

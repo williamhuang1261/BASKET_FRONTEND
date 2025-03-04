@@ -28,7 +28,7 @@ const SupplierSelection = ({ opts }: Props): string | ReactNode => {
   return (
     <div className="flex w-full max-w-96 flex-col p-2">
       <button
-        className={`${opts.length === 1 ? "justify-center hover:cursor-default" : "justify-between"} flex h-10 items-center rounded bg-light_gray p-1 shadow-sm`}
+        className={`${opts.length === 1 ? "justify-center hover:cursor-default" : "justify-between"} bg-light_gray flex h-10 items-center rounded-sm p-1 shadow-xs`}
         onClick={() => setOpen(!open)}
         onMouseOver={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
@@ -42,7 +42,7 @@ const SupplierSelection = ({ opts }: Props): string | ReactNode => {
 
         <div className="flex h-full flex-auto items-center justify-center">
           <img
-            className=" h-full object-contain"
+            className="h-full object-contain"
             src={
               logos.find(
                 (l) => l.name.toLowerCase() === displayed.toLowerCase(),
@@ -57,11 +57,11 @@ const SupplierSelection = ({ opts }: Props): string | ReactNode => {
           />
         )}
       </button>
-      <div className={"overflow-hidden rounded "}>
+      <div className={"overflow-hidden rounded-sm"}>
         {opts.map((s) =>
           displayed.toLowerCase() === s.supplier.toLowerCase() ? null : (
             <div
-              className={`${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${opts.indexOf(s) !== 1 ? "border-t-0.5" : ""} flex cursor-pointer items-center justify-between gap-2 transition-all hover:bg-light_gray/50`}
+              className={`${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${opts.indexOf(s) !== 1 ? "border-t-0.5 border-gray-200" : ""} hover:bg-light_gray/50 flex cursor-pointer items-center justify-between gap-2 transition-all`}
               key={s.supplier + "altSupplier"}
               onClick={() => {
                 setDisplayed(s.supplier);

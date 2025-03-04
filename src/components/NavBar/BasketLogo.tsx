@@ -10,7 +10,7 @@ interface Props {
  * @description Logo component that links to the home page.
  * @returns {JSX.Element} The logo component with home page link.
  */
-const BasketLogo = ({ color, showText = true}: Props) => {
+const BasketLogo = ({ color, showText = true }: Props) => {
   return (
     <CustomDirectNav
       aria-label="Go to Home Page"

@@ -40,7 +40,7 @@ const ErrorPage = () => {
             Go to Home Page
           </CustomDirectNav>
         </main>
-        <div className="flex-grow"></div>
+        <div className="grow"></div>
         <div>
           <FooterDiv />
         </div>

@@ -32,19 +32,19 @@ const ResultsDiv = () => {
       {cards.slice(0, 12).map((c, i) => (
         <div key={i}>{c}</div>
       ))}
-      <div className="col-span-1 max-w-7xl overflow-hidden rounded border-0.5 border-dark_gray lg:col-span-2 xl:col-span-3 2xl:col-span-4 3xl:col-span-6">
+      <div className="col-span-1 max-w-7xl overflow-hidden rounded-sm border-0.5 border-dark_gray lg:col-span-2 xl:col-span-3 2xl:col-span-4 3xl:col-span-6">
         <HorizontalAd />
       </div>
       {cards.slice(12, 24).map((c, i) => (
         <div key={i}>{c}</div>
       ))}
-      <div className="col-span-1 max-w-7xl overflow-hidden rounded border-0.5 border-dark_gray lg:col-span-2 xl:col-span-3 2xl:col-span-4 3xl:col-span-6">
+      <div className="col-span-1 max-w-7xl overflow-hidden rounded-sm border-0.5 border-dark_gray lg:col-span-2 xl:col-span-3 2xl:col-span-4 3xl:col-span-6">
         <HorizontalAd />
       </div>
       {cards.slice(24, 36).map((c, i) => (
         <div key={i}>{c}</div>
       ))}
-      <div className="col-span-1 max-w-7xl overflow-hidden rounded border-0.5 border-dark_gray lg:col-span-2 xl:col-span-3 2xl:col-span-4 3xl:col-span-6">
+      <div className="col-span-1 max-w-7xl overflow-hidden rounded-sm border-0.5 border-dark_gray lg:col-span-2 xl:col-span-3 2xl:col-span-4 3xl:col-span-6">
         <HorizontalAd />
       </div>
       {cards
@@ -53,7 +53,7 @@ const ResultsDiv = () => {
       <div className="col-span-1 lg:col-span-2 xl:col-span-3 2xl:col-span-4 3xl:col-span-6">
         <button
           type="button"
-          className="rounded border bg-green/50 px-4 py-2 transition-all hover:border-transparent hover:bg-green/80 hover:shadow-md"
+          className="rounded-sm border border-gray-200 bg-green/50 px-4 py-2 transition-all hover:border-transparent hover:bg-green/80 hover:shadow-md"
           onClick={() => setMore(!more)}
         >
           {more ? "Show Less" : "Show More"}

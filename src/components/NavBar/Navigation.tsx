@@ -13,13 +13,13 @@ const Navigation = () => {
         {/* Categories dropdown */}
         <Dropdown
           title={
-            <div className="flex h-full w-36 items-center justify-start rounded p-2">
+            <div className="flex h-full w-36 items-center justify-start rounded-sm p-2">
               <IoMenu size="28px" className="pt-0.5" />
               <h3 className="font-semibold">Categories</h3>
             </div>
           }
           body={
-            <div className="grid grid-flow-col grid-rows-10-free rounded border-0.5 border-dark_gray bg-white py-2">
+            <div className="grid grid-flow-col grid-rows-10-free rounded-sm border-0.5 border-dark_gray bg-white py-2">
               {categories.map((c) => (
                 <CustomDirectNav
                   pathname={"/items/"}
@@ -32,7 +32,7 @@ const Navigation = () => {
               ))}
             </div>
           }
-          className="rounded bg-light_gray/20 text-green"
+          className="rounded-sm bg-light_gray/20 text-green"
           type="Hover"
           ariaLabel="Categories"
         />
@@ -40,7 +40,7 @@ const Navigation = () => {
       {/* Link to Flyers Page */}
       <CustomDirectNav
         pathname={"/flyers"}
-        className="w-36 rounded p-2 font-semibold hover:bg-light_gray/20 hover:text-green"
+        className="w-36 rounded-sm p-2 font-semibold hover:bg-light_gray/20 hover:text-green"
       >
         Flyers
       </CustomDirectNav>
@@ -48,7 +48,7 @@ const Navigation = () => {
       {/* Link to Basket Page */}
       <CustomDirectNav
         pathname={"/basket"}
-        className=" w-36 rounded p-2 font-semibold hover:bg-light_gray/20 hover:text-green"
+        className=" w-36 rounded-sm p-2 font-semibold hover:bg-light_gray/20 hover:text-green"
         aria-label="Go to Basket Calculator Page"
       >
         Calculator
@@ -58,7 +58,7 @@ const Navigation = () => {
       <CustomDirectNav
         pathname={"/about"}
         aria-label="Go to About Page"
-        className="w-36 rounded p-2 font-semibold hover:bg-light_gray/20 hover:text-green"
+        className="w-36 rounded-sm p-2 font-semibold hover:bg-light_gray/20 hover:text-green"
       >
         About
       </CustomDirectNav>

@@ -168,7 +168,7 @@ const LocationAutoComplete = ({
           {locSearchActive && (
             <div
               className={
-                `autocomplete-dropdown-container ${suggestions.length !== 0 ? "border" : ""}` +
+                `autocomplete-dropdown-container ${suggestions.length !== 0 ? "border border-gray-200" : ""}` +
                 " " +
                 dropdownClassName
               }
@@ -178,7 +178,7 @@ const LocationAutoComplete = ({
                   className={
                     errorClassName +
                     " " +
-                    (suggestions.length !== 0 && "border-b")
+                    (suggestions.length !== 0 && "border-b border-gray-200")
                   }
                 >
                   No results found
@@ -194,7 +194,7 @@ const LocationAutoComplete = ({
                   {suggestions.map((suggestion, index) => {
                     const className = `
                     ${suggestion.active ? "suggestion-item--active" : "suggestion-item"} 
-                    ${index !== suggestions.length - 1 ? "border-b" : ""}
+                    ${index !== suggestions.length - 1 ? "border-b border-gray-200" : ""}
                     ${elemClassName}`;
                     return (
                       <div

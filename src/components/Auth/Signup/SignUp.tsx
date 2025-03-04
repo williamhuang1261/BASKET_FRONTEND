@@ -105,7 +105,7 @@ const SignUp = () => {
 
         <button
           type="submit"
-          className={`${allValid ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1" : "cursor-not-allowed text-green outline outline-green/50"} mt-4 w-full rounded p-2 font-black transition-all`}
+          className={`${allValid ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1" : "cursor-not-allowed text-green outline outline-green/50"} mt-4 w-full rounded-sm p-2 font-black transition-all`}
           disabled={!allValid}
         >
           SIGN UP

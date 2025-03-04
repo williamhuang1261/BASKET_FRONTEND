@@ -60,7 +60,7 @@ const FlyerContainer = () => {
       </div>
       {open && winSize < 1 && (
         <div className="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/50">
-          <div className="overflow-hidden rounded bg-white">
+          <div className="overflow-hidden rounded-sm bg-white">
             <div className=" bg-green/80 ">
               <div className=" flex justify-between">
                 <h2 className="ps-2 text-3xl">Item</h2>

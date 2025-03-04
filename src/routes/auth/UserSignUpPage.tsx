@@ -36,7 +36,7 @@ const UserSignUpPage = () => {
         page="General"
       />
       <div className="flex justify-center">
-        <div className="items-center justify-center rounded bg-white p-6 sm:w-min sm:border sm:shadow-lg">
+        <div className="items-center justify-center rounded-sm bg-white p-6 sm:w-min sm:border sm:shadow-lg border-gray-200">
           <div className="w-full">
             <div className="flex items-center justify-between">
               <h1 className="text-2xl font-bold">Sign Up to The Basket</h1>
@@ -65,9 +65,9 @@ const UserSignUpPage = () => {
             <SignUp />
           </div>
           <div className="flex items-center py-4">
-            <div className="flex-grow border-t"></div>
+            <div className="grow border-t border-gray-200"></div>
             <span className="mx-4 text-black/50">{"OR"}</span>
-            <div className="flex-grow border-t"></div>
+            <div className="grow border-t border-gray-200"></div>
           </div>
           <div className="">
             <div className="pb-2">

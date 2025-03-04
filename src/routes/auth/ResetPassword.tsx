@@ -41,7 +41,7 @@ const ResetPassword = () => {
         page="General"
       />
       <div className="my-4 flex w-full justify-center">
-        <div className="w-full min-w-96 overflow-hidden rounded bg-white p-6 sm:w-min sm:border sm:shadow-lg">
+        <div className="w-full min-w-96 overflow-hidden rounded-sm bg-white p-6 sm:w-min sm:border sm:shadow-lg border-gray-200">
           <div className="">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold">Reset Your Password</h2>
@@ -96,7 +96,7 @@ const ResetPassword = () => {
                 </div>
                 <button
                   type="submit"
-                  className={`${isValid ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1" : "cursor-not-allowed text-green/50 outline outline-green/50"} w-full rounded p-2 font-black transition-all hover:shadow-sm`}
+                  className={`${isValid ? "bg-green/75 text-white ring-green hover:bg-green hover:ring-1" : "cursor-not-allowed text-green/50 outline outline-green/50"} w-full rounded-sm p-2 font-black transition-all hover:shadow-xs`}
                   disabled={!isValid}
                   onClick={handleClick}
                 >

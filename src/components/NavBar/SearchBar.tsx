@@ -27,8 +27,8 @@ const SearchBar = ({ hidden, id }: Props) => {
         <HybridSearch hidden={hidden} id={id} />
       )}
       {hidden?.includes("Location") ? null : (
-        <div className="relative flex items-center rounded-b bg-white outline outline-1 outline-dark_gray md:w-1/2 md:rounded-l-none md:rounded-r lg:w-5/12">
-          <div className="relative flex h-11 w-full items-center rounded">
+        <div className="relative flex items-center rounded-b bg-white outline-1 outline-dark_gray md:w-1/2 md:rounded-l-none md:rounded-r lg:w-5/12">
+          <div className="relative flex h-11 w-full items-center rounded-sm">
             <LocationSearchSelection />
           </div>
           <div className="aspect-square h-11 flex items-center justify-center">
@@ -43,7 +43,7 @@ const SearchBar = ({ hidden, id }: Props) => {
             />
           </div>
           <p
-            className={`${locMouseOver ? "pointer-events-auto translate-y-0 opacity-100" : "-translate-y-2 opacity-0"} absolute right-0 top-11 z-40 h-auto rounded bg-light_gray p-1 transition-all`}
+            className={`${locMouseOver ? "pointer-events-auto translate-y-0 opacity-100" : "-translate-y-2 opacity-0"} absolute right-0 top-11 z-40 h-auto rounded-sm bg-light_gray p-1 transition-all`}
           >
             <b>Your location :</b> {user.meta.location.formattedAddress}
           </p>

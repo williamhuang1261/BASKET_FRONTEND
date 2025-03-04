@@ -33,7 +33,7 @@ const AboutPage = () => {
         </div>
         <Contact />
       </main>
-      <div className="flex-grow"></div>
+      <div className="grow"></div>
       <div className="">
         <FooterDiv />
       </div>

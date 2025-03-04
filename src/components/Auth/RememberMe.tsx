@@ -7,7 +7,7 @@ const RememberMe = forwardRef<HTMLInputElement, Props>((props, ref) => {
     <>
       <input
         type="checkbox"
-        className="rounded border p-1"
+        className="rounded-sm border border-gray-200 p-1"
         id={props.id}
         ref={ref}
         {...props}

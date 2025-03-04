@@ -26,19 +26,19 @@ const Contact = () => {
         <h3 className="font-semibold">Your Name</h3>
         <input
           type="text"
-          className="mb-2 w-60 rounded border bg-white p-1 md:w-80"
+          className="mb-2 w-60 rounded-sm border border-gray-200 bg-white p-1 md:w-80"
           aria-label="Name field"
         />
         <h3 className="font-semibold">Your Email</h3>
         <input
           type="email"
-          className="mb-2 w-60 rounded border bg-white p-1 md:w-80"
+          className="mb-2 w-60 rounded-sm border border-gray-200 bg-white p-1 md:w-80"
           aria-label="Email field"
         />
         <h3 className="font-semibold">Subject</h3>
         <select
           aria-label="Subject of inquiry"
-          className="mb-2 rounded border bg-white p-1"
+          className="mb-2 rounded-sm border border-gray-200 bg-white p-1"
           defaultValue={""}
         >
           <option value=""></option>
@@ -50,11 +50,11 @@ const Contact = () => {
           <option value="Other">Other</option>
         </select>
         <h3 className="font-semibold">What are you reaching out about today?</h3>
-        <textarea className="mb-2 h-32 w-full rounded border bg-white p-2"></textarea>
+        <textarea className="mb-2 h-32 w-full rounded-sm border border-gray-200 bg-white p-2"></textarea>
         <button
           type="button"
           aria-label="Submit contact form"
-          className="rounded bg-green/50 px-3 py-1 font-semibold transition-all hover:bg-green/80 hover:shadow-md"
+          className="rounded-sm bg-green/50 px-3 py-1 font-semibold transition-all hover:bg-green/80 hover:shadow-md"
         >
           Send
         </button>

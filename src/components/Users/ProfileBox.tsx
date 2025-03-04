@@ -7,7 +7,7 @@ import useUserState from "../../hooks/state/useUserState";
 const ProfileBox = () => {
   const { user } = useUserState();
   return (
-    <section className="flex h-28 items-center justify-center rounded bg-green/80 shadow-md">
+    <section className="flex h-28 items-center justify-center rounded-sm bg-green/80 shadow-md">
       <h1 className="text-center text-xl font-bold lg:text-2xl">
         Hello <br />
         {user.meta.name}

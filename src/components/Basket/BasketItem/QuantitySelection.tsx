@@ -25,7 +25,7 @@ const QuantitySelection = () => {
       min="0"
       aria-label="Change quantity"
       defaultValue={basketItem.quantity}
-      className="w-14 rounded border-0.5 border-dark_gray px-2 py-1"
+      className="w-14 rounded-sm border-0.5 border-dark_gray px-2 py-1"
       onChange={handleChange}
     />
   );

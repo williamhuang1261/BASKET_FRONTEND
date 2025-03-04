@@ -45,7 +45,7 @@ const PasswordBox = ({
         onSelect={onSelect}
         required
         placeholder={placeholder}
-        className="w-full rounded border p-2"
+        className="w-full rounded-sm border border-gray-200 p-2"
       />
     </>
   );

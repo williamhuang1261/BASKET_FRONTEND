@@ -20,18 +20,18 @@ const AccountSettings = () => {
   });
 
   return (
-    <div className="rounded border bg-white">
-      <div className="flex min-h-11 w-full flex-wrap justify-between gap-2 border-b p-3">
+    <div className="rounded-sm border bg-white border-gray-200">
+      <div className="flex min-h-11 w-full flex-wrap justify-between gap-2 border-b border-gray-200 p-3">
         <UsernameModif />
       </div>
       {user && user.meta.email && (
-        <div className="flex min-h-11 w-full flex-wrap items-center justify-between gap-2 border-b px-2 py-1">
+        <div className="flex min-h-11 w-full flex-wrap items-center justify-between gap-2 border-b border-gray-200 px-2 py-1">
           <h3 className="font-semibold">Email (Cannot be modified)</h3>
           <p>{user.meta.email}</p>
         </div>
       )}
       {provider === "password" && (
-        <div className="flex min-h-11 w-full flex-wrap items-center justify-between gap-2 border-b px-2 py-1">
+        <div className="flex min-h-11 w-full flex-wrap items-center justify-between gap-2 border-b border-gray-200 px-2 py-1">
           <PasswordModif />
         </div>
       )}

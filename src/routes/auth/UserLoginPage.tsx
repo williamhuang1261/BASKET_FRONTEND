@@ -37,7 +37,7 @@ const UserLoginPage = () => {
         page="General"
       />
       <div className="my-4 flex w-full justify-center">
-        <div className="w-full overflow-hidden rounded bg-white p-6 sm:w-min sm:border sm:shadow-lg">
+        <div className="w-full overflow-hidden rounded-sm bg-white p-6 sm:w-min sm:border sm:shadow-lg border-gray-200">
           <div className="pb-4">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold">Login to The Basket</h2>
@@ -63,9 +63,9 @@ const UserLoginPage = () => {
             <StandardLogin />
           </div>
           <div className="flex items-center py-4">
-            <div className="flex-grow border-t "></div>
+            <div className="grow border-t border-gray-200"></div>
             <span className="mx-4 text-black/50">OR</span>
-            <div className="flex-grow border-t"></div>
+            <div className="grow border-t border-gray-200"></div>
           </div>
           <div className="">
             <div className="pb-2">

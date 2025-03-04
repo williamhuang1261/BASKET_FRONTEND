@@ -48,7 +48,7 @@ const EditField = ({
             id={"ChangeInputField" + id}
             type="text"
             placeholder={placeholder}
-            className="flex-auto rounded-s border px-1 py-1"
+            className="flex-auto rounded-s border border-gray-200 px-1 py-1"
             onChange={(e) => setValue(e.target.value)}
           />
           <button
@@ -68,7 +68,7 @@ const EditField = ({
         <button
           type="button"
           onClick={() => setActive(false)}
-          className="h-8 rounded bg-red-500 px-1 text-black transition-all hover:text-white hover:shadow-md"
+          className="h-8 rounded-sm bg-red-500 px-1 text-black transition-all hover:text-white hover:shadow-md"
         >
           <IoClose size="20px" className="h-full" />
         </button>

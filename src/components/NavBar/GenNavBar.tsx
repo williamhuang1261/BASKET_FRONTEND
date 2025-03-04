@@ -49,7 +49,7 @@ const GenNavBar = ({ hidden, page, size }: Props) => {
       <StatusBar size={size} />
       {winSize >= 1 && (
         <nav
-          className={`${size === "Container" ? "container mx-auto px-3 lg:px-20 2xl:px-44 3xl:px-64" : " px-3"}`}
+          className={`${size === "Container" ? "aspect container mx-auto px-3 lg:px-20 2xl:px-44 3xl:px-64 pb-1" : " px-3 pb-1"}`}
         >
           <div className="flex flex-row items-center justify-between py-2">
             <div className="flex flex-none flex-row items-center ">

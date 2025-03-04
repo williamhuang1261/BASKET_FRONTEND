@@ -41,10 +41,10 @@ const BasketPage = () => {
           {/* Basket itself */}
           <BasketResults />
         </main>
-        <div className="flex-grow"></div>
+        <div className="grow"></div>
         <div className="flex items-center justify-center px-3 pb-5 lg:container lg:mx-auto lg:px-20 2xl:px-44 3xl:px-64">
           {/* Ad will always take full container size until a certain width, where it will stop growing*/}
-          <div className="w-max max-w-7xl overflow-hidden rounded border-0.5 ">
+          <div className="w-max max-w-7xl overflow-hidden rounded-sm border-0.5 border-gray-200">
             <HorizontalAd />
           </div>
         </div>

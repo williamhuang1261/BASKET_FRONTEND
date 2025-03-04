@@ -26,7 +26,7 @@ const ItemsPage = () => {
           {/* Nav Bar */}
           <GenNavBar page="General" size="Full" />
         </div>
-        <div className="flex flex-grow">
+        <div className="flex grow">
           {winSize >= 1 && (
             <section className="w-96 border-dark_gray/50 md:border-e-0.5 bg-white">
               {/* Filters : Not shown in small screens. In small screens, the filters will be in HeaderDiv */}

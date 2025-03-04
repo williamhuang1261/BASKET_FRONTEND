@@ -78,7 +78,7 @@ const CarouselAdDiv = () => {
                     ? "bg-green"
                     : "bg-dark_gray hover:bg-green/50") +
                   " " +
-                  "mx-2 my-2 h-1 flex-auto rounded border-black transition-all duration-500 md:h-1.5"
+                  "mx-2 my-2 h-1 flex-auto rounded-sm border-black transition-all duration-500 md:h-1.5"
                 }
                 aria-label={`Go to Ad ${images.indexOf(c) + 1}`}
               ></button>

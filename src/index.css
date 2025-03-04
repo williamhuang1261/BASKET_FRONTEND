@@ -1,20 +1,57 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-select {
-  cursor: pointer
-}
+@import "tailwindcss";
 
 :root:has(.no-doc-scroll) {
-  overflow:hidden;
+  overflow: hidden;
 }
 
+button {
+  cursor: pointer;
+}
+
+select {
+  cursor: pointer;
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------------  Custom Styles  -----------------------------*/
+/*----------------------------------------------------------------------------*/
+
 .bg {
-  background-image: url('./assets/Background_Test.svg');
+  background-image: url("./assets/Background_Test.svg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+.grid-rows-10-free {
+  grid-template-rows: repeat(10, minmax(0, auto));
+}
 
+.border-0\.5 {
+  border-width: 0.5px;
+}
+
+/*----------------------------------------------------------------------------*/
+/*-------------------------  Custom Tailwind Styles  -------------------------*/
+/*----------------------------------------------------------------------------*/
+
+@theme {
+  --breakpoint-3xl: 2048px;
+  --aspect-3\/2: 1.5;
+  --aspect-2\/3: 0.6666666666666666;
+  --aspect-1\/2: 0.5;
+
+  --color-yellow: #ebff00;
+  --color-green: #6ee94f;
+  --color-light_green: #aff59d;
+  --color-light_gray: #d9d9d9;
+  --color-dark_gray: #acacac;
+
+  --font-sans: Nunito, sans;
+  --font-roboto: Roboto, sans;
+  --font-righteous: Righteous, "sans-serif";
+
+  --spacing-9\/13: 69.23076923076923%;
+  --spacing-4\/13: 30.76923076923077%;
+  --spacing-133: 133px;
+}

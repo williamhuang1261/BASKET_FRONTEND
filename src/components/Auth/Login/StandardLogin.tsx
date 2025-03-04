@@ -81,7 +81,7 @@ const StandardLogin = () => {
         </div>
         <button
           type="submit"
-          className={`${isValid ? "bg-green/75 text-black ring-green hover:bg-green hover:ring-1" : "cursor-not-allowed text-green outline outline-green/50"} mt-4 w-full rounded p-2 font-extrabold transition-all hover:shadow-sm`}
+          className={`${isValid ? "bg-green/75 text-black ring-green hover:bg-green hover:ring-1" : "cursor-not-allowed text-green outline outline-green/50"} mt-4 w-full rounded-sm p-2 font-extrabold transition-all hover:shadow-xs`}
           disabled={!isValid}
         >
           SIGN IN

@@ -49,16 +49,16 @@ const Dropdown = ({
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
         setActive(false);
       }
-    }
+    };
     document.addEventListener("click", handler);
-
-    return () => {
-      document.removeEventListener("click", handler);
-    }
-  }, [dropdownRef])
+    return () => document.removeEventListener("click", handler);
+  }, [dropdownRef]);
 
   return (
     <div
@@ -74,10 +74,6 @@ const Dropdown = ({
       <button
         type="button"
         onClick={() => setActive(!active)}
-        onBlur={(e) => {
-          console.log(e.relatedTarget);
-          if (!e.relatedTarget) setActive(false);
-        }}
         className={"flex h-full items-center" + (active ? className || "" : "")}
         aria-label={ariaLabel}
       >

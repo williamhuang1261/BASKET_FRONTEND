@@ -15,15 +15,15 @@ const TestPage = () => {
         }
       }}>
         <button
-          className="h-full w-full ring ring-blue-500"
+          className="h-full w-full ring-3 ring-blue-500"
           onClick={() => setActive(!active)}
         >
           Title
         </button>
-        <div className="ring ring-red-500 flex flex-col">
+        <div className="ring-3 ring-red-500 flex flex-col">
           {active &&
             data.map((d) => (
-              <button key={d} className="p-2 border" onClick={() => console.log(d)}>
+              <button key={d} className="p-2 border border-gray-200" onClick={() => console.log(d)}>
                 {d}
               </button>
             ))}
