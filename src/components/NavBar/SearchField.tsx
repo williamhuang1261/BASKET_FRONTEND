@@ -41,18 +41,21 @@ const SearchField = ({ hidden, id }: Props) => {
 
   return (
     <div
-      onBlur={() => {
-        setActive(false);
-        if (input.length < 2) setSuggestions([]);
+      onBlur={(e) => {
+        console.log(e)
+        if (!e.relatedTarget) {
+          setActive(false);
+          if (input.length < 2) setSuggestions([]);
+        }
       }}
-      className={`${hidden?.includes("Location") ? "rounded-b md:w-full md:rounded-r" : "md:w-1/2 md:rounded-r-none lg:w-7/12"} bg-white relative focus-within:z-50 h-11 flex rounded-t outline outline-1 outline-dark_gray md:rounded-l`}
+      className={`${hidden?.includes("Location") ? "rounded-b md:w-full md:rounded-r" : "md:w-1/2 md:rounded-r-none lg:w-7/12"} relative flex h-11 rounded-t bg-white outline outline-1 outline-dark_gray focus-within:z-50 md:rounded-l`}
     >
       <input
         type="text"
         placeholder="Search products"
         size={4}
         id={id + "_Search"}
-        className={`h-full flex-auto border-none px-4 rounded`}
+        className={`h-full flex-auto rounded border-none px-4`}
         onChange={(e) => setInput(e.target.value)}
         onFocus={() => setActive(true)}
       />

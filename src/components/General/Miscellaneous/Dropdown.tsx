@@ -27,12 +27,14 @@ const Dropdown = ({
 }: DropdownProps) => {
   const [active, setActive] = useState(false);
   const bodyRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (bodyRef.current) {
-      const interactableElements = bodyRef.current.querySelectorAll<HTMLElement>(
-        'a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
-      );
+      const interactableElements =
+        bodyRef.current.querySelectorAll<HTMLElement>(
+          'a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])',
+        );
       interactableElements.forEach((element) => {
         if (active) {
           element.removeAttribute("aria-hidden");
@@ -45,8 +47,22 @@ const Dropdown = ({
     }
   }, [active]);
 
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setActive(false);
+      }
+    }
+    document.addEventListener("click", handler);
+
+    return () => {
+      document.removeEventListener("click", handler);
+    }
+  }, [dropdownRef])
+
   return (
     <div
+      ref={dropdownRef}
       className={`relative z-40 h-full`}
       onMouseOver={() => {
         if (type === "Hover") setActive(true);
@@ -59,6 +75,7 @@ const Dropdown = ({
         type="button"
         onClick={() => setActive(!active)}
         onBlur={(e) => {
+          console.log(e.relatedTarget);
           if (!e.relatedTarget) setActive(false);
         }}
         className={"flex h-full items-center" + (active ? className || "" : "")}
@@ -68,7 +85,7 @@ const Dropdown = ({
       </button>
       <div
         ref={bodyRef}
-        className={`absolute transition-all duration-500 ${active ? "pointer-events-auto translate-y-0 opacity-100 shadow-md" : "pointer-events-none -translate-y-2 opacity-0 shadow-none"}`}
+        className={`absolute transition-all ${active ? "pointer-events-auto translate-y-0 opacity-100 shadow-md" : "pointer-events-none -translate-y-2 opacity-0 shadow-none"}`}
       >
         {body}
       </div>

@@ -106,8 +106,8 @@ const GenNavBar = ({ hidden, page, size }: Props) => {
                 </div>
               )}
 
-              <div className="me-2 flex-none">
-                <BasketLogo />
+              <div className="me-2 flex-none w-28">
+                <BasketLogo/>
               </div>
             </div>
             <div className="flex flex-none flex-row">
