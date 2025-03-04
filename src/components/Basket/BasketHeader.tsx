@@ -20,7 +20,7 @@ const BasketHeader = () => {
   return (
     <div className="bg-white">
       <div
-        className="flex h-16 items-center justify-center gap-3 rounded-sm border-0.5 border-gray-200 bg-green/80 shadow-md md:h-24 lg:h-32"
+        className="flex h-16 items-center justify-center gap-3 rounded-sm border-[0.5px] border-gray-200 bg-green/80 shadow-md md:h-24 lg:h-32"
         onClick={() => console.log(basket)}
       >
         <h1 className="text-lg font-bold lg:text-2xl 3xl:text-3xl">Basket</h1>

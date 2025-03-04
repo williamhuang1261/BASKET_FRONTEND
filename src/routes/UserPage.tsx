@@ -23,7 +23,7 @@ const UserPage = () => {
 
   return (
     <MustBeLoggedIn className="flex min-h-screen min-w-80 flex-col">
-      <div className="flex-none border-b-0.5 border-dark_gray bg-white">
+      <div className="flex-none border-b-[0.5px] border-dark_gray bg-white">
         <GenNavBar
           size="Container"
           page={"General"}

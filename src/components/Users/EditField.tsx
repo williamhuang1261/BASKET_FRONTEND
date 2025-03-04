@@ -85,7 +85,7 @@ const EditField = ({
     <div className="flex items-center gap-1">
       {isLoading ? (
         <>
-          <Spinner color="dark_gray" size={"4"} borderSize="1"/>
+          <Spinner color="dark_gray" size={"4"}/>
         </>
       ) : (
         <>

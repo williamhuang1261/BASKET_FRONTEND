@@ -1,3 +1,5 @@
+import { JSX } from "react";
+
 /**
  * @description Props for the Slider component
  * @interface SliderProps

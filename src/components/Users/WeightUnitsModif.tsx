@@ -51,7 +51,7 @@ const WeightUnitsModif = () => {
     <>
       <h3 className="font-semibold">Weight units</h3>
       {isLoading ? (
-        <Spinner color="dark_gray" size={"2"} borderSize="1"/>
+        <Spinner color="dark_gray" size={"2"}/>
       ) : (
         <select
           id={"weight_units_preferences"}

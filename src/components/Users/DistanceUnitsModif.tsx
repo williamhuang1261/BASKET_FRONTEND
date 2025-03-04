@@ -51,7 +51,7 @@ const DistanceUnitsModif = () => {
     <>
       <h3 className="font-semibold">Distance units</h3>
       {isLoading ? (
-        <Spinner color="dark_gray" size={"2"} borderSize="1"/>
+        <Spinner color="dark_gray" size={"2"}/>
       ) : (
         <select
           className="rounded-full bg-light_gray/50 px-2"

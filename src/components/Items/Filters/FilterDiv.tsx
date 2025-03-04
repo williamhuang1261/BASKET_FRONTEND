@@ -27,22 +27,22 @@ const FilterDiv = () => {
   return (
     <div className="p-5">
       <div>
-        <div className="flex justify-between border-b-0.5 border-dark_gray/50 pb-3">
+        <div className="flex justify-between border-b-[0.5px] border-dark_gray/50 pb-3">
           <h1 className=" text-xl font-semibold">Filters</h1>
           <input
             type="button"
             value={"Apply"}
-            className="rounded-sm border-0.5 border-gray-200 hover:shadow-md hover:bg-green/80 hover:border-transparent bg-green/50 px-3 font-semibold transition-all cursor-pointer"
+            className="rounded-sm border-[0.5px] border-gray-200 hover:shadow-md hover:bg-green/80 hover:border-transparent bg-green/50 px-3 font-semibold transition-all cursor-pointer"
             onClick={handleClick}
           />
         </div>
-        <div className="border-b-0.5 border-dark_gray/50">
+        <div className="border-b-[0.5px] border-dark_gray/50">
           <LocationFilter />
         </div>
-        <div className="border-b-0.5 border-dark_gray/50">
+        <div className="border-b-[0.5px] border-dark_gray/50">
           <CategoryFilter />
         </div>
-        <div className="border-b-0.5 border-dark_gray/50">
+        <div className="border-b-[0.5px] border-dark_gray/50">
           <StoreFilter />
         </div>
       </div>

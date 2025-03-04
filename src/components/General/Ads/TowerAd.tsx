@@ -8,7 +8,7 @@ import Ad from "../../../assets/AdExample(1_2).jpg";
  */
 const TowerAd = () => {
   return (
-    <div className="aspect-1/2 w-full overflow-hidden rounded-sm border-0.5 border-dark_gray">
+    <div className="aspect-1/2 w-full overflow-hidden rounded-sm border-[0.5px] border-dark_gray">
       <img src={Ad} alt="Tower Ad" className="h-full w-full object-cover" />
     </div>
   );

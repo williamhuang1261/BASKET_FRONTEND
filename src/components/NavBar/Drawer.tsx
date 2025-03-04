@@ -89,7 +89,7 @@ const Drawer = ({ size }: Props) => {
                       pathname={`/items`}
                       key={c}
                       aria-label="Go to Item Results Page"
-                      className="flex mx-4 cursor-pointer rounded-sm border-b-0.5 border-light_gray p-2 hover:bg-light_gray hover:text-green"
+                      className="flex mx-4 cursor-pointer rounded-sm border-b-[0.5px] border-light_gray p-2 hover:bg-light_gray hover:text-green"
                     >
                       {c}
                     </CustomDirectNav>

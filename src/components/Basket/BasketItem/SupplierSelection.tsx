@@ -61,7 +61,7 @@ const SupplierSelection = ({ opts }: Props): string | ReactNode => {
         {opts.map((s) =>
           displayed.toLowerCase() === s.supplier.toLowerCase() ? null : (
             <div
-              className={`${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${opts.indexOf(s) !== 1 ? "border-t-0.5 border-gray-200" : ""} hover:bg-light_gray/50 flex cursor-pointer items-center justify-between gap-2 transition-all`}
+              className={`${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${opts.indexOf(s) !== 1 ? "border-t-[0.5px] border-gray-200" : ""} hover:bg-light_gray/50 flex cursor-pointer items-center justify-between gap-2 transition-all`}
               key={s.supplier + "altSupplier"}
               onClick={() => {
                 setDisplayed(s.supplier);

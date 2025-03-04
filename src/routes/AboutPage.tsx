@@ -20,7 +20,7 @@ import GenNavBar from "../components/NavBar/GenNavBar";
 const AboutPage = () => {
   return (
     <div className="flex min-h-screen min-w-80 flex-col overflow-hidden">
-      <div className="border-b-0.5 border-dark_gray bg-white">
+      <div className="border-b-[0.5px] border-dark_gray bg-white">
         <GenNavBar page="General" size="Container" />
       </div>
       <div className="px-3 pt-5 md:container md:mx-auto lg:px-20 2xl:px-44 3xl:px-64">

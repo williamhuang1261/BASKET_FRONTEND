@@ -12,7 +12,7 @@ const MainHeaderDiv = () => {
   const winSize = useWindowSize();
   return (
     <div>
-      <header className="border-b-0.5 border-b-dark_gray bg-white">
+      <header className="border-b-[0.5px] border-b-dark_gray bg-white">
         {winSize >= 1 && (
           <div className="bg-green/80">
             <div className="container mx-auto flex flex-row items-center justify-between lg:px-20 2xl:px-44 3xl:px-64">
@@ -21,7 +21,7 @@ const MainHeaderDiv = () => {
               </p>
               <LanguageSelect
                 id="header"
-                loadingComponent={<Spinner color="dark_gray" size={"2"} borderSize="1"/>}
+                loadingComponent={<Spinner color="dark_gray" size={"2"}/>}
                 selectClassName="cursor-pointer rounded-none border-none bg-green/5 hover:text-black/50 text-sm"
                 optionClassName="bg-white text-black text-sm"
               />

@@ -10,7 +10,7 @@ const SignedInOptions = () => {
 
   return (
     <div
-      className={`${winSize === 1 ? "-left-[76px]" : "-left-14"} flex absolute -left-14 z-10 w-28 flex-col rounded-sm border-0.5 border-dark_gray bg-white`}
+      className={`${winSize === 1 ? "-left-[76px]" : "-left-14"} flex absolute -left-14 z-10 w-28 flex-col rounded-sm border-[0.5px] border-dark_gray bg-white`}
     >
       <CustomDirectNav
         pathname={"/auth/login"}

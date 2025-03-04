@@ -12,7 +12,7 @@ const LanguageModif = () => {
       <h3 className="font-semibold">Language</h3>
       <LanguageSelect
         id="User_Settings"
-        loadingComponent={<Spinner color="dark_gray" size={"2"} borderSize="1"/>}
+        loadingComponent={<Spinner color="dark_gray" size={"2"}/>}
         selectClassName="rounded-full bg-light_gray/50 px-2"
         optionClassName="bg-white"
       />

@@ -44,7 +44,7 @@ const ErrorBar = ({ size }: Props) => {
   }, [location.pathname]);
 
   return (
-    <div className="w-full bg-red-500">
+    <div className="w-full bg-yellow-400">
       {status.error.show && (
         <div
           className={`${size === "Container" ? "px-3 md:container md:mx-auto lg:px-20 2xl:px-44 3xl:px-64" : "px-3 "} flex items-center justify-between `}

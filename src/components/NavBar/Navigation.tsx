@@ -19,13 +19,13 @@ const Navigation = () => {
             </div>
           }
           body={
-            <div className="grid grid-flow-col grid-rows-10-free rounded-sm border-0.5 border-dark_gray bg-white py-2">
+            <div className="grid grid-flow-col grid-rows-10-free rounded-sm border-[0.5px] border-dark_gray bg-white py-2 divide-y-[0.5px] divide-gray-200">
               {categories.map((c) => (
                 <CustomDirectNav
                   pathname={"/items/"}
                   key={c}
                   aria-label={"Go to " + c + " Category"}
-                  className="mx-2 px-2 flex-auto cursor-pointer border-b-0.5 border-light_gray py-1 hover:text-green"
+                  className="mx-2 px-2 flex-auto cursor-pointer py-1 hover:text-green"
                 >
                   <p className="flex leading-snug w-max h-full items-start justify-start text-left">{c}</p>
                 </CustomDirectNav>
@@ -36,7 +36,6 @@ const Navigation = () => {
           type="Hover"
           ariaLabel="Categories"
         />
-
       {/* Link to Flyers Page */}
       <CustomDirectNav
         pathname={"/flyers"}

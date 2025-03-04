@@ -18,7 +18,7 @@ interface Props {
  */
 const DescriptionCard = ({ Icon, title, text }: Props) => {
   return (
-    <div className="my-3 mr-10 border-b-0.5 border-dark_gray/50 pb-2 lg:border-none">
+    <div className="my-3 mr-10 border-b-[0.5px] border-dark_gray/50 pb-2 lg:border-none">
       {Icon}
       <h3 className="pb-1 text-lg font-semibold">{title}</h3>
       <p>{text}</p>

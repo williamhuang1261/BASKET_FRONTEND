@@ -16,13 +16,13 @@ const FilterStoresDrop = () => {
     <div>
       <Dropdown
         title={
-          <div className="flex h-max items-center justify-center overflow-hidden rounded-sm-full border-0.5  border-gray-200 bg-light_gray px-3">
+          <div className="flex h-max items-center justify-center overflow-hidden rounded-sm-full border-[0.5px]  border-gray-200 bg-light_gray px-3">
             <h3 className="pb-0.5 font-semibold">Filter Stores</h3>
             <RiArrowDropDownLine size={20} className="h-full" />
           </div>
         }
         body={
-          <div className="h-96 w-80 absolute top-0 z-20 flex flex-col overflow-auto rounded-sm border-0.5 border-dark_gray bg-white p-2">
+          <div className="h-96 w-80 absolute top-0 z-20 flex flex-col overflow-auto rounded-sm border-[0.5px] border-dark_gray bg-white p-2">
             <Checkbox
               items={suppliers}
               onCheck={(s) =>

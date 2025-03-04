@@ -39,7 +39,7 @@ const FlyerContainer = () => {
               >
                 <FaMinus />
               </button>
-              <p className="flex h-8 items-center justify-center rounded-full border-0.5 border-dark_gray bg-white px-4 text-black/50">
+              <p className="flex h-8 items-center justify-center rounded-full border-[0.5px] border-dark_gray bg-white px-4 text-black/50">
                 100%
               </p>
               <button

@@ -9,14 +9,14 @@ import BasketItemProvider from "../../state/providers/BasketItemProvider";
  */
 const BasketResults = () => {
   return (
-    <div className="mt-5 flex flex-col overflow-hidden border-0.5 border-gray-200 rounded-sm shadow-xs">
+    <div className="mt-5 flex flex-col overflow-hidden border-[0.5px] border-gray-200 rounded-sm shadow-xs">
       {items.map((i) => (
         <div
           key={i.ref.code}
           className={
             items.indexOf(i) === items.length - 1
               ? ""
-              : "border-b-0.5 border-gray-200"
+              : "border-b-[0.5px] border-gray-200"
           }
         >
           <BasketItemProvider itemId={i.id}>

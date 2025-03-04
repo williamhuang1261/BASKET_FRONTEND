@@ -14,17 +14,17 @@ const LanguageIcon = () => {
         }
         className="text-green"
         body={
-          <div className="grid-col-1 absolute z-10 grid -right-[35px] overflow-hidden rounded-sm border-0.5 border-dark_gray bg-white">
+          <div className="grid-col-1 absolute z-10 grid -right-[35px] overflow-hidden rounded-sm border-[0.5px] border-dark_gray bg-white">
             <button
               type="button"
-              className="border-b-0.5 border-gray-200 p-1 hover:bg-light_gray"
+              className="border-b-[0.5px] border-gray-200 p-1 hover:bg-light_gray"
               aria-label="French"
             >
               French
             </button>
             <button
               type="button"
-              className="border-b-0.5 border-gray-200 p-1 hover:bg-light_gray"
+              className="border-b-[0.5px] border-gray-200 p-1 hover:bg-light_gray"
               aria-label="English"
             >
               English

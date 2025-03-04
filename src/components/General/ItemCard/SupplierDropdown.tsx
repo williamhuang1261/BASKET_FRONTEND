@@ -55,7 +55,7 @@ const SupplierDropdown = ({ filtered }: Props) => {
       <div className={"overflow-hidden rounded-sm "}>
         {filtered.opts?.slice(1).map((s) => (
           <div
-            className={`${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${filtered.opts?.indexOf(s) !== 1 ? "border-t-0.5 border-gray-200" : ""} flex items-center justify-between gap-2 transition-all`}
+            className={`${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${filtered.opts?.indexOf(s) !== 1 ? "border-t-[0.5px] border-gray-200" : ""} flex items-center justify-between gap-2 transition-all`}
             key={s.supplier + "altSupplier"}
           >
             <div className="h-full items-center justify-center">

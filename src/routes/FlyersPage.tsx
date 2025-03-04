@@ -23,7 +23,7 @@ const FlyersPage = () => {
     <>
       <div className="flex h-screen w-screen flex-col overflow-hidden min-w-80 bg-white">
         {/* Nav bar */}
-        <div className="flex-none border-b-0.5 border-dark_gray">
+        <div className="flex-none border-b-[0.5px] border-dark_gray">
           <GenNavBar page="General" size="Full" hidden={["Location"]} />
         </div>
         <div className="h-max flex-none bg-green/80">
@@ -32,7 +32,7 @@ const FlyersPage = () => {
         </div>
         <div className="flex h-44 w-screen flex-auto ">
           {winSize >= 1 && (
-            <section className="flex w-60 flex-col border-e-0.5 border-dark_gray 2xl:w-80">
+            <section className="flex w-60 flex-col border-e-[0.5px] border-dark_gray 2xl:w-80">
               {/* Contains item card showing the item that has been clicked */}
               <div className="flex-none p-3">
                 <ItemCard

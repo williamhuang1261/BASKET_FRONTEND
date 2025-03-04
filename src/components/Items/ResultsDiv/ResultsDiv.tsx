@@ -32,19 +32,19 @@ const ResultsDiv = () => {
       {cards.slice(0, 12).map((c, i) => (
         <div key={i}>{c}</div>
       ))}
-      <div className="col-span-1 max-w-7xl overflow-hidden rounded-sm border-0.5 border-dark_gray lg:col-span-2 xl:col-span-3 2xl:col-span-4 3xl:col-span-6">
+      <div className="col-span-1 max-w-7xl overflow-hidden rounded-sm border-[0.5px] border-dark_gray lg:col-span-2 xl:col-span-3 2xl:col-span-4 3xl:col-span-6">
         <HorizontalAd />
       </div>
       {cards.slice(12, 24).map((c, i) => (
         <div key={i}>{c}</div>
       ))}
-      <div className="col-span-1 max-w-7xl overflow-hidden rounded-sm border-0.5 border-dark_gray lg:col-span-2 xl:col-span-3 2xl:col-span-4 3xl:col-span-6">
+      <div className="col-span-1 max-w-7xl overflow-hidden rounded-sm border-[0.5px] border-dark_gray lg:col-span-2 xl:col-span-3 2xl:col-span-4 3xl:col-span-6">
         <HorizontalAd />
       </div>
       {cards.slice(24, 36).map((c, i) => (
         <div key={i}>{c}</div>
       ))}
-      <div className="col-span-1 max-w-7xl overflow-hidden rounded-sm border-0.5 border-dark_gray lg:col-span-2 xl:col-span-3 2xl:col-span-4 3xl:col-span-6">
+      <div className="col-span-1 max-w-7xl overflow-hidden rounded-sm border-[0.5px] border-dark_gray lg:col-span-2 xl:col-span-3 2xl:col-span-4 3xl:col-span-6">
         <HorizontalAd />
       </div>
       {cards
