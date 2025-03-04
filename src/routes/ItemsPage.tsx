@@ -33,7 +33,7 @@ const ItemsPage = () => {
               <FilterDiv />
             </section>
           )}
-          <main className="flex w-full flex-col p-5">
+          <main className="flex w-full flex-col p-5 3xl:container 3xl:mx-auto">
             {/* Presentation of the query, the #results, order of results + small screens : filters */}
             <HeaderDiv />
             {/* Presents the results of the search */}

@@ -10,6 +10,7 @@ import {
   RefProp,
   SuppliersProp,
 } from "../../../interface/Destructed";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 interface Props {
   id: string;
@@ -31,13 +32,7 @@ interface Props {
  * @param {SuppliersProp[]} props.suppliers - Array of supplier information
  * @returns {JSX.Element} Product card component
  */
-const ItemCard = ({
-  image,
-  name,
-  reference,
-  amount,
-  suppliers,
-}: Props) => {
+const ItemCard = ({ image, name, reference, amount, suppliers }: Props) => {
   const sorted = SortByPrice(
     {
       name: name,
@@ -51,7 +46,7 @@ const ItemCard = ({
   const normals = ShowNormal({ suppliers: suppliers });
 
   return (
-    <div className="flex max-h-full min-h-max w-72 flex-col rounded-sm border  border-gray-200 bg-white shadow-lg md:w-full ">
+    <div className="flex max-h-full min-h-max w-72 flex-col rounded-sm border border-gray-200 bg-white shadow-lg md:w-full">
       <div className="w-full flex-none">
         <div className="flex w-full justify-center p-1">
           <img
@@ -71,14 +66,15 @@ const ItemCard = ({
           </div>
           <h4 className="text-lg">{name?.en}</h4>
         </div>
-        <div className="px-2">
-          <PriceBar filtered={filtered} normal={normals} />
-        </div>
       </div>
-      <div className="flex flex-auto flex-col justify-end px-2 pb-2">
-        <div>
-          <SupplierDropdown filtered={filtered} />
-        </div>
+      <div className="flex min-w-64 flex-auto flex-col justify-end gap-2 px-2 pb-2">
+        <button className="bg-light_gray hover:bg-dark_gray hover:text-green flex h-10 items-center justify-between rounded-sm p-1 font-sans text-lg font-semibold shadow-md transition-all hover:cursor-default">
+          <BsThreeDotsVertical size={20} className="h-full" />
+          <span className="flex h-full items-center justify-center text-black">
+            See prices
+          </span>
+          <BsThreeDotsVertical size={20} className="h-full" />
+        </button>
         <div>
           <AddToBasketBut onClick={() => console.log("Added")} />
         </div>

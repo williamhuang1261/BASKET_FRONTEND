@@ -19,7 +19,7 @@ const FlyerHeader = () => {
       {winSize < 1 && (
         <div className="flex h-full items-center justify-between gap-4 px-3 py-0.5">
           <CustomDirectNav
-            pathname={"/items"}
+            pathname={"/items/search/testQuery"}
             className="flex items-center hover:text-black/50"
             aria-label="Go to Items Page"
           >
@@ -53,7 +53,7 @@ const FlyerHeader = () => {
       {winSize >= 1 && (
         <div className="flex h-full items-center justify-between gap-4 px-3 py-0.5 ">
           <CustomDirectNav
-            pathname={"/items"}
+            pathname={"/items/search/testQuery"}
             aria-label="Go to Items Page"
             className="flex items-center hover:text-black/50"
           >

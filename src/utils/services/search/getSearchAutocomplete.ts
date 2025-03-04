@@ -1,4 +1,4 @@
-import { SearchServices } from "../../../services/serviceList";
+import { ItemServices } from "../../../services/serviceList";
 import { createFetchQuery } from "../../../services/fetchQuery";
 
 export type AutocompleteResultsType = {
@@ -9,7 +9,7 @@ export type AutocompleteResultsType = {
 };
 
 const getSearchAutocomplete = async (query: string) => {
-  const instance = createFetchQuery(SearchServices);
+  const instance = createFetchQuery(ItemServices);
   const res = await instance.post<AutocompleteResultsType>(
     "/autocomplete",
     {},

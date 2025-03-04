@@ -15,31 +15,31 @@ const FooterDiv = () => {
             </div>
             <ul className="my-2 border-b-[0.5px] border-dark_gray px-4 pb-2 md:border-none">
               <h3 className="text-lg font-semibold">Title</h3>
-              <li>Something</li>
-              <li>Something</li>
-              <li>Something</li>
-              <li>Something</li>
+              <li>Info item</li>
+              <li>Info item</li>
+              <li>Info item</li>
+              <li>Info item</li>
             </ul>
             <ul className="my-2 border-b-[0.5px] border-dark_gray px-4 pb-2 md:border-none">
               <h3 className="text-lg font-semibold">Title</h3>
-              <li>Something</li>
-              <li>Something</li>
-              <li>Something</li>
-              <li>Something</li>
+              <li>Info item</li>
+              <li>Info item</li>
+              <li>Info item</li>
+              <li>Info item</li>
             </ul>
             <ul className="my-2 border-b-[0.5px] border-dark_gray px-4 pb-2 md:border-none">
               <h3 className="text-lg font-semibold">Title</h3>
-              <li>Something</li>
-              <li>Something</li>
-              <li>Something</li>
-              <li>Something</li>
+              <li>Info item</li>
+              <li>Info item</li>
+              <li>Info item</li>
+              <li>Info item</li>
             </ul>
             <ul className="my-2 px-4 pb-2">
               <h3 className="text-lg font-semibold">Title</h3>
-              <li>Something</li>
-              <li>Something</li>
-              <li>Something</li>
-              <li>Something</li>
+              <li>Info item</li>
+              <li>Info item</li>
+              <li>Info item</li>
+              <li>Info item</li>
             </ul>
           </div>
         </div>

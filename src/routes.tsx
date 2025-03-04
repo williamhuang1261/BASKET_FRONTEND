@@ -32,7 +32,22 @@ const router = createBrowserRouter([
     element: <UserPage />,
     errorElement: <ErrorPage />,
   },
-  { path: "/items", element: <ItemsPage />, errorElement: <ErrorPage /> },
+  {
+    path: '/items',
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: 'search/:id',
+        element: <ItemsPage />,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: 'info/:id',
+        element: <ItemsPage />,
+        errorElement: <ErrorPage />
+      }
+      ]
+  },
   { path: "/flyers", element: <FlyersPage />, errorElement: <ErrorPage /> },
   { path: "/basket", element: <BasketPage />, errorElement: <ErrorPage /> },
   { path: "/about", element: <AboutPage />, errorElement: <ErrorPage /> },
