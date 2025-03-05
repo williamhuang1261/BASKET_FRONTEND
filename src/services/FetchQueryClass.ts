@@ -7,7 +7,9 @@ import { FetchQueryOptions } from "@tanstack/react-query";
 type ModifiedFetchQueryOptions<T> = Omit<
   FetchQueryOptions<AxiosResponse<T, any>>,
   "queryKey" | "queryFn"
->;
+> & {
+  queryKey?: string[];
+};
 
 class FetchQueryClass {
   service: HttpService | RestrictedService;
@@ -21,10 +23,16 @@ class FetchQueryClass {
     headers: object = {},
     options: ModifiedFetchQueryOptions<T> = {},
   ) {
+    const { queryKey, ...rest } = options;
     const res: AxiosResponse<T> = await queryClient.fetchQuery({
-      queryKey: ["fetchQuery", "get", this.service.endpoint + endpoint],
+      queryKey: [
+        "fetchQuery",
+        "get",
+        this.service.endpoint + endpoint,
+        ...(queryKey ? queryKey : []),
+      ],
       queryFn: () => this.service.get(endpoint, headers),
-      ...options,
+      ...rest,
     });
     return res;
   }
@@ -35,10 +43,16 @@ class FetchQueryClass {
     body: object = {},
     options: ModifiedFetchQueryOptions<T> = {},
   ) {
+    const { queryKey, ...rest } = options;
     const res: AxiosResponse<T> = await queryClient.fetchQuery({
-      queryKey: ["fetchQuery", "post", this.service.endpoint + endpoint],
+      queryKey: [
+        "fetchQuery",
+        "post",
+        this.service.endpoint + endpoint,
+        ...(queryKey ? queryKey : []),
+      ],
       queryFn: () => this.service.post(endpoint, headers, body),
-      ...options,
+      ...rest,
     });
     return res;
   }
@@ -49,10 +63,16 @@ class FetchQueryClass {
     body: object = {},
     options: ModifiedFetchQueryOptions<T> = {},
   ) {
+    const { queryKey, ...rest } = options;
     const res: AxiosResponse<T> = await queryClient.fetchQuery({
-      queryKey: ["fetchQuery", "put", this.service.endpoint + endpoint],
+      queryKey: [
+        "fetchQuery",
+        "put",
+        this.service.endpoint + endpoint,
+        ...(queryKey ? queryKey : []),
+      ],
       queryFn: () => this.service.put(endpoint, headers, body),
-      ...options,
+      ...rest,
     });
     return res;
   }
@@ -62,10 +82,16 @@ class FetchQueryClass {
     headers: object = {},
     options: ModifiedFetchQueryOptions<T> = {},
   ) {
+    const { queryKey, ...rest } = options;
     const res: AxiosResponse<T> = await queryClient.fetchQuery({
-      queryKey: ["fetchQuery", "delete", this.service.endpoint + endpoint],
+      queryKey: [
+        "fetchQuery",
+        "delete",
+        this.service.endpoint + endpoint,
+        ...(queryKey ? queryKey : []),
+      ],
       queryFn: () => this.service.delete(endpoint, headers),
-      ...options,
+      ...rest,
     });
     return res;
   }

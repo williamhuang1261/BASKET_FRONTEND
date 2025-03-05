@@ -14,6 +14,7 @@ const getSearchAutocomplete = async (query: string) => {
     "/autocomplete",
     {},
     { config: { value: query, language: "en", count: 10 } },
+    { queryKey: [query], staleTime: 1000 * 60 * 5 },
   );
   return res.data.data.map((s) => s.suggestion);
 };
