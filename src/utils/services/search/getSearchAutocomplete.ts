@@ -1,5 +1,5 @@
 import { ItemServices } from "../../../services/serviceList";
-import { createFetchQuery } from "../../../services/fetchQuery";
+import { createFetchQuery } from "../../../services/FetchQueryClass";
 
 export type AutocompleteResultsType = {
   data: {

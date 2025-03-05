@@ -56,7 +56,7 @@ const SearchField = ({ hidden, id }: Props) => {
       className={`${hidden?.includes("Location") ? "rounded-b md:w-full md:rounded-r" : "md:w-1/2 md:rounded-r-none lg:w-7/12"} outline-dark_gray relative flex h-11 rounded-t bg-white outline outline-1 focus-within:z-50 md:rounded-l`}
     >
       <input
-        type="text"
+        type="search"
         autoComplete="off"
         placeholder="Search products"
         size={4}

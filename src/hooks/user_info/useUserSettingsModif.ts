@@ -1,6 +1,6 @@
 import { distanceUnitsType, weightUnitsType } from "../../interface/UnitsProp";
 import { UserServices } from "../../services/serviceList";
-import { createFetchQuery } from "../../services/fetchQuery";
+import { createFetchQuery } from "../../services/FetchQueryClass";
 
 interface UserModifProp {
   name?: string;
