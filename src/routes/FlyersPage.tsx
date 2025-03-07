@@ -58,7 +58,7 @@ const FlyersPage = () => {
                 />
               </div>
               {/* Footer on bottom left */}
-              <footer className="flex-auto bg-light_gray/50 p-3">Footer</footer>
+              <footer className="flex-auto bg-light_gray/50 p-3"></footer>
             </section>
           )}
           {/* Flyer display and navigation */}

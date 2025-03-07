@@ -1,5 +1,5 @@
 import { AmountProp, NameProp, RefProp } from "./Destructed";
-import { allUnitsType } from "./UnitsProp";
+import { allUnitsType } from "./UnitsType";
 
 /**
  * @description Configuration options for price calculations and display

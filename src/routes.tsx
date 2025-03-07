@@ -2,7 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 
 export const HomePage = lazy(() => import("./routes/HomePage"));
-export const ItemsPage = lazy(() => import("./routes/ItemsPage"));
+export const ItemsPage = lazy(() => import("./routes/items/ItemsPage"));
+export const ItemInfoPage = lazy(() => import("./routes/items/ItemInfoPage"));
 export const FlyersPage = lazy(() => import("./routes/FlyersPage"));
 export const BasketPage = lazy(() => import("./routes/BasketPage"));
 export const AboutPage = lazy(() => import("./routes/AboutPage"));
@@ -32,7 +33,22 @@ const router = createBrowserRouter([
     element: <UserPage />,
     errorElement: <ErrorPage />,
   },
-  { path: "/items", element: <ItemsPage />, errorElement: <ErrorPage /> },
+  {
+    path: "/items",
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "search/:id",
+        element: <ItemsPage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "info/:id",
+        element: <ItemInfoPage />,
+        errorElement: <ErrorPage />,
+      },
+    ],
+  },
   { path: "/flyers", element: <FlyersPage />, errorElement: <ErrorPage /> },
   { path: "/basket", element: <BasketPage />, errorElement: <ErrorPage /> },
   { path: "/about", element: <AboutPage />, errorElement: <ErrorPage /> },

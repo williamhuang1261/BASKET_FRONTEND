@@ -9,7 +9,7 @@ const MaxStoresSelect = () => {
   const { dispatch } = useBasketState();
 
   const opts = [
-    ["All", Infinity],
+    ["", Infinity],
     ["1", 1],
     ["2", 2],
     ["3", 3],
@@ -24,7 +24,7 @@ const MaxStoresSelect = () => {
       <h2 className="">Max Stores :</h2>
       <select
         id={"Max_Stores_Selection"}
-        className=" rounded-full bg-light_gray px-1 pb-0.5 font-semibold"
+        className=" rounded-sm bg-light_gray px-1 pb-0.5 font-semibold"
         onChange={(e) =>
           dispatch({
             group: "CHANGE",

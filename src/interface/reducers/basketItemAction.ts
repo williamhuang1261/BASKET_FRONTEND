@@ -1,4 +1,4 @@
-import { allUnitsType } from "../UnitsProp";
+import { allUnitsType } from "../UnitsType";
 
 interface basketItemProp {
   itemId: string;

@@ -29,7 +29,7 @@ const BasketLogo = ({ color, showText = true }: Props) => {
         }}
       />
       {showText && (
-        <p className="font-righteous w-full md:text-2xl">The Basket</p>
+        <p className="font-righteous w-full md:text-xl">The Basket</p>
       )}
     </CustomDirectNav>
   );

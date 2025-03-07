@@ -35,7 +35,7 @@ const FilterPopUp = () => {
       <Popup openCondition={open} className="p-10" key={"FilterPopup"}>
         <form
           onSubmit={handleSubmit}
-          className="m-10 flex h-full w-full flex-col items-center overflow-auto overscroll-contain rounded-sm bg-white pb-5"
+          className="sm:m-10 sm:mx-5 flex h-full w-full flex-col items-center overflow-auto overscroll-contain rounded-sm bg-white pb-5"
         >
           <div className="sticky top-0 z-20 w-full bg-white">
             <div className=" flex  items-center justify-between bg-green/80 p-2 px-5">

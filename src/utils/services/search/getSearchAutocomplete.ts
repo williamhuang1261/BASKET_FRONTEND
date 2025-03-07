@@ -1,5 +1,5 @@
-import { SearchServices } from "../../../services/serviceList";
-import { createFetchQuery } from "../../../services/fetchQuery";
+import { ItemServices } from "../../../services/serviceList";
+import { createFetchQuery } from "../../../services/FetchQueryClass";
 
 export type AutocompleteResultsType = {
   data: {
@@ -9,11 +9,12 @@ export type AutocompleteResultsType = {
 };
 
 const getSearchAutocomplete = async (query: string) => {
-  const instance = createFetchQuery(SearchServices);
+  const instance = createFetchQuery(ItemServices);
   const res = await instance.post<AutocompleteResultsType>(
     "/autocomplete",
     {},
     { config: { value: query, language: "en", count: 10 } },
+    { queryKey: [query], staleTime: 1000 * 60 * 5 },
   );
   return res.data.data.map((s) => s.suggestion);
 };

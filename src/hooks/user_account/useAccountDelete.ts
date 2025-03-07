@@ -6,7 +6,7 @@ import useCustomNavigation from "../useCustomNavigation";
 import useLogOut from "./useLogOut";
 import useSuccess from "../useSuccess";
 import { UserServices } from "../../services/serviceList";
-import { createFetchQuery } from "../../services/fetchQuery";
+import { createFetchQuery } from "../../services/FetchQueryClass";
 
 /**
  * @description Hook to handle account deletion

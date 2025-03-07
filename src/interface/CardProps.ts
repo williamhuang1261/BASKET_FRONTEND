@@ -11,7 +11,7 @@ interface CardProps {
   ref: RefProp;
   amount: AmountProp;
   description?: {
-    en?: string;
+    en: string;
     fr: string;
   };
   suppliers: SuppliersProp[];

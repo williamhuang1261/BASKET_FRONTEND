@@ -22,7 +22,7 @@ const Navigation = () => {
             <div className="grid grid-flow-col grid-rows-10-free rounded-sm border-[0.5px] border-dark_gray bg-white py-2 divide-y-[0.5px] divide-gray-200">
               {categories.map((c) => (
                 <CustomDirectNav
-                  pathname={"/items/"}
+                  pathname={"/items/search/" + c.toLowerCase()}
                   key={c}
                   aria-label={"Go to " + c + " Category"}
                   className="mx-2 px-2 flex-auto cursor-pointer py-1 hover:text-green"

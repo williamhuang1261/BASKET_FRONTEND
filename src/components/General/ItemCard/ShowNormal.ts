@@ -34,7 +34,6 @@ const ShowNormal = ({ suppliers }: Props) => {
       case "weight_lb":
         textAfterPrice = "$/lb";
         break;
-      case "volume":
       case "unit":
       default:
         textAfterPrice = "$";

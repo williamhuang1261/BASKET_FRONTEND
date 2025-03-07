@@ -1,8 +1,17 @@
-import logos from "../../data/Logos";
-import flipp from "../../assets/Flipp_logo.webp";
 import { AiOutlineStepBackward } from "react-icons/ai";
 import useWindowSize from "../../hooks/useWindowSize";
 import CustomDirectNav from "../General/Miscellaneous/CustomDirectNav";
+import BasketLogo from "../../assets/BasketLogo.svg";
+
+const logos = Array.from({ length: 1 }, (_, index) => ({
+  src: BasketLogo,
+  name: "BasketLogo" + index,
+  ref: {
+    cadFR: "",
+    cadEN: "",
+    usEN: "",
+  },
+}));
 
 /**
  * @description Header component displayed above flyer content showing navigation, dates, and logos
@@ -19,7 +28,7 @@ const FlyerHeader = () => {
       {winSize < 1 && (
         <div className="flex h-full items-center justify-between gap-4 px-3 py-0.5">
           <CustomDirectNav
-            pathname={"/items"}
+            pathname={"/items/search/testQuery"}
             className="flex items-center hover:text-black/50"
             aria-label="Go to Items Page"
           >
@@ -30,7 +39,7 @@ const FlyerHeader = () => {
               {startDate.toLocaleDateString("en-US")} to{" "}
               {endDate.toLocaleDateString("en-US")}
             </p>
-            <div className="flex h-full items-center justify-center ">
+            <div className="flex h-full items-center justify-center">
               <a href={logos[0].ref.cadEN} target="_blank">
                 <img
                   src={logos[0].src}
@@ -43,17 +52,17 @@ const FlyerHeader = () => {
           <div className="">
             <h3 className="cursor-default text-center">Powered by</h3>
             <div className="flex h-full items-center justify-center">
-              <a href="https://flipp.com/" target="_blank">
-                <img src={flipp} alt="Flipp" className="h-8 object-contain" />
+              <a href="/" target="_blank">
+                <img src={BasketLogo} alt="FlyerSupplier" className="h-8 object-contain" />
               </a>
             </div>
           </div>
         </div>
       )}
       {winSize >= 1 && (
-        <div className="flex h-full items-center justify-between gap-4 px-3 py-0.5 ">
+        <div className="flex h-full items-center justify-between gap-4 px-3 py-0.5">
           <CustomDirectNav
-            pathname={"/items"}
+            pathname={"/items/search/testQuery"}
             aria-label="Go to Items Page"
             className="flex items-center hover:text-black/50"
           >
@@ -98,8 +107,8 @@ const FlyerHeader = () => {
             )}
           </div>
           <div className="flex h-full items-center justify-center">
-            <a href="https://flipp.com/" target="_blank">
-              <img src={flipp} alt="Flipp" className="h-8 object-contain" />
+            <a href="/" target="_blank">
+              <img src={BasketLogo} alt="FlyerSupplier" className="h-8 object-contain" />
             </a>
           </div>
           <h3 className="cursor-default text-center">Powered by Flipp</h3>

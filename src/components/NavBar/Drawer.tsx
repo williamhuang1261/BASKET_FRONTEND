@@ -86,7 +86,7 @@ const Drawer = ({ size }: Props) => {
                 >
                   {categories.map((c) => (
                     <CustomDirectNav
-                      pathname={`/items`}
+                      pathname={`/items/search/${c.toLowerCase()}`}
                       key={c}
                       aria-label="Go to Item Results Page"
                       className="flex mx-4 cursor-pointer rounded-sm border-b-[0.5px] border-light_gray p-2 hover:bg-light_gray hover:text-green"
