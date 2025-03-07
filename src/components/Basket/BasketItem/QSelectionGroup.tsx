@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import useBasketItemState from "../../../hooks/state/useBasketItemState";
-import { allUnitsType } from "../../../interface/UnitsProp";
+import { allUnitsType } from "../../../interface/UnitsType";
 import useUserState from "../../../hooks/state/useUserState";
 
 /**
@@ -59,7 +59,7 @@ const QSelectionGroup = ({ id }: Props) => {
       <select
         ref={methodRef}
         aria-label="Select the method of measurement"
-        className="cursor-pointer rounded-full bg-light_gray/50 px-1 py-0.5 font-semibold hover:text-green"
+        className="bg-light_gray/50 hover:text-green cursor-pointer rounded-full px-1 py-0.5 font-semibold"
         onChange={(e) => {
           setMethod(e.target.value as string);
           handleChange();
@@ -78,7 +78,7 @@ const QSelectionGroup = ({ id }: Props) => {
         <select
           ref={unitsRef}
           aria-label="Select the unit of measurement"
-          className="cursor-pointer rounded-full bg-light_gray/50 px-1 py-0.5 font-semibold hover:text-green"
+          className="bg-light_gray/50 hover:text-green cursor-pointer rounded-full px-1 py-0.5 font-semibold"
           onChange={handleChange}
           defaultValue={basketItem.units}
           id={basketItem.itemId + "_unit_select_" + id}
@@ -105,7 +105,7 @@ const QSelectionGroup = ({ id }: Props) => {
         min="0"
         aria-label="Change quantity"
         defaultValue={basketItem.quantity}
-        className="w-14 rounded-sm border-[0.5px] border-dark_gray px-2 py-1 sm:w-20"
+        className="border-dark_gray w-14 rounded-sm border-[0.5px] px-2 py-1 sm:w-20"
         onChange={handleChange}
       />
     </>

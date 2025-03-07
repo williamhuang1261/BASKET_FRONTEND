@@ -1,4 +1,4 @@
-import { allUnitsType } from "./UnitsProp";
+import { allUnitsType } from "./UnitsType";
 
 /**
  * @description Multilingual name properties with size information
@@ -56,7 +56,7 @@ interface SuppliersProp {
   brand: string;
   pricing: {
     normal: number;
-    method: string;
+    method: "unit" | "weight_lb" | "weight_kg" | "weight_100g";
     limited?: LimitedProp[];
   };
 }

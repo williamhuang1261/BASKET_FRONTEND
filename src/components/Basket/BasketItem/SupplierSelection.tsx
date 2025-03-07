@@ -1,8 +1,9 @@
 import { ReactNode, useState } from "react";
 import { OptsProps } from "../../../interface/PriceProps";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import logos from "../../../data/Logos";
 import useBasketItemState from "../../../hooks/state/useBasketItemState";
+import BasketLogo from "../../../assets/BasketLogo.svg";
+import BasketLogoIcon from "../../../assets/BasketLogoIcon.svg";
 
 /**
  * @description Component that renders a dropdown for supplier selection with prices.
@@ -41,14 +42,7 @@ const SupplierSelection = ({ opts }: Props): string | ReactNode => {
         )}
 
         <div className="flex h-full flex-auto items-center justify-center">
-          <img
-            className="h-full object-contain"
-            src={
-              logos.find(
-                (l) => l.name.toLowerCase() === displayed.toLowerCase(),
-              )?.src
-            }
-          />
+          <img className="h-full object-contain" src={BasketLogo} />
         </div>
         {opts.length === 1 ? null : (
           <RiArrowDropDownLine
@@ -74,14 +68,7 @@ const SupplierSelection = ({ opts }: Props): string | ReactNode => {
               }}
             >
               <div className="h-full items-center justify-center">
-                <img
-                  className="h-full object-contain"
-                  src={
-                    logos.find(
-                      (i) => i.name.toLowerCase() === s.supplier.toLowerCase(),
-                    )?.src
-                  }
-                />
+                <img className="h-full object-contain" src={BasketLogoIcon} />
               </div>
               <div>
                 <h4>{s.process.priceToShow}</h4>

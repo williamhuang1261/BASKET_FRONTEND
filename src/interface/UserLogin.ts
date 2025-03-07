@@ -1,4 +1,4 @@
-import { allUnitsType, distanceUnitsType, weightUnitsType } from "./UnitsProp";
+import { allUnitsType, distanceUnitsType, weightUnitsType } from "./UnitsType";
 
 /**
  * @description Represents the user login data structure received from the server

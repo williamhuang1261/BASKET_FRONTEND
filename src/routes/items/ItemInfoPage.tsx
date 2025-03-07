@@ -2,6 +2,8 @@ import GenNavBar from "../../components/NavBar/GenNavBar";
 import image from "../../assets/AdExample(1_1).jpg";
 import { CardProps } from "../../interface/CardProps";
 import ItemInformationBox from "../../components/ItemInfo/ItemInformationBox";
+import PricingListing from "../../components/ItemInfo/PricingListing";
+import FooterDiv from "../../components/General/Footer/FooterDiv";
 
 const testItem: CardProps = {
   id: "123456789",
@@ -21,8 +23,8 @@ const testItem: CardProps = {
     method: "unit",
   },
   description: {
-    en: "A test item for demonstration purposes. This acts as a place holder for item information.",
-    fr: "Un article de test à des fins de démonstration. Cela sert de substitut aux informations sur l'article.",
+    en: "A test item for demonstration purposes. This acts as a place holder for item information. There can be alot of text at some times and this is a test to see how it looks.",
+    fr: "Un article de test à des fins de démonstration. Cela sert de substitut aux informations sur l'article. Il peut y avoir beaucoup de texte parfois et c'est un test pour voir à quoi cela ressemble.",
   },
   suppliers: [
     {
@@ -78,9 +80,13 @@ const ItemInfoPage = () => {
         <GenNavBar page="General" size="Full" />
       </div>
       <div className="flex h-full w-full flex-grow flex-col items-center p-5 lg:p-10">
-        <div className="w-full rounded-md bg-white p-5 shadow-md lg:container lg:mx-auto lg:max-w-[960px]">
+        <div className="flex w-full flex-col gap-5 rounded-md bg-white p-5 shadow-md lg:container lg:mx-auto lg:max-w-[960px]">
           <ItemInformationBox {...testItem} />
+          <PricingListing />
         </div>
+      </div>
+      <div>
+        <FooterDiv />
       </div>
     </div>
   );

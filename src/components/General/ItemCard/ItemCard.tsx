@@ -1,4 +1,3 @@
-
 import AddToBasketBut from "./AddToBasketBut";
 import {
   AmountProp,
@@ -30,10 +29,10 @@ interface Props {
  * @returns {JSX.Element} Product card component
  */
 const ItemCard = ({ id, image, name, amount }: Props) => {
-  const {directNav} = useCustomNavigation();
+  const { directNav } = useCustomNavigation();
 
   return (
-    <div className="flex max-h-full min-h-max min-w-72 xl:max-w-80 flex-col rounded-sm border border-gray-200 bg-white shadow-lg md:w-full">
+    <div className="flex max-h-full min-h-max w-72 flex-col rounded-sm border border-gray-200 bg-white shadow-lg md:w-full max-w-80">
       <div className="w-full flex-none">
         <div className="flex w-full justify-center p-1">
           <img
@@ -51,11 +50,14 @@ const ItemCard = ({ id, image, name, amount }: Props) => {
                 amount?.units}
             </h5>
           </div>
-          <h4 className="text-lg">{name?.en}</h4>
+          <h4 className="text-lg font-semibold">{name?.en}</h4>
         </div>
       </div>
       <div className="flex w-full flex-auto flex-col justify-end gap-2 px-2 pb-2">
-        <button onClick={() => directNav({pathname: '/items/info/' + id})} className="bg-light_gray hover:bg-dark_gray hover:text-green flex h-10 items-center justify-between rounded-sm p-1 font-sans text-lg font-semibold shadow-md transition-all hover:cursor-default">
+        <button
+          onClick={() => directNav({ pathname: "/items/info/" + id })}
+          className="bg-light_gray hover:bg-dark_gray hover:text-green flex h-10 items-center justify-between rounded-sm p-1 font-sans text-lg font-semibold shadow-md transition-all hover:cursor-default"
+        >
           <BsThreeDotsVertical size={20} className="h-full" />
           <span className="flex h-full items-center justify-center text-black">
             See prices

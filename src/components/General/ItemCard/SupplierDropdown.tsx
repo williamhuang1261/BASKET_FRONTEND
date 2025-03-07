@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import logos from "../../../data/Logos";
-import {PriceProps} from "../../../interface/PriceProps";
+import { PriceProps } from "../../../interface/PriceProps";
+import BasketLogo from "../../../assets/BasketLogo.svg";
+import BasketLogoIcon from "../../../assets/BasketLogoIcon.svg";
 
 interface Props {
   filtered: PriceProps | string;
@@ -22,7 +23,7 @@ const SupplierDropdown = ({ filtered }: Props) => {
   return (
     <div className="flex flex-col py-2">
       <button
-        className={`${filtered.opts?.length === 1 ? "justify-center hover:cursor-default" : "justify-between"} flex h-10 items-center rounded-sm bg-light_gray p-1 shadow-md transition-all`}
+        className={`${filtered.opts?.length === 1 ? "justify-center hover:cursor-default" : "justify-between"} bg-light_gray flex h-10 items-center rounded-sm p-1 shadow-md transition-all`}
         onClick={() => setOpen(!open)}
         onMouseOver={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
@@ -34,17 +35,7 @@ const SupplierDropdown = ({ filtered }: Props) => {
           />
         )}
 
-        <img
-          className="h-full object-contain"
-          src={
-            logos.find(
-              (i) =>
-                i.name.toLowerCase() ===
-                filtered.opts?.[0].supplier.toLowerCase(),
-            )?.src
-          }
-          alt={filtered.opts?.[0].supplier}
-        />
+        <img className="h-full object-contain" src={BasketLogo} />
         {filtered.opts?.length === 1 ? null : (
           <RiArrowDropDownLine
             size={40}
@@ -52,7 +43,7 @@ const SupplierDropdown = ({ filtered }: Props) => {
           />
         )}
       </button>
-      <div className={"overflow-hidden rounded-sm "}>
+      <div className={"overflow-hidden rounded-sm"}>
         {filtered.opts?.slice(1).map((s) => (
           <div
             className={`${open ? "h-10 p-2 opacity-100" : "h-0 p-0 opacity-0"} ${filtered.opts?.indexOf(s) !== 1 ? "border-t-[0.5px] border-gray-200" : ""} flex items-center justify-between gap-2 transition-all`}
@@ -61,11 +52,7 @@ const SupplierDropdown = ({ filtered }: Props) => {
             <div className="h-full items-center justify-center">
               <img
                 className="h-full object-contain"
-                src={
-                  logos.find(
-                    (i) => i.name.toLowerCase() === s.supplier.toLowerCase(),
-                  )?.src
-                }
+                src={BasketLogoIcon}
                 alt={s.supplier}
               />
             </div>

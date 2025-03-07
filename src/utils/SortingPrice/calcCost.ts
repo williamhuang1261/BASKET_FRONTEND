@@ -1,6 +1,6 @@
 import { weightUnits } from "../../data/Units";
-import {CardProps} from "../../interface/CardProps";
-import { allUnitsType, weightUnitsType } from "../../interface/UnitsProp";
+import { CardProps } from "../../interface/CardProps";
+import { allUnitsType, weightUnitsType } from "../../interface/UnitsType";
 import convertUnits from "../Units/ConversionChart";
 import methToUnit from "./methToUnit";
 
@@ -45,7 +45,7 @@ const calcCost = (
     let reqNum: number | undefined;
     if (req.units === "unit") {
       reqNum = req.quantity;
-    } else if (weightUnits.indexOf(req.units as weightUnitsType) !== -1) {
+    } else if (weightUnits.has(req.units as weightUnitsType)) {
       const convFac = convertUnits({ from: req.units, to: amount.units });
       if (!convFac) return undefined;
 

@@ -1,4 +1,4 @@
-import { allUnitsType } from "../UnitsProp";
+import { allUnitsType } from "../UnitsType";
 import { UserLogin } from "../UserLogin";
 
 interface GeneralChange {

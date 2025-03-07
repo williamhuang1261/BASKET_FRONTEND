@@ -1,4 +1,4 @@
-import { allUnitsType, distanceUnitsType, weightUnitsType } from "./UnitsProp";
+import { allUnitsType, distanceUnitsType, weightUnitsType } from "./UnitsType";
 
 /**
  * @description Represents the core user data structure with preferences and settings
@@ -37,7 +37,7 @@ type UserProp = {
       maxStores: number;
     };
   };
-}
+};
 
 /**
  * @description Extends UserProp to include authentication state
@@ -48,4 +48,4 @@ interface UserTransportProp {
   isLoggedIn: boolean;
 }
 
-export type { UserTransportProp, UserProp};
+export type { UserTransportProp, UserProp };

@@ -1,4 +1,4 @@
-import { distanceUnitsType, weightUnitsType } from "../../interface/UnitsProp";
+import { distanceUnitsType, weightUnitsType } from "../../interface/UnitsType";
 import { UserServices } from "../../services/serviceList";
 import { createFetchQuery } from "../../services/FetchQueryClass";
 

@@ -1,5 +1,5 @@
 import useBasketItemState from "../../../hooks/state/useBasketItemState";
-import { allUnitsType } from "../../../interface/UnitsProp";
+import { allUnitsType } from "../../../interface/UnitsType";
 
 /**
  * @description Component that renders a select dropdown for units of measurement.
@@ -21,7 +21,7 @@ const UnitsSelection = () => {
   return basketItem.method === "unit" ? null : (
     <select
       aria-label="Select the unit of measurement"
-      className={`cursor-pointer rounded-full bg-light_gray/50 px-1 py-0.5 font-semibold hover:text-green`}
+      className={`bg-light_gray/50 hover:text-green cursor-pointer rounded-full px-1 py-0.5 font-semibold`}
       onChange={handleChange}
       defaultValue={basketItem.units}
     >
