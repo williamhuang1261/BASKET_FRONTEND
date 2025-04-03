@@ -23,8 +23,8 @@ const testItem: CardProps = {
     method: "unit",
   },
   description: {
-    en: "A test item for demonstration purposes. This acts as a place holder for item information. There can be alot of text at some times and this is a test to see how it looks.",
-    fr: "Un article de test à des fins de démonstration. Cela sert de substitut aux informations sur l'article. Il peut y avoir beaucoup de texte parfois et c'est un test pour voir à quoi cela ressemble.",
+    en: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, autem consequuntur! Animi ex fugit dolores esse dignissimos libero cumque, veniam fuga totam quia, repudiandae",
+    fr: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, autem consequuntur! Animi ex fugit dolores esse dignissimos libero cumque, veniam fuga totam quia, repudiandae",
   },
   suppliers: [
     {
@@ -68,7 +68,7 @@ const testItem: CardProps = {
       },
     },
   ],
-  categories: ["Produce", "Bio", "Health Foods"],
+  categories: ["Bio"],
   image: image,
 };
 
@@ -80,7 +80,7 @@ const ItemInfoPage = () => {
         <GenNavBar page="General" size="Full" />
       </div>
       <div className="flex h-full w-full flex-grow flex-col items-center p-5 lg:p-10">
-        <div className="flex w-full flex-col gap-5 rounded-md bg-white p-5 shadow-md lg:container lg:mx-auto lg:max-w-[960px]">
+        <div className="flex w-full flex-col gap-5 rounded-md bg-white p-5 shadow-md lg:container lg:mx-auto">
           <ItemInformationBox {...testItem} />
           <PricingListing />
         </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import useCustomNavigation from "../../../hooks/useCustomNavigation";
 
 /**
  * @description A banner component displaying search results and view toggles
@@ -7,6 +8,12 @@ import { useState } from "react";
  */
 const ResultsBanner = () => {
   const [section, setSection] = useState<string>("Products");
+  const {directNav} = useCustomNavigation();
+
+  const handleClick = () => {
+    setSection("Flyers");
+    directNav({pathname: '/flyers'})
+  }
 
   return (
     <div className=" h-28 rounded-sm bg-white shadow-md lg:h-44">
@@ -28,7 +35,7 @@ const ResultsBanner = () => {
           <button
             type="button"
             disabled={section === "Flyers" ? true : false}
-            onClick={() => setSection("Flyers")}
+            onClick={() => handleClick()}
             className={
               (section === "Flyers" ? "underline" : "") +
               " " +

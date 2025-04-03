@@ -6,6 +6,7 @@ import { useState } from "react";
 import ItemCard from "../General/ItemCard/ItemCard";
 import items from "../../data/ItemsEX";
 import useWindowSize from "../../hooks/useWindowSize";
+import TestFlyer from '../../assets/TestFlyer.jpg'
 
 /**
  * @description Container component for flyer display with zoom controls and navigation
@@ -23,7 +24,7 @@ const FlyerContainer = () => {
   return (
     <>
       <div className="relative flex h-full max-w-full">
-        <div className="pointer-events-auto h-full w-full flex-auto"></div>
+        <img className="pointer-events-auto h-full w-full flex-auto blur-sm contrast-50" src={TestFlyer}></img>
         <div className="pointer-events-none absolute z-20 flex h-full w-full flex-none ">
           <button
             type="button"

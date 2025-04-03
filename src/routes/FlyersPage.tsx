@@ -4,6 +4,7 @@ import ItemCard from "../components/General/ItemCard/ItemCard";
 import GenNavBar from "../components/NavBar/GenNavBar";
 import items from "../data/ItemsEX";
 import useWindowSize from "../hooks/useWindowSize";
+import Ad from "../assets/AdExample(1_2).jpg";
 
 /**
  * @description Digital flyers viewing page
@@ -21,18 +22,18 @@ const FlyersPage = () => {
 
   return (
     <>
-      <div className="flex h-screen w-screen flex-col overflow-hidden min-w-80 bg-white">
+      <div className="flex h-screen w-screen min-w-80 flex-col overflow-hidden bg-white">
         {/* Nav bar */}
-        <div className="flex-none border-b-[0.5px] border-dark_gray">
+        <div className="border-dark_gray flex-none border-b-[0.5px]">
           <GenNavBar page="General" size="Full" hidden={["Location"]} />
         </div>
-        <div className="h-max flex-none bg-green/80">
+        <div className="bg-green/80 h-max flex-none">
           {/* Contains return button, supplier logo, valid dates, Flipp logo, Powered by Flipp */}
           <FlyerHeader />
         </div>
-        <div className="flex h-44 w-screen flex-auto ">
+        <div className="flex h-44 w-screen flex-auto">
           {winSize >= 1 && (
-            <section className="flex w-60 flex-col border-e-[0.5px] border-dark_gray 2xl:w-80">
+            <section className="border-dark_gray flex w-60 flex-col border-e-[0.5px] 2xl:w-80">
               {/* Contains item card showing the item that has been clicked */}
               <div className="flex-none p-3">
                 <ItemCard
@@ -58,7 +59,9 @@ const FlyersPage = () => {
                 />
               </div>
               {/* Footer on bottom left */}
-              <footer className="flex-auto bg-light_gray/50 p-3"></footer>
+              <footer className="bg-light_gray/50 flex-auto p-3">
+                <div className="flex justify-center items-center h-full border border-gray-200 rounded shadow-md bg-amber-200"><span className="flex-none rotate-45 font-righteous text-4xl">AD PLACEHOLDER</span></div>
+              </footer>
             </section>
           )}
           {/* Flyer display and navigation */}

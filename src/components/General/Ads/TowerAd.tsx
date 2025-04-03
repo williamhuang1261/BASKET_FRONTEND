@@ -1,5 +1,3 @@
-import Ad from "../../../assets/AdExample(1_2).jpg";
-
 // Tower Ad found in the side of results section
 /**
  * @description Tall vertical advertisement component used in the results section.
@@ -8,8 +6,8 @@ import Ad from "../../../assets/AdExample(1_2).jpg";
  */
 const TowerAd = () => {
   return (
-    <div className="aspect-1/2 w-full overflow-hidden rounded-sm border-[0.5px] border-dark_gray">
-      <img src={Ad} alt="Tower Ad" className="h-full w-full object-cover" />
+    <div className="border-dark_gray aspect-1/2 w-full overflow-hidden rounded-sm border-[0.5px]">
+      <div className="h-full w-full object-cover bg-amber-200 flex justify-center items-center text-4xl font-righteous"><span className="flex-none -rotate-45">AD PLACEHOLDER</span></div>
     </div>
   );
 };

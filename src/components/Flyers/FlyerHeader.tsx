@@ -50,7 +50,7 @@ const FlyerHeader = () => {
             </div>
           </div>
           <div className="">
-            <h3 className="cursor-default text-center">Powered by</h3>
+            <h3 className="cursor-default text-center">Powered by The Basket</h3>
             <div className="flex h-full items-center justify-center">
               <a href="/" target="_blank">
                 <img src={BasketLogo} alt="FlyerSupplier" className="h-8 object-contain" />
@@ -111,7 +111,7 @@ const FlyerHeader = () => {
               <img src={BasketLogo} alt="FlyerSupplier" className="h-8 object-contain" />
             </a>
           </div>
-          <h3 className="cursor-default text-center">Powered by Flipp</h3>
+          <h3 className="cursor-default text-center">Powered by The Basket</h3>
         </div>
       )}
     </>

@@ -53,7 +53,7 @@ const GenNavBar = ({ hidden, page, size }: Props) => {
         >
           <div className="flex flex-row items-center justify-between py-2">
             <div className="flex flex-none flex-row items-center ">
-              {(hidden?.indexOf("Side") !== -1 && hidden) || page ? null : (
+              {(hidden?.indexOf("Side") !== -1 && hidden) || page === "Main" ? null : (
                 <div className={"flex-none pe-2"}>
                   <SideBarTab size="40px" />
                 </div>
