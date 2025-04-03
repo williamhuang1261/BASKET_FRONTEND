@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { BiPlus } from "react-icons/bi";
 import BasketLogo from "../../assets/BasketLogoIcon.svg";
-import StarReviews from "./StarReviews";
 import { BsFillStarFill } from "react-icons/bs";
 
 const ItemDetailBoxFooterSpecial = () => {

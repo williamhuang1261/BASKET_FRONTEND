@@ -1,4 +1,3 @@
-import HorizontalAd from "../../General/Ads/HorizontalAd";
 import LoadingCard from "../../Loading/LoadingCard";
 import cards from "./CardEX";
 import { useEffect, useState } from "react";
