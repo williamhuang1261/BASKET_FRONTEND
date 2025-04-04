@@ -8,14 +8,14 @@ import { useEffect, useState } from "react";
  * @returns Under / Out of range: 0 | Over / In range: 1 (If custom / range is provided)
  * @example
  * width: {
- *   undersized: -2 (width < 320),
- *   xs: -1 (width < 640),
- *   sm: 0 (640 <= width < 768),
- *   md: 1 (768 <= width < 1024),
- *   lg: 2 (1024 <= width < 1280),
- *   xl: 3 (1280 <= width < 1536),
- *   2xl: 4 (1536 <= width < 2048),
- *   3xl: 5 (2048 <= width)
+ *   undersized: -2 (width < 280),
+ *   xs: -1 (width < 560),
+ *   sm: 0 (560 <= width < 593.25),
+ *   md: 1 (593.25 <= width < 896),
+ *   lg: 2 (896 <= width < 1120),
+ *   xl: 3 (1120 <= width < 1344),
+ *   2xl: 4 (1344 <= width < 1792),
+ *   3xl: 5 (1792 <= width)
  * }
  */
 const useWindowSize = (custom?: number, range?: [number, number]) => {
@@ -47,19 +47,19 @@ const useWindowSize = (custom?: number, range?: [number, number]) => {
     else return 1;
   }
 
-  if (width < 320)
+  if (width < 280)
     return -2; // undersized
-  else if (320 <= width && width < 640)
+  else if (280 <= width && width < 560)
     return -1; // xs
-  else if (640 <= width && width < 768)
+  else if (560 <= width && width < 593.25)
     return 0; // sm
-  else if (768 <= width && width < 1024)
+  else if (593.25 <= width && width < 896)
     return 1; // md
-  else if (1024 <= width && width < 1280)
+  else if (896 <= width && width < 1120)
     return 2; // lg
-  else if (1280 <= width && width < 1536)
+  else if (1120 <= width && width < 1344)
     return 3; // xl
-  else if (1536 <= width && width < 2048)
+  else if (1344 <= width && width < 1792)
     return 4; //2xl
   else return 5; //3xl
 };

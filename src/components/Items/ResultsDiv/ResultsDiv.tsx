@@ -1,5 +1,5 @@
 import LoadingCard from "../../Loading/LoadingCard";
-import cards from "./CardEX";
+import cards from "./CardsEX";
 import { useEffect, useState } from "react";
 import InlineAds from "./InlineAds";
 

@@ -1,4 +1,4 @@
-import FooterDiv from "../../components/General/Footer/FooterDiv";
+import NewFooterDiv from "../../components/General/Footer/NewFooterDiv";
 import FilterDiv from "../../components/Items/Filters/FilterDiv";
 import HeaderDiv from "../../components/Items/HeaderDiv/HeaderDiv";
 import ResultsDiv from "../../components/Items/ResultsDiv/ResultsDiv";
@@ -41,7 +41,8 @@ const ItemsPage = () => {
           </main>
         </div>
         <div>
-          <FooterDiv />
+          <NewFooterDiv />
+          {/* <FooterDiv /> */}
         </div>
       </div>
     </SearchFilterProvider>

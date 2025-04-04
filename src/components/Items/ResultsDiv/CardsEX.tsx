@@ -4,7 +4,7 @@ import items from "../../../data/ItemsEX";
 // Test cards
 const card = (
   <ItemCard
-    id = {items[0].id}
+    id={items[0].id}
     key={items[0].ref.code}
     image={items[0].image}
     name={{
@@ -14,7 +14,7 @@ const card = (
     }}
     reference={{
       standard: items[0].ref.standard,
-      code: items[0].ref.code
+      code: items[0].ref.code,
     }}
     amount={{
       isApprox: items[0].amount.isApprox,
@@ -25,6 +25,7 @@ const card = (
     suppliers={items[0].suppliers}
   />
 );
+
 
 const cards = Array(48).fill(card);
 export default cards;

@@ -1,4 +1,5 @@
-import Fallback from "../components/Loading/Fallback";
+import FooterDiv from "../components/General/Footer/FooterDiv";
+import NewFooterDiv from "../components/General/Footer/NewFooterDiv";
 
 /**
  * @description Test page for development and debugging purposes
@@ -6,8 +7,11 @@ import Fallback from "../components/Loading/Fallback";
  */
 const TestPage = () => {
   return (
-    <div className="h-screen w-screen overflow-hidden">
-      <Fallback />
+    <div className="flex h-screen w-screen items-end">
+      <div className="w-full">
+        <NewFooterDiv />
+        {/* <FooterDiv /> */}
+      </div>
     </div>
   );
 };

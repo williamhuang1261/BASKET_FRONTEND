@@ -31,7 +31,7 @@ const UserPage = () => {
         />
       </div>
       <main className="flex justify-center px-3 py-5">
-        <div className="w-full max-w-[1024px]">
+        <div className="w-full max-w-[896px]">
           <div className="">
             <ProfileBox />
           </div>

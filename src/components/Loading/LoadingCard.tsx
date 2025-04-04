@@ -5,7 +5,7 @@
  */
 const LoadingCard = () => {
   return (
-    <div className="h-[420px] w-72 animate-pulse rounded-lg border border-gray-200 shadow-lg md:w-full z-0 bg-white max-w-80">
+    <div className="h-[367.5px] w-72 animate-pulse rounded-lg border border-gray-200 shadow-lg md:w-full z-0 bg-white max-w-80">
       <div className="mt-2 flex w-full justify-center">
         <div className="h-52 w-52 rounded-sm bg-light_gray"></div>
       </div>

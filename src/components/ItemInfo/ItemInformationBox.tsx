@@ -27,7 +27,7 @@ const ItemInformationBox = ({
         src={image}
         className="h-52 w-52 rounded-sm object-contain"
       />
-      <div className="flex flex-col gap-2 max-w-[500px]">
+      <div className="flex flex-col gap-2 max-w-[437.5px]">
         <div>
           <h1 className="text-2xl font-bold">{name.fr}</h1>
           <p>{description?.fr}</p>
