@@ -4,6 +4,9 @@ import { Matrix } from "./genMatrix";
 interface CostOptProp {
   cost: number;
   setup: SetupProp[];
+  /** Zero-based supplier indices making up this set, for callers that need
+   *  the stores themselves rather than the per-item assignment */
+  suppliers: number[];
 }
 
 type CostProp = CostOptProp[];
@@ -31,16 +34,14 @@ const optimize = (matrix: Matrix, combinations: number[][]): CostProp => {
   // Calculate the price of each combination
   for (const comb of combinations) {
     // genCombinations counts from 1, basketCost indexes from 0
-    const { cost, setup } = basketCost(
-      matrix,
-      comb.map((index) => index - 1),
-    );
+    const suppliers = comb.map((index) => index - 1);
+    const { cost, setup } = basketCost(matrix, suppliers);
 
     if (cost < combCost) {
-      costTransport = [{ cost, setup }];
+      costTransport = [{ cost, setup, suppliers }];
       combCost = cost;
     } else if (cost === combCost && cost !== Infinity) {
-      costTransport.push({ cost, setup });
+      costTransport.push({ cost, setup, suppliers });
     }
   }
 
