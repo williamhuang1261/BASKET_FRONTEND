@@ -64,4 +64,27 @@ describe("solveBasket", () => {
     expect(greedy.method).toBe("greedy");
     expect(greedy.cost).toBe(exact.cost);
   });
+
+  it("Should default to zero travel cost and match prior behaviour", () => {
+    const withDefault = solveBasket(matrix, 3, 2);
+    const explicitZero = solveBasket(matrix, 3, 2, undefined, 0);
+    expect(withDefault).toEqual(explicitZero);
+    expect(withDefault.travelCost).toBe(0);
+  });
+
+  it("Should fold stores * visitCostPerStore into the exhaustive total", () => {
+    const free = solveBasket(matrix, 3, 2);
+    const withCost = solveBasket(matrix, 3, 2, undefined, 1.5);
+    expect(withCost.method).toBe("exhaustive");
+    expect(withCost.travelCost).toBe(2 * 1.5);
+    expect(withCost.cost).toBe(free.cost + 2 * 1.5);
+  });
+
+  it("Should forward the visit cost to the greedy solver", () => {
+    // Force greedy via a search-space budget of 0, same as the existing test above
+    const free = solveBasket(matrix, 3, 2, 0, 0);
+    const expensive = solveBasket(matrix, 3, 2, 0, 100);
+    expect(expensive.method).toBe("greedy");
+    expect(expensive.suppliers.length).toBeLessThanOrEqual(free.suppliers.length);
+  });
 });

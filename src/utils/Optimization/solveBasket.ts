@@ -24,6 +24,8 @@ export interface SolveResult {
   complete: boolean;
   /** C(n, k) for this basket, the size of the space the exact solver would walk */
   searchSpace: number;
+  /** Travel cost already folded into `cost` - stores.length * visitCostPerStore */
+  travelCost: number;
 }
 
 /**
@@ -69,6 +71,12 @@ export const DEFAULT_SEARCH_BUDGET = 20000;
  * @param {number} supplierCount - How many suppliers each item's `opts` holds
  * @param {number} maxStores - The most stores the shopper agrees to visit
  * @param {number} [budget] - Candidate sets above which greedy takes over
+ * @param {number} [visitCostPerStore] - Flat cost of visiting one more store,
+ * folded into `cost` and reported separately as `travelCost`. The exhaustive
+ * path still searches only sets of exactly `maxStores` (see
+ * docs/prd-travel-cost.md), so it cannot yet trade off visiting fewer stores
+ * for a lower total the way greedy's stopping condition does - the cost is
+ * added to its total for comparability, not used to change which set wins.
  * @example
  * const res = solveBasket(matrix, suppliers.length, 5);
  * if (res.method === "greedy") showApproximateBadge();
@@ -80,6 +88,7 @@ const solveBasket = (
   supplierCount: number,
   maxStores: number,
   budget: number = DEFAULT_SEARCH_BUDGET,
+  visitCostPerStore: number = 0,
 ): SolveResult => {
   // Asking for more stores than exist is not an error, it just means no limit
   const stores = Math.max(0, Math.min(maxStores, supplierCount));
@@ -91,8 +100,9 @@ const solveBasket = (
     // Every set was infeasible: the basket cannot be filled within the limit
     if (exact.length) {
       const best = exact[0];
+      const travelCost = stores * visitCostPerStore;
       return {
-        cost: best.cost,
+        cost: best.cost === Infinity ? best.cost : best.cost + travelCost,
         setup: best.setup,
         covered: best.setup.length,
         stocked: matrix.filter((item) => item.inStock).length,
@@ -100,11 +110,12 @@ const solveBasket = (
         method: "exhaustive",
         complete: best.cost !== Infinity,
         searchSpace: space,
+        travelCost,
       };
     }
   }
 
-  const approx = greedyOptimize(matrix, supplierCount, stores);
+  const approx = greedyOptimize(matrix, supplierCount, stores, visitCostPerStore);
   return {
     cost: approx.cost,
     setup: approx.setup,
@@ -114,6 +125,7 @@ const solveBasket = (
     method: "greedy",
     complete: approx.covered === approx.stocked && approx.cost !== Infinity,
     searchSpace: space,
+    travelCost: approx.travelCost,
   };
 };
 
