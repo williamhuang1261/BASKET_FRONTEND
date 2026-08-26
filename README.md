@@ -82,6 +82,22 @@ stores should never pay an approximation — the exact answer costs well under a
 millisecond. Greedy exists for the dense-city case where the exact search stops
 fitting in a click handler, and the UI is expected to say so when it is used.
 
+### Travel cost
+
+Both solvers accept an optional `visitCostPerStore` (see
+[`docs/prd-travel-cost.md`](docs/prd-travel-cost.md) for the requirements
+behind it). Greedy stops adding stores once another store's marginal savings
+can no longer clear that cost — reusing the same "nothing pays for the trip"
+stopping condition it already had, just compared against a real number instead
+of zero. A store still needed as the *only* source of some item is visited
+regardless of cost, since the alternative is an incomplete basket, not a
+cheaper one.
+
+The exhaustive solver reports the same travel cost against its total, for a
+comparable number, but it still only searches sets of exactly `maxStores` — it
+does not yet decide to visit *fewer* stores because a trip isn't worth it. Only
+greedy's stopping condition does that today.
+
 ### Known limits
 
 - The **(1 − 1/e)** bound constrains savings, not total cost.
@@ -91,8 +107,11 @@ fitting in a click handler, and the UI is expected to say so when it is used.
 - The exhaustive solver is asked for sets of exactly `k`; greedy stops early
   when another store cannot pay for itself. Greedy may return fewer stores at
   the same cost, which is a better answer, not a worse one.
-- Travel cost is not modelled. Two stores are treated as two stores whether they
-  are next door or across the city.
+- Travel cost is modelled as a flat, caller-supplied cost per store
+  (`visitCostPerStore`), not a real distance or drive time — there is no
+  geocoding or store-coordinate data behind it. See "Travel cost" above. The
+  exhaustive solver does not yet use it to change which set wins, only to
+  report a comparable total.
 
 ---
 
