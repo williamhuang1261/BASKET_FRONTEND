@@ -1,75 +1,47 @@
+import basketCost, { SetupProp } from "./basketCost";
 import { Matrix } from "./genMatrix";
-
-interface SetupProp {
-  itemRef: {
-    code: string;
-    standard: string;
-  };
-  supplier: string;
-  cost: number;
-}
 
 interface CostOptProp {
   cost: number;
   setup: SetupProp[];
+  /** Zero-based supplier indices making up this set, for callers that need
+   *  the stores themselves rather than the per-item assignment */
+  suppliers: number[];
 }
 
 type CostProp = CostOptProp[];
 
-const optimize = (
-  matrix: Matrix,
-  combinations: number[][],
-): CostProp => {
+/**
+ * @description Exhaustive solver for the store-selection problem. Prices every
+ * candidate set of suppliers and keeps the cheapest, returning every set that
+ * ties for the best cost.
+ *
+ * This is exact but the caller pays for it: `combinations` holds C(n, k) entries,
+ * so cost grows combinatorially in the number of suppliers. Use `solveBasket`
+ * to fall back to `greedyOptimize` once that number stops being tractable.
+ *
+ * @param {Matrix} matrix - Per-item supplier costs, from genMatrix
+ * @param {number[][]} combinations - One-based supplier sets, from genCombinations
+ * @example
+ * const combinations = genCombinations(suppliers.length, maxStores);
+ * const best = optimize(matrix, combinations);
+ * @returns {CostProp} Every supplier set achieving the minimum cost
+ */
+const optimize = (matrix: Matrix, combinations: number[][]): CostProp => {
   let costTransport: CostProp = [];
   let combCost: number = Infinity;
+
   // Calculate the price of each combination
   for (const comb of combinations) {
-    const setup: SetupProp[] = [];
-    let setupCost: number = 0;
+    // genCombinations counts from 1, basketCost indexes from 0
+    const suppliers = comb.map((index) => index - 1);
+    const { cost, setup } = basketCost(matrix, suppliers);
 
-    // Getting the best price for each item
-    for (const item of matrix) {
-
-      // Skip item if it is not in stock in any suppliers
-      if(!item.inStock) continue;
-
-      let itemCost: number = Infinity;
-      let comparisonObject: SetupProp[] = [];
-      for (const index of comb) {
-        const adjIndex = index - 1;
-        if (item.opts[adjIndex].cost < itemCost) {
-          comparisonObject = [
-            {
-              itemRef: item.ref,
-              supplier: item.opts[adjIndex].supplier,
-              cost: item.opts[adjIndex].cost,
-            },
-          ];
-          itemCost = item.opts[adjIndex].cost;
-        } else if (item.opts[adjIndex].cost === itemCost && item.opts[adjIndex].cost !== Infinity) {
-          comparisonObject.push({
-            itemRef: item.ref,
-            supplier: item.opts[adjIndex].supplier,
-            cost: item.opts[adjIndex].cost,
-          });
-        }
-      }
-      setupCost = setupCost + itemCost;
-      setup.push(...comparisonObject);
-    }
-    if(setupCost < combCost) {
-      costTransport = [
-        {
-          cost: setupCost,
-          setup: setup
-        }
-      ];
-      combCost = setupCost;
-    } else if (setupCost === combCost && setupCost !== Infinity) {
-      costTransport.push({
-        cost: setupCost,
-        setup: setup
-      });
+    if (cost < combCost) {
+      costTransport = [{ cost, setup, suppliers }];
+      combCost = cost;
+    } else if (cost === combCost && cost !== Infinity) {
+      costTransport.push({ cost, setup, suppliers });
     }
   }
 
