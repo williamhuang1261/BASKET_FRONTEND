@@ -113,6 +113,37 @@ describe("greedyOptimize", () => {
     expect(worstRatio).toBeGreaterThanOrEqual(bound);
   });
 
+  it("Should visit fewer stores as the per-store visit cost rises", () => {
+    // Item 2's second store only ever saves a small amount; once a visit
+    // costs more than that it should not be worth the trip
+    const matrix = [item("1", [1, 9]), item("2", [4, 3.5])];
+
+    const free = greedyOptimize(matrix, 2, 2, 0);
+    expect(free.suppliers.sort()).toEqual([0, 1]);
+
+    const expensive = greedyOptimize(matrix, 2, 2, 1);
+    expect(expensive.suppliers).toEqual([0]);
+  });
+
+  it("Should fold the visit cost into the reported total", () => {
+    const matrix = [item("1", [1, 9]), item("2", [4, 3.5])];
+    const res = greedyOptimize(matrix, 2, 2, 0);
+    expect(res.travelCost).toBe(res.suppliers.length * 0);
+
+    const withCost = greedyOptimize(matrix, 2, 2, 0.1);
+    expect(withCost.travelCost).toBe(withCost.suppliers.length * 0.1);
+    expect(withCost.cost).toBe(
+      basketCost(matrix, withCost.suppliers).cost + withCost.travelCost,
+    );
+  });
+
+  it("Should default to zero visit cost and match prior behaviour", () => {
+    const matrix = [item("1", [1, 12]), item("2", [11, 2])];
+    const withDefault = greedyOptimize(matrix, 2, 2);
+    const explicitZero = greedyOptimize(matrix, 2, 2, 0);
+    expect(withDefault).toEqual(explicitZero);
+  });
+
   it("Should often match the exhaustive optimum outright", () => {
     let matched = 0;
     let total = 0;

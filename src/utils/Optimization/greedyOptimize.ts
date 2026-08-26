@@ -21,6 +21,8 @@ export interface GreedyResult {
   savings: number;
   /** Candidate sets priced, the honest unit of work for a speed comparison */
   evaluations: number;
+  /** suppliers.length * visitCostPerStore, already folded into `cost` */
+  travelCost: number;
 }
 
 /**
@@ -75,6 +77,10 @@ const referencePrices = (matrix: Matrix): number[] =>
  * @param {Matrix} matrix - Per-item supplier costs, from genMatrix
  * @param {number} supplierCount - How many suppliers each item's `opts` holds
  * @param {number} maxStores - The most stores the shopper agrees to visit
+ * @param {number} [visitCostPerStore] - Flat cost of visiting one more store.
+ * A candidate is only added once its marginal savings clear this, reusing the
+ * existing "nothing pays for the trip" stopping condition. Not a real distance
+ * or travel time - see docs/prd-travel-cost.md.
  * @example
  * const res = greedyOptimize(matrix, suppliers.length, 4);
  * if (res.covered < res.stocked) { ... basket cannot be completed ... }
@@ -84,6 +90,7 @@ const greedyOptimize = (
   matrix: Matrix,
   supplierCount: number,
   maxStores: number,
+  visitCostPerStore: number = 0,
 ): GreedyResult => {
   const reference = referencePrices(matrix);
   const chosen: number[] = [];
@@ -138,8 +145,12 @@ const greedyOptimize = (
       }
     }
 
-    // Nothing left that pays for the trip
+    // Nothing left that pays for the trip, once the trip itself has a cost.
+    // A store needed purely for coverage (bestCoverage > 0) is still worth
+    // the trip regardless of cost - the alternative is an incomplete basket,
+    // not a cheaper one.
     if (bestIndex === -1) break;
+    if (bestSavings <= visitCostPerStore && bestCoverage === 0) break;
 
     chosen.push(bestIndex);
     for (let i = 0; i < matrix.length; i++) {
@@ -157,8 +168,16 @@ const greedyOptimize = (
     (acc, item, i) => (item.inStock ? acc + (reference[i] - effective[i]) : acc),
     0,
   );
+  const travelCost = chosen.length * visitCostPerStore;
 
-  return { ...priced, suppliers: chosen, savings, evaluations };
+  return {
+    ...priced,
+    cost: priced.cost === Infinity ? priced.cost : priced.cost + travelCost,
+    suppliers: chosen,
+    savings,
+    evaluations,
+    travelCost,
+  };
 };
 
 export default greedyOptimize;
