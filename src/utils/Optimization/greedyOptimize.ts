@@ -21,9 +21,19 @@ export interface GreedyResult {
   savings: number;
   /** Candidate sets priced, the honest unit of work for a speed comparison */
   evaluations: number;
-  /** suppliers.length * visitCostPerStore, already folded into `cost` */
+  /** Sum of each chosen store's visit cost, already folded into `cost` */
   travelCost: number;
 }
+
+/** Reads a candidate's visit cost whether visitCostPerStore is a flat number
+ *  or a real per-store array from `computeVisitCostByStore` */
+const costOf = (
+  visitCostPerStore: number | number[],
+  index: number,
+): number =>
+  Array.isArray(visitCostPerStore)
+    ? (visitCostPerStore[index] ?? 0)
+    : visitCostPerStore;
 
 /**
  * @description Per-item reference price: the most a shopper could pay for the
@@ -77,10 +87,12 @@ const referencePrices = (matrix: Matrix): number[] =>
  * @param {Matrix} matrix - Per-item supplier costs, from genMatrix
  * @param {number} supplierCount - How many suppliers each item's `opts` holds
  * @param {number} maxStores - The most stores the shopper agrees to visit
- * @param {number} [visitCostPerStore] - Flat cost of visiting one more store.
- * A candidate is only added once its marginal savings clear this, reusing the
- * existing "nothing pays for the trip" stopping condition. Not a real distance
- * or travel time - see docs/prd-travel-cost.md.
+ * @param {number|number[]} [visitCostPerStore] - Cost of visiting one more
+ * store: a flat number for every candidate (see docs/prd-travel-cost.md), or
+ * a `number[]` aligned to supplier index for a real per-store cost, e.g. from
+ * `computeVisitCostByStore` (see docs/prd-geospatial-travel-cost.md). A
+ * candidate is only added once its marginal savings clear its own cost,
+ * reusing the existing "nothing pays for the trip" stopping condition.
  * @example
  * const res = greedyOptimize(matrix, suppliers.length, 4);
  * if (res.covered < res.stocked) { ... basket cannot be completed ... }
@@ -90,7 +102,7 @@ const greedyOptimize = (
   matrix: Matrix,
   supplierCount: number,
   maxStores: number,
-  visitCostPerStore: number = 0,
+  visitCostPerStore: number | number[] = 0,
 ): GreedyResult => {
   const reference = referencePrices(matrix);
   const chosen: number[] = [];
@@ -150,7 +162,7 @@ const greedyOptimize = (
     // the trip regardless of cost - the alternative is an incomplete basket,
     // not a cheaper one.
     if (bestIndex === -1) break;
-    if (bestSavings <= visitCostPerStore && bestCoverage === 0) break;
+    if (bestSavings <= costOf(visitCostPerStore, bestIndex) && bestCoverage === 0) break;
 
     chosen.push(bestIndex);
     for (let i = 0; i < matrix.length; i++) {
@@ -168,7 +180,10 @@ const greedyOptimize = (
     (acc, item, i) => (item.inStock ? acc + (reference[i] - effective[i]) : acc),
     0,
   );
-  const travelCost = chosen.length * visitCostPerStore;
+  const travelCost = chosen.reduce(
+    (sum, index) => sum + costOf(visitCostPerStore, index),
+    0,
+  );
 
   return {
     ...priced,

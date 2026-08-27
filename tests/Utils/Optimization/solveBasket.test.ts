@@ -87,4 +87,27 @@ describe("solveBasket", () => {
     expect(expensive.method).toBe("greedy");
     expect(expensive.suppliers.length).toBeLessThanOrEqual(free.suppliers.length);
   });
+
+  it("Should fold a real per-store cost array into the exhaustive total", () => {
+    const costPerStore = [1, 2, 3];
+    const withArrayCost = solveBasket(matrix, 3, 2, undefined, costPerStore);
+    expect(withArrayCost.method).toBe("exhaustive");
+    const expected = withArrayCost.suppliers.reduce(
+      (sum, index) => sum + costPerStore[index],
+      0,
+    );
+    expect(withArrayCost.travelCost).toBe(expected);
+  });
+
+  it("Should forward a real per-store cost array to the greedy solver", () => {
+    // Force greedy via a search-space budget of 0
+    const costPerStore = [0, 0.1, 100];
+    const res = solveBasket(matrix, 3, 2, 0, costPerStore);
+    expect(res.method).toBe("greedy");
+    const expected = res.suppliers.reduce(
+      (sum, index) => sum + costPerStore[index],
+      0,
+    );
+    expect(res.travelCost).toBe(expected);
+  });
 });

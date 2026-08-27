@@ -144,6 +144,29 @@ describe("greedyOptimize", () => {
     expect(withDefault).toEqual(explicitZero);
   });
 
+  it("Should accept a real per-store cost array and prefer the cheaper store", () => {
+    // Same trade-off as the flat-cost test above, but store 1's visit cost is
+    // now supplied per-store (e.g. from computeVisitCostByStore) rather than
+    // as one number shared by every candidate.
+    const matrix = [item("1", [1, 9]), item("2", [4, 3.5])];
+
+    const cheapSecondStore = greedyOptimize(matrix, 2, 2, [0, 0.1]);
+    expect(cheapSecondStore.suppliers.sort()).toEqual([0, 1]);
+
+    const expensiveSecondStore = greedyOptimize(matrix, 2, 2, [0, 1]);
+    expect(expensiveSecondStore.suppliers).toEqual([0]);
+  });
+
+  it("Should fold a per-store cost array into travelCost using each store's own rate", () => {
+    const matrix = [item("1", [1, 9]), item("2", [4, 3.5])];
+    const res = greedyOptimize(matrix, 2, 2, [0.2, 0.4]);
+    const expected = res.suppliers.reduce(
+      (sum, index) => sum + [0.2, 0.4][index],
+      0,
+    );
+    expect(res.travelCost).toBe(expected);
+  });
+
   it("Should often match the exhaustive optimum outright", () => {
     let matched = 0;
     let total = 0;
