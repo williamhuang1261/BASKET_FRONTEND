@@ -98,6 +98,17 @@ comparable number, but it still only searches sets of exactly `maxStores` — it
 does not yet decide to visit *fewer* stores because a trip isn't worth it. Only
 greedy's stopping condition does that today.
 
+`visitCostPerStore` also accepts a real per-store cost: [`utils/Geo`](src/utils/Geo)
+computes the [Haversine](https://en.wikipedia.org/wiki/Haversine_formula)
+great-circle distance from a shopper's home coordinate to each store's
+coordinate, and turns it into a `number[]` aligned to supplier index (see
+[`docs/prd-geospatial-travel-cost.md`](docs/prd-geospatial-travel-cost.md)).
+Passed to either solver in place of the flat number, a candidate store now has
+to clear its own real cost rather than a shared placeholder — a close store
+and a far one are no longer treated the same. This is **straight-line
+distance**, not a route: no roads, no drive time, no traffic. Road-network
+routing is a stated follow-up, not something this models today.
+
 ### Known limits
 
 - The **(1 − 1/e)** bound constrains savings, not total cost.
@@ -107,11 +118,13 @@ greedy's stopping condition does that today.
 - The exhaustive solver is asked for sets of exactly `k`; greedy stops early
   when another store cannot pay for itself. Greedy may return fewer stores at
   the same cost, which is a better answer, not a worse one.
-- Travel cost is modelled as a flat, caller-supplied cost per store
-  (`visitCostPerStore`), not a real distance or drive time — there is no
-  geocoding or store-coordinate data behind it. See "Travel cost" above. The
-  exhaustive solver does not yet use it to change which set wins, only to
+- Travel cost defaults to a flat, caller-supplied cost per store
+  (`visitCostPerStore`) with no distance behind it — see "Travel cost" above.
+  The exhaustive solver does not yet use it to change which set wins, only to
   report a comparable total.
+- The real per-store option is **straight-line (Haversine) distance**, not
+  road-network routing — no roads, drive time, or live traffic are modelled.
+  See "Travel cost" above and `docs/prd-geospatial-travel-cost.md`.
 
 ---
 
