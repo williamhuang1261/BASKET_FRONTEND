@@ -109,6 +109,33 @@ and a far one are no longer treated the same. This is **straight-line
 distance**, not a route: no roads, no drive time, no traffic. Road-network
 routing is a stated follow-up, not something this models today.
 
+### Experimentation
+
+[`utils/Experiment`](src/utils/Experiment) and
+[`components/Basket/SavingsSummary`](src/components/Basket/SavingsSummary)
+are a small, self-built A/B test — no feature-flag SaaS, no experimentation
+platform, one hash function and one events table. See
+[`docs/prd-ab-testing.md`](docs/prd-ab-testing.md) for the hypothesis and
+what this is and is not.
+
+- `assignVariant(sessionId, experimentId)` deterministically hashes an
+  anonymous, `localStorage`-persisted session id into variant A or B, split
+  close to 50/50 over a large sample (see `assignVariant.test.ts`).
+- The `/basket/savings-summary` route renders `SavingsSummary`, which runs
+  `solveBasket` on a small, clearly synthetic sample basket
+  (`SavingsSummary/sampleBasket.ts`) and shows the real savings either as a
+  percentage (variant A) or a dollar amount (variant B) — the project's
+  first UI wiring of `solveBasket`'s output, previously library-only.
+- Viewing the summary logs an `exposure` event; clicking through to the
+  full basket logs a `conversion` event. Both POST to the backend's
+  `/events` endpoint (see the backend README's "Experimentation" section
+  for the schema and the significance analysis).
+
+This is deliberately scoped to one narrow comparison, not the full basket
+checkout flow, and there is no real production traffic behind it yet — any
+reported significance is illustrative of the method, not a real product
+decision. See "Known limits" below.
+
 ### Known limits
 
 - The **(1 − 1/e)** bound constrains savings, not total cost.
@@ -125,6 +152,9 @@ routing is a stated follow-up, not something this models today.
 - The real per-store option is **straight-line (Haversine) distance**, not
   road-network routing — no roads, drive time, or live traffic are modelled.
   See "Travel cost" above and `docs/prd-geospatial-travel-cost.md`.
+- The A/B test in "Experimentation" above runs against a fixed synthetic
+  sample basket, not a shopper's real basket, and has no real production
+  traffic behind it — see `docs/prd-ab-testing.md`.
 
 ---
 
