@@ -17,6 +17,9 @@ export const ResetPassswordPage = lazy(
   () => import("./routes/auth/ResetPassword"),
 );
 export const TestPage = lazy(() => import("./routes/TestPage"));
+export const SavingsSummaryPage = lazy(
+  () => import("./routes/SavingsSummaryPage"),
+);
 
 /**
  * @description This is the router for all the mains pages in the application
@@ -73,6 +76,11 @@ const router = createBrowserRouter([
     ],
   },
   { path: "/test", element: <TestPage />, errorElement: <ErrorPage /> },
+  {
+    path: "/basket/savings-summary",
+    element: <SavingsSummaryPage />,
+    errorElement: <ErrorPage />,
+  },
 ]);
 
 export default router;
