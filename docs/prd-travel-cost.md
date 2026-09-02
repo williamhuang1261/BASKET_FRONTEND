@@ -12,6 +12,10 @@ the current objective cannot tell the two apart from a $40 saving.
 
 ## Why now (informal user research)
 
+The competitive landscape and the interviews behind this section are written
+up in full in `discovery-competitive-scan.md` and
+`discovery-user-interviews.md`.
+
 This is not the result of a formal study — it is the same rationale that
 produced the existing "which k stores" framing in the README, extended by
 talking through the tool with a few people who actually price-compare across
