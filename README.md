@@ -136,6 +136,16 @@ checkout flow, and there is no real production traffic behind it yet — any
 reported significance is illustrative of the method, not a real product
 decision. See "Known limits" below.
 
+### Search infrastructure
+
+The backend also carries an OpenSearch hybrid search backend, an async SQS
+reindex queue, and a Spark batch job precomputing per-store price/travel
+features — additive to the MongoDB Atlas search this repo's solvers actually
+run against. See the backend README's
+["Search infrastructure"](https://github.com/williamhuang1261/BASKET_BACKEND#search-infrastructure)
+section and [`docs/prd-search-infra-extension.md`](docs/prd-search-infra-extension.md)
+for what each piece does and why.
+
 ### Known limits
 
 - The **(1 − 1/e)** bound constrains savings, not total cost.
