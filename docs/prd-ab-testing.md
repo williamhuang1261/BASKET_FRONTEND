@@ -31,6 +31,15 @@ the split is a same-input-same-output hash, so a returning visitor always
 sees the same variant, and the split is close to 50/50 over many ids
 (verified by a unit test, not a claim).
 
+## Design
+
+The savings-summary screen's shipped layout and a proposed revision (a
+per-store breakdown addressing P4's feedback in the interview notes) are
+wireframed in [`docs/design/wireframes.md`](docs/design/wireframes.md); the
+personas and journey map behind that revision are in
+[`docs/design/personas.md`](docs/design/personas.md) and
+[`docs/design/journey-map.md`](docs/design/journey-map.md).
+
 ## What this is not
 
 Not a production experimentation platform: no feature-flag service, no

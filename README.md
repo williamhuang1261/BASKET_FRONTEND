@@ -136,6 +136,17 @@ checkout flow, and there is no real production traffic behind it yet — any
 reported significance is illustrative of the method, not a real product
 decision. See "Known limits" below.
 
+### Design
+
+The research behind the travel-cost work also fed a small set of UX design
+artifacts, grounded entirely in the existing discovery docs, no new user
+contact: [`docs/design/personas.md`](docs/design/personas.md) (two personas
+synthesized from the interview notes), [`docs/design/journey-map.md`](docs/design/journey-map.md)
+(the current multi-store shopping flow with each pain point traced to a
+source), and [`docs/design/wireframes.md`](docs/design/wireframes.md) (the
+`SavingsSummary` screen as shipped, plus one proposed, unimplemented
+revision).
+
 ### Search infrastructure
 
 The backend also carries an OpenSearch hybrid search backend, an async SQS
