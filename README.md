@@ -157,6 +157,39 @@ run against. See the backend README's
 section and [`docs/prd-search-infra-extension.md`](docs/prd-search-infra-extension.md)
 for what each piece does and why.
 
+### Real-time collaboration
+
+Anyone can turn the basket page into a shared session by adding a
+`?share=<sessionId>` query param to the URL and sending that link to someone
+else. See [`docs/prd-collaborative-editing.md`](docs/prd-collaborative-editing.md)
+for the full scope, and the backend README's
+["Real-time collaboration"](https://github.com/williamhuang1261/BASKET_BACKEND#real-time-collaboration)
+section for the Socket.IO event contract.
+
+- [`utils/Realtime/resolveShareSession.ts`](src/utils/Realtime/resolveShareSession.ts)
+  is a pure function reading the session id out of the URL (unit-tested).
+- [`utils/Realtime/useBasketCollaboration.ts`](src/utils/Realtime/useBasketCollaboration.ts)
+  opens a `socket.io-client` connection only when a session is active, and
+  exposes the live presence count plus a `publish`/`subscribe` pair per item.
+- `BasketItemProvider` publishes every local quantity/unit/method/supplier
+  change to the active session, and applies changes published by other
+  collaborators through the same `basketItemReducer` — one code path for
+  "this item changed," regardless of who changed it. `BasketItem` briefly
+  highlights when a change came from someone else.
+- `PresenceIndicator`/`PresenceBar` show "N people viewing this basket" when
+  a session is active, and render nothing otherwise.
+
+**Try it:** run the dev server, open `/basket?share=demo` in two tabs, and
+change an item's quantity in one — it appears in the other within the
+highlight window.
+
+This syncs the basket's existing per-item controls, not a shared shopping
+list: per "Known limits" below, `BasketResults` still renders the static
+sample catalog, so there is no persisted, add/remove-able cart to sync yet.
+Session/presence state also lives only in the server's memory — a server
+restart drops every active session, and there is no conflict resolution
+beyond whichever change the server relays last.
+
 ### Known limits
 
 - The **(1 − 1/e)** bound constrains savings, not total cost.
@@ -176,6 +209,10 @@ for what each piece does and why.
 - The A/B test in "Experimentation" above runs against a fixed synthetic
   sample basket, not a shopper's real basket, and has no real production
   traffic behind it — see `docs/prd-ab-testing.md`.
+- "Real-time collaboration" above syncs per-item controls on the existing
+  sample catalog, not a persisted shared cart; session/presence state is
+  in-memory only (no database) and there is no conflict resolution beyond
+  last-write-wins — see `docs/prd-collaborative-editing.md`.
 
 ---
 
@@ -211,7 +248,7 @@ tests/                    mirrors src/utils
 
 ```bash
 npm install
-npm run test:run          # 88 tests, no network or credentials needed
+npm run test:run          # 118 tests, no network or credentials needed
 npm run bench:optimizer   # reproduces the table above
 npm run dev
 ```
