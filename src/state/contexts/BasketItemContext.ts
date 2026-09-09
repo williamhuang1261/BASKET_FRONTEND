@@ -9,6 +9,8 @@ import { basketItemProp, basketItemAction } from "../../interface/reducers/baske
 interface BasketItemType {
   basketItem: basketItemProp;
   dispatch: Dispatch<basketItemAction>;
+  /** True for a brief window after this item changed via a remote collaborator, not a local edit */
+  highlightedRemotely: boolean;
 }
 
 const BasketItemContext = React.createContext<BasketItemType>({} as BasketItemType);

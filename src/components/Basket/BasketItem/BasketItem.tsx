@@ -38,8 +38,13 @@ const BasketItem = ({
   suppliers,
 }: Props) => {
   const { basket } = useBasketState();
-  const { basketItem } = useBasketItemState();
+  const { basketItem, highlightedRemotely } = useBasketItemState();
   const winSize = useWindowSize();
+  // Briefly tinted when a collaborator (not this browser) just changed this
+  // item - see BasketItemProvider and docs/prd-collaborative-editing.md.
+  const remoteHighlightClass = highlightedRemotely
+    ? "bg-green/10 transition-colors duration-300"
+    : "bg-white transition-colors duration-300";
 
   const sorted = useMemo(() => {
     return SortByPrice(
@@ -86,7 +91,7 @@ const BasketItem = ({
     <>
       {/* below md display */}
       {winSize < 0 && (
-        <div className="flex bg-white">
+        <div className={`flex ${remoteHighlightClass}`}>
           <div className="flex items-center justify-center px-2">
             <div className="h-20 w-20 flex-none overflow-hidden rounded-sm">
               <img src={image} alt={name.en} className="object-fit" />
@@ -123,7 +128,7 @@ const BasketItem = ({
       )}
       {/* md and above display */}
       {winSize >= 0 && (
-        <div className="flex h-max w-full justify-between gap-2 bg-white">
+        <div className={`flex h-max w-full justify-between gap-2 ${remoteHighlightClass}`}>
           <div className="flex flex-none items-center">
             <div className="m-2 h-32 w-32 overflow-hidden rounded-sm">
               <img alt={name.en} src={image} className="object-fit" />
